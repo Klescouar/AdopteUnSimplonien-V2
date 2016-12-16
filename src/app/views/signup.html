@@ -1,0 +1,38 @@
+<div class="loginSignup">
+    <h3>INSCRIPTION</h3>
+    <form>
+        Je suis:
+        <select ng-model="user.role">
+            <option>Recruteur</option>
+            <option>Simplonien</option>
+        </select>
+
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" class="form-control" value="" ng-model="user.lastName" required></input>
+        </div>
+
+        <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" class="form-control" value="" ng-model="user.firstName" required></input>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" class="form-control" ng-model="user.email" required></input>
+        </div>
+        <div class="form-group">
+            <label for="mdp">Mot de passe</label>
+            <input type="password" id="mdp" class="form-control" ng-model="user.password" required></input>
+        </div>
+        <div class="form-group">
+            <label for="mdp">Confirmation mot de passe</label>
+            <input type="password" id="mdp" class="form-control" required></input>
+
+        </div>
+
+        <a>
+            <button type="submit" class="send-button" ng-click="signup()" ng-disabled="disabled" ui-sref="login">Envoyer</button>
+        </a>
+    </div>
+</form>
+</div>

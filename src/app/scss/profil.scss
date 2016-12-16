@@ -1,0 +1,241 @@
+.profilPicMail {
+	height: 150px;
+	width: 150px;
+	border: solid 2px #90c7dc;
+	border-radius: 50%;
+	margin: 15px 0 25px;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.main-container-profil {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	min-height: calc(100vh - 112px);
+
+	.conatiner-left-profil {
+		width: 15%;
+		background-color: #90c7dc;
+	}
+
+	.container-middle-profil {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		width: 450px;
+		min-height: 100%;
+		background-color: white;
+
+		.projects {
+			margin: 20px 0 0;
+			color: #6e748d;
+		}
+
+		.age {
+			color: #6e748d;
+			font-size: 15px;
+		}
+
+		.spe {
+			color: #6e748d;
+			font-size: 20px;
+		}
+
+		img {
+			height: 100%;
+			width: auto;
+		}
+
+		h2 {
+			color: black;
+			margin: 0;
+		}
+
+		p {
+			color: black;
+			margin: 10px;
+		}
+
+		.line {
+			border-top: solid 2px #f1f5f8;
+			height: 1px;
+			width: 80%;
+		}
+
+		.comp {
+			color: #41ccf4;
+			text-align: center;
+		}
+
+		.container-social {
+			display: flex;
+			width: 98%;
+			background-color: #f1f5f8;
+			justify-content: space-around;
+			align-items: center;
+			height: 110px;
+
+			.github {
+				background: url("../../assets/images/github2.png") no-repeat center;
+				background-size: cover;
+				height: 40px;
+				width: 40px;
+			}
+
+			.cv {
+				background: url("../../assets/images/cv.png") no-repeat center;
+				background-size: cover;
+				height: 50px;
+				width: 50px;
+			}
+
+			.linkedin {
+				background: url("../../assets/images/linkedin-logo.png") no-repeat center;
+				background-size: cover;
+				height: 40px;
+				width: 40px;
+			}
+
+			.linkedin:hover {
+				background-color: lighten(#6e748d, 50%);
+			}
+
+			.github:hover {
+				background-color: lighten(#6e748d, 50%);
+			}
+
+			.cv:hover {
+				background-color: lighten(#6e748d, 50%);
+			}
+		}
+
+		.description {
+			text-align: center;
+			margin: 30px;
+			color: #6e748d;
+		}
+
+		.main-cont-tags {
+			display: flex;
+			width: 100%;
+			justify-content: space-around;
+
+			.cont-tags {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				p {
+					margin: 3px;
+					width: 350px;
+					text-align: center;
+					color: #41ccf4;
+				}
+
+				.title-comp {
+					margin-bottom: 20px;
+					color: #6e748d;
+				}
+			}
+		}
+
+		.cont-project {
+			display: flex;
+			margin: 40px;
+			width: 100%;
+			justify-content: space-around;
+
+			.project {
+				background: url("../../assets/images/link-logo.png") no-repeat center;
+				background-size: cover;
+				height: 40px;
+				width: 40px;
+			}
+		}
+
+		button {
+			bottom: 0;
+			height: 50px;
+			width: 100%;
+			background-color: #de5b49;
+			border: none;
+			color: white;
+		}
+
+		button:hover {
+			background-color: lighten(#DE5B49, 8%);
+		}
+	}
+
+	.container-right-profil {
+		background-size: cover;
+		background-position: center;
+		width: 65%;
+
+		.linear {
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(rgba(144, 199, 220,0.70),rgba(144, 199, 220,0.70));
+		}
+	}
+}
+
+.confirmContact {
+	color: white;
+	font-size: 1.7em;
+}
+
+.logBoxStyle {
+	color: white;
+
+	p {
+		margin: 0;
+	}
+}
+
+.main-container-profil {
+	background-color: #90c7dc;
+}
+
+.profil-pic {
+	height: 150px;
+	width: 150px;
+	border: solid 2px #90c7dc;
+	border-radius: 50%;
+	margin: 30px;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+// MEDIA QUERIES
+@media screen and (max-width: 640px) {
+	.conatiner-left-profil {
+		display: none;
+		background-color: #90c7dc;
+	}
+
+	.container-right-profil {
+		display: none;
+	}
+
+	.container-middle-profil {
+		position: block;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		width: 100%;
+		min-height: 100%;
+		background-color: black;
+	}
+};

@@ -1,0 +1,104 @@
+<div class="searchPage">
+    <div class="searchBar">
+
+        <!-- FILTER ON THE LEFT -->
+        <div class="filterMain">
+            <form class="inputForm">
+                <div class="searchImage"></div>
+                <input ng-model="searchStudent" placeholder="Nom, langage, ville...">
+            </form>
+            <div class="flex">
+                <div class="filterChoice">
+                    <div class="filterTheme">
+                        <div ng-repeat="theme in themes track by $index" ng-click="changeState(theme)" ng-class="{'promo': ($index === 0), 'langage': ($index === 1), 'contrat': ($index === 2)}">
+                            <div ng-show="theme.active" class="triangle"></div>
+                        </div>
+                        <div class="gradient"></div>
+                    </div>
+                </div>
+                <div class="filterRight">
+                    <div class="filter" ng-if="themes[0].active === true">
+
+                        <input ng-click="changeFilterSchool()" ng-model="schoolData" type="button" value="{{school.ville}}" name="button" ng-repeat="school in schools" ng-class="{'buttonFilterOff': !school.active, 'buttonFilterOn' : school.active}">
+
+                    </div>
+
+                    <div class="filter" ng-if="themes[1].active === true">
+
+                        <input
+                            type="button"
+                            value="{{langage.type}}"
+                            name="button"
+                            ng-repeat="langage in langages"
+                            ng-click="changeFilter(searchResult.Langage, searchResult.maxLangage, langage)"
+                            ng-class="{'buttonFilterOff': !langage.active, 'buttonFilterOn' : langage.active}">
+
+                    </div>
+
+                    <div class="filter" ng-if="themes[2].active === true">
+
+                        <input
+                            type="button"
+                            value="{{contrat.type}}"
+                            name="button"
+                            ng-repeat="contrat in contrats"
+                            ng-click="changeFilter(searchResult.Contrat, searchResult.maxContrat, contrat)"
+                            ng-class="{'buttonFilterOff': !contrat.active, 'buttonFilterOn' : contrat.active}">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIE AVEC LES CARTES (DROITE) -->
+        <div class="cardPage">
+
+            <!-- TABLEAU DE BORD (AFFICHAGE DES TAGS) -->
+            <div class="tagSearch">
+                <p ng-if="searchResult.Ville.length === 0 && searchResult.Langage.length === 0 && searchResult.Contrat.length === 0">
+                    Tableau de bord
+                </p>
+                <div class="tagViewVille" ng-if="searchResult.Ville.length > 0">
+                    {{searchResult.Ville}}
+                    <div class="closeButton" ng-click="deleteSchoolTag()"></div>
+                </div>
+                <div class="tagViewLang" ng-repeat="lang in searchResult.Langage">
+                    {{lang}}
+                    <div class="closeButton" ng-click="deleteTag(searchResult.Langage, lang, langages)"></div>
+                </div>
+                <div class="tagViewCont" ng-repeat="cont in searchResult.Contrat">
+                    {{cont}}
+                    <div class="closeButton" ng-click="deleteTag(searchResult.Contrat, cont, contrats)"></div>
+                </div>
+            </div>
+            <div class="cont-loading" ng-show="loading">
+                <div class="loading"></div>
+            </div>
+            <div class="position-error-mess" ng-if="data.length === 0">
+                <p class="null" ng-class="{'delay': (data.length === 0)}" ng-show="!loading">
+                    Aucun simplonien ne correspond a vos critères...
+                </p>
+            </div>
+
+            <!-- CARD -->
+            <a class="card" ui-sref="profil({student: student._id})" ng-repeat="student in data | filter:searchStudent:q track by $index">
+                <div class="topCard">
+                    <div class="studentPic"><img src="assets/images/{{student.photo}}"/></div>
+                    <h3>{{student.prenom}} {{student.nom}}</h3>
+                    <p>
+                        {{student.ville}}</p>
+                    <p>Recherche:
+                        <strong>{{student.Contrat}}</strong>
+                    </p>
+                </div>
+                <div class="botCard">
+                    <p>#{{student.SpecialiteUn}}</p>
+                    <p>#{{student.SpecialiteDeux}}</p>
+                    <p>#{{student.SpecialiteTrois}}</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+// Ipad and bigger
+@media screen and (min-width: 737px){
+
+  .burger-menu{
+    display: none;
+  }
+  .page-container-left{
+    display: flex;
+  }
+
+  .burger-menu-icon{
+    display: none;
+  }
+}
+
+// Iphone 6s plus and smaller - Landscape
+@media screen and (max-width: 736px){
+
+  .nav-container{
+    position: relative;
+    z-index: 2;
+  }
+  .burger-menu{
+    z-index: 10;
+    display: flex;
+  }
+  .page-container-left{
+    display: none;
+  }
+
+  .footer-container{
+    position: relative;
+    z-index: 1
+  }
+  .burger-menu-close-icon{
+    margin-bottom: 30px;
+  }
+  .burger-menu_items a{
+    margin: 10px 0;
+  }
+}
+
+// Iphone 6s plus and smaller - Portrait
+@media screen and (max-width: 414px){
+  .burger-menu-close-icon{
+    margin-bottom: 60px;
+  }
+
+  .burger-menu_items a{
+    margin: 20px 0;
+  }
+}

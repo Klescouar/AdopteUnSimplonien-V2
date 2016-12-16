@@ -1,0 +1,110 @@
+.home-container {
+    min-height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/photo-1429051883746-afd9d56fbdaf.jpeg") no-repeat center / cover;
+    color: white;
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 350px;
+        width: 100%;
+    }
+
+    .main-title {
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 5em;
+    }
+
+    .main-text {
+        font-weight: 300;
+        text-align: center;
+        margin: 0 20px 20px 0;
+    }
+    // Positionnement du boutton avec transition sur sa couleur
+    .red-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 220px;
+        background: #de5b49;
+        color: white;
+        position: relative;
+        text-decoration: none;
+        overflow: hidden;
+        transition: color 0.7s ease;
+        transition-delay: 0.2s;
+    }
+
+    .red-button p {
+        font-size: 14px;
+        margin: 0;
+        position: relative;
+        font-weight: bold;
+    }
+
+    .red-button:hover {
+        color: #de5b49;
+    }
+
+    .red-button:hover > p {
+        z-index: 2;
+    }
+
+    .chevron {
+        position: relative;
+        margin-right: 5px;
+        height: 15px;
+        width: 15px;
+        color: white;
+        transition: color 0.7s ease;
+        transition-delay: 0.2s;
+    }
+    // pour qu'au hover du boutton le changement de couleur s'applique sur le chevron
+    .red-button:hover > .chevron {
+        transition: all 0.7s ease;
+        color: #de5b49;
+        z-index: 2;
+    }
+    // Création d'un élément positionné à côté du boutton avec transition
+    // :after car l'élément viendra se positionner au dessus de l'éléménet parent, donc après
+    .red-button::after {
+        content: "";
+        z-index: 0;
+        display: block;
+        height: 100px;
+        width: 100%;
+        background: white;
+        transform: skewX(25deg);
+        position: absolute;
+        bottom: 0;
+        left: -150%;
+        transition: all 0.7s ease;
+    }
+    // L'élément s'agrandit et passe par dessus le bouton au hover
+    .red-button:hover:after {
+        width: 300%;
+    }
+}
+@media screen and (max-width: 735px) {
+    .home-container {
+        .main-title {
+            font-size: 3em !important;
+        }
+    }
+}
+@media screen and (max-width: 970px) {
+    .home-container {
+        .main-title {
+            font-size: 4.5em;
+        }
+    }
+}

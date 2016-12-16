@@ -1,0 +1,21 @@
+app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window',
+ function($scope, AuthService, $state, $window) {
+  $scope.user = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    role: ''
+  };
+
+
+  $scope.signup = function() {
+    AuthService.register($scope.user).then(function(response) {
+      $state.go('login');
+      const alertPopup = $window.alert('Register success!');
+    }).catch(function(errMsg) {
+      const alertPopup = $window.alert('Register failed!');
+    });
+  };
+
+}]);

@@ -1,0 +1,163 @@
+.container-bo {
+	display: flex;
+	min-height: 90vh;
+
+	.container-nav-bo {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		background-color: black;
+		width: 315px;
+		min-height: 100%;
+		padding-top: 150px;
+
+		a {
+			height: 50px;
+			width: 200px;
+			background-color: white;
+			color: black;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 10px;
+			text-decoration: none;
+		}
+
+		a:focus {
+			background-color: grey;
+			color: white;
+		}
+	}
+
+	.container-interface {
+		background: -moz-radial-gradient(center, ellipse cover, rgba(94,94,94,1) 0%, rgba(0,0,0,1) 71%, rgba(0,0,0,1) 100%);
+		/* ff3.6+ */
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(94,94,94,1)), color-stop(71%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,1)));
+		/* safari4+,chrome */
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(94,94,94,1) 0%, rgba(0,0,0,1) 71%, rgba(0,0,0,1) 100%);
+		/* safari5.1+,chrome10+ */
+		background: -o-radial-gradient(center, ellipse cover, rgba(94,94,94,1) 0%, rgba(0,0,0,1) 71%, rgba(0,0,0,1) 100%);
+		/* opera 11.10+ */
+		background: -ms-radial-gradient(center, ellipse cover, rgba(94,94,94,1) 0%, rgba(0,0,0,1) 71%, rgba(0,0,0,1) 100%);
+		/* ie10+ */
+		background: radial-gradient(ellipse at center, rgba(94,94,94,1) 0%, rgba(0,0,0,1) 71%, rgba(0,0,0,1) 100%);
+		/* w3c */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= '#5E5E5E', endColorstr='#000000',GradientType=1 );
+		/* ie6-9 */
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 75%;
+		color: white;
+
+		h1 {
+			text-align: center;
+		}
+
+		.container-create-user {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 80vh;
+
+			p {
+				color: red;
+				text-align: center;
+			}
+		}
+
+		.container-delete-user {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+
+			.container-title {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding-right: 40px;
+
+				.title {
+					margin: 10px;
+					background-color: black;
+					color: white;
+					height: 50px;
+					width: 180px;
+					text-align: center;
+				}
+			}
+
+			.container-users {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+
+				.cont-info {
+					display: flex;
+					align-items: center;
+
+					.cont-pseudo {
+						margin: 10px;
+						background-color: white;
+						color: black;
+						height: 50px;
+						width: 180px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					}
+
+					.cont-perm {
+						margin: 10px;
+						background-color: white;
+						color: black;
+						height: 50px;
+						width: 200px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					}
+				}
+
+				.delete-user {
+					background: url("../../assets/images/cross.png") no-repeat center;
+					background-size: cover;
+					height: 30px;
+					width: 30px;
+				}
+			}
+		}
+
+		.container-create-student {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.input-style {
+			height: 50px;
+			width: 30%;
+			border: none;
+			margin: 10px;
+			color: black;
+		}
+	}
+
+	.modify {
+		height: 30px;
+		width: 80px;
+		background-color: green;
+		border: none;
+		margin-left: 10px;
+		margin-right: 10px;
+		color: white;
+	}
+}
