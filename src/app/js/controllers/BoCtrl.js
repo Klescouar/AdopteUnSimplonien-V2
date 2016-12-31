@@ -11,19 +11,19 @@ app.controller('boCtrl', ['$scope', 'AuthService', '$http', 'serviceApi', '$stat
 
 
     // GET USERS
-    $scope.getAllUser = function() {
+    $scope.getAllUser = () => {
       AuthService.getAllUser($scope.user).then(function(response){
         $scope.allUser = response.data.user;
         console.log($scope.allUser);
       }).catch(function(errMsg) {
-        var alertPopup = $window.alert('show profils members failed!');
+        const alertPopup = $window.alert('show profils members failed!');
       });
     };
     $scope.getAllUser();
 
 
     //ADD USERS
-    $scope.addUser = function() {
+    $scope.addUser = () => {
       console.log($scope.user);
       AuthService.register($scope.user).then(function(response) {
         $scope.getAllUser();
@@ -34,15 +34,15 @@ app.controller('boCtrl', ['$scope', 'AuthService', '$http', 'serviceApi', '$stat
     };
 
     // DELETE USER
-    $scope.removeUser = function(index){
+    $scope.removeUser = (index) => {
       console.log(index);
-     var deleted_user = $scope.allUser.splice(index, 1);
+     const deleted_user = $scope.allUser.splice(index, 1);
      AuthService.removeFromAdmin($scope.allUser[index]).then(function(response){
         $state.go('admin.profils');
-        var alertPopup = $window.alert('Remove success!');
+        const alertPopup = $window.alert('Remove success!');
       }).catch(function(errMsg) {
        $rootScope.allUser.push(deletedUser);
-        var alertPopup = $window.alert('Remove failed!');
+        const alertPopup = $window.alert('Remove failed!');
       });
     };
 
@@ -50,7 +50,7 @@ app.controller('boCtrl', ['$scope', 'AuthService', '$http', 'serviceApi', '$stat
 
     // CREATE STUDENT
     $scope.createSimplonien = () => {
-        var dataStudent = {
+        const dataStudent = {
             nom: $scope.boCreateLastName,
             prenom: $scope.boCreateName,
             age: $scope.boCreateOld,
@@ -108,7 +108,7 @@ $scope.refreshInfoStudents = () => {
 $scope.refreshInfoStudents();
 
 // DELETE STUDENT
-    $scope.deleteStudent = function(id) {
+    $scope.deleteStudent = (id) => {
     const response = confirm("Voulez vous vraiment supprimer cet apprenant?");
     if (response === true) {
         console.log(id);
@@ -119,7 +119,7 @@ $scope.refreshInfoStudents();
 };
 
 // UPDATE STUDENT INFOS
-$scope.updateStudent = function(id) {
+$scope.updateStudent = (id) => {
         const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
         if (response === true) {
             const newInfos = {
@@ -147,8 +147,7 @@ $scope.updateStudent = function(id) {
 
                   };
 
-            console.log(newInfos);
-            $http.put('/api/backOffice/update/' + id, newInfos).then(function(response) {
+            $http.put('/api/backOffice/update/' + id, newInfos).then((response) => {
             })
             alert("Apprenant modifié!")
         };
@@ -164,11 +163,11 @@ $scope.updateStudent = function(id) {
         $scope.show = 5;
         $http.get('/api/backOffice/infoStudent/' + index)
             .then(
-                function(response) {
+                (response) => {
                     $scope.student = response.data;
                     console.log($scope.student);
                 },
-                function(err) {
+                (err) => {
                     console.log("Error");
                 }
             );
@@ -177,12 +176,12 @@ $scope.updateStudent = function(id) {
 
 
 // JQUERY
-    $(document).ready(function() {
-        $(function() {
-            var nav = $('.container-nav-bo');
+    $(document).ready(() => {
+        $(() => {
+            const nav = $('.container-nav-bo');
             if (nav.length) {
-                var stickyNavTop = nav.offset().top + 4;
-                $(window).scroll(function() {
+                const stickyNavTop = nav.offset().top + 4;
+                $(window).scroll(() => {
                     if ($(window).scrollTop() > stickyNavTop && screen.width > 640) {
                         $('.container-nav-bo').addClass('sticktotop');
                         $('.container-interface').addClass('marginToFix2');

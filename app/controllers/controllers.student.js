@@ -1,14 +1,14 @@
 const mongojs = require('mongojs');
 const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien']);
 
-exports.infoStudent = function(req, res) {
+exports.infoStudent = (req, res) => {
     console.log('I received a GET request');
     db.simplonien.find(function(err, docs) {
         res.json(docs);
     });
 };
 
-exports.findStudent = function(req, res) {
+exports.findStudent = (req, res) => {
     console.log('I received a GET request');
     const id = req.params.id_profil;
     db.simplonien.findOne({
@@ -18,7 +18,7 @@ exports.findStudent = function(req, res) {
     });
 };
 
-exports.removeStudent = function(req, res) {
+exports.removeStudent = (req, res) => {
     console.log('I received a GET request');
     const id = req.params.id_profil;
     db.simplonien.remove({
@@ -28,14 +28,14 @@ exports.removeStudent = function(req, res) {
     });
 };
 
-exports.addStudent = function(req, res) {
+exports.addStudent = (req, res) => {
     db.simplonien.insert(req.body, function(err, doc) {
         res.json(doc);
     });
 };
 
 
-exports.updateStudent = function(req, res) {
+exports.updateStudent = (req, res) => {
     const id = req.params.id;
     db.simplonien.findAndModify({
         query: {
@@ -67,7 +67,7 @@ exports.updateStudent = function(req, res) {
             }
         },
         new: true
-    }, function(err, doc) {
+    }, (err, doc) => {
         res.json(doc);
     });
 };

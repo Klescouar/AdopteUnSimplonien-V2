@@ -9,7 +9,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window',
   };
 
 
-  $scope.signup = function() {
+  $scope.signup = () => {
     AuthService.register($scope.user).then(function(response) {
       $state.go('login');
       const alertPopup = $window.alert('Register success!');

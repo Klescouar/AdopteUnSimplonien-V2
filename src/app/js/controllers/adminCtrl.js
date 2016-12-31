@@ -9,7 +9,7 @@ app.controller('adminCtrl', ['$scope','$rootScope','AuthService', '$state','$win
 
   $scope.showEditProfilUserAdmin = false;
 
-  $scope.logout = function() {
+  $scope.logout = () => {
     $rootScope.showLogout = false;
     AuthService.clearLocalStorage();
     AuthService.logout();
@@ -18,7 +18,7 @@ app.controller('adminCtrl', ['$scope','$rootScope','AuthService', '$state','$win
   };
 
 
-  $scope.signup = function() {
+  $scope.signup = () => {
     AuthService.register($scope.user).then(function(response) {
       $state.go('admin.profils');
       const alertPopup = $window.alert('Register success!');

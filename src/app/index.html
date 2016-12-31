@@ -75,7 +75,8 @@
             <a class="user-icon" ui-sref="home" ng-click="logout()" ng-if="showLogout">
                 <p>Déconnexion</p>
             </a>
-            <a class="user-icon" ui-sref="login">Espace Perso</a>
+            <a class="user-icon" ng-if="showLogout" ui-sref="profilUser">Espace Perso</a>
+            <a class="user-icon" ui-sref="login" ng-if="!showLogout">Connexion</a>
         </div>
 
         <main ui-view="home"></main>
@@ -100,7 +101,6 @@
         <!-- SERVICES -->
         <script src="app/js/services/interceptor.js"></script>
         <script src="app/js/services/userService.js"></script>
-        <script src="app/js/services/app-services-data.js"></script>
         <script src="app/js/services/serviceApi.js"></script>
 
         <!-- CONTROLLERS -->

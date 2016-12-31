@@ -1,1 +1,1 @@
-var app = angular.module('app', ['ui.router', 'ui.bootstrap']);
+const app = angular.module('app', ['ui.router', 'ui.bootstrap']);

@@ -4,7 +4,7 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceApi', '$window', funct
 
 // Mise en place de la map Google
     function initialize() {
-        var mapProp = {
+        const mapProp = {
             center: new google.maps.LatLng(51.508742, -0.120850),
             zoom: 16,
             center: {
@@ -13,10 +13,9 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceApi', '$window', funct
             },
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        // var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-        var marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
             position: {
                 lat: 48.854491,
                 lng: 2.435967,

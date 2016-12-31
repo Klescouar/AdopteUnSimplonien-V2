@@ -20,10 +20,10 @@ console.log($stateParams.student);
 // GET STUDENT INFOS
     $http.get('/api/backOffice/infoStudent/' + id)
         .then(
-            function(response) {
+            (response) => {
                 $scope.student = response.data;
             },
-            function(err) {
+            (err) => {
                 console.log("Error");
             }
         );

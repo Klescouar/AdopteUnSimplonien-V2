@@ -65,7 +65,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/views/profil.html',
       resolve:{
         function(AuthService, $state){
-          var role = AuthService.userRole();
+          const role = AuthService.userRole();
           if (role != 'Recruteur' && role != 'Simplonien' && role != 'Admin') {
             $state.go('login');
             return false;
@@ -85,7 +85,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'boCtrl',
       resolve:{
        function(AuthService, $state){
-        var role = AuthService.userRole();
+        const role = AuthService.userRole();
         console.log(role);
         if (role != 'Admin') {
          $state.go('home');

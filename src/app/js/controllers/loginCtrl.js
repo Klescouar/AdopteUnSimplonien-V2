@@ -5,7 +5,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
     password: ''
   };
 
-  $scope.login = function() {
+  $scope.login = () => {
     AuthService.login($scope.user).then(function(response){
      $rootScope.showLogout = true;
      if (response.status != 404) {

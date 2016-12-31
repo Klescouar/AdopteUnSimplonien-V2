@@ -5,17 +5,17 @@ app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi', function($scope
     // Fonction LOGIN
     $scope.loginPost = () => {
         // Stockage du pseudo et du password dans l'objet login.
-        var login = {
+        const login = {
             pseudo: $('#connectPseudo').val(),
             password: $('#connectMdp').val()
         };
 
         $http.get(serviceApi.connect, login)
             .then(
-                function(response) {
+                (response) => {
                     $scope.users = response.data;
                 },
-                function(err) {
+                (err) => {
                     console.log("Error");
                 });
     };
@@ -42,7 +42,7 @@ app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi', function($scope
         };
         // S'ils sont semblable on les stock dans l'objet DataUser.
         if ($('#mdp').val() === $('#mdp-verif').val()) {
-            var dataUser = {
+            const dataUser = {
                 pseudo: $('#pseudo').val(),
                 password: $('#mdp').val()
 
@@ -50,10 +50,10 @@ app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi', function($scope
             // Envoie du pseudo et du password au server.
             $http.post(serviceApi.createUser, dataUser)
                 .then(
-                    function(response) {
+                    (response) => {
                         $scope.signToggle = 3;
                     },
-                    function(err) {
+                    (err) => {
                         console.log("Error");
                     }
                 );

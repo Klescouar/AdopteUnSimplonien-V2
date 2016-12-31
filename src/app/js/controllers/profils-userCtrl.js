@@ -3,11 +3,13 @@ app.controller('profilsUserCtrl', ['$scope', '$rootScope', 'AuthService', '$stat
   $scope.member = AuthService.user();
   $scope.showEditProfilUser = false;
 
-  $rootScope.getInfo = function() {
+  $rootScope.getInfo = () => {
    AuthService.getInfo($scope.user).then(function(response){
      $scope.member = response.data.user;
-     }).catch(function(errMsg) {
+     $scope.member === undefined ? $state.go('login') : $state.current;
+   }).catch((errMsg) => {
        const alertPopup = $window.alert('show profil member failed!');
+       $state.go('login');
      });
   };
 

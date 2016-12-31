@@ -1,13 +1,13 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var browserSync = require('browser-sync');
-var prefix = require('gulp-autoprefixer');
-var plumber = require('gulp-plumber');
-var browserSync = require('browser-sync');
-var rename = require("gulp-rename");
-var gulpCopy = require('gulp-copy');
-var inject = require('gulp-inject');
-var bs = require("browser-sync").create();
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const browserSync = require('browser-sync');
+const prefix = require('gulp-autoprefixer');
+const plumber = require('gulp-plumber');
+const browserSync = require('browser-sync');
+const rename = require("gulp-rename");
+const gulpCopy = require('gulp-copy');
+const inject = require('gulp-inject');
+const bs = require("browser-sync").create();
 
 gulp.task('sass', function() {
     gulp.src('src/app/scss/style.scss').pipe(inject(gulp.src(['**/*.scss'], {
@@ -17,7 +17,7 @@ gulp.task('sass', function() {
         starttag: '/* IMPORTS */',
         endtag: '/* Fin des IMPORTS */',
         transform: function(filepath) {
-            var res = '@import \'' + filepath + '\';';
+            const res = '@import \'' + filepath + '\';';
             console.log(res);
             return res;
         }

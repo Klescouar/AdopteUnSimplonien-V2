@@ -1,18 +1,18 @@
 app.service('AuthService', function($q, $http, API_ENDPOINT) {
-  var LOCAL_TOKEN_KEY = 'evalShopAppTokenKey';
-  var isAuthenticated = false;
-  var authToken;
-  var role = '';
+  let LOCAL_TOKEN_KEY = 'evalShopAppTokenKey';
+  let isAuthenticated = false;
+  let authToken;
+  let role = '';
 
 
-  var serializedCurrentAnnonce;
+  let serializedCurrentAnnonce;
 
-  var clearLocalStorage = function(){
+  const clearLocalStorage = () => {
    localStorage.clear(serializedCurrentAnnonce);
   }
 
   function loadUserCredentials() {
-    var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
+    const token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
     if (token) {
       useCredentials(token);
     }
@@ -37,25 +37,25 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   }
 
-  var constantUser = {};
-  var constantUserRole = {};
-  var testLocalStorage;
+  let constantUser = {};
+  let constantUserRole = {};
+  let testLocalStorage;
 
-  var getConstantUser = function(){
+  const getConstantUser = () => {
    constantUser = JSON.parse(localStorage.getItem('user'));
    return constantUser;
   }
 
-  var setConstantUser = function(user){
+  const setConstantUser = (user) => {
    constantUser = user;
   }
 
-  var getConstantUserRole = function(){
+  const getConstantUserRole = () => {
    constantUserRole = localStorage.getItem('userRole');
    return constantUserRole;
   }
 
-  var register = function(user) {
+  const register = (user) => {
       return $http.post(API_ENDPOINT.url + '/signup', user).then(
        function(response){
         return response;
@@ -65,7 +65,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       );
   };
 
-  var login = function(user) {
+  const login = (user) => {
      return $http.post(API_ENDPOINT.url + '/authenticate', user).then(
       function(response){
        storeUserCredentials(response.data.token);
@@ -78,7 +78,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
      );
   };
 
-  var getInfo = function(user) {
+  const getInfo = (user) => {
    return $http.get(API_ENDPOINT.url + '/memberinfo').then(
     function(response) {
     return response;
@@ -88,7 +88,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
    );
   }
 
-  var getAllUser = function(user) {
+  const getAllUser = (user) => {
    return $http.get(API_ENDPOINT.url + '/users').then(
     function(response) {
     return response;
@@ -98,7 +98,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
    );
   }
 
-  var removeFromAdmin = function(user) {
+  const removeFromAdmin = (user) => {
     return $http.delete(API_ENDPOINT.url + '/memberinfo/delete', user ).then(
       function(response){
        return response;
@@ -108,7 +108,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
    );
 };
 
-  var logout = function() {
+  const logout = () => {
     destroyUserCredentials();
   };
 
