@@ -1,3 +1,5 @@
+
+
 .loginSignup{
   min-height: calc(100vh - 110px);
   background-color: rgb(83, 83, 83);
@@ -5,6 +7,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/photo-1429051883746-afd9d56fbdaf.jpeg") no-repeat center / cover;
+  transition: background linear 3.5s;
+
+.cont-form{
+  background-color: #40475a;
+  width: 27%;
+  
+.cont-title-inscription{
+          background-color: #313131;
+          margin-bottom: 20px;
+        display: flex;
+        justify-content:center;
+
+
+    }
+
+form{
+
+display: flex;
+flex-direction:column;
+align-items:center;
+
+    
+
+    .form-control{
+      height: 40px;
+      width: 300px;
+      border-radius: 0px;
+    }
+
+
   .loginForm{
     width: 60%;
     display: flex;
@@ -12,11 +45,102 @@
     flex-direction: column;
     align-items: center;
   }
+
+  a{
+      display: flex;
+      justify-content:center;
+      align-items:center;
+    border-radius:0px;
+    width: 100%;
+    background-color: #de5b49;
+    height: 40px;
+    margin-top: 20px;
+
   .send-button{
-    background-color: rgb(48, 48, 48);
-    margin-top: 30px;
+    color: white;
+    background-color: #de5b49;
+    border-radius:0px;
+    border: none;
+    width: 100%;
+  .send-button:hover{
+    text-decoration:none;
+  }
+
+  }
+
+    a:hover{
+      text-decoration:none;
+    }
+
+
+
   }
   select{
+    background-color: white;
     color: black;
+    height: 25px;
+    width: 150px;
+    border-radius: 0px;
   }
+
+  }
+
 }
+}
+
+.loginSignupRecruteur{
+  min-height: calc(100vh - 110px);
+  background-color: rgb(83, 83, 83);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/espace-recruteur.jpg") no-repeat center / cover;
+  transition: background linear 3.5s;
+  }
+
+  .loginSignupSimplonien{
+  min-height: calc(100vh - 110px);
+  background-color: rgb(83, 83, 83);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/connexion-simplonien.jpg") no-repeat center / cover;
+  transition: background linear 3.5s;
+  }
+
+@media screen and (max-width: 1375px) {
+  .loginSignup{
+   .cont-form{
+  width: 40%;
+}
+}
+}
+
+@media screen and (max-width: 850px) {
+  .loginSignup{
+   .cont-form{
+  width: 60%;
+}
+}
+}
+
+@media screen and (max-width: 600px) {
+  .loginSignup{
+   .cont-form{
+  width: 80%;
+}
+}
+}
+
+@media screen and (max-width: 400px) {
+  .loginSignup{
+   .cont-form{
+  width: 100%;
+}
+}
+}
+
+
+

@@ -1,5 +1,5 @@
-app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window',
- function($scope, AuthService, $state, $window) {
+app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$timeout',
+ function($scope, AuthService, $state, $window, $timeout) {
   $scope.user = {
     firstName: '',
     lastName: '',
@@ -9,13 +9,40 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window',
   };
 
 
+
   $scope.signup = () => {
     AuthService.register($scope.user).then(function(response) {
       $state.go('login');
-      const alertPopup = $window.alert('Enregistré!');
+
+      const alertPopup = $window.alert('Register success!');
     }).catch(function(errMsg) {
       const alertPopup = $window.alert('Fail!!');
     });
   };
+
+$scope.changeRecruteur ;
+$scope.changeSimplonien;
+
+$scope.SetStyle = function () {
+
+if ($('.combo-inscription > option:selected').text()=== "Recruteur") {
+
+  $('.session-title').html("&nbsp;" + "recruteur");
+  $scope.changeSimplonien = false;
+  $scope.changeRecruteur = true;
+
+}
+else if ($('.combo-inscription > option:selected').text() === "Simplonien") {
+
+      $('.session-title').html("&nbsp;" + "simplonien");
+      $scope.changeRecruteur = false;
+     $scope.changeSimplonien = true;
+
+}
+
+
+ }
+
+
 
 }]);
