@@ -1,6 +1,6 @@
 .searchPage {
     display: flex;
-    min-height: 95vh;
+    min-height: calc(100vh - 110px);
 }
 .tagSearch {
     display: flex;
@@ -35,7 +35,7 @@
 display: flex;
 align-items:center;
 justify-content:center;
-height: 100%;
+height:97%;
     .null{
   position: relative;
   // left: -75%;
@@ -133,7 +133,7 @@ height: 100%;
 }
 .flex {
     display: flex;
-    height: 100%;
+    height: 97%;
 }
 .inputForm {
     display: flex;
@@ -180,8 +180,9 @@ height: 100%;
     width: 315px;
 }
 .filterRight {
-    height: 100%;
+    height: 98%;
     display: block;
+    background-color: rgb(118,161,192);
 }
 .filterChoice {
     display: flex;
@@ -268,10 +269,9 @@ height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 92vh;
+    min-height: calc(100vh - 170px);
     width: 184px;
     background-color: rgba(115,159,190,0.85);
-    padding: 20px 0px 100px 0px;
     .buttonFilterOff {
         width: 100%;
         height: 25px;
@@ -403,6 +403,7 @@ height: 100%;
         .loading{
 
   box-sizing: border-box;
+  margin-bottom: 50px;
   width: 80px;
   height: 80px;
   border-radius: 100%;
