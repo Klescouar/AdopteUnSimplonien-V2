@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const prefix = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
-// const browserSync = require('browser-sync');
 const rename = require("gulp-rename");
 const gulpCopy = require('gulp-copy');
 const inject = require('gulp-inject');
