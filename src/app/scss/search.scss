@@ -78,7 +78,7 @@ height:97%;
 }
 .cardPage {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     background-color: #40475A;
     padding: 7px;
@@ -86,9 +86,6 @@ height:97%;
     height: 100%;
     .card {
         margin: 7px;
-        min-width: 250px;
-        // max-width: 600px;
-        max-width: 19%;
         height: 400px;
         background-color: white;
         display: flex;
@@ -96,6 +93,9 @@ height:97%;
         align-items: center;
         justify-content: space-between;
         flex-grow: 1;
+        flex-basis: 300px;
+        width: 19%;
+        max-width: 38%;
         text-align: center;
         color: #40475A;
         cursor: pointer;
