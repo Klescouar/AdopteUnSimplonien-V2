@@ -181,6 +181,7 @@ justify-content:center;
 .filterRight {
     height: 100%;
     display: block;
+    background-color: rgb(118,161,192);
 }
 .filterChoice {
     display: flex;
@@ -267,10 +268,9 @@ justify-content:center;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 110px);
+    min-height: calc(100vh - 170px);
     width: 184px;
     background-color: rgba(115,159,190,0.85);
-    padding: 20px 0px 100px 0px;
     .buttonFilterOff {
         width: 100%;
         height: 25px;
