@@ -35,6 +35,7 @@
 display: flex;
 align-items:center;
 justify-content:center;
+height:97%;
     .null{
   position: relative;
   // left: -75%;
@@ -132,7 +133,7 @@ justify-content:center;
 }
 .flex {
     display: flex;
-    height: 100%;
+    height: 97%;
 }
 .inputForm {
     display: flex;
@@ -179,7 +180,7 @@ justify-content:center;
     width: 315px;
 }
 .filterRight {
-    height: 100%;
+    height: 98%;
     display: block;
     background-color: rgb(118,161,192);
 }
@@ -402,6 +403,7 @@ justify-content:center;
         .loading{
 
   box-sizing: border-box;
+  margin-bottom: 50px;
   width: 80px;
   height: 80px;
   border-radius: 100%;
