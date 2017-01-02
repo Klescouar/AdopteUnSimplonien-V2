@@ -21,9 +21,9 @@ app.controller('adminCtrl', ['$scope','$rootScope','AuthService', '$state','$win
   $scope.signup = () => {
     AuthService.register($scope.user).then(function(response) {
       $state.go('admin.profils');
-      const alertPopup = $window.alert('Register success!');
+      const alertPopup = $window.alert('Enregistré!!');
     }).catch(function(errMsg) {
-      const alertPopup = $window.alert('Register failed!');
+      const alertPopup = $window.alert('Fail!!');
     });
   };
 
