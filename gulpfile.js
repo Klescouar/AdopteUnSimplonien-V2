@@ -35,7 +35,7 @@ gulp.task('sass', function() {
 gulp.task('browser-sync', ['nodemon'], function() {
 
     browserSync.init([
-        'dist/**/css/*.css', 'dist/app/**/*.js', 'dist/app/*.js', 'dist/app/*.html'
+        'dist/**/css/*.css', 'dist/app/**/*.js', 'dist/app/*.js', 'dist/app/*.html' , 'dist/app/views/*.html'
     ], {
         proxy: "http://localhost:6868",
         reloadDelay: 0
