@@ -3,34 +3,18 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
     $scope.contrats = serviceApi.contrats;
     $scope.langages = serviceApi.langages;
     $scope.themes = serviceApi.themes;
-    $scope.searchResult = {
-        maxLangage: 3,
-        maxContrat: 5,
-        Langage: [],
-        Ville: "",
-        Contrat: [],
-    };
+    $scope.searchResult = serviceApi.searchResult;
+
+    console.log('ON START:' + $scope.searchResult.Ville);
 
     $scope.$emit('LOAD');
     $scope.$emit('UNLOAD');
 
-    // Récupération de l'api contenant les cards et toutes leurs infos.
-    $http.get('/api/infoStudent').then(function(response) {
-        console.log("I got the data I requested");
-        $scope.loading =false;
-        $scope.data = response.data;
-        console.log(response.data);
-        $scope.cardFull = response.data;
-        // $scope.$emit('UNLOAD');
-    })
-    $scope.loading =true;
-
-    // $scope.$on('LOAD', function(){$scope.loading =true});
-    //     $scope.$on('UNLOAD', function(){$scope.loading =false});
-
+    $scope.loading = true;
 
     // Comparaison entre les cards et les filtres sélectionné par l'utilisateur et restitution des cards filtrés.
     const searchFilter = () => {
+      console.log('ON FILTER' + $scope.searchResult.Ville);
         $scope.data = [];
 
         // Stockage des infos de searchResult (l'objet où sont stocké les filtres sélectionnés) dans des variables indépendantes.
@@ -55,6 +39,14 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
 
     searchFilter();
 
+    // Récupération de l'api contenant les cards et toutes leurs infos.
+    $http.get('/api/infoStudent').then(function(response) {
+        console.log("I got the data I requested");
+        $scope.loading =false;
+        $scope.data = response.data;
+        $scope.cardFull = response.data;
+        searchFilter();
+    })
 
     // Changer la view des onglets. Ville/Langage/Contrat.
     $scope.changeState = (item) => {
@@ -92,6 +84,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
             }
         }
         searchFilter();
+        console.log('ON CHANGE:' + $scope.searchResult.Ville);
     }
 
     $scope.changeFilter = function(array, limit, item){

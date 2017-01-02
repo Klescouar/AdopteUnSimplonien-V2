@@ -1,5 +1,13 @@
 app.service("serviceApi", function(){
 
+  this.searchResult = {
+      maxLangage: 3,
+      maxContrat: 5,
+      Langage: [],
+      Ville: "",
+      Contrat: [],
+  };
+
   this.schools = [{
       ville: 'Montreuil',
       active: false,
