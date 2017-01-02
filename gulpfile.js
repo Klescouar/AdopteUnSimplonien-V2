@@ -1,11 +1,11 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const browserSync = require('browser-sync');
 const prefix = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
 const rename = require("gulp-rename");
 const gulpCopy = require('gulp-copy');
 const inject = require('gulp-inject');
+const nodemon = require('gulp-nodemon');
 const bs = require("browser-sync").create();
 
 gulp.task('sass', function() {
@@ -31,14 +31,32 @@ gulp.task('sass', function() {
  * - View project at: localhost:3000
  *
  **/
-gulp.task('browser-sync', function() {
-    browserSync.init([
+gulp.task('browser-sync', ['nodemon'], function() {
+
+    bs.init([
         'dist/**/css/*.css', 'dist/**/*.js', 'src/**.html'
     ], {
-        server: {
-            baseDir: './dist'
-        }
+        proxy: "http://localhost:6868",
+        // server: {
+        //     baseDir: './dist'
+        // }
     });
+});
+
+gulp.task('nodemon', function (cb) {
+
+	var started = false;
+
+	return nodemon({
+		script: 'server.js'
+	}).on('start', function () {
+		// to avoid nodemon being started multiple times
+		// thanks @matthisk
+		if (!started) {
+			cb();
+			started = true;
+		}
+	});
 });
 
 gulp.task('copy', function() {
