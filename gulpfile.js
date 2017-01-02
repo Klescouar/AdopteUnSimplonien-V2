@@ -7,7 +7,6 @@ const gulpCopy = require('gulp-copy');
 const inject = require('gulp-inject');
 const nodemon = require('gulp-nodemon');
 const browserSync = require("browser-sync").create();
-const reload = browserSync.reload;
 
 gulp.task('sass', function() {
     gulp.src('src/app/scss/style.scss').pipe(inject(gulp.src(['**/*.scss'], {
@@ -32,24 +31,15 @@ gulp.task('sass', function() {
  * - View project at: localhost:3000
  *
  **/
-gulp.task('browser-sync', ['nodemon'], function() {
-
-    browserSync.init([
-        'dist/**/css/*.css', 'dist/app/**/*.js', 'dist/app/*.js', 'dist/app/*.html' , 'dist/app/views/*.html'
-    ], {
-        proxy: "http://localhost:6868",
-        reloadDelay: 0
-        // server: {
-        //     baseDir: './dist'
-        // }
-    });
-});
-
-gulp.task('nodemon', function (cb) {
-    return nodemon({
-      script: 'server.js'
-    }).once('start', cb); // once only get's run........... <drum role>........ once :D
-});
+ gulp.task('browser-sync', function() {
+     browserSync.init([
+         'dist/**/css/*.css', 'dist/**/*.js', 'src/**.html'
+     ], {
+         server: {
+             baseDir: './dist'
+         }
+     });
+ });
 
 gulp.task('copy', function() {
     gulp.src('src/app/index.html').pipe(gulp.dest('dist/app'));
@@ -65,10 +55,7 @@ gulp.task('default', [
 ], function() {
     gulp.watch('src/app/scss/*.scss', ['sass']);
     gulp.watch('src/app/index.html', ['copy']);
-    gulp.watch('src/app/views/*.html', ['copy']);
+    gulp.watch('src/app/views/**/*.html', ['copy']);
     gulp.watch('src/app/js/**/*.js', ['copy']);
     gulp.watch('src/app/*.js', ['copy']);
-    gulp.watch("dist/**/*.{css,html,js}").on('change', bs.reload);
-    gulp.watch("dist/*.{css,html,js}").on('change', bs.reload);
-
 });
