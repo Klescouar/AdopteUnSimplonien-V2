@@ -38,7 +38,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
         'dist/**/css/*.css', 'dist/app/**/*.js', 'dist/app/*.js', 'dist/app/*.html'
     ], {
         proxy: "http://localhost:6868",
-        reloadDelay: 2000
+        reloadDelay: 0
         // server: {
         //     baseDir: './dist'
         // }

@@ -7,7 +7,8 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
 
     console.log('ON START:' + $scope.searchResult.Ville);
 
-
+    $scope.$emit('LOAD');
+    $scope.$emit('UNLOAD');
 
     $scope.loading = true;
 
