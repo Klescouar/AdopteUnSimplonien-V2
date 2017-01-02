@@ -38,6 +38,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
         'dist/**/css/*.css', 'dist/app/**/*.js', 'dist/app/*.js', 'dist/app/*.html'
     ], {
         proxy: "http://localhost:6868",
+        reloadDelay: 2000
         // server: {
         //     baseDir: './dist'
         // }
@@ -67,4 +68,7 @@ gulp.task('default', [
     gulp.watch('src/app/views/*.html', ['copy']);
     gulp.watch('src/app/js/**/*.js', ['copy']);
     gulp.watch('src/app/*.js', ['copy']);
+    gulp.watch("dist/**/*.{css,html,js}").on('change', bs.reload);
+    gulp.watch("dist/*.{css,html,js}").on('change', bs.reload);
+
 });
