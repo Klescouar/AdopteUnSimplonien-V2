@@ -28,14 +28,11 @@ gulp.task('sass', function() {
  *
  * BrowserSync.io
  * - Watch CSS, JS & HTML for changes
- * - View project at: localhost:6868
+ * - View project at: localhost:3000
  *
  **/
 gulp.task('browser-sync', ['nodemon'], function() {
-  // browserSync.init({
-  //     // server:'./dist',
-  //     proxy: 6868
-  // });
+
     bs.init([
         'dist/**/css/*.css', 'dist/**/*.js', 'src/**.html'
     ], {
