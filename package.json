@@ -26,9 +26,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
-    "ui-router": "^1.0.0-alpha.3"
-  },
-  "devDependencies": {
+    "ui-router": "^1.0.0-alpha.3",
     "bcrypt": "^1.0.1",
     "bcrypt-nodejs": "0.0.3",
     "bo": "0.0.3",
@@ -41,5 +39,5 @@
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1"
-  }
+  },
 }
