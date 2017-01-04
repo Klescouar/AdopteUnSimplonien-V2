@@ -41,7 +41,7 @@ app.use("/node_modules", express.static(__dirname + "/node_modules"));
 app.use(passport.initialize());
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/app/index.html'));
+    res.sendFile(__dirname + '/dist/app/index.html');
 });
 
 // connect to database
