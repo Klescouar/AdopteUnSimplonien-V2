@@ -19,12 +19,12 @@
         </form>
 
         <div class="container-delete-user" ng-show="show==2">
-            <h2>Suppression d'un recruteur</h2>
+            <h2>Suppression d'un user</h2>
             <div class="container-users">
                 <div class="cont-info" ng-repeat="user in allUser track by $index">
                     <p class="cont-pseudo">{{user.email}}</p>
                     <p class="cont-pseudo">{{user.role}}</p>
-                    <div class="delete-user" ng-click="removeUser($index)"></div>
+                    <div class="delete-user" ng-click="removeUser(user._id)"></div>
                 </div>
 
             </div>

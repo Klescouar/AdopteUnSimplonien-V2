@@ -55,16 +55,6 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
    return constantUserRole;
   }
 
-  const register = (user) => {
-      return $http.post(API_ENDPOINT.url + '/signup', user).then(
-       function(response){
-        return response;
-       }, function(error){
-        return error;
-       }
-      );
-  };
-
   const login = (user) => {
      return $http.post(API_ENDPOINT.url + '/authenticate', user).then(
       function(response){
@@ -77,6 +67,18 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       }
      );
   };
+
+  const register = (user) => {
+      return $http.post(API_ENDPOINT.url + '/signup', user).then(
+       function(response){
+        return response;
+       }, function(error){
+        return error;
+       }
+      );
+  };
+
+
 
   const getInfo = (user) => {
    return $http.get(API_ENDPOINT.url + '/memberinfo').then(
@@ -98,8 +100,8 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
    );
   }
 
-  const removeFromAdmin = (user) => {
-    return $http.delete(API_ENDPOINT.url + '/memberinfo/delete', user ).then(
+  const removeFromAdmin = (id) => {
+    return $http.delete(API_ENDPOINT.url + '/memberinfo/delete/' + id).then(
       function(response){
        return response;
       }, function(error){
