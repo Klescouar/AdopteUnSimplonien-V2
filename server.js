@@ -35,7 +35,7 @@ app.get('/api/infoStudent', (req, res) => {
 });
 
 app.use(morgan('dev'));
-app.use(express.static(__dirname + 'dist'));
+app.use(express.static('dist'));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
 
 app.use(passport.initialize());
