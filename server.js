@@ -65,11 +65,11 @@ apiRoutes.get('/users', controllers_users.RecruiterUsers);
 // route to a restricted info (GET http://localhost:6868/api/memberinfo)
 apiRoutes.get('/memberinfo', controllers_users.memberinfo);
 
-apiRoutes.delete('/memberinfo/delete/:id' , passport.authenticate('jwt', { session: false}), controllers_users.remove);
+apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), controllers_users.remove);
 
 /////////////////////////STUDENT CONTROLLER/////////////////////////
 // create a new user account (POST http://localhost:6868/api/signup)
-apiRoutes.get('/backOffice/infoStudent', controllers_student.infoStudent);
+apiRoutes.get('/backOffice/infoStudent', passport.authenticate('jwt', {session: false}), controllers_student.infoStudent);
 // route to authenticate a user (POST http://localhost:6868/api/authenticate)
 apiRoutes.get('/backOffice/infoStudent/:id_profil', controllers_student.findStudent);
 // route to authenticate a user (POST http://localhost:6868/api/authenticate)
