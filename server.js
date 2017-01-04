@@ -1,20 +1,20 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const path = require('path');
-const passport = require('passport');
-const config = require('./config/database');
-const User = require('./app/models/user');
-const port = process.env.PORT || 6868;
-const jwt = require('jwt-simple');
-const mongojs = require('mongojs');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var mongoose = require('mongoose');
+var path = require('path');
+var passport = require('passport');
+var config = require('./config/database');
+var User = require('./app/models/user');
+var port = process.env.PORT || 6868;
+var jwt = require('jwt-simple');
+var mongojs = require('mongojs');
 
-const controllers_users = require('./app/controllers/controllers.users');
-const controllers_student = require('./app/controllers/controllers.student');
+var controllers_users = require('./app/controllers/controllers.users');
+var controllers_student = require('./app/controllers/controllers.student');
 
-const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien', 'users']);
+var db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien', 'users']);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -51,7 +51,7 @@ mongoose.connect(config.database);
 require('./config/passport')(passport);
 
 // bundle our routes
-const apiRoutes = express.Router();
+var apiRoutes = express.Router();
 // // connect the api routes under /api/*
 app.use('/api', apiRoutes);
 
@@ -65,7 +65,7 @@ apiRoutes.get('/users', controllers_users.RecruiterUsers);
 // route to a restricted info (GET http://localhost:6868/api/memberinfo)
 apiRoutes.get('/memberinfo', controllers_users.memberinfo);
 
-apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), controllers_users.remove);
+apiRoutes.devare('/memberinfo/devare/:id', passport.authenticate('jwt', {session: false}), controllers_users.remove);
 
 /////////////////////////STUDENT CONTROLLER/////////////////////////
 // create a new user account (POST http://localhost:6868/api/signup)
@@ -75,7 +75,7 @@ apiRoutes.get('/backOffice/infoStudent/:id_profil', controllers_student.findStud
 // route to authenticate a user (POST http://localhost:6868/api/authenticate)
 apiRoutes.get('/backOffice/infoStudent/fromMember/:memberId', controllers_student.findStudentByMemberId);
 // route to a restricted info (GET http://localhost:6868/api/users)
-apiRoutes.delete('/backOffice/removeStudent/:id_profil', passport.authenticate('jwt', {session: false}), controllers_student.removeStudent);
+apiRoutes.devare('/backOffice/removeStudent/:id_profil', passport.authenticate('jwt', {session: false}), controllers_student.removeStudent);
 // route to a restricted info (GET http://localhost:6868/api/memberinfo)
 apiRoutes.post('/backOffice/addStudent', passport.authenticate('jwt', {session: false}), controllers_student.addStudent);
 // route to a restricted info (GET http://localhost:6868/api/users)
