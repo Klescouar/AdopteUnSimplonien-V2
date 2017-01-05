@@ -1,32 +1,31 @@
-const express     = require('express');
-const app         = express();
-const bodyParser  = require('body-parser');
-const morgan      = require('morgan');
-const mongoose    = require('mongoose');
-const path        = require('path');
-const passport	   = require('passport');
-const config      = require('./config/database');
-const User        = require('./app/models/user');
-const port        = process.env.PORT || 6868;
-const jwt         = require('jwt-simple');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const path = require('path');
+const passport = require('passport');
+const jwt = require('jwt-simple');
 const mongojs = require('mongojs');
-
-const controllers_users      = require('./app/controllers/controllers.users');
-const controllers_student     = require('./app/controllers/controllers.student');
-
-
+const config = require(__dirname + '/config/database');
+const User = require(__dirname + '/app/models/user');
+const port = require(__dirname + '/config');
+const user = require(__dirname + '/app/controllers/controllers.users');
+const student = require(__dirname + '/app/controllers/controllers.student');
+const apiRoutes = express.Router();
 const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien', 'users']);
 
+require(__dirname + '/config/passport')(passport);
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// CONFIGURATION
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
-// configuration de l'app
-app.use(function(request, response, next){
- response.setHeader('Access-Control-Allow-Origin', '*');
- response.setHeader('Access-Control-Allow-Methods', 'GET, POST');
- response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \Authorization');
- next();
+app.use('/api', apiRoutes);
+app.use(function(request, response, next) {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \Authorization');
+    next();
 });
 
 app.get('/api/infoStudent', (req, res) => {
@@ -36,60 +35,36 @@ app.get('/api/infoStudent', (req, res) => {
     });
 });
 
-
 app.use(morgan('dev'));
-app.use(express.static('dist'));
+app.use(express.static(__dirname + '/dist'));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
 
-
-
+// PASSPORT
 app.use(passport.initialize());
 
+// INITIALIZE APP
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/dist/app/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/app/index.html'));
 });
 
 // connect to database
-mongoose.connect(config.database);
-
-// pass passport for configuration
-require('./config/passport')(passport);
-
-// bundle our routes
-const apiRoutes = express.Router();
-
+const database = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || config.database;
+mongoose.connect(database);
 
 /////////////////////////USER CONTROLLER/////////////////////////
-// create a new user account (POST http://localhost:6868/api/signup)
-apiRoutes.post('/signup', controllers_users.signup );
-// route to authenticate a user (POST http://localhost:6868/api/authenticate)
-apiRoutes.post('/authenticate',controllers_users.authenticate );
-// route to a restricted info (GET http://localhost:6868/api/users)
-apiRoutes.get('/users', controllers_users.RecruiterUsers );
-// route to a restricted info (GET http://localhost:6868/api/memberinfo)
-apiRoutes.get('/memberinfo', controllers_users.memberinfo );
-
-apiRoutes.delete('/memberinfo/delete', controllers_users.remove );
-
+apiRoutes.post('/signup', user.signup);
+apiRoutes.post('/authenticate', user.authenticate);
+apiRoutes.get('/users', user.RecruiterUsers);
+apiRoutes.get('/memberinfo', user.memberinfo);
+apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), user.remove);
 
 /////////////////////////STUDENT CONTROLLER/////////////////////////
-// create a new user account (POST http://localhost:6868/api/signup)
-apiRoutes.get('/backOffice/infoStudent', controllers_student.infoStudent );
-// route to authenticate a user (POST http://localhost:6868/api/authenticate)
-apiRoutes.get('/backOffice/infoStudent/:id_profil',controllers_student.findStudent );
-// route to a restricted info (GET http://localhost:6868/api/users)
-apiRoutes.delete('/backOffice/removeStudent/:id_profil',controllers_student.removeStudent );
-// route to a restricted info (GET http://localhost:6868/api/memberinfo)
-apiRoutes.post('/backOffice/addStudent', controllers_student.addStudent );
-// route to a restricted info (GET http://localhost:6868/api/users)
-apiRoutes.put('/backOffice/update/:id',controllers_student.updateStudent );
+apiRoutes.get('/backOffice/infoStudent', passport.authenticate('jwt', {session: false}), student.infoStudent);
+apiRoutes.get('/backOffice/infoStudent/:id_profil', student.findStudent);
+apiRoutes.get('/backOffice/infoStudent/fromMember/:memberId', student.findStudentByMemberId);
+apiRoutes.delete('/backOffice/removeStudent/:id_profil', passport.authenticate('jwt', {session: false}), student.removeStudent);
+apiRoutes.post('/backOffice/addStudent', passport.authenticate('jwt', {session: false}), student.addStudent);
+apiRoutes.put('/backOffice/update/:id', passport.authenticate('jwt', {session: false}), student.updateStudent);
 
-
-
-
-// // connect the api routes under /api/*
-app.use('/api', apiRoutes);
-
-// Start the server
-app.listen(port);
-console.log('http://localhost:' + port);
+app.listen(port.port);
+console.log('http://localhost:' + port.port);

@@ -1,10 +1,14 @@
-<div class="loginSignup">
-    <h3>INSCRIPTION</h3>
+<div class="loginSignup" ng-style="CustomStyle" ng-class="{'loginSignupRecruteur':changeStatus === 'Recruteur','loginSignupSimplonien': changeStatus === 'Simplonien'}">
+<div class="cont-form">
+<div class="cont-title-inscription">
+    <h3>Inscription {{user.role.toLowerCase()}}</h3>
+</div>
     <form>
-        Je suis:
-        <select ng-model="user.role">
-            <option>Recruteur</option>
-            <option>Simplonien</option>
+        Je suis :
+        <select ng-model="user.role" class="combo-inscription" ng-change="SetStyle()">
+            <option value="" disabled selected>Type d'inscription</option>
+            <option ng-click="changeStatus" ng-model="BImageRecruiter">Recruteur</option>
+            <option ng-click="!changeStatus" ng-model="BImageSimplonie" >Simplonien</option>
         </select>
 
         <div class="form-group">
@@ -29,10 +33,10 @@
             <input type="password" id="mdp" class="form-control" required></input>
 
         </div>
-
         <a>
             <button type="submit" class="send-button" ng-click="signup()" ng-disabled="disabled" ui-sref="login">Envoyer</button>
         </a>
     </div>
 </form>
+</div>
 </div>

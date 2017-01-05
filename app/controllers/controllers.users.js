@@ -111,10 +111,11 @@ exports.memberinfo = function(req, res) {
  };
 
  exports.remove = function(req, res) {
+   console.log(req.params.id);
   const token = getToken(req.headers);
   if (token) {
    const decoded = jwt.decode(token, config.secret);
-   User.findOneAndRemove({ _id: req.user._id }, function(err) {
+   User.findOneAndRemove({ _id: req.params.id}, function(err) {
      if (err)
        res.send(err);
 
