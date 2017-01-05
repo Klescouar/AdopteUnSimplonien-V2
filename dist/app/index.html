@@ -27,8 +27,6 @@
 
         <link rel="stylesheet" href="app/css/style.css">
 
-        <!-- <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script> -->
-
         <title>Adopte Un Simplonien</title>
     </head>
 
@@ -37,8 +35,8 @@
         <div class="nav-container" ng-controller="appUserCtrl">
 
             <!-- Menu Burger -->
-            <div class="burgerMenu">
-                <div id="menu-button" role="button" title="sweet hamburger">
+            <div class="burgerMenu" ng-class="{'menu-open': burger}">
+                <div id="menu-button" ng-click='burger === true ? burger = false : burger = true' role="button" title="sweet hamburger">
                     <div class="hamburger">
                         <div class="inner"></div>
                     </div>
@@ -101,6 +99,7 @@
 
         <!-- CONTROLLERS -->
         <script src="app/js/controllers/registerCtrl.js"></script>
+        <script src="app/js/controllers/signInUpCtrl.js"></script>
         <script src="app/js/controllers/app-userCtrl.js"></script>
         <script src="app/js/controllers/loginCtrl.js"></script>
         <script src="app/js/controllers/profils-userCtrl.js"></script>
