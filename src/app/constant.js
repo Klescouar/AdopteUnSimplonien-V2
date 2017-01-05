@@ -3,5 +3,5 @@ app.constant('AUTH_EVENTS', {
   notAuthorized: 'auth-not-authorized'
 });
 app.constant('API_ENDPOINT', {
-  url: 'http://localhost:3000/api'
+  url: 'http://localhost:6868/api'
 });

@@ -18,6 +18,16 @@ exports.findStudent = (req, res) => {
     });
 };
 
+exports.findStudentByMemberId = (req, res) => {
+    console.log('I received a GET request');
+    const memberId = req.params.memberId;
+    db.simplonien.findOne({
+        memberId: memberId
+    }, function(err, doc) {
+        res.json(doc);
+    });
+};
+
 exports.removeStudent = (req, res) => {
     console.log('I received a GET request');
     const id = req.params.id_profil;
@@ -29,11 +39,23 @@ exports.removeStudent = (req, res) => {
 };
 
 exports.addStudent = (req, res) => {
-    db.simplonien.insert(req.body, function(err, doc) {
-        res.json(doc);
+    const memberId = req.body.memberId;
+    console.log('I received a GET request');
+    db.simplonien.findOne({
+        memberId: memberId
+    }, function(err, doc) {
+        const p = new Promise((resolve, reject) => {
+            doc ? resolve() : reject();
+        });
+        p.then(function() {
+            res.send('error')
+        }, function() {
+            db.simplonien.insert(req.body, function(err, doc) {
+                res.json(doc);
+            });
+        })
     });
 };
-
 
 exports.updateStudent = (req, res) => {
     const id = req.params.id;
