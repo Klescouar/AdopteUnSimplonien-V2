@@ -1,42 +1,39 @@
 <div class="loginSignup" ng-style="CustomStyle" ng-class="{'loginSignupRecruteur':changeStatus === 'Recruteur','loginSignupSimplonien': changeStatus === 'Simplonien'}">
 <div class="cont-form">
-<div class="cont-title-inscription">
-    <h3>Inscription {{user.role.toLowerCase()}}</h3>
-</div>
-    <form>
-        Je suis :
-        <select ng-model="user.role" class="combo-inscription" ng-change="SetStyle()">
-            <option value="" disabled selected>Type d'inscription</option>
-            <option ng-click="changeStatus" ng-model="BImageRecruiter">Recruteur</option>
-            <option ng-click="!changeStatus" ng-model="BImageSimplonie" >Simplonien</option>
-        </select>
-
-        <div class="form-group">
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" class="form-control" value="" ng-model="user.lastName" required></input>
-        </div>
-
-        <div class="form-group">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" class="form-control" value="" ng-model="user.firstName" required></input>
-        </div>
-        <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="text" id="email" class="form-control" ng-model="user.email" required></input>
-        </div>
-        <div class="form-group">
-            <label for="mdp">Mot de passe</label>
-            <input type="password" id="mdp" class="form-control" ng-model="user.password" required></input>
-        </div>
-        <div class="form-group">
-            <label for="mdp">Confirmation mot de passe</label>
-            <input type="password" id="mdp" class="form-control" required></input>
-
-        </div>
-        <a>
-            <button type="submit" class="send-button" ng-click="signup()" ng-disabled="disabled" ui-sref="login">Envoyer</button>
+    <div class="cont-title-inscription"></div>
+    <div class="cont-button">
+        <a class="cont-recruteur" >
+            <button class="recruteur-button" ng-click="SetStyle('Recruteur')" ng-class="{'button-focus-right':borderClass, 'border-bottom-focus': !borderClass}" ><h4>Inscription Recruteur</h4></button>
+        </a>
+        <a class="cont-simplonien">
+            <button class="simplonien-button"  ng-click="SetStyle('Simplonien')"  ng-class="{'button-focus-left':!borderClass, 'border-bottom-focus': borderClass}"><h4>Inscription Simplonien</h4></button>
         </a>
     </div>
+    <form>
+        <div class="main-cont-input">
+            <div class="cont-input" ng-if="user.role == 'Recruteur'">
+                <input type="text" id="nom"  value="" ng-model="user.company" required placeholder="Entreprise"></input>
+            </div>
+            <div class="cont-input">
+                <input type="text" id="nom"  value="" ng-model="user.lastName" required placeholder="Nom"></input>
+            </div>
+            <div class="cont-input">
+                <input type="text" id="prenom" value="" ng-model="user.firstName" required placeholder="Prénom"></input>
+            </div>
+            <div class="cont-input">
+                <input type="text" id="email" ng-model="user.email" required placeholder="E-mail"></input>
+            </div>
+            <div class="cont-input">
+                <input type="password" id="mdp" ng-model="user.password" required placeholder="Mot de passe"></input>
+            </div>
+            <div class="cont-input">
+                <input type="password" id="mdp" required placeholder="Confirmation du mot de passe"></input>
+            </div>
+        </div>
+            <a>
+                <button type="submit" class="send-button" ng-click="signup()" ng-disabled="disabled" ui-sref="login"><h4>Envoyer</h4></button>
+            </a>
+        </div>
 </form>
 </div>
 </div>

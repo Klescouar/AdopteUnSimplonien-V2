@@ -9,26 +9,151 @@
     transition: background linear 3.5s;
 
     .cont-form {
-        background-color: #40475a;
+        background-color: #425877;
         width: 27%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+
+        .cont-button{
+           justify-content:center;
+          display: flex;
+          background-color: #425877;
+            
+           h4{
+                  margin: 0px;
+                }
+
+          a{
+            display: flex;
+              align-items:center;
+              justify-content:center;
+            width: 50%;
+            
+            cursor: pointer;
+            text-decoration: none;
+
+            .simplonien-button{
+              display: flex;
+              align-items:center;
+              justify-content:center;
+              height: 50px;
+              background-color: #425877;
+              color: white;
+              border:none;
+              border-bottom: 1px solid #6c94b4;
+
+
+
+            }
+          
+
+
+            .recruteur-button{
+              display: flex;
+              align-items:center;
+              justify-content:center;
+              height: 50px;
+              background-color: #425877;
+              color: white;
+              border:none;
+              
+              
+
+            }
+            
+           
+
+            button{
+              width: 100%;
+            }
+
+            .button-focus-right{
+              border-top: 1px solid #6c94b4;
+              outline: none;
+              border-top-right-radius: 7px;  
+              border-right: 1px solid #6c94b4;
+
+
+            }
+
+            .button-focus-left{
+              border-bottom: none;
+              border-top: 1px solid #6c94b4;
+              outline: none;
+              border-top-left-radius: 7px;
+              border-left: 1px solid #6c94b4; 
+
+            }
+
+            .border-bottom-focus{
+              border-bottom: 1px solid #6c94b4;
+              background-color: #2e3e53;
+
+
+
+            }
+
+                    button:hover{
+            background-color: lighten(#425877, 8%);
+
+        }
+          
+            }
+
+        }
+
+
 
         .cont-title-inscription {
-            background-color: #313131;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
+            height: 20px;
+            background-color: #2e3e53;
         }
 
         form {
+          
+            padding-left: 30px;
+            padding-right: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content:center;
 
-            .form-control {
+        .main-cont-input{
+        height: 400px;
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+        justify-content: space-between;
+
+
+          .cont-input{
+
+            width: 75%;
+            display: flex;
+            flex-direction:column;
+            margin-top: 15px;
+
+              input{
                 height: 40px;
-                width: 300px;
-                border-radius: 0;
-            }
+                width: 100%;
+                margin: 0 auto 15px;
+                padding: 0 15px;
+                border: none;
+                border-bottom: 1px solid rgba(115,159,190,0.85);
+                color: black;
+                background-color: #425877;
+                color: white;
+              }
+
+              input:focus {
+                border-bottom:1px solid white;
+                outline: none;
+              }
+
+          }
+        }
 
             .loginForm {
                 width: 60%;
@@ -43,17 +168,20 @@
                 justify-content: center;
                 align-items: center;
                 border-radius: 0;
-                width: 100%;
+                width: 50%;
                 background-color: #de5b49;
-                height: 40px;
+                height: 50px;
                 margin-top: 20px;
+                margin-bottom: 30px;
+                text-decoration: none;
 
                 .send-button {
                     color: white;
                     background-color: #de5b49;
                     border-radius: 0;
                     border: none;
-                    width: 100%;
+                    text-decoration: none;
+                    
 
                     .send-button:hover {
                         text-decoration: none;

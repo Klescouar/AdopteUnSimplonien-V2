@@ -5,7 +5,6 @@ const plumber = require('gulp-plumber');
 const rename = require("gulp-rename");
 const gulpCopy = require('gulp-copy');
 const inject = require('gulp-inject');
-const nodemon = require('gulp-nodemon');
 const browserSync = require("browser-sync").create();
 
 gulp.task('sass', function() {
