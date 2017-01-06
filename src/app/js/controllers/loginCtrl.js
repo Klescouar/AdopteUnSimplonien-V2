@@ -5,6 +5,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
     password: ''
   };
 
+
   $scope.login = () => {
     AuthService.login($scope.user).then(function(response){
      $rootScope.showLogout = true;
@@ -19,6 +20,8 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
      }
       $state.go('profilUser.user');
     }).catch(function(error){
+      $rootScope.showLogout = false;
+       AuthService.clearLocalStorage();
       const alertPopup = $window.alert('Login failed!');
        $state.go('login');
     });
