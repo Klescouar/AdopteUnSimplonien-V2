@@ -96,6 +96,12 @@
         opacity: 0.6;
     }
 }
+#contentMap{
+  color: black;
+  h1 {
+    color: black;
+  }
+}
 @media screen and (max-width: 640px) {
     .mapContact {
         display: none;

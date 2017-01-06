@@ -1,11 +1,4 @@
-app.controller('profilsUserCtrl', [
-    '$http',
-    '$scope',
-    '$rootScope',
-    'AuthService',
-    '$state',
-    '$window',
-    function($http, $scope, $rootScope, AuthService, $state, $window) {
+app.controller('profilsUserCtrl', ['$http','$scope','$rootScope','AuthService','$state','$window', function($http,$scope,$rootScope, AuthService, $state, $window) {
         $scope.member = AuthService.user();
         $scope.showEditProfilUser = false;
 
@@ -27,6 +20,14 @@ app.controller('profilsUserCtrl', [
             }, (err) => {
                 console.log("Error");
             });
+        }
+
+        $scope.deleteCard = (id) => {
+          const response = confirm("Voulez vous vraiment supprimer votre fiche?");
+          if (response === true) {
+              $http.delete('/api/backOffice/removeStudent/' + id).then(function(response) {
+              });
+          }
         }
 
         $scope.getMemberInfo($scope.member._id);
