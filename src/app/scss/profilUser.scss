@@ -1,15 +1,60 @@
 .ProfilUser{
   min-height: calc(100vh - 110px);
-  background-color: rgb(83, 83, 83);
+  background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: space-around;
+  // align-items: center;
   color: black;
-  .userInfos{
-    display: flex;
-  }
+
   .container-create-student{
     color: black;
+    padding: 40px;
+    background-color: white;
+    width: 700px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .section{
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      width: $full;
+      margin-bottom: 30px;
+
+      .info-title{
+        margin-bottom: 0;
+      }
+    }
+
+    .info-group{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+    }
+
+    .cont-input{
+      width: 50%;
+      display: flex;
+      margin-top: 15px;
+      padding: 0 20px;
+
+      &.full-width{
+          width: 100%;
+      }
+
+      input, textarea{
+        height: 30px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+        color: black;
+        outline: none;
+      }
+    }
+
+
   }
 }

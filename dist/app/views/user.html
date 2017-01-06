@@ -1,50 +1,114 @@
 <div class="ProfilUser">
-    <div class="userInfos">
-        <p>Role  :
-            {{member.role}}</p>
-    </div>
-    <div class="userInfos">
-        <p>Nom :
-            {{member.lastName}}</p>
-    </div>
-    <div class="userInfos">
-        <p>Prénom :
-            {{member.firstName}}</p>
-    </div>
-    <div class="userInfos">
-        <p>Email :
-            {{member.email}}</p>
-    </div>
+
 
       <form class="container-create-student" ng-submit="createSimplonien()" ng-show="!student">
-        <h2>Créer sa fiche</h2>
-        <input class="input-style" placeholder="Nom" type="text" ng-model="boCreateLastName" required>
-        <input class="input-style" placeholder="Prénom" ng-model="boCreateName" required>
-        <input class="input-style" placeholder="Âge" ng-model="boCreateOld" required>
-        <input class="input-style" placeholder="Ville" ng-model="boCreatePromo" required>
-        <input class="input-style" type="text" id="photo" name="Photo" placeholder="Photo" ng-model="boCreatePhoto">
-        <input class="input-style" placeholder="Tags" ng-model="boCreateTags" required>
-        <textarea class="input-style" placeholder="Description" ng-model="boCreateAbout" required></textarea>
-        <input class="input-style" placeholder="Sexe" ng-model="boCreateSexe" required>
-        <input class="input-style" placeholder="Domaine" ng-model="boCreateDomaine" required>
-        <input class="input-style" placeholder="Specialite1" ng-model="boCreateSpeOne" required>
-        <input class="input-style" placeholder="Specialite2" ng-model="boCreateSpeTwo" required>
-        <input class="input-style" placeholder="Specialite3" ng-model="boCreateSpeThree" required>
-        <input class="input-style" placeholder="Github" ng-model="boCreateGithub">
-        <input class="input-style" placeholder="Linkedin" ng-model="boCreateLinkedin">
-        <input class="input-style" placeholder="Portfolio" ng-model="boCreatePortfolio">
-        <input class="input-style" id="cv" name="cv" placeholder="CV" ng-model="boCreateCV">
-        <input class="input-style" placeholder="Twitter" ng-model="boCreateTwitter">
-        <input class="input-style" placeholder="StackOverFlow" ng-model="boCreateStackOverFlow">
-        <input class="input-style" placeholder="Mail" ng-model="boCreateMail" required>
-        <input class="input-style" placeholder="Contrat" ng-model="boCreateContrat" required>
-        <input class="input-style" placeholder="DatePromo" ng-model="boCreateDatePromo" required="required">
-        <input class="input-style" value="Créer une fiche Simplonien" type="submit">
+
+        <div class="cont-input">
+          <input class="input-style" type="text" id="photo" name="Photo" placeholder="Photo" ng-model="boCreatePhoto">
+        </div>
+
+
+        <div class="section">
+          <h1 class="info-title">Informations</h1>
+          <div class="info-group">
+            <div class="cont-input">
+              <input class="input-style" placeholder="Nom" type="text" ng-model="boCreateLastName" required>
+            </div>
+            <div class="cont-input">
+              <input class="input-style" placeholder="Prénom" ng-model="boCreateName" required>
+            </div>
+
+            <div class="cont-input">
+              <input class="input-style" placeholder="E-mail" ng-model="boCreateMail" required>
+            </div>
+
+            <div class="cont-input">
+              <input class="input-style" placeholder="Âge" ng-model="boCreateOld" required>
+            </div>
+
+            <div class="cont-input">
+              <input class="input-style" placeholder="Sexe" ng-model="boCreateSexe" required>
+            </div>
+
+            <div class="cont-input">
+              <input class="input-style" placeholder="Ville" ng-model="boCreatePromo" required>
+            </div>
+
+            <div class="cont-input">
+              <input class="input-style" placeholder="Tags" ng-model="boCreateTags" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h1 class="info-title">Profil</h1>
+          <div class="cont-input full-width">
+            <textarea class="input-style" placeholder="Description" ng-model="boCreateAbout" required></textarea>
+          </div>
+        </div>
+
+
+
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Domaine" ng-model="boCreateDomaine" required>
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Specialite1" ng-model="boCreateSpeOne" required>
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Specialite2" ng-model="boCreateSpeTwo" required>
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Specialite3" ng-model="boCreateSpeThree" required>
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Github" ng-model="boCreateGithub">
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Linkedin" ng-model="boCreateLinkedin">
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Portfolio" ng-model="boCreatePortfolio">
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" id="cv" name="cv" placeholder="CV" ng-model="boCreateCV">
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Twitter" ng-model="boCreateTwitter">
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="StackOverFlow" ng-model="boCreateStackOverFlow">
+        </div>
+
+
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="Contrat" ng-model="boCreateContrat" required>
+        </div>
+
+        <div class="cont-input">
+          <input class="input-style" placeholder="DatePromo" ng-model="boCreateDatePromo" required="required">
+        </div>
+
+        <!-- <div class="cont-input">
+        </div> -->
+        <input class="input-style" value="Enregistrer" type="submit">
+
+
     </form>
 
 
     <div class="container-create-student" ng-show="student">
-        <h2>Modifier/supprimer la fiche Simplonien</h2>
         <input id="boCreateLastNameSimploniens" class="input-style" ng-value="student.nom" placeholder="Nom" type="text" required>
         <input id="boCreateNameSimploniens" class="input-style" ng-value="student.prenom" placeholder="Prénom" required>
         <input id="boCreateOldSimploniens" class="input-style" ng-value="student.age" placeholder="Âge" required>
@@ -69,5 +133,4 @@
         <input class="input-style" value="Modifier une fiche Simplonien" type="submit" ng-click="updateStudent(student._id)">
     </div>
 
-    <input type="button" ng-click="deleteCard(student._id)" value="Supprimer sa fiche">
 </div>
