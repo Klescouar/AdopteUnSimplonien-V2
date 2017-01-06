@@ -14,7 +14,7 @@ app.controller('registerCtrl', [
             role: 'Recruteur'
         };
 
-        
+
 
         $scope.signup = () => {
           console.log($scope.user)
@@ -35,12 +35,12 @@ app.controller('registerCtrl', [
             if ($scope.user.role === "Recruteur") {
                 $scope.changeStatus = 'Recruteur';
                 $scope.borderClass = true;
-               
+
 
             } else if ($scope.user.role === "Simplonien") {
                 $scope.changeStatus = 'Simplonien';
                 $scope.borderClass = false;
-                
+
             }
         }
     }
