@@ -1,4 +1,4 @@
-		<div class="loginSignup">
+<!-- <div class="loginSignup">
 			<div class="loginForm">
 				<h1>CONNEXION</h1>
 				<form action="">
@@ -16,4 +16,24 @@
 				</form>
 			</div>
 			<button ui-sref="signup" class="send-button" type="button" name="button">Créer votre compte</button>
-		</div>
+		</div> -->
+
+<div class="login-container" ng-style="CustomStyle">
+    <div class="cont-form">
+        <div class="cont-title-inscription">
+            <h1>CONNEXION</h1>
+        </div>
+        <form>
+            <div class="cont-input">
+                <input type="text" placeholder="Email" ng-model="user.email" required></input>
+            </div>
+            <div class="cont-input">
+                <input type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
+            </div>
+            <a class="sendLogin" ng-click="login()" type="submit" ng-disabled="disabled">Envoyer</a>
+        </form>
+				<div class="redirect">
+					<a ui-sref="signup">Pas encore inscris?</a>
+				</div>
+    </div>
+</div>

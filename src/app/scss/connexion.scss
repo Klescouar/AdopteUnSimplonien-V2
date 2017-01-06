@@ -17,7 +17,7 @@
            justify-content:center;
           display: flex;
           background-color: #425877;
-            
+
            h4{
                   margin: 0px;
                 }
@@ -27,7 +27,7 @@
               align-items:center;
               justify-content:center;
             width: 50%;
-            
+
             cursor: pointer;
             text-decoration: none;
 
@@ -44,7 +44,7 @@
 
 
             }
-          
+
 
 
             .recruteur-button{
@@ -55,12 +55,12 @@
               background-color: #425877;
               color: white;
               border:none;
-              
-              
+
+
 
             }
-            
-           
+
+
 
             button{
               width: 100%;
@@ -69,7 +69,7 @@
             .button-focus-right{
               border-top: 1px solid #6c94b4;
               outline: none;
-              border-top-right-radius: 7px;  
+              border-top-right-radius: 7px;
               border-right: 1px solid #6c94b4;
 
 
@@ -80,7 +80,7 @@
               border-top: 1px solid #6c94b4;
               outline: none;
               border-top-left-radius: 7px;
-              border-left: 1px solid #6c94b4; 
+              border-left: 1px solid #6c94b4;
 
             }
 
@@ -96,7 +96,7 @@
             background-color: lighten(#425877, 8%);
 
         }
-          
+
             }
 
         }
@@ -109,7 +109,7 @@
         }
 
         form {
-          
+
             padding-left: 30px;
             padding-right: 30px;
             display: flex;
@@ -181,7 +181,7 @@
                     border-radius: 0;
                     border: none;
                     text-decoration: none;
-                    
+
 
                     .send-button:hover {
                         text-decoration: none;
