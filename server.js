@@ -7,10 +7,15 @@ const path = require('path');
 const passport = require('passport');
 const jwt = require('jwt-simple');
 const mongojs = require('mongojs');
+const fs = require('fs');
+const formidable = require('formidable');
+const readChunk = require('read-chunk');
+const fileType = require('file-type');
 const config = require(__dirname + '/config/database');
 const User = require(__dirname + '/app/models/user');
 const port = require(__dirname + '/config');
 const user = require(__dirname + '/app/controllers/controllers.users');
+const upload = require(__dirname + '/app/controllers/controllers.upload');
 const student = require(__dirname + '/app/controllers/controllers.student');
 const apiRoutes = express.Router();
 const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien', 'users']);
@@ -50,6 +55,8 @@ app.get('/', function(req, res) {
 // connect to database
 const database = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || config.database;
 mongoose.connect(database);
+
+apiRoutes.post('/upload_photos', upload.upload);
 
 /////////////////////////USER CONTROLLER/////////////////////////
 apiRoutes.post('/signup', user.signup);

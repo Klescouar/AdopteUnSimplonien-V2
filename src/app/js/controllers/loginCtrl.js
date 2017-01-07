@@ -18,7 +18,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
        return response;
       }
      }
-      $state.go('profilUser.user');
+      $state.go('profilUser');
     }).catch(function(error){
       $rootScope.showLogout = false;
        AuthService.clearLocalStorage();

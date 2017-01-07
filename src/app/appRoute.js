@@ -107,15 +107,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
-  .state('profilUser.user', {
-    url: '/user',
-    views:{
-     'user_dashboard':{
-      templateUrl: 'app/views/dashboardProfilUser.html',
-      controller: 'profilsUserCtrl'
-     }
-    }
-  })
   $urlRouterProvider.otherwise('/home');
 });
 
