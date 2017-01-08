@@ -9,11 +9,16 @@ app.controller('profilsUserCtrl', [
         $scope.member = AuthService.user();
         $scope.showEditProfilUser = false;
         $scope.photo = '';
+        $scope.turnOff = false;
 
         $scope.getMemberInfo = (id) => {
             $http.get('/api/backOffice/infoStudent/fromMember/' + id).then((response) => {
-              console.log(response.data);
+                console.log(response.data);
                 $scope.student = response.data;
+                const path = '/assets/images/' + $scope.student.photo;
+                let html = '';
+                    html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
+                $('#upload-pic').html(html);
             }, (err) => {
                 console.log("Error");
             });
@@ -23,7 +28,7 @@ app.controller('profilsUserCtrl', [
             const response = confirm("Voulez vous vraiment supprimer votre fiche?");
             if (response === true) {
                 $http.delete('/api/backOffice/removeStudent/' + id).then(function(response) {
-                  $scope.getMemberInfo($scope.member._id);
+                    $scope.getMemberInfo($scope.member._id);
                 });
             }
         }
@@ -104,13 +109,13 @@ app.controller('profilsUserCtrl', [
         };
 
 
-        function uploadFiles(formData) {
-            $.ajax({url: '/api/upload_photos', method: 'post', data: formData, processData: false, contentType: false}).done(handleSuccess).fail(function(xhr, status) {
+        $scope.uploadFiles = (formData) => {
+            $.ajax({url: '/api/upload_photos', method: 'post', data: formData, processData: false, contentType: false}).done($scope.handleSuccess).fail(function(xhr, status) {
                 alert(status);
             });
         }
 
-        function handleSuccess(data) {
+        $scope.handleSuccess = (data) => {
             if (data.length > 0) {
                 let html = '';
                 const img = data[0];
@@ -121,10 +126,10 @@ app.controller('profilsUserCtrl', [
                 } else {
                     html += '<a href="#" class="thumbnail">Invalid file type - ' + img.filename + '</a>';
                 }
-
                 $('#upload-pic').html(html);
+
             } else {
-                alert('No images were uploaded.')
+                alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
             }
         }
 
@@ -137,7 +142,7 @@ app.controller('profilsUserCtrl', [
                 formData = new FormData();
 
             if (files.length === 0) {
-                alert('Select atleast 1 file to upload.');
+                alert('Aucune photo séléctionnée.');
                 return false;
             }
 
@@ -148,7 +153,7 @@ app.controller('profilsUserCtrl', [
             }
 
             // Note: We are only appending the file inputs to the FormData.
-            uploadFiles(formData);
+            $scope.uploadFiles(formData);
         });
 
     }

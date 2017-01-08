@@ -14,7 +14,7 @@ exports.upload = function(req, res) {
     form.uploadDir = path.join(__dirname, 'tmp_uploads');
 
     // Invoked when a file has finished uploading.
-    form.on('file', function (name, file) {
+    form.on('file', function(name, file) {
         // Allow only 3 files to be uploaded.
         if (photos.length === 3) {
             fs.unlink(file.path);
@@ -30,31 +30,30 @@ exports.upload = function(req, res) {
 
         // Check the file type, must be either png,jpg or jpeg
         if (type !== null && (type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg')) {
-            // Assign new file name
-            filename = Date.now() + '-' + file.name;
+            if (file.size < 15000) {
+                form.on('error', function(err) {
+                    console.log('Problem size');
+                });
+            } else {
+                // Assign new file name
+                filename = Date.now() + '-' + file.name;
 
-            // Move the file with the new file name
-            fs.rename(file.path, path.join(__dirname, '../../dist/assets/images/' + filename));
+                // Move the file with the new file name
+                fs.rename(file.path, path.join(__dirname, '../../dist/assets/images/' + filename));
 
-            // Add to the list of photos
-            photos.push({
-                status: true,
-                filename: filename,
-                type: type.ext,
-                publicPath: '../../dist/assets/images/' + filename
-            });
+                // Add to the list of photos
+                photos.push({
+                    status: true,
+                    filename: filename,
+                    type: type.ext,
+                    publicPath: '../../dist/assets/images/' + filename
+                });
+            }
         } else {
-            photos.push({
-                status: false,
-                filename: file.name,
-                message: 'Invalid file type'
+            form.on('error', function(err) {
+                console.log('Error occurred during processing - ' + err);
             });
-            fs.unlink(file.path);
         }
-    });
-
-    form.on('error', function(err) {
-        console.log('Error occurred during processing - ' + err);
     });
 
     // Invoked when all the fields have been processed.
@@ -63,7 +62,7 @@ exports.upload = function(req, res) {
     });
 
     // Parse the incoming form fields.
-    form.parse(req, function (err, fields, files) {
+    form.parse(req, function(err, fields, files) {
         res.status(200).json(photos);
     });
 };
