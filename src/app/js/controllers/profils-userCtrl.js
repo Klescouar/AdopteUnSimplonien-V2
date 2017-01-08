@@ -29,6 +29,7 @@ app.controller('profilsUserCtrl', [
             if (response === true) {
                 $http.delete('/api/backOffice/removeStudent/' + id).then(function(response) {
                     $scope.getMemberInfo($scope.member._id);
+                    $state.reload();
                 });
             }
         }
