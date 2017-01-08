@@ -2,7 +2,7 @@
     <div class="container-create">
 
         <div class="choose-pic">
-            <div id="upload-pic" ng-style="student && {'background-image':'url(./assets/images/'+student.photo+')'}"></div>
+            <div id="upload-pic"></div>
             <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
                 <div class="form-group">
                     <input id="photos-input" type="file" name="photos[]" multiple="multiple">
