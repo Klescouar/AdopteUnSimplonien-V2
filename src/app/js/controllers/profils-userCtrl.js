@@ -10,18 +10,6 @@ app.controller('profilsUserCtrl', [
         $scope.showEditProfilUser = false;
         $scope.photo = '';
 
-        $rootScope.getInfo = () => {
-            AuthService.getInfo($scope.user).then(function(response) {
-                $scope.member = response.data.user;
-                $scope.member === undefined
-                    ? $state.go('login')
-                    : $state.current;
-            }).catch((errMsg) => {
-                const alertPopup = $window.alert('show profil member failed!');
-                $state.go('login');
-            });
-        };
-
         $scope.getMemberInfo = (id) => {
             $http.get('/api/backOffice/infoStudent/fromMember/' + id).then((response) => {
               console.log(response.data);
@@ -115,7 +103,6 @@ app.controller('profilsUserCtrl', [
             };
         };
 
-        $rootScope.getInfo();
 
         function uploadFiles(formData) {
             $.ajax({url: '/api/upload_photos', method: 'post', data: formData, processData: false, contentType: false}).done(handleSuccess).fail(function(xhr, status) {

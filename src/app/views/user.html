@@ -11,7 +11,7 @@
             </form>
         </div>
 
-        <form ng-submit="createSimplonien()" ng-show="!student">
+        <!-- <form>
             <div class="section">
                 <h1 class="info-title">Informations</h1>
                 <div class="info-group">
@@ -99,13 +99,11 @@
                 <input class="input-style" placeholder="DatePromo" ng-model="boCreateDatePromo" required="required">
             </div>
 
-            <!-- <div class="cont-input">
-        </div> -->
             <input class="input-style" value="Enregistrer" type="submit">
 
-        </form>
+        </form> -->
 
-        <div class="container-create-student" ng-show="student">
+        <div class="container-create-student">
             <div class="section">
                 <h1 class="info-title">Informations</h1>
                 <div class="info-group">
@@ -177,7 +175,9 @@
             <div class="cont-input">
                 <input id="boCreateDatePromoSimploniens" class="input-style" ng-value="student.DatePromo" placeholder="DatePromo" required="required">
             </div>
-            <input class="input-style" value="Modifier sa fiche" type="submit" ng-click="updateStudent(student._id)">
+            <input class="input-style" ng-show="!student" value="Enregistrer" type="submit" ng-click='createSimplonien()'>
+
+            <input class="input-style" value="Modifier sa fiche" ng-show="student" type="submit" ng-click="updateStudent(student._id)">
             <input class="input-style" value="Supprimer sa fiche" type="submit" ng-click="deleteCard(student._id)">
         </div>
 
