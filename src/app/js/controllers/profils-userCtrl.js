@@ -84,7 +84,7 @@ app.controller('profilsUserCtrl', [
                     prenom: document.getElementById("boCreateNameSimploniens").value,
                     age: document.getElementById("boCreateOldSimploniens").value,
                     ville: document.getElementById("boCreatePromoSimploniens").value,
-                    photo: $scope.photo,
+                    photo: $scope.photo ? $scope.photo : $scope.student.photo,
                     tags: document.getElementById("boCreateTagsSimploniens").value,
                     description: document.getElementById("boCreateAboutSimploniens").value,
                     Sexe: document.getElementById("boCreateSexeSimploniens").value,
