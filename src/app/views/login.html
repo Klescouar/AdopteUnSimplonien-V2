@@ -1,36 +1,16 @@
-<!-- <div class="loginSignup">
-			<div class="loginForm">
-				<h1>CONNEXION</h1>
-				<form action="">
-					<div class="form-group">
-						<label for="mdp">Email</label>
-       <input type="pseudo" id="pseudo" class="form-control highlight" ng-model="user.email" required ></input>
-					</div>
-
-					<div class="form-group">
-						<label for="mdp-confirm">Mot de passe</label>
-						<input type="password" id="mdp-confirm" class="form-control" ng-model="user.password" required></input>
-					</div>
-
-						<button type="submit" class="send-button" ng-click="login()" ng-disabled="disabled">Envoyer</button>
-				</form>
-			</div>
-			<button ui-sref="signup" class="send-button" type="button" name="button">Créer votre compte</button>
-		</div> -->
-
 <div class="login-container" ng-style="CustomStyle">
-    <div class="cont-form">
+    <div class="cont-form-login">
         <div class="cont-title-inscription"></div>
-        <div class="cont-connexion">
-        	<div class="left-co"></div>
-        	<h1>Connexion</h1>
-        	<div class="left-co"></div>
+        <div class="cont-login">
+        	<div class="left-co-login"></div>
+        	<h1 class="title-login">Connexion</h1>
+        	<div class="left-co-login"></div>
         </div>
         <form>
-            <div class="cont-input">
+            <div class="cont-input-login">
                 <input type="email" placeholder="Email" ng-model="user.email" required></input>
             </div>
-            <div class="cont-input">
+            <div class="cont-input-login">
                 <input type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
             </div>
             <p class="dont-match" ng-class="{'match':!verifLogin}">Email ou mot de passe non valide.</p>
