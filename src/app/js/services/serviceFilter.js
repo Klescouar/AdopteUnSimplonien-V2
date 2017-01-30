@@ -19,6 +19,9 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
         active: false,
     }];
 
+
+    //////////////////////SKILL REQUESTS/////////////////////////:
+
     this.addSkill = function(song) {
         return $http.post(API_ENDPOINT.url + '/addSkill', song).then(function(response) {
             return response;
@@ -44,7 +47,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
 
-
+    //////////////////////SCHOOL REQUESTS/////////////////////////:
 
     this.addSchool = function(song) {
         return $http.post(API_ENDPOINT.url + '/addSchool', song).then(function(response) {
@@ -71,7 +74,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
 
-
+    //////////////////////CONTRACT REQUESTS/////////////////////////:
 
     this.addContract = function(song) {
         return $http.post(API_ENDPOINT.url + '/addContract', song).then(function(response) {

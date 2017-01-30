@@ -1,19 +1,12 @@
-app.controller('profilsUserCtrl', [
-    '$http',
-    '$scope',
-    '$rootScope',
-    'AuthService',
-    '$state',
-    '$window',
-    function($http, $scope, $rootScope, AuthService, $state, $window) {
+app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent) {
+
         $scope.member = AuthService.user();
         $scope.showEditProfilUser = false;
         $scope.photo = '';
         $scope.turnOff = false;
 
         $scope.getMemberInfo = (id) => {
-            $http.get('/api/backOffice/infoStudent/fromMember/' + id).then((response) => {
-                console.log(response.data);
+            serviceStudent.getStudentByMemberId(id).then((response) => {
                 $scope.student = response.data;
                 const path = '/assets/images/' + $scope.student.photo;
                 let html = '';
@@ -22,19 +15,19 @@ app.controller('profilsUserCtrl', [
             }, (err) => {
                 console.log("Error");
             });
-        }
+          }
+
+        $scope.getMemberInfo($scope.member._id);
 
         $scope.deleteCard = (id) => {
             const response = confirm("Voulez vous vraiment supprimer votre fiche?");
             if (response === true) {
-                $http.delete('/api/backOffice/removeStudent/' + id).then(function(response) {
+                serviceStudent.removeStudent(id).then(function(response) {
                     $scope.getMemberInfo($scope.member._id);
                     $state.reload();
                 });
             }
         }
-
-        $scope.getMemberInfo($scope.member._id);
 
         $scope.createSimplonien = () => {
             console.log($scope.photo);
@@ -64,7 +57,7 @@ app.controller('profilsUserCtrl', [
                 Domaine: document.getElementById("boCreateDomaineSimploniens").value
             };
 
-            $http.post('/api/backOffice/addStudent', dataStudent).then((response) => {
+            serviceStudent.addStudent(dataStudent).then((response) => {
                 console.log(response.data);
                 if (response.data === 'error') {
                     alert('Déja inscrit!')
@@ -105,7 +98,7 @@ app.controller('profilsUserCtrl', [
 
                 };
 
-                $http.put('/api/backOffice/update/' + id, newInfos).then((response) => {})
+                serviceStudent.updateStudent(id, newInfos).then((response) => {})
                 alert("Apprenant modifié!")
             };
         };

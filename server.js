@@ -36,13 +36,6 @@ app.use(function(request, response, next) {
     next();
 });
 
-app.get('/api/infoStudent', (req, res) => {
-    console.log('I received a GET request');
-    db.simplonien.find(function(err, docs) {
-        res.json(docs);
-    });
-});
-
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/dist'));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
@@ -84,11 +77,12 @@ apiRoutes.get('/getAllSchool', school.getAllSchool);
 apiRoutes.delete('/removeSchool/:id', passport.authenticate('jwt', {session: false}), school.removeSchool);
 
 /////////////////////////STUDENT CONTROLLER/////////////////////////
-apiRoutes.get('/backOffice/infoStudent', passport.authenticate('jwt', {session: false}), student.infoStudent);
+apiRoutes.get('/backOffice/infoStudent', student.infoStudent);
 apiRoutes.get('/backOffice/infoStudent/:id_profil', student.findStudent);
 apiRoutes.get('/backOffice/infoStudent/fromMember/:memberId', student.findStudentByMemberId);
 apiRoutes.delete('/backOffice/removeStudent/:id_profil', passport.authenticate('jwt', {session: false}), student.removeStudent);
 apiRoutes.post('/backOffice/addStudent', passport.authenticate('jwt', {session: false}), student.addStudent);
+apiRoutes.post('/backOffice/addStudentFromAdmin', passport.authenticate('jwt', {session: false}), student.addStudentFromAdmin);
 apiRoutes.put('/backOffice/update/:id', passport.authenticate('jwt', {session: false}), student.updateStudent);
 
 app.listen(port.port);

@@ -57,8 +57,14 @@ exports.addStudent = (req, res) => {
     });
 };
 
+exports.addStudentFromAdmin =  function(req, res) {
+      db.simplonien.insert(req.body, function(err, doc) {
+          res.json(doc);
+      });
+ };
+
 exports.updateStudent = (req, res) => {
-    if (!req.body.length) {
+    if (!req.body.nom) {
         const id = req.params.id;
         db.simplonien.findAndModify({
             query: {
