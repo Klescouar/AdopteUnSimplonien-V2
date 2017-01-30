@@ -1,5 +1,5 @@
-app.controller('contactCtrl', ['$scope', '$http', 'serviceApi', '$window', function($scope, $http, serviceApi, $window){
-    $scope.schools = serviceApi.schools;
+app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', '$window', function($scope, $http, serviceFilter, $window){
+    $scope.schools = serviceFilter.schools;
     $scope.showForm = false;
 
 // Mise en place de la map Google

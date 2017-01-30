@@ -1,9 +1,9 @@
-app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, $http, serviceApi){
-    $scope.schools = serviceApi.schools;
-    $scope.contrats = serviceApi.contrats;
-    $scope.langages = serviceApi.langages;
-    $scope.themes = serviceApi.themes;
-    $scope.searchResult = serviceApi.searchResult;
+app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scope, $http, serviceFilter){
+    $scope.schools = serviceFilter.schools;
+    $scope.contrats = serviceFilter.contrats;
+    $scope.langages = serviceFilter.langages;
+    $scope.themes = serviceFilter.themes;
+    $scope.searchResult = serviceFilter.searchResult;
     const putActiveParameter = (item) => {
       return item.active = false;
     };
@@ -46,6 +46,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
         $scope.loading =false;
         $scope.data = response.data;
         $scope.cardFull = response.data;
+        console.log($scope.data);
         searchFilter();
     })
 
@@ -127,7 +128,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
     };
 
     $scope.getAllSchool = () => {
-        serviceApi.getAllSchool().then(function(response) {
+        serviceFilter.getAllSchool().then(function(response) {
             $scope.schools = response.data;
             $scope.schools.map(putActiveParameter);
         }).catch(function(errMsg) {
@@ -137,7 +138,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
     $scope.getAllSchool();
 
     $scope.getAllSkill = () => {
-        serviceApi.getAllSkill().then(function(response) {
+        serviceFilter.getAllSkill().then(function(response) {
             $scope.skills = response.data;
             $scope.skills.map(putActiveParameter);
         }).catch(function(errMsg) {
@@ -147,7 +148,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
     $scope.getAllSkill();
 
     $scope.getAllContract = () => {
-        serviceApi.getAllContract().then(function(response) {
+        serviceFilter.getAllContract().then(function(response) {
             $scope.contracts = response.data;
             $scope.contracts.map(putActiveParameter);
         }).catch(function(errMsg) {

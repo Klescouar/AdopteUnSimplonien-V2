@@ -1,16 +1,18 @@
-app.controller('boCtrl', ['$scope','AuthService','$http','serviceApi','$state','$timeout', function($scope, AuthService, $http, serviceApi, $state, $timeout) {
+app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state','$timeout', 'serviceFilter', function($scope, AuthService, $http, serviceFilter, $state, $timeout, serviceFilter) {
 
         $scope.show = 0;
-
         $scope.school = {};
         $scope.skill = {};
         $scope.contract = {};
-
         $scope.user = {
             firstName: '',
             lastName: '',
             email: '',
             password: ''
+        };
+
+        $scope.acceptSimplonien = (studentId) => {
+          $http.put('/api/backOffice/update/' + studentId).then((response) => {})
         };
 
         // GET USERS
@@ -157,7 +159,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceApi','$state','
 
 
         $scope.getAllSkill = () => {
-            serviceApi.getAllSkill().then(function(response) {
+            serviceFilter.getAllSkill().then(function(response) {
                 $scope.skills = response.data;
             }).catch(function(errMsg) {
                 console.log('show skill failed!');
@@ -165,14 +167,14 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceApi','$state','
         }
 
         $scope.addSkill = () => {
-            serviceApi.addSkill($scope.skill).then(function(response) {}).catch(function(errMsg) {
+            serviceFilter.addSkill($scope.skill).then(function(response) {}).catch(function(errMsg) {
                 const alertPopup = $window.alert('Add Skill failed!');
             });
             $scope.getAllSkill();
         };
 
         $scope.removeSkill = (id) => {
-            serviceApi.removeSkill(id).then(function(response) {}).catch(function(errMsg) {
+            serviceFilter.removeSkill(id).then(function(response) {}).catch(function(errMsg) {
                 console.log('remove skill failed!');
             });
             $scope.getAllSkill();
@@ -181,7 +183,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceApi','$state','
 
 
         $scope.getAllSchool = () => {
-            serviceApi.getAllSchool().then(function(response) {
+            serviceFilter.getAllSchool().then(function(response) {
                 $scope.schools = response.data;
             }).catch(function(errMsg) {
                 console.log('show school failed!');
@@ -189,14 +191,14 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceApi','$state','
         }
 
         $scope.addSchool = () => {
-            serviceApi.addSchool($scope.school).then(function(response) {}).catch(function(errMsg) {
+            serviceFilter.addSchool($scope.school).then(function(response) {}).catch(function(errMsg) {
                 const alertPopup = $window.alert('Add school failed!');
             });
             $scope.getAllSchool();
         };
 
         $scope.removeSchool = (id) => {
-            serviceApi.removeSchool(id).then(function(response) {}).catch(function(errMsg) {
+            serviceFilter.removeSchool(id).then(function(response) {}).catch(function(errMsg) {
                 console.log('remove school failed!');
             });
             $scope.getAllSchool();
@@ -206,7 +208,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceApi','$state','
 
 
         $scope.getAllContract = () => {
-            serviceApi.getAllContract().then(function(response) {
+            serviceFilter.getAllContract().then(function(response) {
                 $scope.contracts = response.data;
             }).catch(function(errMsg) {
                 console.log('show school failed!');
@@ -214,14 +216,14 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceApi','$state','
         }
 
         $scope.addContract = () => {
-            serviceApi.addContract($scope.contract).then(function(response) {}).catch(function(errMsg) {
+            serviceFilter.addContract($scope.contract).then(function(response) {}).catch(function(errMsg) {
                 const alertPopup = $window.alert('Add contract failed!');
             });
             $scope.getAllContract();
         };
 
         $scope.removeContract = (id) => {
-            serviceApi.removeContract(id).then(function(response) {}).catch(function(errMsg) {
+            serviceFilter.removeContract(id).then(function(response) {}).catch(function(errMsg) {
                 console.log('remove contract failed!');
             });
             $scope.getAllContract();

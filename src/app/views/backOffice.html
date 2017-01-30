@@ -1,5 +1,6 @@
 <div class="container-bo">
     <div class="container-nav-bo">
+        <a href="" ng-click="show = 7">Fiches simplonien en attente</a>
         <a href="" ng-click="show = 1">Créer un utilisateur</a>
         <a href="" ng-click="show = 2">Supprimer un utilisateur</a>
         <a href="" ng-click="show = 3">Créer une fiche Simplonien</a>
@@ -81,6 +82,18 @@
             <input id="boCreateContratSimploniens" class="input-style" ng-value="student.Contrat" placeholder="Contrat" required>
             <input id="boCreateDatePromoSimploniens" class="input-style" ng-value="student.DatePromo" placeholder="DatePromo" required="required">
             <input class="input-style" value="Modifier une fiche Simplonien" type="submit" ng-click="updateStudent(student._id)">
+        </div>
+        <div class="container-delete-user" ng-show="show==7">
+            <h2>Fiche simplonien en attente de vérifiaction</h2>
+            <div class="container-users">
+                <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === false">
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.prenom}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.ville}}</p>
+                    <button ng-if="simplonien.nom !== '' " class="modify" ng-click="acceptSimplonien(simplonien._id)">Accepter</button>
+                    <button ng-if="simplonien.nom !== '' " class="modify" ng-click="deleteStudent(simplonien._id)">Refuser</button>
+                </div>
+            </div>
         </div>
         <div class="container-delete-user" ng-show="show==4">
             <h2>Supprimer une fiche d'un Simplonien</h2>

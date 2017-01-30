@@ -82,7 +82,7 @@
             </div>
 
             <!-- CARD -->
-            <a class="card" ui-sref="profil({student: student._id})" ng-repeat="student in data | filter:searchStudent:q track by $index">
+            <a class="card" ui-sref="profil({student: student._id})" ng-repeat="student in data | filter:searchStudent:q track by $index" ng-if="student.verified === true">
                 <div class="topCard">
                     <div class="studentPic"><img src="assets/images/{{student.photo}}"/></div>
                     <h3>{{student.prenom}} {{student.nom}}</h3>
