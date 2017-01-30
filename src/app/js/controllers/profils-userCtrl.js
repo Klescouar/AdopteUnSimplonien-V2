@@ -40,6 +40,7 @@ app.controller('profilsUserCtrl', [
             console.log($scope.photo);
             const dataStudent = {
                 memberId: $scope.member._id,
+                verified: false,
                 nom: document.getElementById("boCreateLastNameSimploniens").value,
                 prenom: document.getElementById("boCreateNameSimploniens").value,
                 age: document.getElementById("boCreateOldSimploniens").value,

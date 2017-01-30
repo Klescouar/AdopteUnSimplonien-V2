@@ -1,4 +1,4 @@
-app.controller('profilCtrl', ['$scope', '$http', 'serviceApi', '$stateParams', function($scope, $http, serviceApi, $stateParams){
+app.controller('profilCtrl', ['$scope', '$http', 'serviceFilter', '$stateParams', function($scope, $http, serviceFilter, $stateParams){
 $scope.contactStud = 1;
 $scope.verifChamps = false;
 

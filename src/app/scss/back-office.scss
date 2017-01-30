@@ -44,7 +44,7 @@
 		/* ie10+ */
 		background: radial-gradient(ellipse at center, rgba(94,94,94,1) 0%, rgba(0,0,0,1) 71%, rgba(0,0,0,1) 100%);
 		/* w3c */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= '#5E5E5E', endColorstr='#000000',GradientType=1 );
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#5E5E5E', endColorstr='#000000',GradientType=1 );
 		/* ie6-9 */
 		display: flex;
 		flex-direction: column;
@@ -159,5 +159,69 @@
 		margin-left: 10px;
 		margin-right: 10px;
 		color: white;
+	}
+}
+
+.handle-filter {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	.filter-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		#input{
+			color: black;
+		}
+
+		::-webkit-input-placeholder {
+			/* WebKit, Blink, Edge */
+			color: rgb(75, 75, 75);
+		}
+
+		:-moz-placeholder {
+			/* Mozilla Firefox 4 to 18 */
+			color: rgb(75, 75, 75);
+			opacity: 1;
+		}
+
+		::-moz-placeholder {
+			/* Mozilla Firefox 19+ */
+			color: rgb(75, 75, 75);
+			opacity: 1;
+		}
+
+		:-ms-input-placeholder {
+			/* Internet Explorer 10-11 */
+			color: rgb(75, 75, 75);
+		}
+
+		.input-name {
+			margin: 10px;
+		}
+
+		button {
+			color: black;
+			cursor: pointer;
+		}
+
+		.filter-name {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 90%;
+			border: 1px solid rgb(64, 64, 64);
+			padding: 5px;
+			margin: 10px;
+			p{
+				margin: 0;
+				padding: 0;
+			}
+			input {
+				cursor: pointer;
+				color: black;
+			}
+		}
 	}
 }

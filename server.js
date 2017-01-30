@@ -17,6 +17,9 @@ const port = require(__dirname + '/config');
 const user = require(__dirname + '/app/controllers/controllers.users');
 const upload = require(__dirname + '/app/controllers/controllers.upload');
 const student = require(__dirname + '/app/controllers/controllers.student');
+const skill = require(__dirname + '/app/controllers/controllers.skills');
+const contract = require(__dirname + '/app/controllers/controllers.contracts');
+const school = require(__dirname + '/app/controllers/controllers.schools');
 const apiRoutes = express.Router();
 const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien', 'users']);
 
@@ -64,6 +67,21 @@ apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.get('/users', user.RecruiterUsers);
 apiRoutes.get('/memberinfo', user.memberinfo);
 apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), user.remove);
+
+/////////////////////////SKILLS CONTROLLER/////////////////////////
+apiRoutes.post('/addSkill', skill.addSkill);
+apiRoutes.get('/getAllSkill', skill.getAllSkill);
+apiRoutes.delete('/removeSkill/:id', passport.authenticate('jwt', {session: false}), skill.removeSkill);
+
+/////////////////////////CONTRACTS CONTROLLER/////////////////////////
+apiRoutes.post('/addContract', contract.addContract);
+apiRoutes.get('/getAllContract', contract.getAllContract);
+apiRoutes.delete('/removeContract/:id', passport.authenticate('jwt', {session: false}), contract.removeContract);
+
+/////////////////////////SCHOOLS CONTROLLER/////////////////////////
+apiRoutes.post('/addSchool', school.addSchool);
+apiRoutes.get('/getAllSchool', school.getAllSchool);
+apiRoutes.delete('/removeSchool/:id', passport.authenticate('jwt', {session: false}), school.removeSchool);
 
 /////////////////////////STUDENT CONTROLLER/////////////////////////
 apiRoutes.get('/backOffice/infoStudent', passport.authenticate('jwt', {session: false}), student.infoStudent);

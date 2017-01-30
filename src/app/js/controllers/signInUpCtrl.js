@@ -1,4 +1,5 @@
-app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi','pwCheck', function($scope, $http, serviceApi){
+
+app.controller('signInUpCtrl', ['$scope', '$http', 'serviceFilter', function($scope, $http, serviceFilter){
     $scope.signToggle = 1;
     $scope.verifPass = true;
    
@@ -10,7 +11,7 @@ app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi','pwCheck', funct
             password: $('#connectMdp').val()
         };
 
-        $http.get(serviceApi.connect, login)
+        $http.get(serviceFilter.connect, login)
             .then(
                 (response) => {
                     $scope.users = response.data;
@@ -48,7 +49,7 @@ app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi','pwCheck', funct
 
             };
             // Envoie du pseudo et du password au server.
-            $http.post(serviceApi.createUser, dataUser)
+            $http.post(serviceFilter.createUser, dataUser)
                 .then(
                     (response) => {
                         $scope.signToggle = 3;
