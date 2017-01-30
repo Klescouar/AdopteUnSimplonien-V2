@@ -10,7 +10,8 @@
 
     .cont-form {
         background-color: #425877;
-        width: 27%;
+        min-height: 500px;
+        min-width: 27%;
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
 
         .cont-button{
@@ -118,7 +119,7 @@
             justify-content:center;
 
         .main-cont-input{
-        height: 400px;
+        
         width: 100%;
         padding-left: 30px;
         padding-right: 30px;
@@ -130,7 +131,7 @@
 
           .cont-input{
 
-            width: 75%;
+            width: 90%;
             display: flex;
             flex-direction:column;
             margin-top: 15px;
@@ -146,6 +147,11 @@
                 background-color: #425877;
                 color: white;
               }
+              
+                .msg-error-show {
+                        border: 1px solid #de5b49;
+                }
+
 
               input:focus {
                 border-bottom:1px solid white;
@@ -153,6 +159,15 @@
               }
 
           }
+           .match{
+              display: block;
+              color: #de5b49;
+              font-size: 0.9em;
+              width: 80%;
+              text-align: center;
+            }
+            
+           
         }
 
             .loginForm {
@@ -163,7 +178,7 @@
                 align-items: center;
             }
 
-            a {
+            .cont-button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -203,6 +218,12 @@
         }
     }
 }
+
+
+
+.dont-match{
+              display: none;
+            }
 
 .loginSignupRecruteur {
     min-height: calc(100vh - 110px);

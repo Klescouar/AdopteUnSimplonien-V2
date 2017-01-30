@@ -13,10 +13,10 @@
                 </button>
             </a>
         </div>
-        <form>
+        <form ng-submit="signup()" >
             <div class="main-cont-input">
                 <div class="cont-input" ng-if="user.role == 'Recruteur'">
-                    <input type="text" id="nom" value="" ng-model="user.company" required placeholder="Entreprise"></input>
+                    <input required="required" type="text" id="nom" value="" ng-model="user.company" placeholder="Entreprise"></input>
                 </div>
                 <div class="cont-input">
                     <input type="text" id="nom" value="" ng-model="user.lastName" required placeholder="Nom"></input>
@@ -25,20 +25,26 @@
                     <input type="text" id="prenom" value="" ng-model="user.firstName" required placeholder="Prénom"></input>
                 </div>
                 <div class="cont-input">
-                    <input type="text" id="email" ng-model="user.email" required placeholder="E-mail"></input>
+                    <input type="email" id="email" ng-model="user.email" required placeholder="E-mail"></input>
                 </div>
                 <div class="cont-input">
-                    <input type="password" id="mdp" ng-model="user.password" required placeholder="Mot de passe"></input>
+                    <input id="inputMdp" type="password" id="mdp" ng-model="user.password" required placeholder="Mot de passe" ng-class="{'msg-error-show':!verifPass ,'msg-error-show':!passLength }" ng-click="verifPass=true; passLength=true"></input>
                 </div>
+                    <p class="dont-match" ng-class="{'match':!verifPass}">Les mots de passe</br> ne correspondent pas.</p>
+                    <p class="dont-match" ng-class="{'match':!passLength}">Veuillez renseigner un mot de passe</br> d'au moins 8 caractères.</p>
                 <div class="cont-input">
-                    <input type="password" id="mdp" required placeholder="Confirmation du mot de passe"></input>
+                    <input type="password" id="mdp" ng-model="passwordChecked" required placeholder="Confirmation du mot de passe"></input>
                 </div>
             </div>
-            <a>
-                <button type="submit" class="send-button" ng-click="signup()" ng-disabled="disabled" ui-sref="login">
+            <div class="cont-button">
+                <button type="submit" class="send-button" >
                     <h4>Envoyer</h4>
                 </button>
-            </a>
+            </div>
+            
         </form>
+        <div class="redirect">
+                    <a ui-sref="login">Se connecter</a>
+        </div>
     </div>
 </div>

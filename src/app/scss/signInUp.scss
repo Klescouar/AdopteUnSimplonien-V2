@@ -8,44 +8,79 @@
     .cont-form {
         background-color: #425877;
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        width: 27%;
+        min-width: 27%;
         height: 60vh;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        h1{
-          margin: 20px;
-          padding: 0;
-        }
-        .redirect {
-            width: 100%;
+        
+        .cont-connexion{
             display: flex;
-            justify-content: flex-end;
-            padding: 0 20px;
-            margin-bottom: 15px;
+            justify-content:space-between;
+            width: 100%;
+            .left-co{
 
-            a {
-              color: white;
-              font-style: italic;
-              font-size: 0.9em;
-              text-decoration: none;
+                background-color: #2e3e53;
+                height: 50px;
+                width: 70px;
+                border-bottom: 1px solid #6c94b4;
             }
+        }
+
+       
+        h1{
+            
+            border-top: 1px solid #6c94b4;
+            outline: none;
+            border-top-left-radius: 7px;
+            border-left: 1px solid #6c94b4;
+            border-top-right-radius: 7px;
+            border-right: 1px solid #6c94b4;
+            height: 50px;
+          margin-top: 0px;
+          margin-bottom: 10px;
+          padding: 0;
+          width: 100%;
+          text-align: center;
+          padding-top: 20px;
+        }
+        
+        .cont-title-inscription {
+        display: flex;
+        background-color: #2e3e53;
+        width: 100%;
+        text-align: center;
+        height: 20px;
+
+        h1{
+            font-size: 22px;
+        }
+
         }
 
         form {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             width: 100%;
+            height: 100%;
+
+
+
+            .match{
+              margin-top: 10px;
+              margin-bottom: 10px;
+              display: block;
+              color: #de5b49;
+              font-size: 0.9em;
+            }
         }
 
         .sendLogin {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 250px;
+            width: 150px;
             margin-top: 20px;
             background-color: #de5b49;
             height: 50px;
@@ -58,7 +93,7 @@
         }
 
         .cont-input {
-            width: 75%;
+            width: 90%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -66,7 +101,7 @@
 
             input {
                 height: 40px;
-                width: 75%;
+                width: 85%;
                 margin: 0 auto 15px;
                 padding: 0 15px;
                 border: none;
@@ -76,6 +111,10 @@
                 color: white;
                 outline: none;
             }
+            
+             
+
+
 
             input:hover {
                 border-bottom: 1px solid rgba(148, 178, 199, 0.85);
@@ -101,9 +140,7 @@
     align-items: center;
     background-color: #425877;
 
-    .cont-title-inscription {
-        display: flex;
-    }
+
 
     .logbox {
         padding: 10px;
@@ -218,3 +255,22 @@
         }
     }
 }
+
+.redirect {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 20px;
+            margin-bottom: 15px;
+
+            a {
+              color: white;
+              font-style: italic;
+              font-size: 0.9em;
+              text-decoration: none;
+            }
+        }
+
+//VERIF PASSWORDS
+
+

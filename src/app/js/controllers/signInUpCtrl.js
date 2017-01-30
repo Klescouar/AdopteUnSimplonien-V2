@@ -1,7 +1,7 @@
-app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi', function($scope, $http, serviceApi){
+app.controller('signInUpCtrl', ['$scope', '$http', 'serviceApi','pwCheck', function($scope, $http, serviceApi){
     $scope.signToggle = 1;
     $scope.verifPass = true;
-
+   
     // Fonction LOGIN
     $scope.loginPost = () => {
         // Stockage du pseudo et du password dans l'objet login.
