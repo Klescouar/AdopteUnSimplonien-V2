@@ -4,6 +4,7 @@
         <a href="" ng-click="show = 2">Supprimer un utilisateur</a>
         <a href="" ng-click="show = 3">Créer une fiche Simplonien</a>
         <a href="" ng-click="show = 4">Modifier/supprimer une fiche Simplonien</a>
+        <a href="" ng-click="show = 6">Gerer les filtres</a>
     </div>
     <div class="container-interface">
         <h1 ng-if="show === 0">
@@ -93,5 +94,45 @@
                 </div>
             </div>
         </div>
+      <div class="handle-filter" ng-show="show==6">
+        <div class="filter-card">
+            <h1>Fabriques</h1>
+            <input type="text" id="input" value="" ng-model="school.name" required placeholder="Fabrique..." class="input-name"></input>
+            <button type="button" ng-click="addSchool()">
+                <h4>Ajouter</h4>
+            </button>
+
+            <div ng-repeat="school in schools" class="filter-name">
+                <p>{{school.name}}</p>
+                <input type="button" value="Supprimer" ng-click="removeSchool(school._id)">
+            </div>
+        </div>
+
+        <div class="filter-card">
+            <h1>Skills</h1>
+            <input type="text" id="input" value="" ng-model="skill.name" required placeholder="Skill..." class="input-name"></input>
+            <button type="button" ng-click="addSkill()">
+                <h4>Ajouter</h4>
+            </button>
+
+            <div ng-repeat="skill in skills" class="filter-name">
+                <p>{{skill.name}}</p>
+                <input type="button" value="Supprimer" ng-click="removeSkill(skill._id)">
+            </div>
+        </div>
+
+        <div class="filter-card">
+            <h1>Contrats</h1>
+            <input type="text" id="input" value="" ng-model="contract.name" required placeholder="Contract..." class="input-name"></input>
+            <button type="button" ng-click="addContract()">
+                <h4>Ajouter</h4>
+            </button>
+
+            <div ng-repeat="contract in contracts" class="filter-name">
+                <p>{{contract.name}}</p>
+                <input type="button" value="Supprimer" ng-click="removeContract(contract._id)">
+            </div>
+        </div>
+      </div>
     </div>
   </div>

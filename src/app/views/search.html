@@ -19,7 +19,7 @@
                 <div class="filterRight">
                     <div class="filter" ng-if="themes[0].active === true">
 
-                        <input ng-click="changeFilterSchool()" ng-model="schoolData" type="button" value="{{school.ville}}" name="button" ng-repeat="school in schools" ng-class="{'buttonFilterOff': !school.active, 'buttonFilterOn' : school.active}">
+                        <input ng-click="changeFilterSchool()" ng-model="schoolData" type="button" value="{{school.name}}" name="button" ng-repeat="school in schools" ng-class="{'buttonFilterOff': !school.active, 'buttonFilterOn' : school.active}">
 
                     </div>
 
@@ -27,11 +27,11 @@
 
                         <input
                             type="button"
-                            value="{{langage.type}}"
+                            value="{{skill.name}}"
                             name="button"
-                            ng-repeat="langage in langages"
-                            ng-click="changeFilter(searchResult.Langage, searchResult.maxLangage, langage)"
-                            ng-class="{'buttonFilterOff': !langage.active, 'buttonFilterOn' : langage.active}">
+                            ng-repeat="skill in skills"
+                            ng-click="changeFilter(searchResult.Langage, searchResult.maxLangage, skill)"
+                            ng-class="{'buttonFilterOff': !skill.active, 'buttonFilterOn' : skill.active}">
 
                     </div>
 
@@ -39,11 +39,11 @@
 
                         <input
                             type="button"
-                            value="{{contrat.type}}"
+                            value="{{contract.name}}"
                             name="button"
-                            ng-repeat="contrat in contrats"
-                            ng-click="changeFilter(searchResult.Contrat, searchResult.maxContrat, contrat)"
-                            ng-class="{'buttonFilterOff': !contrat.active, 'buttonFilterOn' : contrat.active}">
+                            ng-repeat="contract in contracts"
+                            ng-click="changeFilter(searchResult.Contrat, searchResult.maxContrat, contract)"
+                            ng-class="{'buttonFilterOff': !contract.active, 'buttonFilterOn' : contract.active}">
 
                     </div>
 
@@ -65,11 +65,11 @@
                 </div>
                 <div class="tagViewLang" ng-repeat="lang in searchResult.Langage">
                     {{lang}}
-                    <div class="closeButton" ng-click="deleteTag(searchResult.Langage, lang, langages)"></div>
+                    <div class="closeButton" ng-click="deleteTag(searchResult.Langage, lang, skills)"></div>
                 </div>
                 <div class="tagViewCont" ng-repeat="cont in searchResult.Contrat">
                     {{cont}}
-                    <div class="closeButton" ng-click="deleteTag(searchResult.Contrat, cont, contrats)"></div>
+                    <div class="closeButton" ng-click="deleteTag(searchResult.Contrat, cont, contracts)"></div>
                 </div>
             </div>
             <div class="cont-loading" ng-show="loading">

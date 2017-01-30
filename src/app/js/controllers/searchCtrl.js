@@ -4,8 +4,10 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
     $scope.langages = serviceApi.langages;
     $scope.themes = serviceApi.themes;
     $scope.searchResult = serviceApi.searchResult;
+    const putActiveParameter = (item) => {
+      return item.active = false;
+    };
 
-    console.log('ON START:' + $scope.searchResult.Ville);
 
     $scope.$emit('LOAD');
     $scope.$emit('UNLOAD');
@@ -14,7 +16,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
 
     // Comparaison entre les cards et les filtres sélectionné par l'utilisateur et restitution des cards filtrés.
     const searchFilter = () => {
-      console.log('ON FILTER' + $scope.searchResult.Ville);
         $scope.data = [];
 
         // Stockage des infos de searchResult (l'objet où sont stocké les filtres sélectionnés) dans des variables indépendantes.
@@ -74,29 +75,28 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
         } else {
             if ($scope.searchResult.Ville.length === 0) {
                 this.school.active = true;
-                $scope.searchResult.Ville = this.school.ville;
+                $scope.searchResult.Ville = this.school.name;
             } else if ($scope.searchResult.Ville.length > 0) {
                 for (let i = 0; i < $scope.schools.length; i++) {
                     $scope.schools[i].active = false;
                     this.school.active = true;
-                    $scope.searchResult.Ville = this.school.ville;
+                    $scope.searchResult.Ville = this.school.name;
                 }
             }
         }
         searchFilter();
-        console.log('ON CHANGE:' + $scope.searchResult.Ville);
     }
 
     $scope.changeFilter = function(array, limit, item){
         if (item.active) {
             item.active = false;
-            const index = array.indexOf(item.type);
+            const index = array.indexOf(item.name);
             if (index > -1) {
                 array.splice(index, 1);
             }
         } else if (!item.active && array.length < limit) {
             item.active = true;
-            array.push(item.type);
+            array.push(item.name);
         }
         searchFilter();
     }
@@ -104,7 +104,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
     // Pouvoir supprimmer un tag en cliquant sur la croix de l'icone dans le tableau de bord.
     $scope.deleteSchoolTag = function(){
         for (let i = 0; i < $scope.schools.length; i++) {
-            if ($scope.schools[i].ville === $scope.searchResult.Ville) {
+            if ($scope.schools[i].name === $scope.searchResult.Ville) {
                 $scope.schools[i].active = false;
             }
         }
@@ -115,7 +115,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
     // Pouvoir supprimmer un tag en cliquant sur la croix de l'icone dans le tableau de bord.
     $scope.deleteTag = function(array, item, list){
         for (let i = 0; i < list.length; i++) {
-            if (list[i].type === item) {
+            if (list[i].name === item) {
                 list[i].active = false;
                 const index = array.indexOf(item);
                 if (index > -1) {
@@ -125,6 +125,38 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceApi', function($scope, 
         }
         searchFilter();
     };
+
+    $scope.getAllSchool = () => {
+        serviceApi.getAllSchool().then(function(response) {
+            $scope.schools = response.data;
+            $scope.schools.map(putActiveParameter);
+        }).catch(function(errMsg) {
+            console.log('get schools failed!');
+        });
+    }
+    $scope.getAllSchool();
+
+    $scope.getAllSkill = () => {
+        serviceApi.getAllSkill().then(function(response) {
+            $scope.skills = response.data;
+            $scope.skills.map(putActiveParameter);
+        }).catch(function(errMsg) {
+            console.log('get skills failed!');
+        });
+    }
+    $scope.getAllSkill();
+
+    $scope.getAllContract = () => {
+        serviceApi.getAllContract().then(function(response) {
+            $scope.contracts = response.data;
+            $scope.contracts.map(putActiveParameter);
+        }).catch(function(errMsg) {
+            console.log('get contracts failed!');
+        });
+    }
+    $scope.getAllContract();
+
+
 
 
     $(function() {
