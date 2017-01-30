@@ -17,7 +17,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
     };
 
     this.getStudentById = function(id) {
-        return $http.get('/api/backOffice/infoStudent/' + id).then((response) => {
+        return $http.get(API_ENDPOINT.url + '/backOffice/infoStudent/' + id).then((response) => {
             return response;
         }, (err) => {
             console.log("Error");
@@ -25,7 +25,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
     };
 
     this.getStudentByMemberId = function(id) {
-        return $http.get('/api/backOffice/infoStudent/fromMember/' + id).then((response) => {
+        return $http.get(API_ENDPOINT.url + '/backOffice/infoStudent/fromMember/' + id).then((response) => {
             return response;
         }, (err) => {
             console.log("Error");
