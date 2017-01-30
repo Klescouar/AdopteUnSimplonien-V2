@@ -9,14 +9,18 @@
     transition: background linear 3.5s;
 
     .cont-form {
+        margin-top: 20px;
+        margin-bottom: 20px;
         background-color: #425877;
         min-width: 27%;
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        border-bottom: 1px solid #6c94b4;
 
         .cont-button{
            justify-content:center;
           display: flex;
           background-color: #425877;
+
 
            h4{
                   margin: 0px;
@@ -67,10 +71,12 @@
             }
 
             .button-focus-right{
+
               border-top: 1px solid #6c94b4;
               outline: none;
               border-top-right-radius: 7px;
               border-right: 1px solid #6c94b4;
+              border-left: 1px solid #6c94b4;
 
 
             }
@@ -81,6 +87,7 @@
               outline: none;
               border-top-left-radius: 7px;
               border-left: 1px solid #6c94b4;
+              border-right: 1px solid #6c94b4;
 
             }
 
@@ -91,11 +98,6 @@
 
 
             }
-
-                    button:hover{
-            background-color: lighten(#425877, 8%);
-
-        }
 
             }
 
@@ -109,7 +111,8 @@
         }
 
         form {
-
+          border-left: 1px solid #6c94b4;
+            border-right: 1px solid #6c94b4;
             padding-left: 30px;
             padding-right: 30px;
             display: flex;
@@ -118,7 +121,6 @@
             justify-content:center;
 
         .main-cont-input{
-
         width: 100%;
         padding-left: 30px;
         padding-right: 30px;
@@ -136,7 +138,7 @@
             margin-top: 15px;
 
               input{
-                height: 40px;
+                height: 20px;
                 width: 100%;
                 margin: 0 auto 15px;
                 padding: 0 15px;

@@ -5,30 +5,39 @@
     align-items: center;
     background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/photo-1429051883746-afd9d56fbdaf.jpeg") no-repeat center / cover;
 
-    .cont-form {
+    .cont-form-login {
         background-color: #425877;
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        min-width: 27%;
-        height: 60vh;
+        min-width: 20%;
+        min-height: 360px;
+        height: 45vh;
         display: flex;
         flex-direction: column;
+        border-bottom: 1px solid #6c94b4;
         
-        .cont-connexion{
+        .cont-login{
             display: flex;
             justify-content:space-between;
             width: 100%;
-            .left-co{
+            .left-co-login{
 
                 background-color: #2e3e53;
                 height: 50px;
-                width: 70px;
+                width: 25%;
                 border-bottom: 1px solid #6c94b4;
             }
         }
 
-       
-        h1{
-            
+       .cont-title-inscription {
+        display: flex;
+        background-color: #2e3e53;
+        width: 100%;
+        text-align: center;
+        height: 20px;
+        }
+
+        .title-login{
+            width: 50%;
             border-top: 1px solid #6c94b4;
             outline: none;
             border-top-left-radius: 7px;
@@ -36,26 +45,18 @@
             border-top-right-radius: 7px;
             border-right: 1px solid #6c94b4;
             height: 50px;
-          margin-top: 0px;
-          margin-bottom: 10px;
-          padding: 0;
-          width: 100%;
-          text-align: center;
-          padding-top: 20px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            padding: 0;
+            padding-right: 10px;
+            padding-left: 10px;
+            text-align: center;
+            padding-top: 15px;
+            font-size: 22px;
+            font-weight: normal;
         }
         
-        .cont-title-inscription {
-        display: flex;
-        background-color: #2e3e53;
-        width: 100%;
-        text-align: center;
-        height: 20px;
-
-        h1{
-            font-size: 22px;
-        }
-
-        }
+    
 
         form {
             display: flex;
@@ -63,7 +64,9 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: 100%;
+            height: 91%;
+            border-right: 1px solid #6c94b4;
+            border-left: 1px solid #6c94b4;
 
 
 
@@ -73,6 +76,36 @@
               display: block;
               color: #de5b49;
               font-size: 0.9em;
+            }
+        }
+
+        .cont-input-login {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+
+            input {
+                height: 35px;
+                width: 85%;
+                margin: 0 auto 15px;
+                padding: 0 15px;
+                border: none;
+                border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+                background-color: rgb(66,88,119);
+                color: black;
+                color: white;
+                outline: none;
+            }
+            
+            input:hover {
+                outline: none;
+            }
+
+            input:focus {
+                border-bottom: 1px solid white;
+                outline: none;
             }
         }
 
@@ -90,41 +123,6 @@
         }
         .sendLogin:hover{
           background-color: #da6555;
-        }
-
-        .cont-input {
-            width: 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 15px;
-
-            input {
-                height: 40px;
-                width: 85%;
-                margin: 0 auto 15px;
-                padding: 0 15px;
-                border: none;
-                border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-                background-color: rgb(66,88,119);
-                color: black;
-                color: white;
-                outline: none;
-            }
-            
-             
-
-
-
-            input:hover {
-                border-bottom: 1px solid rgba(148, 178, 199, 0.85);
-                outline: none;
-            }
-
-            input:focus {
-                border-bottom: 1px solid white;
-                outline: none;
-            }
         }
     }
 }
@@ -261,7 +259,10 @@
             display: flex;
             justify-content: flex-end;
             padding: 0 20px;
-            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-right: 1px solid #6c94b4;
+            
+            border-left: 1px solid #6c94b4;
 
             a {
               color: white;
