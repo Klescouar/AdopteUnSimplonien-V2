@@ -4,8 +4,8 @@ const layout = require('../models/mails.js');
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'email',
-        pass: 'mdp'
+        user: 'Test.project.simplon@gmail.com',
+        pass: 'KevJeanYassMat'
     }
 });
 
@@ -14,7 +14,7 @@ exports.contactMail = (req, res) => {
 
     let mailOptions = {
         from: req.body.sender, // sender address
-        to: 'email', // list of receivers
+        to: 'Test.project.simplon@gmail.com', // list of receivers
         subject: `Contact de ${req.body.name}`, // Subject line
         html: html
     };

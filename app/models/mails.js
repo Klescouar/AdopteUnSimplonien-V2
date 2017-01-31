@@ -6,6 +6,7 @@ exports.contact = (data) => {
                 <p>Name: ${data.name}</p>
                 <p3>Entreprise: ${data.Entreprise}</p>
                 <p>Ville: ${data.city}</p>
+                <p>Mail: ${data.sender}</p>
                 <p>Téléphone: ${data.phone}</p>
                 <div>${data.content}</div>
             </div>`
@@ -17,6 +18,7 @@ exports.contact = (data) => {
                 <p>Name: ${data.name}</p>
                 <p3>Entreprise: ${data.Entreprise}</p>
                 <p>Ville: ${data.city}</p>
+                <p>Mail: ${data.sender}</p>
                 <div>${data.content}</div>
             </div>`
         )
