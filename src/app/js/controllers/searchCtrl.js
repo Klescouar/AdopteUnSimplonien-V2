@@ -1,24 +1,22 @@
-app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scope, $http, serviceFilter){
+app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStudent', function($scope, $http, serviceFilter, serviceStudent){
     $scope.schools = serviceFilter.schools;
     $scope.contrats = serviceFilter.contrats;
     $scope.langages = serviceFilter.langages;
     $scope.themes = serviceFilter.themes;
     $scope.searchResult = serviceFilter.searchResult;
+    $scope.$emit('LOAD');
+    $scope.$emit('UNLOAD');
+    $scope.loading = true;
     const putActiveParameter = (item) => {
       return item.active = false;
     };
 
 
-    $scope.$emit('LOAD');
-    $scope.$emit('UNLOAD');
+    //////////////////////HANDLE FILTER/////////////////////
 
-    $scope.loading = true;
-
-    // Comparaison entre les cards et les filtres sélectionné par l'utilisateur et restitution des cards filtrés.
     const searchFilter = () => {
         $scope.data = [];
 
-        // Stockage des infos de searchResult (l'objet où sont stocké les filtres sélectionnés) dans des variables indépendantes.
         const lang1 = typeof $scope.searchResult.Langage[0] !== 'undefined' ? $scope.searchResult.Langage[0] : '';
         const lang2 = typeof $scope.searchResult.Langage[1] !== 'undefined' ? $scope.searchResult.Langage[1] : '';
         const lang3 = typeof $scope.searchResult.Langage[2] !== 'undefined' ? $scope.searchResult.Langage[2] : '';
@@ -29,7 +27,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scop
         const contrat4 = typeof $scope.searchResult.Contrat[3] !== 'undefined' ? $scope.searchResult.Contrat[3] : '';
         const contrat5 = typeof $scope.searchResult.Contrat[4] !== 'undefined' ? $scope.searchResult.Contrat[4] : '';
 
-        // On parcourt chaque card contenu dans la variable cardFull, on mets en place d'une STRING dans la variable 'recherche' contenant toutes les infos de la card afin de comparer celle ci avec les tags des variables ci dessus. Si la comparaison match, on push la card dans $scope.data et elle sera affichée dans le front.
         angular.forEach($scope.cardFull, (value, key) => {
             const recherche = value.Contrat + ' ' + value.SpecialiteUn + ' ' + value.SpecialiteDeux + ' ' + value.SpecialiteTrois + ' ' + value.ville;
             if (recherche.match("^(?=.*" + lang1 + ")(?=.*" + lang2 + ")(?=.*" + lang3 + ")(?=.*" + ville + ")(?=.*" + contrat1 + ")(?=.*" + contrat2 + ")(?=.*" + contrat3 + ")(?=.*" + contrat4 + ")(?=.*" + contrat5 + ")", "i")) {
@@ -40,17 +37,14 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scop
 
     searchFilter();
 
-    // Récupération de l'api contenant les cards et toutes leurs infos.
-    $http.get('/api/infoStudent').then(function(response) {
-        console.log("I got the data I requested");
-        $scope.loading =false;
-        $scope.data = response.data;
-        $scope.cardFull = response.data;
-        console.log($scope.data);
-        searchFilter();
+
+    serviceStudent.getAllStudent().then((res) => {
+      $scope.loading = false;
+      $scope.data = res.data;
+      $scope.cardFull = res.data;
+      searchFilter();
     })
 
-    // Changer la view des onglets. Ville/Langage/Contrat.
     $scope.changeState = (item) => {
         if (window.innerWidth > 640) {
             $scope.themes.forEach(function(theme) {
@@ -68,7 +62,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scop
         }
     };
 
-    // Selectionner les tags correspondant aux villes.
     $scope.changeFilterSchool = function(){
         if (this.school.active === true) {
             this.school.active = false;
@@ -102,7 +95,9 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scop
         searchFilter();
     }
 
-    // Pouvoir supprimmer un tag en cliquant sur la croix de l'icone dans le tableau de bord.
+
+    //////////////////////HANDLE TAGS/////////////////////
+
     $scope.deleteSchoolTag = function(){
         for (let i = 0; i < $scope.schools.length; i++) {
             if ($scope.schools[i].name === $scope.searchResult.Ville) {
@@ -113,7 +108,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scop
         searchFilter();
     };
 
-    // Pouvoir supprimmer un tag en cliquant sur la croix de l'icone dans le tableau de bord.
     $scope.deleteTag = function(array, item, list){
         for (let i = 0; i < list.length; i++) {
             if (list[i].name === item) {
@@ -126,6 +120,9 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', function($scop
         }
         searchFilter();
     };
+
+
+    //////////////////////GET FILTER/////////////////////
 
     $scope.getAllSchool = () => {
         serviceFilter.getAllSchool().then(function(response) {

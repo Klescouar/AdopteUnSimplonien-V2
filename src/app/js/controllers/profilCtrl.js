@@ -1,32 +1,12 @@
-app.controller('profilCtrl', ['$scope', '$http', 'serviceFilter', '$stateParams', function($scope, $http, serviceFilter, $stateParams){
-$scope.contactStud = 1;
-$scope.verifChamps = false;
+app.controller('profilCtrl', ['$scope', 'serviceStudent', '$stateParams', function($scope, serviceStudent, $stateParams){
+    $scope.contactStud = 1;
+    $scope.verifChamps = false;
+    const id = $stateParams.student;
 
-
-// VERIFICATION BEFORE MAIL SEND
-$scope.contactStudent = () => {
-    if ($('.inputMail').val().length > 0 && $('.textAreaMail').val().length > 0) {
-        $scope.contactStud = 2;
-    }
-    else {
-        $scope.verifChamps = true;
-    }
-}
-
-console.log($stateParams.student);
-// GET STUDENT ID
-    let id = $stateParams.student;
-
-// GET STUDENT INFOS
-    $http.get('/api/backOffice/infoStudent/' + id)
-        .then(
-            (response) => {
-                $scope.student = response.data;
-            },
-            (err) => {
-                console.log("Error");
-            }
-        );
-
+    serviceStudent.getStudentById(id).then((res) => {
+        $scope.student = res.data;
+    }, (err) => {
+        console.log("Error");
+    })
 
 }]);

@@ -19,8 +19,11 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
         active: false,
     }];
 
+
+    //////////////////////SKILL REQUESTS/////////////////////////:
+
     this.addSkill = function(song) {
-        return $http.post(API_ENDPOINT.url + '/addSkill', song).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/addSkill', song).then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -28,7 +31,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
     this.getAllSkill = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllSkill').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/getAllSkill').then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -36,7 +39,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
     this.removeSkill = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeSkill/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/removeSkill/' + id).then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -44,10 +47,10 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
 
-
+    //////////////////////SCHOOL REQUESTS/////////////////////////:
 
     this.addSchool = function(song) {
-        return $http.post(API_ENDPOINT.url + '/addSchool', song).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/addSchool', song).then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -55,7 +58,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
     this.getAllSchool = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllSchool').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/getAllSchool').then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -63,7 +66,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
     this.removeSchool = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeSchool/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/removeSchool/' + id).then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -71,10 +74,10 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
 
-
+    //////////////////////CONTRACT REQUESTS/////////////////////////:
 
     this.addContract = function(song) {
-        return $http.post(API_ENDPOINT.url + '/addContract', song).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/addContract', song).then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -82,7 +85,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
     this.getAllContract = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllContract').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/getAllContract').then((response) => {
             return response;
         }, function(error) {
             return error;
@@ -90,7 +93,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
     };
 
     this.removeContract = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeContract/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/removeContract/' + id).then((response) => {
             return response;
         }, function(error) {
             return error;

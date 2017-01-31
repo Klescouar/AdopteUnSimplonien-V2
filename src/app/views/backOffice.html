@@ -102,7 +102,7 @@
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
                     <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.prenom}}</p>
                     <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.ville}}</p>
-                    <button ng-if="simplonien.nom !== '' " class="modify" ng-click="modify(simplonien._id)">Modifier</button>
+                    <button ng-if="simplonien.nom !== '' " class="modify" ng-click="showOneStudent(simplonien._id)">Modifier</button>
                     <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id)" confirm="Are you sure ?"></div>
                 </div>
             </div>
