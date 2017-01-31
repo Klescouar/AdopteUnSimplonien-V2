@@ -9,10 +9,10 @@
         </div>
         <form>
             <div class="cont-input-login">
-                <input type="email" placeholder="Email" ng-model="user.email" required></input>
+                <input class="input-mail" type="email" placeholder="Email" ng-model="user.email" required></input>
             </div>
             <div class="cont-input-login">
-                <input type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
+                <input class="input-password" type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
             </div>
             <p class="dont-match" ng-class="{'match':!verifLogin}">Email ou mot de passe non valide.</p>
             <a class="sendLogin" ng-click="login()" type="submit" ng-disabled="disabled">Envoyer</a>
