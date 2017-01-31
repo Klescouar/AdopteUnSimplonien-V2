@@ -12,7 +12,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
         return $http.get(API_ENDPOINT.url + '/backOffice/infoStudent').then((response) => {
             return response;
         }, function(err) {
-            console.log("Error");
+            return error;
         });
     };
 
@@ -20,7 +20,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
         return $http.get(API_ENDPOINT.url + '/backOffice/infoStudent/' + id).then((response) => {
             return response;
         }, (err) => {
-            console.log("Error");
+            return error;
         });
     };
 
@@ -28,7 +28,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
         return $http.get(API_ENDPOINT.url + '/backOffice/infoStudent/fromMember/' + id).then((response) => {
             return response;
         }, (err) => {
-            console.log("Error");
+            return error;
         });
     };
 
@@ -36,7 +36,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
         return $http.put(API_ENDPOINT.url + '/backOffice/update/' + id).then((response) => {
             return response;
         }, function(err) {
-            console.log("Error");
+            return error;
         });
     };
 
@@ -44,7 +44,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
         return $http.delete(API_ENDPOINT.url + '/backOffice/removeStudent/' + id).then((response) => {
             return response;
         }, function(err) {
-            console.log("Error");
+            return error;
         });
     };
 
@@ -54,7 +54,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
             console.log(response);
             return response;
         }, function(err) {
-            console.log("Error");
+            return error;
         });
     };
 
