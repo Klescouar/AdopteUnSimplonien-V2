@@ -2,6 +2,8 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
     $scope.schools = serviceFilter.schools;
     $scope.showForm = false;
     $scope.mail = {
+        layout: 'contact',
+        to: 'Test.project.simplon@gmail.com',
         name: '',
         entreprise: '',
         city: '',

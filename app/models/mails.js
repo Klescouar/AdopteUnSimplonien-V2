@@ -24,3 +24,13 @@ exports.contact = (data) => {
         )
     }
 }
+
+exports.profil = (data) => {
+    return (
+        `<div>
+            <p>Envoyé depuis votre page profil</p>
+            <p>Mail: ${data.sender}</p>
+            <p>${data.content}</p>
+        </div>`
+    )
+}

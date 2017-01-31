@@ -10,12 +10,12 @@ let transporter = nodemailer.createTransport({
 });
 
 exports.contactMail = (req, res) => {
-    let html = layout.contact(req.body);
+    let html = layout[req.body.layout](req.body);
 
     let mailOptions = {
-        from: req.body.sender, // sender address
-        to: 'Test.project.simplon@gmail.com', // list of receivers
-        subject: `Contact de ${req.body.name}`, // Subject line
+        from: req.body.sender,
+        to: req.body.to,
+        subject: `Contact de ${req.body.sender}`,
         html: html
     };
 
