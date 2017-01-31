@@ -2,8 +2,8 @@
   min-height: calc(100vh - 110px);
   background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
   display: flex;
-  // justify-content: space-around;
-  // align-items: center;
+  flex-direction: column;
+  align-items: center;
   color: black;
   .choose-pic{
     display: flex;
@@ -35,7 +35,6 @@
     }
   }
 
-
   .container-create{
     color: black;
     padding: 40px;
@@ -56,6 +55,11 @@
 
       .info-title{
         margin-bottom: 0;
+        margin-bottom: 20px;
+      }
+      .info-title-sm{
+        align-self: flex-start;
+        margin-left: 20px;
       }
     }
 
@@ -63,6 +67,7 @@
       display: flex;
       flex-flow: row wrap;
       justify-content: space-around;
+      margin-bottom: 20px;
     }
 
     .cont-input{
@@ -75,7 +80,7 @@
           width: 100%;
       }
 
-      input, textarea{
+      input, select, textarea{
         height: 30px;
         width: 100%;
         border: none;
@@ -87,7 +92,24 @@
         height: 50px;
       }
     }
-
-
   }
+
+    .button-container{
+      display: flex;
+      width: $full;
+      .delete-button{
+        background-color: #de5b49;
+      }
+
+      .edit-button{
+        background-color: #2F3E52;
+      }
+      .edit-button, .delete-button{
+        bottom: 0;
+        height: 50px;
+        width: 50%;
+        border: none;
+        color: white
+      }
+    }
 }

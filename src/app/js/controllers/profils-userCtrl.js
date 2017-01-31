@@ -1,9 +1,19 @@
-app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent) {
+app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter) {
 
         $scope.member = AuthService.user();
         $scope.showEditProfilUser = false;
         $scope.photo = '';
         $scope.turnOff = false;
+
+        $scope.getAllContract = () => {
+            serviceFilter.getAllContract().then(function(response) {
+                $scope.contracts = response.data;
+            }).catch(function(errMsg) {
+                console.log('show school failed!');
+            });
+        }
+
+        $scope.getAllContract();
 
         $scope.getMemberInfo = (id) => {
             serviceStudent.getStudentByMemberId(id).then((response) => {
@@ -30,7 +40,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
         $scope.createSimplonien = () => {
-            console.log($scope.photo);
             const dataStudent = {
                 memberId: $scope.member._id,
                 verified: false,
@@ -52,13 +61,12 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 Twitter: document.getElementById("boCreateTwitterSimploniens").value,
                 StackOverFlow: document.getElementById("boCreateStackOverFlowSimploniens").value,
                 Mail: document.getElementById("boCreateMailSimploniens").value,
-                Contrat: document.getElementById("boCreateContratSimploniens").value,
+                Contrat: $scope.studentContrat,
                 DatePromo: document.getElementById("boCreateDatePromoSimploniens").value,
                 Domaine: document.getElementById("boCreateDomaineSimploniens").value
             };
 
             serviceStudent.addStudent(dataStudent).then((response) => {
-                console.log(response.data);
                 if (response.data === 'error') {
                     alert('Déja inscrit!')
                 } else {
@@ -71,6 +79,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
         $scope.updateStudent = (id) => {
+          console.log($scope.studentContrat);
             const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
             if (response === true) {
                 const newInfos = {
@@ -92,7 +101,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                     Twitter: document.getElementById("boCreateTwitterSimploniens").value,
                     StackOverFlow: document.getElementById("boCreateStackOverFlowSimploniens").value,
                     Mail: document.getElementById("boCreateMailSimploniens").value,
-                    Contrat: document.getElementById("boCreateContratSimploniens").value,
+                    Contrat: $scope.studentContrat,
                     DatePromo: document.getElementById("boCreateDatePromoSimploniens").value,
                     Domaine: document.getElementById("boCreateDomaineSimploniens").value
 
