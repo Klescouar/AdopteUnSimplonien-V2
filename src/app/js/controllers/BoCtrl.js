@@ -1,5 +1,6 @@
 app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state','$timeout', 'serviceFilter', function($scope, AuthService, $http, serviceFilter, $state, $timeout, serviceFilter) {
 
+    
         $scope.show = 0;
         $scope.school = {};
         $scope.skill = {};
@@ -10,6 +11,14 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             email: '',
             password: ''
         };
+
+        $scope.colorButton=true;
+        $scope.color;
+        $scope.changeColorButton = (number) => {
+            if ($scope.color = 1) {
+        $scope.colorButton=false;
+    }
+    }
 
         $scope.acceptSimplonien = (studentId) => {
           $http.put('/api/backOffice/update/' + studentId).then((response) => {})
@@ -30,6 +39,8 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
         $scope.addUser = () => {
             AuthService.register($scope.user).then(function(response) {
                 $scope.getAllUser();
+                
+                console.log($scope.colorButton)
                 $scope.show = 2;
             }).catch(function(errMsg) {
                 const alertPopup = $window.alert('Register failed!');
