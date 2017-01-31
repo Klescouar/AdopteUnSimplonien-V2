@@ -1,13 +1,88 @@
-.container-entreprise{
-	display: flex;
-	min-height: calc(100vh - 110px);
-	.cont-info-entreprise{
-		width: 30%;
-		
-	}
+.ProfilUser{
+  min-height: calc(100vh - 110px);
+  background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  color: black;
 
-	.img-info-entreprise{
-		width: 70%;
-		background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
-	}
+  .container-create-entreprise{
+    color: black;
+    padding: 40px;
+    background-color: white;
+    width: 35vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .section{
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      width: $full;
+      margin-bottom: 30px;
+
+      .info-title{
+        margin-bottom: 0;
+        margin-bottom: 20px;
+      }
+
+    }
+
+    .info-group-entreprise{
+    width: 80%;
+      display: flex;
+      flex-direction:column;
+       justify-content: center;
+    align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cont-input-entreprise{
+      width: 100%;
+      display: flex;
+      margin-top: 15px;
+      padding: 0 20px;
+
+      &.full-width{
+          width: 100%;
+      }
+
+      input, select, textarea{
+        height: 30px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+        color: black;
+        outline: none;
+      }
+      textarea{
+        height: 50px;
+      }
+    }
+  }
+
+  .button-container-entreprise{
+    display: flex;
+    width: $full;
+    background-color: white;
+    justify-content:center;
+    .delete-button{
+      background-color: #de5b49;
+    }
+
+    .edit-button-entreprise{
+      background-color: #2F3E52;
+      margin-bottom: 40px;
+    }
+    .edit-button-entreprise{
+      height: 50px;
+      width: 30%;
+      border: none;
+      color: white
+    }
+  }
 }

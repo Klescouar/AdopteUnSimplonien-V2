@@ -5,41 +5,12 @@
   flex-direction: column;
   align-items: center;
   color: black;
-  .choose-pic{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    #upload-photos{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    #upload-pic {
-      height: 150px;
-      width: 150px;
-      border: solid 2px #90c7dc;
-      border-radius: 50%;
-      margin: 30px;
-      background-position: center;
-      background-size: cover;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        height: 100%;
-        width: 100%;
-        width: auto;
-      }
-    }
-  }
 
-  .container-create{
+  .container-create-entreprise{
     color: black;
     padding: 40px;
     background-color: white;
-    width: 700px;
+    width: 40vw;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -63,9 +34,9 @@
       }
     }
 
-    .info-group{
+    .info-group-entreprise{
       display: flex;
-      flex-flow: row wrap;
+      flex-direction:column;
       justify-content: space-around;
       margin-bottom: 20px;
     }
