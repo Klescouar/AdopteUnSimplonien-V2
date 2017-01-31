@@ -16,11 +16,13 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
                 console.log("coucou")
                 if ($scope.user.password === $scope.passwordChecked) {
                     AuthService.register($scope.user).then(function(response) {
-                        console.log($scope.user.company)
-                        $state.go('login');
-                        const alertPopup = $window.alert('Register success!');
+                        console.log(response)
+                        if (response.data.success === 'true') {
+                          $state.go('login');
+                        }
+                        const alertPopup = $window.alert(response.data.msg);
                     }).catch(function(errMsg) {
-                        const alertPopup = $window.alert('Fail!!');
+                        const alertPopup = $window.alert(response.data.msg);
                     });
                 } else if ($scope.user.password !== $scope.passwordChecked) {
                     $scope.verifPass = false;

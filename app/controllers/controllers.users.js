@@ -29,18 +29,27 @@ exports.authenticate = function(req, res) {
 
 
 exports.signup =  function(req, res) {
-   if (!req.body.email || !req.body.password) {
-     res.json({success: false, msg: 'Please pass name and password.'});
-   } else {
-     const newUser = new User(req.body);
-     // save the user
-     newUser.save(function(err) {
-       if (err) {
-         return res.json({success: false, msg: 'email already exists.'});
-       }
-       res.json({success: true, msg: 'Successful created new user.'});
-     });
-   }
+  console.log(req.body.email);
+  User.findOne({
+    email: req.body.email
+  }, function(err, user) {
+    if (!user){
+      if (!req.body.email || !req.body.password) {
+        res.json({success: false, msg: 'Please pass name and password.'});
+      } else {
+        const newUser = new User(req.body);
+        // save the user
+        newUser.save(function(err) {
+          if (err) {
+            return res.json({success: false, msg: 'email already exists.'});
+          }
+          res.json({success: true, msg: 'Successful created new user.'});
+        });
+      }
+    } else {
+       res.json({success: false, msg: 'Email already used'});
+    }
+  });
  };
 
 
