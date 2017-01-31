@@ -43,11 +43,11 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             const dataStudent = {
                 memberId: $scope.member._id,
                 verified: false,
-                nom: document.getElementById("boCreateLastNameSimploniens").value,
-                prenom: document.getElementById("boCreateNameSimploniens").value,
-                age: document.getElementById("boCreateOldSimploniens").value,
-                ville: document.getElementById("boCreatePromoSimploniens").value,
-                photo: $scope.photo,
+                nom: $scope.student.nom,
+                prenom: $scope.student.prenom,
+                age: $scope.student.age,
+                ville: $scope.student.ville,
+                photo: $scope.student.photo,
                 tags: document.getElementById("boCreateTagsSimploniens").value,
                 description: document.getElementById("boCreateAboutSimploniens").value,
                 Sexe: document.getElementById("boCreateSexeSimploniens").value,
@@ -61,7 +61,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 Twitter: document.getElementById("boCreateTwitterSimploniens").value,
                 StackOverFlow: document.getElementById("boCreateStackOverFlowSimploniens").value,
                 Mail: document.getElementById("boCreateMailSimploniens").value,
-                Contrat: $scope.studentContrat,
+                Contrat: $scope.student.Contrat,
                 DatePromo: document.getElementById("boCreateDatePromoSimploniens").value,
                 Domaine: document.getElementById("boCreateDomaineSimploniens").value
             };
@@ -101,7 +101,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                     Twitter: document.getElementById("boCreateTwitterSimploniens").value,
                     StackOverFlow: document.getElementById("boCreateStackOverFlowSimploniens").value,
                     Mail: document.getElementById("boCreateMailSimploniens").value,
-                    Contrat: $scope.studentContrat,
+                    Contrat: $scope.student.Contrat,
                     DatePromo: document.getElementById("boCreateDatePromoSimploniens").value,
                     Domaine: document.getElementById("boCreateDomaineSimploniens").value
 

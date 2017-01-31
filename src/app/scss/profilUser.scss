@@ -94,22 +94,22 @@
     }
   }
 
-    .button-container{
-      display: flex;
-      width: $full;
-      .delete-button{
-        background-color: #de5b49;
-      }
-
-      .edit-button{
-        background-color: #2F3E52;
-      }
-      .edit-button, .delete-button{
-        bottom: 0;
-        height: 50px;
-        width: 50%;
-        border: none;
-        color: white
-      }
+  .button-container{
+    display: flex;
+    width: $full;
+    .delete-button{
+      background-color: #de5b49;
     }
+
+    .edit-button{
+      background-color: #2F3E52;
+    }
+    .edit-button, .delete-button{
+      bottom: 0;
+      height: 50px;
+      width: 50%;
+      border: none;
+      color: white
+    }
+  }
 }
