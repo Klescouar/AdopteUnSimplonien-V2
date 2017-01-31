@@ -2,7 +2,12 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
 
         $scope.verifPass = true;
         $scope.passLength = true;
-        $scope.user = {
+        $scope.borderClass = true;
+
+        $scope.user= {
+            role: 'Recruteur'
+        };
+        $scope.userRecruteur = {
             company: '',
             firstName: '',
             lastName: '',
@@ -11,44 +16,70 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
             role: 'Recruteur'
         };
 
-        $scope.signup = () => {
-            if ($scope.user.password.length >= 8) {
-                console.log("coucou")
-                if ($scope.user.password === $scope.passwordChecked) {
-                    AuthService.register($scope.user).then(function(response) {
-                        console.log($scope.user.company)
+        $scope.userSimplonien = {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            role: 'Simplonien'
+        };
+
+        $scope.registerRecruteur = () => {
+          console.log( $scope.passwordCheckedRecruteur)
+          console.log($scope.userRecruteur.password)
+            if ($scope.userRecruteur.password.trim().length >= 8) {
+                if ($scope.userRecruteur.password === $scope.passwordCheckedRecruteur) {
+                    AuthService.register($scope.userRecruteur).then(function(response) {
+                        console.log($scope.userRecruteur.company)
                         $state.go('login');
                         const alertPopup = $window.alert('Register success!');
                     }).catch(function(errMsg) {
                         const alertPopup = $window.alert('Fail!!');
                     });
-                } else if ($scope.user.password !== $scope.passwordChecked) {
+                } else if ($scope.userRecruteur.password !== $scope.passwordCheckedRecruteur) {
                     $scope.verifPass = false;
                 }
-            } else if ($scope.user.password.length < 8 && $scope.user.password.length > 0) {
+            } else if ($scope.userRecruteur.password.length < 8 && $scope.userRecruteur.password.length > 0) {
                 $scope.passLength = false;
             }
         };
 
-        $scope.borderClass = true;
+        $scope.registerSimplonien = () => {
+            if ($scope.userSimplonien.password.length.trim() >= 8) {
+                console.log("coucou")
+                if ($scope.userSimplonien.password === $scope.passwordCheckedSimplonien) {
+                    AuthService.register($scope.userSimplonien).then(function(response) {
+                        console.log($scope.userSimplonien.company)
+                        $state.go('login');
+                        const alertPopup = $window.alert('Register success!');
+                    }).catch(function(errMsg) {
+                        const alertPopup = $window.alert('Fail!!');
+                    });
+                } else if ($scope.userSimplonien.password !== $scope.passwordCheckedSimplonien) {
+                    $scope.verifPass = false;
+                }
+            } else if ($scope.userSimplonien.password.length < 8 && $scope.userSimplonien.password.length > 0) {
+                $scope.passLength = false;
+            }
+        };
+
+        
 
         $scope.SetStyle = function(role) {
-            $scope.user.email ="";
-            $scope.user.firstName ="";
-            $scope.user.lastName="";
-            $scope.user.password ="";
-            $scope.passwordChecked="";
             $scope.passLength = true;
             $scope.verifPass = true;
           $scope.user.role = role;
-          console.log($scope.user.role)
-            if ($scope.user.role === "Recruteur") {
+          
+            if ($scope.user.role == "Recruteur") {
+                console.log($scope.user.role)
                 $scope.changeStatus = 'Recruteur';
                 $scope.borderClass = true;
-            } else if ($scope.user.role === "Simplonien") {
+                console.log($scope.borderClass)
+            } else if ($scope.user.role == "Simplonien") {
+                console.log($scope.user.role)
                 $scope.changeStatus = 'Simplonien';
                 $scope.borderClass = false;
-
+  
             }
         }
     }

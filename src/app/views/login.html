@@ -2,8 +2,9 @@
     <div class="cont-form-login">
         <div class="cont-title-inscription"></div>
         <div class="cont-login">
-        	<div class="left-co-login"></div>
-        	<h1 class="title-login">Connexion</h1>
+            <div class="cont-title-login">
+        	   <h1 class="title-login">Connexion</h1>
+            </div>
         	<div class="left-co-login"></div>
         </div>
         <form>
@@ -15,9 +16,9 @@
             </div>
             <p class="dont-match" ng-class="{'match':!verifLogin}">Email ou mot de passe non valide.</p>
             <a class="sendLogin" ng-click="login()" type="submit" ng-disabled="disabled">Envoyer</a>
+            <div class="redirect-login">
+        <a ui-sref="signup">Pas encore inscris ?</a>
+    </div>
         </form>
-	<div class="redirect">
-		<a ui-sref="signup">Pas encore inscris ?</a>
-	</div>
     </div>
 </div>
