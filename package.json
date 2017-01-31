@@ -47,5 +47,8 @@
     "read-chunk": "^2.0.0",
     "ui-router": "^1.0.0-alpha.3",
     "nodemailer": "^2.7.2"
+  },
+  "devDependencies": {
+    "bcryptjs": "^1.1.0"
   }
 }

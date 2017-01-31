@@ -4,7 +4,7 @@ exports.contact = (data) => {
             `<div>
                 <p>Envoyé depuis la page contact</p>
                 <p>Name: ${data.name}</p>
-                <p3>Entreprise: ${data.Entreprise}</p>
+                <p3>Entreprise: ${data.entreprise}</p>
                 <p>Ville: ${data.city}</p>
                 <p>Mail: ${data.sender}</p>
                 <p>Téléphone: ${data.phone}</p>
@@ -16,7 +16,7 @@ exports.contact = (data) => {
             `<div>
                 <p>Envoyé depuis la page contact</p>
                 <p>Name: ${data.name}</p>
-                <p3>Entreprise: ${data.Entreprise}</p>
+                <p3>Entreprise: ${data.entreprise}</p>
                 <p>Ville: ${data.city}</p>
                 <p>Mail: ${data.sender}</p>
                 <div>${data.content}</div>
