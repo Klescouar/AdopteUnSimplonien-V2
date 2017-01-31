@@ -111,6 +111,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.getAllUser = () => {
           AuthService.getAllUser($scope.user).then(function(response) {
               $scope.allUser = response.data.user;
+              console.log(response.data);
           }).catch(function(errMsg) {
               const alertPopup = $window.alert('show profils members failed!');
           });
@@ -149,17 +150,19 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       }
 
       $scope.addSkill = () => {
-          serviceFilter.addSkill($scope.skill).then(function(response) {}).catch(function(errMsg) {
+          serviceFilter.addSkill($scope.skill).then(function(response) {
+            $scope.getAllSkill();
+          }).catch(function(errMsg) {
               const alertPopup = $window.alert('Add Skill failed!');
           });
-          $scope.getAllSkill();
       };
 
       $scope.removeSkill = (id) => {
-          serviceFilter.removeSkill(id).then(function(response) {}).catch(function(errMsg) {
+          serviceFilter.removeSkill(id).then(function(response) {
+            $scope.getAllSkill();
+          }).catch(function(errMsg) {
               console.log('remove skill failed!');
           });
-          $scope.getAllSkill();
       }
       $scope.getAllSkill();
 
@@ -174,17 +177,19 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       }
 
       $scope.addSchool = () => {
-          serviceFilter.addSchool($scope.school).then(function(response) {}).catch(function(errMsg) {
+          serviceFilter.addSchool($scope.school).then(function(response) {
+            $scope.getAllSchool();
+          }).catch(function(errMsg) {
               const alertPopup = $window.alert('Add school failed!');
           });
-          $scope.getAllSchool();
       };
 
       $scope.removeSchool = (id) => {
-          serviceFilter.removeSchool(id).then(function(response) {}).catch(function(errMsg) {
+          serviceFilter.removeSchool(id).then(function(response) {
+            $scope.getAllSchool();
+          }).catch(function(errMsg) {
               console.log('remove school failed!');
           });
-          $scope.getAllSchool();
       }
       $scope.getAllSchool();
 
@@ -199,17 +204,19 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       }
 
       $scope.addContract = () => {
-          serviceFilter.addContract($scope.contract).then(function(response) {}).catch(function(errMsg) {
+          serviceFilter.addContract($scope.contract).then(function(response) {
+            $scope.getAllContract();
+          }).catch(function(errMsg) {
               const alertPopup = $window.alert('Add contract failed!');
           });
-          $scope.getAllContract();
       };
 
       $scope.removeContract = (id) => {
-          serviceFilter.removeContract(id).then(function(response) {}).catch(function(errMsg) {
+          serviceFilter.removeContract(id).then(function(response) {
+            $scope.getAllContract();
+          }).catch(function(errMsg) {
               console.log('remove contract failed!');
           });
-          $scope.getAllContract();
       }
       $scope.getAllContract();
 

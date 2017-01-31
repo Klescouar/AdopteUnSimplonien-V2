@@ -29,10 +29,12 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
           console.log($scope.userRecruteur.password)
             if ($scope.userRecruteur.password.trim().length >= 8) {
                 if ($scope.userRecruteur.password === $scope.passwordCheckedRecruteur) {
-                    AuthService.register($scope.userRecruteur).then(function(response) {
-                        console.log($scope.userRecruteur.company)
+                  AuthService.register($scope.user).then(function(response) {
+                      console.log(response)
+                      if (response.data.success === 'true') {
                         $state.go('login');
-                        const alertPopup = $window.alert('Register success!');
+                      }
+                      const alertPopup = $window.alert(response.data.msg);
                     }).catch(function(errMsg) {
                         const alertPopup = $window.alert('Fail!!');
                     });
@@ -47,13 +49,15 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
         $scope.registerSimplonien = () => {
             if ($scope.userSimplonien.password.trim().length >= 8) {
                 console.log("coucou")
-                if ($scope.userSimplonien.password === $scope.passwordCheckedSimplonien) {
-                    AuthService.register($scope.userSimplonien).then(function(response) {
-                        console.log($scope.userSimplonien.company)
-                        $state.go('login');
-                        const alertPopup = $window.alert('Register success!');
+                if ($scope.user.password === $scope.passwordChecked) {
+                    AuthService.register($scope.user).then(function(response) {
+                        console.log(response)
+                        if (response.data.success === 'true') {
+                          $state.go('login');
+                        }
+                        const alertPopup = $window.alert(response.data.msg);
                     }).catch(function(errMsg) {
-                        const alertPopup = $window.alert('Fail!!');
+                        const alertPopup = $window.alert(response.data.msg);
                     });
                 } else if ($scope.userSimplonien.password !== $scope.passwordCheckedSimplonien) {
                     $scope.verifPass = false;
@@ -63,13 +67,13 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
             }
         };
 
-        
+
 
         $scope.SetStyle = function(role) {
             $scope.passLength = true;
             $scope.verifPass = true;
           $scope.user.role = role;
-          
+
             if ($scope.user.role == "Recruteur") {
                 console.log($scope.user.role)
                 $scope.changeStatus = 'Recruteur';
@@ -79,7 +83,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
                 console.log($scope.user.role)
                 $scope.changeStatus = 'Simplonien';
                 $scope.borderClass = false;
-  
+
             }
         }
     }

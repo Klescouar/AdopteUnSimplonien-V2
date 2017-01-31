@@ -1,6 +1,14 @@
-app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', '$window', function($scope, $http, serviceFilter, $window){
+app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMailer', '$window', function($scope, $http, serviceFilter, serviceMailer, $window){
     $scope.schools = serviceFilter.schools;
     $scope.showForm = false;
+    $scope.mail = {
+        name: '',
+        entreprise: '',
+        city: '',
+        sender: '',
+        phone: '',
+        content: ''
+    };
 
 //////////////////////GOOGLE MAP API/////////////////////
 
@@ -101,6 +109,10 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', '$window', fu
         marker4.addListener('click', function() {
             infoParis.open(map, marker4);
         });
+    }
+
+    $scope.sendMail = () => {
+        serviceMailer.sendMail($scope.mail);
     }
 
     initialize();
