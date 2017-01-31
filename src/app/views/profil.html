@@ -50,10 +50,10 @@
                 <div class="contactStudent">
                     <div class="logbox logBoxStyle" ng-if="contactStud === 1">
                         <form class="signup" method="post" name="form">
-                            <div class="profilPicMail" ng-style="{'background-image':'url(./assets/images/'+student.Photo+')'}"></div>
+                            <div class="profilPicMail" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}"></div>
                             <h1>Ecrire à
-                                {{student.Prenom}}
-                                {{student.Nom}}</h1>
+                                {{student.prenom}}
+                                {{student.nom}}</h1>
                             <p ng-if='verifChamps === true'>Veuillez remplir tous les champs...</p>
                             <input class="inputMail" type="email" name="email" placeholder="Votre email...">
                             <textarea name="name" class="textAreaMail" rows="8" cols="40" placeholder="Ecrivez votre message ici..."></textarea>
