@@ -29,7 +29,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
           console.log($scope.userRecruteur.password)
             if ($scope.userRecruteur.password.trim().length >= 8) {
                 if ($scope.userRecruteur.password === $scope.passwordCheckedRecruteur) {
-                  AuthService.register($scope.user).then(function(response) {
+                  AuthService.register($scope.userRecruteur).then(function(response) {
                       console.log(response)
                       if (response.data.success === 'true') {
                         $state.go('login');
@@ -50,7 +50,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
             if ($scope.userSimplonien.password.length.trim() >= 8) {
                 console.log("coucou")
                 if ($scope.user.password === $scope.passwordChecked) {
-                    AuthService.register($scope.user).then(function(response) {
+                    AuthService.register($scope.userSimplonien).then(function(response) {
                         console.log(response)
                         if (response.data.success === 'true') {
                           $state.go('login');
