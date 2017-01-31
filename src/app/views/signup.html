@@ -3,7 +3,7 @@
         <div class="cont-title-inscription"></div>
         <div class="cont-button">
             <a class="cont-recruteur">
-                <button class="recruteur-button" ng-click="SetStyle('Recruteur')" ng-class="{'button-focus-right':borderClass, 'border-bottom-focus': !borderClass}">
+                <button class="recruteur-button" ng-click="SetStyle('Recruteur')" ng-class="{'button-focus-right': borderClass, 'border-bottom-focus': !borderClass}">
                     <h4>Inscription Recruteur</h4>
                 </button>
             </a>
@@ -13,27 +13,27 @@
                 </button>
             </a>
         </div>
-        <form ng-submit="signup()" >
+        <form ng-submit="registerRecruteur()" ng-show="user.role == 'Recruteur'">
             <div class="main-cont-input">
                 <div class="cont-input">
-                    <input required="required" type="text" id="nom" value="" ng-model="user.company" placeholder="Entreprise"></input>
+                    <input required="required" type="text" id="nom" value="" ng-model="userRecruteur.company" placeholder="Entreprise"></input>
                 </div>
                 <div class="cont-input">
-                    <input type="text" id="nom" value="" ng-model="user.lastName" required placeholder="Nom"></input>
+                    <input type="text" id="nom" value="" ng-model="userRecruteur.lastName" required placeholder="Nom"></input>
                 </div>
                 <div class="cont-input">
-                    <input type="text" id="prenom" value="" ng-model="user.firstName" required placeholder="Prénom"></input>
+                    <input type="text" id="prenom" value="" ng-model="userRecruteur.firstName" required placeholder="Prénom"></input>
                 </div>
                 <div class="cont-input">
-                    <input type="email" id="email" ng-model="user.email" required placeholder="E-mail"></input>
+                    <input type="email" id="email" ng-model="userRecruteur.email" required placeholder="E-mail"></input>
                 </div>
                 <div class="cont-input">
-                    <input id="inputMdp" type="password" id="mdp" ng-model="user.password" required placeholder="Mot de passe" ng-class="{'msg-error-show':!verifPass ,'msg-error-show':!passLength }" ng-click="verifPass=true; passLength=true"></input>
+                    <input id="inputMdp" type="password" id="mdp" ng-model="userRecruteur.password" required placeholder="Mot de passe" ng-class="{'msg-error-show':!verifPass ,'msg-error-show':!passLength }" ng-click="verifPass=true; passLength=true"></input>
                 </div>
                     <p class="dont-match" ng-class="{'match':!verifPass}">Les mots de passe</br> ne correspondent pas.</p>
                     <p class="dont-match" ng-class="{'match':!passLength}">Veuillez renseigner un mot de passe</br> d'au moins 8 caractères.</p>
                 <div class="cont-input">
-                    <input type="password" id="mdp" ng-model="passwordChecked" required placeholder="Confirmation du mot de passe"></input>
+                    <input type="password" id="mdp" ng-model="passwordCheckedRecruteur" required placeholder="Confirmation du mot de passe"></input>
                 </div>
             </div>
             <div class="cont-button">
@@ -41,10 +41,38 @@
                     <h4>Envoyer</h4>
                 </button>
             </div>
-            
-        </form>
-        <div class="redirect">
+            <div class="redirect">
                     <a ui-sref="login">Se connecter</a>
-        </div>
+            </div>
+        </form>
+        <form class="form-simplonien" ng-submit="registerSimplonien()" ng-show="user.role == 'Simplonien'">
+            <div class="main-cont-input">
+                <div class="cont-input">
+                    <input type="text" id="nom" value="" ng-model="userSimplonien.lastName" required placeholder="Nom"></input>
+                </div>
+                <div class="cont-input">
+                    <input type="text" id="prenom" value="" ng-model="userSimplonien.firstName" required placeholder="Prénom"></input>
+                </div>
+                <div class="cont-input">
+                    <input type="email" id="email" ng-model="userSimplonien.email" required placeholder="E-mail"></input>
+                </div>
+                <div class="cont-input">
+                    <input id="inputMdp" type="password" id="mdp" ng-model="userSimplonien.password" required placeholder="Mot de passe" ng-class="{'msg-error-show':!verifPass ,'msg-error-show':!passLength }" ng-click="verifPass=true; passLength=true"></input>
+                </div>
+                    <p class="dont-match" ng-class="{'match':!verifPass}">Les mots de passe</br> ne correspondent pas.</p>
+                    <p class="dont-match" ng-class="{'match':!passLength}">Veuillez renseigner un mot de passe</br> d'au moins 8 caractères.</p>
+                <div class="cont-input">
+                    <input type="password" id="mdp" ng-model="passwordCheckedSimplonien" required placeholder="Confirmation du mot de passe"></input>
+                </div>
+            </div>
+            <div class="cont-button">
+                <button type="submit" class="send-button" >
+                    <h4>Envoyer</h4>
+                </button>
+            </div>
+            <div class="redirect">
+                    <a ui-sref="login">Se connecter</a>
+            </div>
+        </form>
     </div>
 </div>
