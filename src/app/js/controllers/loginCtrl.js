@@ -11,14 +11,16 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
         AuthService.login($scope.user).then(function(response) {
             $rootScope.showLogout = true;
             if (response.status != 404) {
-                if (response.data.user.role != 'Admin') {
-                    $state.go('home');
-                } else {
-                    $state.go('admin');
-                    return response;
+                if (response.data.user.role === 'Simplonien') {
+                    $state.go('profilUserStudent');
+                } else if(response.data.user.role === 'Recruteur') {
+                    $state.go('profilUserRecruiter');
+                } else if (response.data.user.role === 'Admin') {
+                  $state.go('admin');
                 }
+                return response;
             }
-            $state.go('profilUser');
+            $state.go('profilUserStudent');
         }).catch(function(error) {
             $scope.verifLogin = false;
             $rootScope.showLogout = false;
