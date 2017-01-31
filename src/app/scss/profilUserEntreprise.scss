@@ -1,0 +1,13 @@
+.container-entreprise{
+	display: flex;
+	min-height: calc(100vh - 110px);
+	.cont-info-entreprise{
+		width: 30%;
+		
+	}
+
+	.img-info-entreprise{
+		width: 70%;
+		background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
+	}
+}

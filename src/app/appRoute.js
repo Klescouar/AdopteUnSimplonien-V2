@@ -107,8 +107,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('profilUserEntreprise', {
+    url: '/board/entreprise',
+    views:{
+     'home':{
+      templateUrl: 'app/views/profilUserEntreprise.html',
+      controller: 'profilUserEntreprise'
+     }
+    }
+  })
   $urlRouterProvider.otherwise('/home');
 });
+
 
 
 

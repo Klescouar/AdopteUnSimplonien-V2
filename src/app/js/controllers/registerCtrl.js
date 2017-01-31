@@ -45,7 +45,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
         };
 
         $scope.registerSimplonien = () => {
-            if ($scope.userSimplonien.password.length.trim() >= 8) {
+            if ($scope.userSimplonien.password.trim().length >= 8) {
                 console.log("coucou")
                 if ($scope.userSimplonien.password === $scope.passwordCheckedSimplonien) {
                     AuthService.register($scope.userSimplonien).then(function(response) {
