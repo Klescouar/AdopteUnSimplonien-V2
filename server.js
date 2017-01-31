@@ -60,6 +60,7 @@ apiRoutes.post('/upload_photos', upload.upload);
 apiRoutes.post('/signup', user.signup);
 apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.get('/users', user.RecruiterUsers);
+apiRoutes.put('/update/user/:id', user.updateUser);
 apiRoutes.get('/memberinfo', user.memberinfo);
 apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), user.remove);
 
