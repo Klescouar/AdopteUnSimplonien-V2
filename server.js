@@ -20,8 +20,10 @@ const student = require(__dirname + '/app/controllers/controllers.student');
 const skill = require(__dirname + '/app/controllers/controllers.skills');
 const contract = require(__dirname + '/app/controllers/controllers.contracts');
 const school = require(__dirname + '/app/controllers/controllers.schools');
+const email = require(__dirname + '/app/controllers/controllers.emails');
 const apiRoutes = express.Router();
 const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien', 'users']);
+const nodemailer = require("nodemailer");
 
 require(__dirname + '/config/passport')(passport);
 
@@ -84,6 +86,9 @@ apiRoutes.delete('/backOffice/removeStudent/:id_profil', passport.authenticate('
 apiRoutes.post('/backOffice/addStudent', passport.authenticate('jwt', {session: false}), student.addStudent);
 apiRoutes.post('/backOffice/addStudentFromAdmin', passport.authenticate('jwt', {session: false}), student.addStudentFromAdmin);
 apiRoutes.put('/backOffice/update/:id', passport.authenticate('jwt', {session: false}), student.updateStudent);
+
+/////////////////////////EMAILS CONTROLLER/////////////////////////
+apiRoutes.post('/contact/send', email.contactMail);
 
 app.listen(port.port);
 console.log('http://localhost:' + port.port);

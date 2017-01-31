@@ -1,14 +1,14 @@
 <div class="contactPage">
     <div class="contactContainer">
-        <form method="post">
+        <form ng-submit="sendMail()">
             <h1>Une question, une suggestion, un doute ?</h1>
             <h1>C’est par ici !</h1>
-            <input type="text" name="nom" class="Name" placeholder="Nom/Prenom *" required/>
-            <input type="text" name="entreprise" class="Name" placeholder="Entreprise *" required/>
-            <input type="text" name="vile" class="City" placeholder="Ville *" required/>
-            <input type="email" name="email" class="Email" placeholder="Email *" required/>
-            <input type="text" name="phone" class="Phone" placeholder="Telephone"/>
-            <textarea name="message" rows="20" cols="20" class="Message" placeholder="Message *" required></textarea>
+            <input type="text" name="nom" ng-model="mail.name" class="Name" placeholder="Nom/Prenom *" required/>
+            <input type="text" name="entreprise" ng-model="mail.entreprise" class="Name" placeholder="Entreprise *" required/>
+            <input type="text" name="vile" ng-model="mail.city" class="City" placeholder="Ville *" required/>
+            <input type="email" name="email" ng-model="mail.sender" class="Email" placeholder="Email *" required/>
+            <input type="text" name="phone" ng-model="mail.phone" class="Phone" placeholder="Telephone"/>
+            <textarea name="message" rows="20" ng-model="mail.content" cols="20" class="Message" placeholder="Message *" required></textarea>
             <input type="submit" name="submit" value="ENVOYER" class="submit-button"/>
         </form>
         <div class="mapContact">
