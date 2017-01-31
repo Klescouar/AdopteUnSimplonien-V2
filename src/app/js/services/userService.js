@@ -68,6 +68,17 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
      );
   };
 
+  const updateUser = (id, newInfos) => {
+      return $http.put(API_ENDPOINT.url + '/update/user/' + id, newInfos).then(
+       function(response){
+         constantUser = localStorage.setItem('user', angular.toJson(response.data));
+        return response;
+       }, function(error){
+        return error;
+       }
+      );
+  };
+
   const register = (user) => {
       return $http.post(API_ENDPOINT.url + '/signup', user).then(
        function(response){
@@ -77,8 +88,6 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
        }
       );
   };
-
-
 
   const getInfo = (user) => {
    return $http.get(API_ENDPOINT.url + '/memberinfo').then(
@@ -117,6 +126,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   loadUserCredentials();
 
   return {
+    updateUser : updateUser,
     user: getConstantUser,
     setUser: setConstantUser,
     userRole: getConstantUserRole,

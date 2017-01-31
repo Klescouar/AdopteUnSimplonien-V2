@@ -251,7 +251,7 @@
 	}
 }
 
-.input-style {
+.input-BO-style {
 		height: 35px;
 		border: none;
 		border-bottom: 1px solid rgba(166, 166, 166, 0.85);
@@ -260,12 +260,12 @@
 		outline: none;
 }
 
-.input-style:hover {
+.input-BO-style:hover {
 	border-bottom: 1px solid rgba(212, 212, 212, 0.85);
 		outline: none;
 }
 
-.input-style:focus {
+.input-BO-style:focus {
 		border-bottom: 1px solid white;
 		outline: none;
 }

@@ -3,6 +3,27 @@ const jwt         = require('jwt-simple');
 const config      = require('../../config/database');
 
 
+exports.updateUser = function(req, res) {
+        const id = req.params.id;
+        User.findById(req.params.id, function (err, doc) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+              doc.firstName = req.body.firstName,
+              doc.lastName = req.body.lastName,
+              doc.company = req.body.company,
+              doc.email = req.body.email,
+                doc.save(function (err, doc) {
+                    if (err) {
+                        res.status(500).send(err)
+                    }
+                    res.send(doc);
+                });
+            }
+        });
+};
+
+
 exports.authenticate = function(req, res) {
    User.findOne({
      email: req.body.email
@@ -26,7 +47,6 @@ exports.authenticate = function(req, res) {
      }
    });
  };
-
 
 exports.signup =  function(req, res) {
   console.log(req.body);
@@ -104,6 +124,7 @@ exports.memberinfo = function(req, res) {
      return res.status(403).send({success: false, msg: 'No token provided.'});
    }
  };
+
 
 
  getToken = function (headers) {

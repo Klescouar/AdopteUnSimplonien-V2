@@ -1,9 +1,9 @@
-app.controller('profilUserEntreprise',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent) {
+app.controller('profilUserEntreprise',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'AuthService', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, AuthService) {
 
 	$scope.member = AuthService.user();
-	console.log($scope.member)
+	console.log(AuthService.user());
 
-	$scope.updateEntreprise = (id) => {
+	$scope.updateUser = (id) => {
           const response = confirm("Voulez vous vraiment modifier vos informations ?");
           if (response === true) {
               const newInfos = {
@@ -15,9 +15,10 @@ app.controller('profilUserEntreprise',['$http', '$scope', '$rootScope', 'AuthSer
 
               };
 
-              serviceEntreprise.updateEntreprise(id, newInfos).then(alert("Vos informations on bien été mises à jour !"))
+              AuthService.updateUser(id, newInfos).then((res) => {
+								alert("Vos informations on bien été mises à jour !");
+		})
           };
-          $state.reload();
       };
-    }    
+    }
 ]);

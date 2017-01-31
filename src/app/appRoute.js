@@ -98,8 +98,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
-  .state('profilUser', {
-    url: '/profilUser',
+  .state('profilUserStudent', {
+    url: '/dashboard/student',
     views:{
      'home':{
       templateUrl: 'app/views/user.html',
@@ -107,8 +107,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
-  .state('profilUserEntreprise', {
-    url: '/board/entreprise',
+  .state('profilUserRecruiter', {
+    url: '/dashboard/recruiter',
     views:{
      'home':{
       templateUrl: 'app/views/profilUserEntreprise.html',
