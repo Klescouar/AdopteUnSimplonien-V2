@@ -1,23 +1,23 @@
 <div class="container-bo">
     <div class="container-nav-bo">
-        <a href="" ng-click="show = 7">Fiches simplonien en attente</a>
-        <a href="" ng-click="show = 1">Créer un utilisateur</a>
-        <a href="" ng-click="show = 2">Supprimer un utilisateur</a>
-        <a href="" ng-click="show = 3">Créer une fiche Simplonien</a>
-        <a href="" ng-click="show = 4">Modifier/supprimer une fiche Simplonien</a>
-        <a href="" ng-click="show = 6">Gerer les filtres</a>
+        <a href="" ng-click="show = 7;changeColorButton(1)" ng-class="{'buttonFocus':!colorButton}">Fiches simplonien en attente</a>
+        <a href="" ng-click="show = 1" >Créer un utilisateur</a>
+        <a href="" ng-click="show = 2" ng-class="{'buttonFocus':!colorButton}">Supprimer un utilisateur</a>
+        <a href="" ng-click="show = 3" ng-class="{'buttonFocus':!colorButton}">Créer une fiche Simplonien</a>
+        <a href="" ng-click="show = 4" ng-class="{'buttonFocus':!colorButton}">Modifier/supprimer une fiche Simplonien</a>
+        <a href="" ng-click="show = 6" ng-class="{'buttonFocus':!colorButton}">Gerer les filtres</a>
     </div>
     <div class="container-interface">
         <h1 ng-if="show === 0">
             Welcome to your BackOffice Norbert!</h1>
         <form class="container-create-user" ng-submit="addUser()" ng-show="show==1">
             <h2>Créer un utilisateur</h2>
-            <input type="text" id="nom" class="form-control" value="" ng-model="user.lastName" required></input>
-            <input type="text" id="prenom" class="form-control" value="" ng-model="user.firstName" required></input>
-            <input type="password" id="mdp" class="form-control" ng-model="user.password" required></input>
-            <input type="text" id="email" class="form-control" ng-model="user.email" required></input>
+            <input type="text" id="nom" class="form-control" value="" ng-model="user.lastName" required placeholder="Nom"></input>
+            <input type="text" id="prenom" class="form-control" value="" ng-model="user.firstName" required placeholder="Prenom"></input>
+            <input type="password" id="mdp" class="form-control" ng-model="user.password" required placeholder="Mot de passe"></input>
+            <input type="email" id="email" class="form-control" ng-model="user.email" required placeholder="Email"></input>
             <input class="input-style" value="Créer un utilisateur" type="submit">
-
+    
         </form>
 
         <div class="container-delete-user" ng-show="show==2">
