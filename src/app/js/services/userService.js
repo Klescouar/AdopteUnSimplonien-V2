@@ -1,5 +1,5 @@
 app.service('AuthService', function($q, $http, API_ENDPOINT) {
-  let LOCAL_TOKEN_KEY = 'evalShopAppTokenKey';
+  let LOCAL_TOKEN_KEY = 'AdopteAppTokenKey';
   let isAuthenticated = false;
   let authToken;
   let role = '';
@@ -79,8 +79,9 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       );
   };
 
-  const updateUserPass = (id, newInfos) => {
-      return $http.put(API_ENDPOINT.url + '/update/pass/' + id, newInfos).then(function(response) {
+  const updateUserPass = (mail) => {
+      return $http.get(API_ENDPOINT.url + '/update/pass/' + mail).then(function(response) {
+        constantUser = localStorage.setItem('user', angular.toJson(response.data));
           return response;
       }, function(error) {
           return error;

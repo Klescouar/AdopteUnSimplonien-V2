@@ -1,6 +1,7 @@
 const User        = require('../models/user');
 const jwt         = require('jwt-simple');
 const config      = require('../../config/database');
+const payload     = { foo: 'bar' };
 
 
 exports.updateUser = function(req, res) {
@@ -73,6 +74,11 @@ exports.authenticate = function(req, res) {
        });
      }
    });
+ };
+
+ exports.createToken = function(req, res){
+   const token = jwt.encode(req.params.mail, config.secret);
+   res.json(token);
  };
 
 exports.signup =  function(req, res) {

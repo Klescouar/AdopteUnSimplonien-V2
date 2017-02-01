@@ -91,6 +91,8 @@ apiRoutes.put('/backOffice/update/:id', passport.authenticate('jwt', {session: f
 
 /////////////////////////EMAILS CONTROLLER/////////////////////////
 apiRoutes.post('/contact/send', email.contactMail);
+apiRoutes.get('/update/pass/:mail', user.createToken);
+
 
 
 app.listen(port.port);

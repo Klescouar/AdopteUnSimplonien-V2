@@ -116,9 +116,10 @@
         </div>
         <div class="cont-input full-width">
           <label for="boCreateTagsSimploniens">Vos Compétences</label>
-          <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag" ng-click='addTag(tag)'>
+          <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
+          <button type="button"ng-click='addTag(tag)' name="button">ADD</button>
           <ul class="tags-list">
-            <li class="tagViewVille" ng-repeat='tag in tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag()'></span></li>
+            <li class="tagViewVille" ng-repeat='tag in tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
           </ul>
         </div>
 

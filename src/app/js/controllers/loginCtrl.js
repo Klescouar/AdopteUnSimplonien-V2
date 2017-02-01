@@ -31,11 +31,4 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
             $state.go('login');
         });
     };
-
-
-    $scope.forgotPass = (params) => {
-      serviceMailer.forgotPass(params).then((res) => {
-        console.log(res.data);
-      })
-    };
  }]);

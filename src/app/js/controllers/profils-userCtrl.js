@@ -5,6 +5,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.photo = '';
         $scope.turnOff = false;
         $scope.tags = [];
+        $scope.student = {};
 
 
         $scope.getAllContract = () => {
@@ -42,12 +43,14 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
         $scope.addTag = function(tag) {
-          if(tag.value !== ''){
+          if (tag == undefined) {
+            return
+          }
+          else if(tag.length !== 0){
             $scope.tags.push(tag);
           }
           console.log($scope.tags);
           // $scope.student.tags = $scope.tags;
-          console.log($scope.student.tags);
         }
 
         $scope.removeTag = function(tag){
