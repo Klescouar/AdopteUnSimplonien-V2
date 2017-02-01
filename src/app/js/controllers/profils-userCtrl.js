@@ -4,6 +4,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.showEditProfilUser = false;
         $scope.photo = '';
         $scope.turnOff = false;
+        $scope.contracts = {};
+
 
         $scope.getAllContract = () => {
             serviceFilter.getAllContract().then(function(response) {
@@ -103,7 +105,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   Mail: $scope.student.Mail,
                   Contrat: $scope.student.Contrat,
                   DatePromo: $scope.student.DatePromo,
-                  Domaine: $scope.student.DatePromo
+                  Domaine: $scope.student.DatePromo,
+                  ProjetUn: $scope.student.ProjetUn,
+                  ProjetDeux: $scope.student.ProjetDeux,
+                  ProjetTrois: $scope.student.ProjetTrois
                 };
                 serviceStudent.updateStudent(id, newInfos).then((response) => {})
                 alert("Apprenant modifié!")
@@ -158,5 +163,24 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             $scope.uploadFiles(formData);
         });
 
-    }
-]);
+        // Form Input Label Animation
+        // $(function(){
+          var onClass = "on";
+          var showClass = "show";
+
+          $("input,textarea").bind("checkval",function(){
+            var label = $(this).prev("label");
+            if(this.value !== ""){
+              label.addClass(showClass);
+            } else {
+              label.removeClass(showClass);
+            }
+          }).on("keyup",function(){
+            $(this).trigger("checkval");
+          }).on("focus",function(){
+            $(this).prev("label").addClass(onClass);
+          }).on("blur",function(){
+            $(this).prev("label").removeClass(onClass);
+          }).trigger("checkval");
+        // });
+}]);
