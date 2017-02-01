@@ -61,6 +61,7 @@ apiRoutes.post('/signup', user.signup);
 apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.get('/users', user.RecruiterUsers);
 apiRoutes.put('/update/user/:id', user.updateUser);
+apiRoutes.put('/update/pass/:id', user.updateUserPass);
 apiRoutes.get('/memberinfo', user.memberinfo);
 apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), user.remove);
 
@@ -90,6 +91,7 @@ apiRoutes.put('/backOffice/update/:id', passport.authenticate('jwt', {session: f
 
 /////////////////////////EMAILS CONTROLLER/////////////////////////
 apiRoutes.post('/contact/send', email.contactMail);
+
 
 app.listen(port.port);
 console.log('http://localhost:' + port.port);

@@ -8,6 +8,10 @@ app.controller('appUserCtrl', ['$scope', '$rootScope', '$state', 'AuthService', 
   });
 
   if (AuthService.userRole()) {
+    $rootScope.userRole = AuthService.userRole();
+  }
+
+  if (AuthService.userRole()) {
     $rootScope.showLogout = true;
   }
 

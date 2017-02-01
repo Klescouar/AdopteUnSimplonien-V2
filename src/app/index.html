@@ -63,7 +63,8 @@
             <a class="user-icon" ui-sref="home" ng-click="logout()" ng-if="showLogout">
                 <p>Déconnexion</p>
             </a>
-            <a class="user-icon" ng-if="showLogout" ui-sref="profilUserStudent">Espace Perso</a>
+            <a class="user-icon" ng-if="showLogout && userRole === 'Simplonien'" ui-sref="profilUserStudent">Espace Perso</a>
+            <a class="user-icon" ng-if="showLogout && userRole === 'Recruteur'" ui-sref="profilUserRecruiter">Espace Perso</a>
             <a class="user-icon" ui-sref="login" ng-if="!showLogout">Connexion</a>
         </div>
 
@@ -95,6 +96,7 @@
 
         <!-- CONTROLLERS -->
         <script src="app/js/controllers/registerCtrl.js"></script>
+        <script src="app/js/controllers/resetPassCtrl.js"></script>
         <script src="app/js/controllers/signInUpCtrl.js"></script>
         <script src="app/js/controllers/app-userCtrl.js"></script>
         <script src="app/js/controllers/loginCtrl.js"></script>

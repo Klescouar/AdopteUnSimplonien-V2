@@ -24,6 +24,33 @@ exports.updateUser = function(req, res) {
 };
 
 
+exports.updateUserPass = function(req, res) {
+    User.findById(req.params.id, function(err, user) {
+        if (!user) {
+          return res.json({success: false, msg: 'Email doesn\'t exists.'});
+        } else {
+          user.comparePassword(req.body.oldpass, function (err, isMatch) {
+            if (isMatch && !err) {
+              // if user is found and password is right create a token
+              const token = jwt.encode(user, config.secret);
+              // return the information including token as JSON
+                user.password = req.body.newpass,
+                user.save(function(err) {
+                    if (err) {
+                        return res.json({success: false, msg: 'Email already exists.'});
+                    }
+                    res.json({success: true, msg: 'Successful update password.'});
+                });
+              res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
+            } else {
+              res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+            }
+          });
+        }
+    });
+};
+
+
 exports.authenticate = function(req, res) {
    User.findOne({
      email: req.body.email
@@ -49,7 +76,6 @@ exports.authenticate = function(req, res) {
  };
 
 exports.signup =  function(req, res) {
-  console.log(req.body);
   User.findOne({
     email: req.body.email
   }, function(err, user) {

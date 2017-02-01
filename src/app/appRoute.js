@@ -58,6 +58,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('resetPass', {
+    url: '/reset/password',
+    views:{
+     'home':{
+      templateUrl: 'app/views/resetPass.html',
+      controller: 'resetPassCtrl'
+     }
+    }
+  })
   .state('profil', {
     url: '/profil/:student',
     views:{
@@ -103,7 +112,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
     views:{
      'home':{
       templateUrl: 'app/views/user.html',
-      controller: 'profilsUserCtrl'
+      controller: 'profilsUserCtrl',
+      resolve:{
+       function(AuthService, $state){
+        const role = AuthService.userRole();
+        if (role != 'Simplonien') {
+         $state.go('home');
+         return false;
+        }else{
+         return true;
+        }
+       }
+      }
      }
     }
   })
@@ -112,7 +132,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
     views:{
      'home':{
       templateUrl: 'app/views/profilUserEntreprise.html',
-      controller: 'profilUserEntreprise'
+      controller: 'profilUserEntreprise',
+      resolve:{
+       function(AuthService, $state){
+        const role = AuthService.userRole();
+        console.log(role);
+        if (role != 'Recruteur') {
+         $state.go('home');
+         return false;
+        }else{
+         return true;
+        }
+       }
+      }
      }
     }
   })

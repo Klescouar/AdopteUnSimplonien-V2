@@ -79,6 +79,14 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       );
   };
 
+  const updateUserPass = (id, newInfos) => {
+      return $http.put(API_ENDPOINT.url + '/update/pass/' + id, newInfos).then(function(response) {
+          return response;
+      }, function(error) {
+          return error;
+      });
+  };
+
   const register = (user) => {
       return $http.post(API_ENDPOINT.url + '/signup', user).then(
        function(response){
@@ -126,6 +134,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   loadUserCredentials();
 
   return {
+    updateUserPass : updateUserPass,
     updateUser : updateUser,
     user: getConstantUser,
     setUser: setConstantUser,
