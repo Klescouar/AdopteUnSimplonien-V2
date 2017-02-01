@@ -18,6 +18,7 @@
         <div class="info-group">
           <div class="cont-input">
             <input id="boCreateLastNameSimploniens" class="input-style" ng-model="student.nom" placeholder="Nom" type="text" required>
+            <label for="boCreateLastNameSimploniens">Nom</label>
           </div>
           <div class="cont-input">
             <input id="boCreateNameSimploniens" class="input-style" ng-model="student.prenom" placeholder="Prénom" required>
@@ -27,7 +28,7 @@
           </div>
           <div class="cont-input">
             <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe" placeholder="Sexe" required>
-              <option value="0" selected disabled>Sexe</option>
+              <option selected>Sexe</option>
               <option value="Homme">Homme</option>
               <option value="Femme">Femme</option>
               <option value="Autre">Autre</option>
@@ -38,7 +39,7 @@
           </div>
           <div class="cont-input">
             <label value='Type_de_Contrat'>Type de Contrat</label>
-            <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-init="student.Contrat" ng-options='contract.name for contract in contracts' value='student.Contrat'>
+            <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
             </select>
           </div>
           <div class="cont-input">

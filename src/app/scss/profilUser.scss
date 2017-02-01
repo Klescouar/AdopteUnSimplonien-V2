@@ -5,12 +5,49 @@
   flex-direction: column;
   align-items: center;
   color: black;
+  .choose-pic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #upload-photos{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #photos-input{
+      max-width: 200px;
+    }
+    #upload-pic {
+      height: 150px;
+      width: 150px;
+      border: solid 2px #90c7dc;
+      border-radius: 50%;
+      margin: 30px;
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 100%;
+        width: 100%;
+        width: auto;
+      }
+    }
+  }
 
-  .container-create-entreprise{
+  .global-profile-container{
+    width: $full;
+    max-width: 700px;
+  }
+
+  .container-create{
     color: black;
     padding: 40px;
     background-color: white;
-    width: 40vw;
+    width: $full;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -34,34 +71,41 @@
       }
     }
 
-    .info-group-entreprise{
+    .info-group{
       display: flex;
-      flex-direction:column;
+      flex-flow: row wrap;
       justify-content: space-around;
       margin-bottom: 20px;
     }
+  }
 
-    .cont-input{
-      width: 50%;
-      display: flex;
-      margin-top: 15px;
-      padding: 0 20px;
+  .cont-input{
+    width: 50%;
+    margin-top: 15px;
+    padding: 0 20px;
+    position: relative;
 
-      &.full-width{
-          width: 100%;
-      }
-
-      input, select, textarea{
-        height: 30px;
+    &.full-width{
         width: 100%;
-        border: none;
-        border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-        color: black;
-        outline: none;
-      }
-      textarea{
-        height: 50px;
-      }
+    }
+
+    input, select, textarea{
+      position: relative;
+      height: 30px;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+      color: black;
+      outline: none;
+      background: none;
+      border-radius: 0;
+    // -webkit-appearance: none;
+    }
+    textarea{
+      height: 50px;
+    }
+    label{
+      position: absolute;
     }
   }
 

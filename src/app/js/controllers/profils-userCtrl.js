@@ -48,22 +48,22 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 age: $scope.student.age,
                 ville: $scope.student.ville,
                 photo: $scope.student.photo,
-                tags: document.getElementById("boCreateTagsSimploniens").value,
-                description: document.getElementById("boCreateAboutSimploniens").value,
-                Sexe: document.getElementById("boCreateSexeSimploniens").value,
-                SpecialiteUn: document.getElementById("boCreateSpeOneSimploniens").value,
-                SpecialiteDeux: document.getElementById("boCreateSpeTwoSimploniens").value,
-                SpecialiteTrois: document.getElementById("boCreateSpeThreeSimploniens").value,
-                Github: document.getElementById("boCreateGithubSimploniens").value,
-                Linkedin: document.getElementById("boCreateLinkedinSimploniens").value,
-                Portfolio: document.getElementById("boCreatePortfolioSimploniens").value,
-                CV: document.getElementById("boCreateCVSimploniens").value,
-                Twitter: document.getElementById("boCreateTwitterSimploniens").value,
-                StackOverFlow: document.getElementById("boCreateStackOverFlowSimploniens").value,
-                Mail: document.getElementById("boCreateMailSimploniens").value,
+                tags: $scope.student.tags,
+                description: $scope.student.description,
+                Sexe: $scope.student.Sexe,
+                SpecialiteUn: $scope.student.SpecialiteUn,
+                SpecialiteDeux: $scope.student.SpecialiteDeux,
+                SpecialiteTrois: $scope.student.SpecialiteTrois,
+                Github: $scope.student.Github,
+                Linkedin: $scope.student.Linkedin,
+                Portfolio: $scope.student.Portfolio,
+                CV: $scope.student.CV,
+                Twitter: $scope.student.Twitter,
+                StackOverFlow: $scope.student.StackOverFlow,
+                Mail: $scope.student.Mail,
                 Contrat: $scope.student.Contrat,
-                DatePromo: document.getElementById("boCreateDatePromoSimploniens").value,
-                Domaine: document.getElementById("boCreateDomaineSimploniens").value
+                DatePromo: $scope.student.DatePromo,
+                Domaine: $scope.student.DatePromo
             };
 
             serviceStudent.addStudent(dataStudent).then((response) => {
@@ -79,34 +79,32 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
         $scope.updateStudent = (id) => {
-          console.log($scope.studentContrat);
             const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
             if (response === true) {
                 const newInfos = {
-                    nom: document.getElementById("boCreateLastNameSimploniens").value,
-                    prenom: document.getElementById("boCreateNameSimploniens").value,
-                    age: document.getElementById("boCreateOldSimploniens").value,
-                    ville: document.getElementById("boCreatePromoSimploniens").value,
-                    photo: $scope.photo ? $scope.photo : $scope.student.photo,
-                    tags: document.getElementById("boCreateTagsSimploniens").value,
-                    description: document.getElementById("boCreateAboutSimploniens").value,
-                    Sexe: document.getElementById("boCreateSexeSimploniens").value,
-                    SpecialiteUn: document.getElementById("boCreateSpeOneSimploniens").value,
-                    SpecialiteDeux: document.getElementById("boCreateSpeTwoSimploniens").value,
-                    SpecialiteTrois: document.getElementById("boCreateSpeThreeSimploniens").value,
-                    Github: document.getElementById("boCreateGithubSimploniens").value,
-                    Linkedin: document.getElementById("boCreateLinkedinSimploniens").value,
-                    Portfolio: document.getElementById("boCreatePortfolioSimploniens").value,
-                    CV: document.getElementById("boCreateCVSimploniens").value,
-                    Twitter: document.getElementById("boCreateTwitterSimploniens").value,
-                    StackOverFlow: document.getElementById("boCreateStackOverFlowSimploniens").value,
-                    Mail: document.getElementById("boCreateMailSimploniens").value,
-                    Contrat: $scope.student.Contrat,
-                    DatePromo: document.getElementById("boCreateDatePromoSimploniens").value,
-                    Domaine: document.getElementById("boCreateDomaineSimploniens").value
-
+                  nom: $scope.student.nom,
+                  prenom: $scope.student.prenom,
+                  age: $scope.student.age,
+                  ville: $scope.student.ville,
+                  age: $scope.student.age,
+                  photo: $scope.photo ? $scope.photo : $scope.student.photo,
+                  tags: $scope.student.tags,
+                  description: $scope.student.description,
+                  Sexe: $scope.student.Sexe,
+                  SpecialiteUn: $scope.student.SpecialiteUn,
+                  SpecialiteDeux: $scope.student.SpecialiteDeux,
+                  SpecialiteTrois: $scope.student.SpecialiteTrois,
+                  Github: $scope.student.Github,
+                  Linkedin: $scope.student.Linkedin,
+                  Portfolio: $scope.student.Portfolio,
+                  CV: $scope.student.CV,
+                  Twitter: $scope.student.Twitter,
+                  StackOverFlow: $scope.student.StackOverFlow,
+                  Mail: $scope.student.Mail,
+                  Contrat: $scope.student.Contrat,
+                  DatePromo: $scope.student.DatePromo,
+                  Domaine: $scope.student.DatePromo
                 };
-
                 serviceStudent.updateStudent(id, newInfos).then((response) => {})
                 alert("Apprenant modifié!")
             };

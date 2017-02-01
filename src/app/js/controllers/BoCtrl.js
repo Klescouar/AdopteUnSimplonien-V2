@@ -88,7 +88,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
                   Mail: $scope.student.Mail,
                   Contrat: $scope.student.Contrat,
                   DatePromo: $scope.student.DatePromo,
-                  Domaine: $scope.student.Domaine
+                  Domaine: ç
 
               };
 
