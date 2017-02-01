@@ -114,9 +114,12 @@
           <label for="boCreateSpeThreeSimploniens">Spécialité 3</label>
           <input id="boCreateSpeThreeSimploniens" class="input-style" placeholder="Specialite 3" ng-model="student.SpecialiteTrois" required>
         </div>
-        <div class="cont-input">
+        <div class="cont-input full-width">
           <label for="boCreateTagsSimploniens">Vos Compétences</label>
-          <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="student.tag">
+          <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag" ng-click='addTag(tag)'>
+          <ul class="tags-list">
+            <li class="tagViewVille" ng-repeat='tag in tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag()'></span></li>
+          </ul>
         </div>
 
       </div>

@@ -4,7 +4,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.showEditProfilUser = false;
         $scope.photo = '';
         $scope.turnOff = false;
-        $scope.contracts = {};
+        $scope.tags = [];
 
 
         $scope.getAllContract = () => {
@@ -41,6 +41,21 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             }
         }
 
+        $scope.addTag = function(tag) {
+          if(tag.value !== ''){
+            $scope.tags.push(tag);
+          }
+          console.log($scope.tags);
+          // $scope.student.tags = $scope.tags;
+          console.log($scope.student.tags);
+        }
+
+        $scope.removeTag = function(tag){
+          $scope.tags.splice($scope.tags.indexOf(tag),1);
+          console.log($scope.tags);
+          $scope.student.tags = $scope.tags;
+        }
+
         $scope.createSimplonien = () => {
             const dataStudent = {
                 memberId: $scope.member._id,
@@ -65,7 +80,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 Mail: $scope.student.Mail,
                 Contrat: $scope.student.Contrat,
                 DatePromo: $scope.student.DatePromo,
-                Domaine: $scope.student.DatePromo
+                Domaine: $scope.student.DatePromo,
+                ProjetUn: $scope.student.ProjetUn,
+                ProjetDeux: $scope.student.ProjetDeux,
+                ProjetTrois: $scope.student.ProjetTrois
             };
 
             serviceStudent.addStudent(dataStudent).then((response) => {
@@ -164,7 +182,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         });
 
         // Form Input Label Animation
-        // $(function(){
+        $(function(){
           var onClass = "on";
           var showClass = "show";
 
@@ -182,5 +200,5 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
           }).on("blur",function(){
             $(this).prev("label").removeClass(onClass);
           }).trigger("checkval");
-        // });
+        });
 }]);
