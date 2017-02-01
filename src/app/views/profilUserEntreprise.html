@@ -3,9 +3,10 @@
     <div class="container-create-entreprise">
 
       <!-- User Info Section -->
-      <div class="section">
-        <h1 class="info-title">Entreprise : Name</h1>
+      <div class="section-entreprise">
+        <h2 class="info-title">Entreprise : Name</h2>
         <div class="info-group-entreprise">
+        <h4 class="info-title">Modifier mes informations personnelles</h4>
           <div class="cont-input-entreprise">
             <input id="" class="input-style" ng-model="member.company" placeholder="Entreprise" type="" required>
           </div>
@@ -18,6 +19,12 @@
           <div class="cont-input-entreprise">
             <input id="" class="input-style" ng-model="member.email" placeholder="Email" required>
           </div>
+          <div class="button-container-entreprise">
+            <input class="input-style edit-button-entreprise" ng-show="!student" value="Modifier" type="submit" ng-click='updateUser(member._id)'>
+          </div>
+        </div>
+        <div class="info-group-entreprise">
+          <h4 class="info-title">Changer de mot de passe</h4>
           <div class="cont-input-entreprise">
             <input id="" class="input-style"  placeholder="Ancien mot de passe" required>
           </div>
@@ -27,14 +34,13 @@
         <div class="cont-input-entreprise">
           <input id="" class="input-style"  placeholder="Confirmation du nouveau mot de passe" required>
         </div>
+        <div class="button-container-entreprise">
+            <input class="input-style edit-button-entreprise" ng-show="!student" value="Modifier" type="submit" ng-click='updateUser(member._id)'>
+          </div>
       </div>
-
     </div>
   </div>
   <!-- Submit Buttons -->
 
-    <div class="button-container-entreprise">
-      <input class="input-style edit-button-entreprise" ng-show="!student" value="Modifier" type="submit" ng-click='updateUser(member._id)'>
-    </div>
   </div>
 </div>

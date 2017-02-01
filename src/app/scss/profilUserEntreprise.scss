@@ -18,13 +18,12 @@
     justify-content: center;
     align-items: center;
 
-    .section{
+    .section-entreprise{
       display: flex;
       flex-flow: column;
       justify-content: center;
       align-items: center;
       width: $full;
-      margin-bottom: 30px;
 
       .info-title{
         margin-bottom: 0;
@@ -40,6 +39,10 @@
        justify-content: center;
     align-items: center;
       margin-bottom: 20px;
+    }
+
+    h4{
+    	text-align: center;
     }
 
     .cont-input-entreprise{
@@ -67,6 +70,7 @@
   }
 
   .button-container-entreprise{
+    margin-top: 40px;
     display: flex;
     width: $full;
     background-color: white;
@@ -77,7 +81,7 @@
 
     .edit-button-entreprise{
       background-color: #2F3E52;
-      margin-bottom: 40px;
+
     }
     .edit-button-entreprise{
       height: 50px;
