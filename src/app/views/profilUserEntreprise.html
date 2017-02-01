@@ -3,21 +3,34 @@
     <div class="container-create-entreprise">
 
       <!-- User Info Section -->
-      <div class="section">
-        <h1 class="info-title">Entreprise : Name</h1>
-        <div class="info-group-entreprise">
+      <div class="section-entreprise">
+        <h2>Entreprise : {{member.company}}</h2>
+        <div class="info-group-entreprise" ng-class="{'info-ent':!anime}">
+        <h4 class="info-title">Modifier mes informations personnelles</h4>
+        <form class="form-entreprise" ng-submit='updateUser(member._id)'>
           <div class="cont-input-entreprise">
-            <input id="" class="input-style" ng-model="member.company" placeholder="Entreprise" type="" required>
+            <input id="" class="input-style" ng-model="member.company" placeholder="Entreprise" type="text" required>
           </div>
           <div class="cont-input-entreprise">
-            <input id="" class="input-style" ng-model="member.firstName" placeholder="Nom" required>
+            <input id="" class="input-style" ng-model="member.firstName" placeholder="Nom" type="text" required>
           </div>
           <div class="cont-input-entreprise">
-            <input id="" class="input-style" ng-model="member.lastName" placeholder="Prénom" required>
+            <input id="" class="input-style" ng-model="member.lastName" placeholder="Prénom" type="text" required>
           </div>
           <div class="cont-input-entreprise">
-            <input id="" class="input-style" ng-model="member.email" placeholder="Email" required>
+            <input id="" class="input-style" ng-model="member.email" placeholder="Email" type="email" required>
           </div>
+          <div class="button-container-entreprise">
+            <input class="input-style edit-button-entreprise" value="Modifier" type="submit">
+          </div>
+          </form>
+        </div>
+        <div class="invisible-message-entreprise" ng-class="{'visible-message-entreprise':!validate}">
+              Votre profil a bien été modifié !
+          </div>
+        <div class="info-group-entreprise-password"  ng-class="{'info-password':!anime}">
+          <h4 class="info-title">Changer de mot de passe</h4>
+          <form class="form-entreprise">
           <div class="cont-input-entreprise">
             <input id="" class="input-style"  placeholder="Ancien mot de passe" required>
           </div>
@@ -27,14 +40,17 @@
         <div class="cont-input-entreprise">
           <input id="" class="input-style"  placeholder="Confirmation du nouveau mot de passe" required>
         </div>
+        <div class="button-container-entreprise">
+            <input class="input-style edit-button-entreprise" value="Modifier" type="submit" ng-click='updateMdp(member._id)'>
+          </div>
+          </form>
       </div>
-
     </div>
-  </div>
-  <!-- Submit Buttons -->
+    <div class="button-container-entreprise" >
+            <input class="input-style edit-button-entreprise button-change-view" name="mdp"  value="Gérer mon mot de passe" type="submit" ng-click='changeView()'>
+        </div>
 
-    <div class="button-container-entreprise">
-      <input class="input-style edit-button-entreprise" ng-show="!student" value="Modifier" type="submit" ng-click='updateUser(member._id)'>
-    </div>
   </div>
 </div>
+</div>
+

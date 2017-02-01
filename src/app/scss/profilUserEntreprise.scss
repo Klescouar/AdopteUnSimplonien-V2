@@ -6,40 +6,29 @@
   align-items: center;
   justify-content:center;
   color: black;
+  overflow: hidden;
 
   .container-create-entreprise{
+    position: relative;
+    height: 600px;
     color: black;
-    padding: 40px;
     background-color: white;
-    width: 35vw;
+    width: 30vw;
     min-width: 400px;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
-    .section{
+
+    .section-entreprise{
       display: flex;
       flex-flow: column;
       justify-content: center;
       align-items: center;
       width: $full;
-      margin-bottom: 30px;
-
-      .info-title{
-        margin-bottom: 0;
-        margin-bottom: 20px;
-      }
-
-    }
-
-    .info-group-entreprise{
-    width: 80%;
-      display: flex;
-      flex-direction:column;
-       justify-content: center;
-    align-items: center;
-      margin-bottom: 20px;
+          h4{
+      text-align: center;
     }
 
     .cont-input-entreprise{
@@ -64,26 +53,115 @@
         height: 50px;
       }
     }
+
+      .info-title{
+            display: flex;
+    	       justify-content: center;
+    	       align-items: center;
+    	       margin-bottom: 20px;
+    	       margin-top: 0px;
+    	       background-color: #2F3E52;
+    	       color: white;
+    	       height: 50px;
+    	       width: 100%;
+      }
+
+    }
+    
+
+
+
+    .info-group-entreprise{
+      transition-duration: 1.2s;
+ 	min-width: 25vw;
+ 	display: flex;
+ 	flex-direction:column;
+  	justify-content: center;
+ 	align-items: center;
+ 	margin-bottom: 20px;
+ 	border:1px solid #6c94b4;
+
+   
   }
 
   .button-container-entreprise{
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     width: $full;
     background-color: white;
     justify-content:center;
-    .delete-button{
-      background-color: #de5b49;
-    }
+
 
     .edit-button-entreprise{
-      background-color: #2F3E52;
-      margin-bottom: 40px;
-    }
-    .edit-button-entreprise{
       height: 50px;
-      width: 30%;
+      width: 25%;
+      color: white;
+      background-color: #de5b49;
       border: none;
-      color: white
+    }
+
+    .button-change-view{
+      width: 100%;
+      color: white;
+      background-color: #2F3E52;
     }
   }
 }
+}
+
+//ANIMATION CHANGE PASSWORD
+
+    .info-group-entreprise-password{
+      background-color: white;
+    	transition-duration: 1.2s;
+    	position: absolute;
+    	top:2000px;
+ 	min-width: 25vw;
+ 	display: flex;
+ 	flex-direction:column;
+  	justify-content: center;
+ 	align-items: center;
+ 	margin-bottom: 20px;
+ 	border:1px solid #6c94b4;
+
+ }
+
+.form-entreprise{
+  width: 100%;
+  min-width: 350px;
+}
+
+	.info-password{
+            background-color: white;
+		transition-duration: 1.2s;
+		position: absolute;
+		min-width: 25vw;
+ 		display: flex;
+ 		flex-direction:column;
+  		justify-content: center;
+ 		align-items: center;
+ 		margin-bottom: 20px;
+ 		border:1px solid #6c94b4;
+		top: 22%;
+
+	}
+
+  .info-ent{
+    transition-duration: 1s;
+    opacity: 0;
+  }
+
+  //VALIDATION MESSAGE
+
+  .invisible-message-entreprise{
+    display: none;
+  }
+
+  .visible-message-entreprise{
+    text-align: center;
+    width: 70%;
+    border: 1px green solid;
+    color: green;
+    display: block;
+  }
