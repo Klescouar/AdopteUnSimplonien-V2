@@ -1,5 +1,5 @@
 <div class="ProfilUser">
-  <div class="global-profile-container">
+  <div class="global-profile-container-entreprise">
     <div class="container-create-entreprise">
 
       <!-- User Info Section -->
@@ -32,18 +32,27 @@
           <h4 class="info-title">Changer de mot de passe</h4>
           <form class="form-entreprise">
           <div class="cont-input-entreprise">
-            <input id="" class="input-style" ng-model= "newPassword.oldpass"  placeholder="Ancien mot de passe" required>
+            <input class="input-style" ng-model= "newPassword.oldpass"  placeholder="Ancien mot de passe" required>
           </div>
         <div class="cont-input-entreprise">
-          <input id="" class="input-style" ng-model= "newPassword.newpass"  placeholder="Nouveau mot de passe" required>
+          <input class="input-style" ng-model= "newPassword.newpass"  placeholder="Nouveau mot de passe" required>
         </div>
         <div class="cont-input-entreprise">
-          <input id="" class="input-style"  placeholder="Confirmation du nouveau mot de passe" required>
+          <input class="input-style" ng-model= "passwordChecked" placeholder="Confirmation du nouveau mot de passe" required>
         </div>
         <div class="button-container-entreprise">
             <input class="input-style edit-button-entreprise" value="Modifier" type="submit" ng-click="updateUserPass(member._id, newPassword)">
           </div>
           </form>
+      </div>
+      <div class="invisible-message-entreprise" ng-class="{'match':!verifPass}">
+            Les mots de passe ne correspondent pas.
+      </div>
+      <div class="invisible-message-entreprise" ng-class="{'match':!passLength}">
+              Veuillez renseigner un mot de passe d'au moins 8 caractères.
+      </div>
+      <div class="invisible-message-entreprise" ng-class="{'match':!oldPassVerif}">
+              Mot de passe actuel invalide.
       </div>
     </div>
     <div class="button-container-entreprise" >

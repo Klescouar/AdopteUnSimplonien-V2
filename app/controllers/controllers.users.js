@@ -44,7 +44,7 @@ exports.updateUserPassFromProfil = function(req, res) {
                 });
               res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
             } else {
-              res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+              res.send({success: false, msg: 'Wrong password'});
             }
           });
         }
@@ -68,7 +68,6 @@ exports.resetPass = function(req, res) {
                     }
                     res.json({success: true, msg: 'Successful update password.'});
                 });
-              res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
         }
     });
 };
@@ -195,7 +194,6 @@ exports.memberinfo = function(req, res) {
  };
 
  exports.remove = function(req, res) {
-   console.log(req.params.id);
   const token = getToken(req.headers);
   if (token) {
    const decoded = jwt.decode(token, config.secret);
