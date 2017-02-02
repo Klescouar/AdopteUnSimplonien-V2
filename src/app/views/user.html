@@ -51,12 +51,12 @@
             </div>
             <div class="cont-input">
               <label for="boCreatePromoSimploniens">Ville</label>
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school.name" ng-options='school as school.name for school in schools' ng-init="student.school = school.name" placeholder="Ville" required>
+              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school" ng-options='school.name for school in schools' placeholder="Ville" required>
                 <option value="" disabled>Ville</option>
               </select>
             </div>
             <div class="cont-input">
-              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat.name" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
+              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-options='contract.name for contract in contracts'>
                 <option value="" disabled> Type de Contrat</option>
               </select>
             </div>

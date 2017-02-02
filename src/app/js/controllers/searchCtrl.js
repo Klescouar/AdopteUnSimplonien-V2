@@ -41,6 +41,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     serviceStudent.getAllStudent().then((res) => {
       $scope.loading = false;
       $scope.data = res.data;
+      console.log(res.data);
       $scope.cardFull = res.data;
       searchFilter();
     })

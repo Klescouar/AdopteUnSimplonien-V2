@@ -42,7 +42,6 @@ exports.updateUserPassFromProfil = function(req, res) {
                     }
                     res.json({success: true, msg: 'Successful update password.'});
                 });
-              res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
             } else {
               res.send({success: false, msg: 'Wrong password'});
             }
