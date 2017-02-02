@@ -1,5 +1,14 @@
 <div class="ProfilUser">
   <div class="global-profile-container">
+    <div class="choose-pic">
+      <div id="upload-pic"></div>
+      <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
+        <div class="form-group">
+          <input id="photos-input" type="file" name="photos[]" multiple="multiple">
+        </div>
+        <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
+      </form>
+    </div>
     <div class="tab-container">
       <div class="tab" ng-click="tab = 'fiche'" ng-class="{'border-focus':tab ==='fiche'}">
         <h3 class="tab-name">Fiche</h3>
@@ -9,21 +18,13 @@
       </div>
     </div>
     <div class="container-info_perso" ng-if="tab === 'infos'">
-      <p>LOL</p>
+      <div class="container-create">
+
+      </div>
     </div>
 
     <div class="container-fiche" ng-if="tab === 'fiche'">
       <div class="container-create">
-        <div class="choose-pic">
-          <div id="upload-pic"></div>
-          <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
-            <div class="form-group">
-              <input id="photos-input" type="file" name="photos[]" multiple="multiple">
-            </div>
-            <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
-          </form>
-        </div>
-
         <!-- User Info Section -->
         <div class="section">
           <h1 class="info-title">Informations</h1>

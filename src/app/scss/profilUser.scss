@@ -45,6 +45,7 @@ body{
   .global-profile-container{
     width: $full;
     max-width: 700px;
+    min-height: calc(100vh - 110px);
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -61,12 +62,12 @@ body{
       .tab-name{
         font-size: 1.2em;
       }
-      .border-focus{
-        border: 1px solid rgba(115, 159, 190, 0.85);
-        border-bottom: none;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-      }
+    }
+    .border-focus{
+      border: 1px solid rgba(115, 159, 190, 0.85);
+      border-bottom: none;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
     }
   }
 
