@@ -5,8 +5,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.photo = '';
         $scope.turnOff = false;
         $scope.tags = [];
-        $scope.student = {};
         $scope.student.tags = [];
+        $scope.tab = '';
 
 
         $scope.getAllContract = () => {

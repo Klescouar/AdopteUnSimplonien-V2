@@ -45,7 +45,33 @@ body{
   .global-profile-container{
     width: $full;
     max-width: 700px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
   }
+
+  .tab-container{
+    display: flex;
+    .tab{
+      height: 40px;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .tab-name{
+        font-size: 1.2em;
+      }
+      .border-focus{
+        border: 1px solid rgba(115, 159, 190, 0.85);
+        border-bottom: none;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+      }
+    }
+  }
+
+
+
 
   .container-create{
     color: black;
