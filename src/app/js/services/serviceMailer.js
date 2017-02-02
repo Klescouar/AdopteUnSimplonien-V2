@@ -8,8 +8,8 @@ app.service("serviceMailer", function($http, API_ENDPOINT) {
         });
     };
 
-    this.sendMailForPass = function(data) {
-        return $http.post(API_ENDPOINT.url + '/update/pass/', dataMail).then((response) => {
+    this.sendMailForPass = function(dataMail) {
+        return $http.post(API_ENDPOINT.url + '/sendmail/pass', dataMail).then((response) => {
             return response;
         }, function(error) {
             return error;

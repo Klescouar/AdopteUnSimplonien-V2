@@ -44,7 +44,7 @@ app.controller('profilUserEntreprise', [
 		    }
 		}
 		$scope.updateUserPass = (id, newPassword) => {
-			AuthService.updateUserPass(id, newPassword).then((res) => {
+			AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
 				alert(res.data.msg);
 				console.log(res);
 			});

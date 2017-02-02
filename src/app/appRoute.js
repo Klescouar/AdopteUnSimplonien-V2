@@ -58,8 +58,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('sendPass', {
+    url: '/sendPass',
+    views:{
+     'home':{
+      templateUrl: 'app/views/sendPassForReset.html',
+      controller: 'sendPassForResetCtrl'
+     }
+    }
+  })
   .state('resetPass', {
-    url: '/reset/password',
+    url: '/reset/password/:token',
     views:{
      'home':{
       templateUrl: 'app/views/resetPass.html',

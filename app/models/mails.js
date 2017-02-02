@@ -34,3 +34,13 @@ exports.profil = (data) => {
         </div>`
     )
 }
+
+exports.passLink = (data) => {
+    return (
+        `<div>
+            <p>Cliquez sur ce lien pour modifier votre mot de passe</p>
+            <a href="localhost:6868/#!/reset/password/${data.token}"> localhost:6868/#!/reset/password/${data.token}</a>
+            <p>${data.mail}</p>
+        </div>`
+    )
+}

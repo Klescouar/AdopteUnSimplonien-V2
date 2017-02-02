@@ -61,7 +61,8 @@ apiRoutes.post('/signup', user.signup);
 apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.get('/users', user.RecruiterUsers);
 apiRoutes.put('/update/user/:id', user.updateUser);
-apiRoutes.put('/update/pass/:id', user.updateUserPass);
+apiRoutes.put('/update/pass/profil/:id', user.updateUserPassFromProfil);
+apiRoutes.put('/update/pass/reset', user.resetPass);
 apiRoutes.get('/memberinfo', user.memberinfo);
 apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), user.remove);
 
@@ -91,7 +92,8 @@ apiRoutes.put('/backOffice/update/:id', passport.authenticate('jwt', {session: f
 
 /////////////////////////EMAILS CONTROLLER/////////////////////////
 apiRoutes.post('/contact/send', email.contactMail);
-apiRoutes.get('/update/pass/:mail', user.createToken);
+apiRoutes.post('/sendmail/pass', email.sendMailForPass);
+apiRoutes.get('/createToken/:mail', user.createToken);
 
 
 

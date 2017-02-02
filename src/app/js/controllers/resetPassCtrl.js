@@ -1,8 +1,11 @@
-app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthService', function($scope, serviceMailer, $window, AuthService){
+app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthService', 'AuthService', function($scope, serviceMailer, $window, AuthService, AuthService){
 
-  $scope.startResetPass = (mail) => {
-    AuthService.updateUserPass(mail).then((res) => {
-      // console.log(res.data);
+  const infoUser = AuthService.user();
+  console.log(infoUser);
+
+  $scope.updatePassword = (password) => {
+    AuthService.resetUserPass(infoUser, password).then((res) => {
+      console.log(res);
     });
   };
 
