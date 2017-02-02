@@ -14,8 +14,6 @@ app.controller('profilUserEntreprise', [
 		};
 		$scope.anime = true;
 		$scope.validate = true;
-            $scope.verifPass = true;
-            $scope.passLength = true;
             $scope.oldPassVerif = true;
 		$scope.member = AuthService.user();
 
@@ -37,7 +35,8 @@ app.controller('profilUserEntreprise', [
 		    }
 		}
 		$scope.changeView = () => {
-		    $scope.validate = true;
+                $scope.oldPassVerif = true;
+                $scope.validate = true;
 		    $scope.anime = !$scope.anime;
 		    if ($scope.anime === false) {
 		        $('.button-change-view').val("Gérer mes informations personnelles");
@@ -46,22 +45,23 @@ app.controller('profilUserEntreprise', [
 		    }
 		}
 		$scope.updateUserPass = (id, newPassword) => {
-
              if (newPassword.newpass.trim().length >= 8) {
-
                 if (newPassword.newpass === $scope.passwordChecked) {
 			AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
                     if (res.data.msg === 'Wrong password') {
 				$scope.oldPassVerif = false;
+                    }else{
+                      $scope.oldPassVerif = true;
+                      $scope.validate = false;
+                      $scope.newPassword = {
+                        newpass: '',
+                        oldpass: ''
+                      };
+                      $scope.passwordChecked = '';
                     }
 			});
-              }else if (newPassword.newpass !== $scope.passwordChecked) {
-                    $scope.verifPass = false;
-                }
-          }else if (newPassword.newpass.length < 8 && newPassword.newpass.length > 0) {
-                  console.log("coucou")
-                $scope.passLength = false;
-            }
+              }
+          }
       }
     }
 ]);

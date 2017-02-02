@@ -19,6 +19,7 @@
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
 
 
     .section-entreprise{
@@ -35,8 +36,14 @@
     .cont-input-entreprise{
       width: 100%;
       display: flex;
+      flex-direction:column;
       margin-top: 15px;
       padding: 0 20px;
+    
+      span{
+        font-size: 10px;
+        color: red;
+      }
 
       &.full-width{
           width: 100%;
@@ -96,14 +103,14 @@
 
     .edit-button-entreprise{
       height: 50px;
-      width: 25%;
+      width: 35%;
       color: white;
       background-color: #de5b49;
       border: none;
     }
 
     .button-change-view{
-      width: 70%;
+      width: 90%;
       color: white;
       background-color: #2F3E52;
     }
@@ -174,4 +181,23 @@
     display: block;
   }
 
+@media screen and (max-width: 450px){
+  
+
+
+
+.ProfilUser{
+
+    .info-group-entreprise-password{
+    position: initial;
+    margin-left: 0px;
+    }
+  
+    .switch{
+    display: none!important;
+    }
+
+    
+  }
+}
 
