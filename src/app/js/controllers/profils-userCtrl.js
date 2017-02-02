@@ -3,9 +3,14 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.showEditProfilUser = false;
         $scope.photo = '';
         $scope.turnOff = false;
-        $scope.tags = [];
-          $scope.student = {};
-        $scope.student.tags = [];
+        $scope.student = {};
+
+        if (!$scope.student.tags) {
+          $scope.student.tags = [];
+        }
+
+
+
         $scope.cardExist = false;
         $scope.getAllContract = () => {
             serviceFilter.getAllContract().then(function(response) {
@@ -51,18 +56,17 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 });
             }
         }
+
         $scope.addTag = function(tag) {
-          if (tag == undefined) {
+          if (tag.length !== 0) {
+            $scope.student.tags.push(tag);
+          } else {
             return
           }
-          else if(tag.length !== 0){
-            $scope.tags.push(tag);
-          }
-          $scope.student.tags = $scope.tags;
         }
+
         $scope.removeTag = function(tag){
-          $scope.tags.splice($scope.tags.indexOf(tag),1);
-          $scope.student.tags = $scope.tags;
+          $scope.student.tags.splice($scope.student.tags.indexOf(tag),1);
         }
         $scope.createSimplonien = () => {
             const dataStudent = {
