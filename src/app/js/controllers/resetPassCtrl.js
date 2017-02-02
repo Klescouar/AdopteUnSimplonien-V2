@@ -1,12 +1,18 @@
-app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthService', 'AuthService', function($scope, serviceMailer, $window, AuthService, AuthService){
+app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthService', 'AuthService', '$stateParams', function($scope, serviceMailer, $window, AuthService, AuthService, $stateParams){
 
   const infoUser = AuthService.user();
-  console.log(infoUser);
+  let token = $stateParams.token;
+  console.log(token);
 
   $scope.updatePassword = (password) => {
-    AuthService.resetUserPass(infoUser, password).then((res) => {
-      console.log(res);
-    });
+    if (token = infoUser.token) {
+      AuthService.resetUserPass(infoUser, password).then((res) => {
+        console.log(res);
+      });
+    }
+    else {
+      console.log('token invalid');
+    }
   };
 
 }]);
