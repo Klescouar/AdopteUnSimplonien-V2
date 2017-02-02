@@ -4,7 +4,14 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.school = {};
       $scope.skill = {};
       $scope.contract = {};
-      $scope.user = {
+      $scope.studentAccount = {
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: ''
+      };
+      $scope.recruiterAccount = {
+          company : '',
           firstName: '',
           lastName: '',
           email: '',
@@ -60,8 +67,8 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           const response = confirm("Voulez vous vraiment supprimer cet apprenant?");
           if (response === true) {
               serviceStudent.removeStudent(id);
+              $scope.refreshInfoStudents();
           }
-          $scope.refreshInfoStudents();
       };
 
       $scope.updateStudent = (id) => {
@@ -118,8 +125,17 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       };
       $scope.getAllUser();
 
-      $scope.addUser = () => {
-          AuthService.register($scope.user).then(function(response) {
+      $scope.addStudentUser = () => {
+          AuthService.register($scope.studentAccount).then(function(response) {
+              $scope.getAllUser();
+              $scope.show = 2;
+          }).catch(function(errMsg) {
+              const alertPopup = $window.alert('Register failed!');
+          });
+      };
+
+      $scope.addRecruiterUser = () => {
+          AuthService.register($scope.recruiterAccount).then(function(response) {
               $scope.getAllUser();
               $scope.show = 2;
           }).catch(function(errMsg) {

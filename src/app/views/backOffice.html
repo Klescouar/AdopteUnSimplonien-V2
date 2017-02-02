@@ -4,7 +4,7 @@
             <a href="" ng-click="show = 7" class="effect-underline" ng-class="{'menu-active' : show === 7}">Fiches simplonien en attente</a>
         </h1>
         <h1>
-            <a href="" ng-click="show = 1" class="effect-underline" ng-class="{'menu-active' : show === 1}">Créer un utilisateur</a>
+            <a href="" ng-click="show = 1" class="effect-underline" ng-class="{'menu-active' : show === 1}">Créer un compte</a>
         </h1>
         <h1>
             <a href="" ng-click="show = 2" class="effect-underline" ng-class="{'menu-active' : show === 2}">Supprimer un utilisateur</a>
@@ -23,18 +23,30 @@
     <div class="container-interface">
         <h1 ng-if="show === 0">
             Welcome to your BackOffice Norbert!</h1>
-        <form class="container-create-user" ng-submit="addUser()" ng-show="show==1">
-            <h2>Créer un utilisateur</h2>
-            <input type="text" id="nom" class="input-BO-style" value="" ng-model="user.lastName" required placeholder="Nom"></input>
-            <input type="text" id="prenom" class="input-BO-style" value="" ng-model="user.firstName" required placeholder="Prenom"></input>
-            <input type="password" id="mdp" class="input-BO-style" ng-model="user.password" required placeholder="Mot de passe"></input>
-            <input type="email" id="email" class="input-BO-style" ng-model="user.email" required placeholder="Email"></input>
-            <input class="create-user-button" value="Créer un utilisateur" type="submit">
 
-        </form>
+        <div class="container-create-user" ng-show="show==1">
+          <form class="create-user"  ng-submit="addStudentUser()" >
+              <h2>Créer un compte étudiant</h2>
+              <input type="email" id="email" class="input-BO-style" ng-model="studentAccount.email" required placeholder="Email"></input>
+              <input type="text" id="nom" class="input-BO-style" value="" ng-model="studentAccount.lastName" required placeholder="Nom"></input>
+              <input type="text" id="prenom" class="input-BO-style" value="" ng-model="studentAccount.firstName" required placeholder="Prenom"></input>
+              <input type="password" id="mdp" class="input-BO-style" ng-model="studentAccount.password" required placeholder="Mot de passe"></input>
+              <input class="create-user-button" value="Créer" type="submit">
+          </form>
+          <form class="create-user"  ng-submit="addRecruiterUser()" >
+              <h2>Créer un compte recruteur</h2>
+              <input type="email" id="email" class="input-BO-style" ng-model="recruiterAccount.email" required placeholder="Email"></input>
+              <input type="text" id="company" class="input-BO-style" value="" ng-model="recruiterAccount.company" required placeholder="Entreprise"></input>
+              <input type="text" id="nom" class="input-BO-style" value="" ng-model="recruiterAccount.lastName" required placeholder="Nom"></input>
+              <input type="text" id="prenom" class="input-BO-style" value="" ng-model="recruiterAccount.firstName" required placeholder="Prenom"></input>
+              <input type="password" id="mdp" class="input-BO-style" ng-model="recruiterAccount.password" required placeholder="Mot de passe"></input>
+              <input class="create-user-button" value="Créer" type="submit">
+          </form>
+        </div>
+
 
         <div class="container-delete-user" ng-show="show==2">
-            <h2>Suppression d'un user</h2>
+            <h2>Suppression d'un compte</h2>
             <input type="text" class="input-BO-style" ng-model="deleteFilter" placeholder="Rechercher...">
             <div class="container-users">
                 <div class="cont-info" ng-repeat="user in allUser | filter : deleteFilter track by $index">
@@ -104,8 +116,8 @@
             <div class="container-users">
                 <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === false">
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.prenom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.ville}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.ville}}</p>
                     <button ng-if="simplonien.nom !== '' " class="modify" ng-click="acceptSimplonien(simplonien._id)">Accepter</button>
                     <button ng-if="simplonien.nom !== '' " class="modify" ng-click="deleteStudent(simplonien._id)">Refuser</button>
                 </div>
@@ -113,53 +125,59 @@
         </div>
         <div class="container-delete-user" ng-show="show==4">
             <h2>Supprimer une fiche d'un Simplonien</h2>
+            <input type="text" class="input-BO-style" ng-model="removeFilter" placeholder="Rechercher...">
             <div class="container-users">
-                <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === true">
+                <div class="cont-info" ng-repeat="simplonien in simploniens | filter: removeFilter" ng-if="simplonien.verified === true">
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.prenom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-perm">{{simplonien.ville}}</p>
-                    <button ng-if="simplonien.nom !== '' " class="modify" ng-click="showOneStudent(simplonien._id)">Modifier</button>
-                    <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id)" confirm="Are you sure ?"></div>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.ville}}</p>
+                    <div class="student-actions">
+                      <button ng-if="simplonien.nom !== '' " class="modify" ng-click="showOneStudent(simplonien._id)">Modifier</button>
+                      <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id)" confirm="Are you sure ?"></div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="handle-filter" ng-show="show==6">
             <div class="filter-card">
                 <h1>Fabriques</h1>
-                <input type="text" id="input" value="" ng-model="school.name" required placeholder="Fabrique..." class="input-name"></input>
-                <button type="button" ng-click="addSchool()">
-                    <h4>Ajouter</h4>
-                </button>
-
+                <div class="input-add">
+                  <input type="text" id="input" value="" ng-model="school.name" placeholder="Fabrique..." class="input-FILTER-style"></input>
+                  <button type="button" class="delete-filter-button" ng-click="addSchool()">
+                      <h4>Ajouter</h4>
+                  </button>
+                </div>
                 <div ng-repeat="school in schools" class="filter-name">
                     <p>{{school.name}}</p>
-                    <input type="button" value="Supprimer" ng-click="removeSchool(school._id)">
+                    <div class="delete-user" ng-click="removeSchool(school._id)"></div>
                 </div>
             </div>
 
             <div class="filter-card">
                 <h1>Skills</h1>
-                <input type="text" id="input" value="" ng-model="skill.name" required placeholder="Skill..." class="input-name"></input>
-                <button type="button" ng-click="addSkill()">
+                <div class="input-add">
+                <input type="text" id="input" value="" ng-model="skill.name" placeholder="Skill..." class="input-FILTER-style"></input>
+                <button type="button" class="delete-filter-button" ng-click="addSkill()">
                     <h4>Ajouter</h4>
                 </button>
-
+              </div>
                 <div ng-repeat="skill in skills" class="filter-name">
                     <p>{{skill.name}}</p>
-                    <input type="button" value="Supprimer" ng-click="removeSkill(skill._id)">
+                    <div class="delete-user" ng-click="removeSkill(skill._id)"></div>
                 </div>
             </div>
 
             <div class="filter-card">
                 <h1>Contrats</h1>
-                <input type="text" id="input" value="" ng-model="contract.name" required placeholder="Contract..." class="input-name"></input>
-                <button type="button" ng-click="addContract()">
+                <div class="input-add">
+                <input type="text" id="input" value="" ng-model="contract.name" placeholder="Contract..." class="input-FILTER-style"></input>
+                <button type="button" class="delete-filter-button" ng-click="addContract()">
                     <h4>Ajouter</h4>
                 </button>
-
+              </div>
                 <div ng-repeat="contract in contracts" class="filter-name">
                     <p>{{contract.name}}</p>
-                    <input type="button" value="Supprimer" ng-click="removeContract(contract._id)">
+                    <div class="delete-user" ng-click="removeContract(contract._id)"></div>
                 </div>
             </div>
         </div>

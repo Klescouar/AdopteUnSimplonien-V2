@@ -28,6 +28,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
         return $http.get(API_ENDPOINT.url + '/backOffice/infoStudent/fromMember/' + id).then((response) => {
             return response;
         }, (err) => {
+          console.log(err);
             return error;
         });
     };
@@ -42,6 +43,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
 
     this.removeStudent = function(id) {
         return $http.delete(API_ENDPOINT.url + '/backOffice/removeStudent/' + id).then((response) => {
+          console.log(response);
             return response;
         }, function(err) {
             return error;
@@ -49,9 +51,7 @@ app.service("serviceStudent", function($http, API_ENDPOINT) {
     };
 
     this.updateStudent = function(id, newInfos) {
-        console.log(newInfos);
         return $http.put(API_ENDPOINT.url + '/backOffice/update/' + id, newInfos).then((response) => {
-            console.log(response);
             return response;
         }, function(err) {
             return error;

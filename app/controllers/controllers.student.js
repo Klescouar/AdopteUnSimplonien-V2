@@ -4,7 +4,11 @@ const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-u
 exports.infoStudent = (req, res) => {
     console.log('I received a GET request');
     db.simplonien.find(function(err, docs) {
+      if (err) {
+        throw error;
+      } else {
         res.json(docs);
+      }
     });
 };
 
@@ -14,7 +18,11 @@ exports.findStudent = (req, res) => {
     db.simplonien.findOne({
         _id: mongojs.ObjectId(id)
     }, function(err, doc) {
+      if (err) {
+        throw error;
+      } else {
         res.json(doc);
+      }
     });
 };
 
@@ -24,7 +32,11 @@ exports.findStudentByMemberId = (req, res) => {
     db.simplonien.findOne({
         memberId: memberId
     }, function(err, doc) {
+      if (!doc) {
+        res.send('fail');
+      } else {
         res.json(doc);
+      }
     });
 };
 
@@ -34,7 +46,11 @@ exports.removeStudent = (req, res) => {
     db.simplonien.remove({
         _id: mongojs.ObjectId(id)
     }, function(err, doc) {
+      if (!doc) {
+        res.send('fail');
+      } else {
         res.json(doc);
+      }
     });
 };
 
@@ -51,7 +67,11 @@ exports.addStudent = (req, res) => {
             res.send('error')
         }, function() {
             db.simplonien.insert(req.body, function(err, doc) {
+              if (err) {
+                throw error;
+              } else {
                 res.json(doc);
+              }
             });
         })
     });
@@ -59,7 +79,11 @@ exports.addStudent = (req, res) => {
 
 exports.addStudentFromAdmin =  function(req, res) {
       db.simplonien.insert(req.body, function(err, doc) {
+        if (err) {
+          throw error;
+        } else {
           res.json(doc);
+        }
       });
  };
 
@@ -77,7 +101,11 @@ exports.updateStudent = (req, res) => {
             },
             new: true
         }, (err, doc) => {
+          if (err) {
+            throw error;
+          } else {
             res.json(doc);
+          }
         });
     } else {
 
@@ -113,7 +141,11 @@ exports.updateStudent = (req, res) => {
             },
             new: true
         }, (err, doc) => {
+          if (err) {
+            throw error;
+          } else {
             res.json(doc);
+          }
         });
     }
 };
