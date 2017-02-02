@@ -67,8 +67,8 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           const response = confirm("Voulez vous vraiment supprimer cet apprenant?");
           if (response === true) {
               serviceStudent.removeStudent(id);
+              $scope.refreshInfoStudents();
           }
-          $scope.refreshInfoStudents();
       };
 
       $scope.updateStudent = (id) => {
