@@ -23,15 +23,18 @@
     <div class="container-interface">
         <h1 ng-if="show === 0">
             Welcome to your BackOffice Norbert!</h1>
-        <form class="container-create-user" ng-submit="addUser()" ng-show="show==1">
-            <h2>Créer un utilisateur</h2>
-            <input type="text" id="nom" class="input-BO-style" value="" ng-model="user.lastName" required placeholder="Nom"></input>
-            <input type="text" id="prenom" class="input-BO-style" value="" ng-model="user.firstName" required placeholder="Prenom"></input>
-            <input type="password" id="mdp" class="input-BO-style" ng-model="user.password" required placeholder="Mot de passe"></input>
-            <input type="email" id="email" class="input-BO-style" ng-model="user.email" required placeholder="Email"></input>
-            <input class="create-user-button" value="Créer un utilisateur" type="submit">
 
-        </form>
+        <div class="container-create-user" ng-show="show==1">
+          <form class="create-user"  ng-submit="addUser()" >
+              <h2>Créer un utilisateur</h2>
+              <input type="text" id="nom" class="input-BO-style" value="" ng-model="user.lastName" required placeholder="Nom"></input>
+              <input type="text" id="prenom" class="input-BO-style" value="" ng-model="user.firstName" required placeholder="Prenom"></input>
+              <input type="password" id="mdp" class="input-BO-style" ng-model="user.password" required placeholder="Mot de passe"></input>
+              <input type="email" id="email" class="input-BO-style" ng-model="user.email" required placeholder="Email"></input>
+              <input class="create-user-button" value="Créer un utilisateur" type="submit">
+          </form>
+        </div>
+
 
         <div class="container-delete-user" ng-show="show==2">
             <h2>Suppression d'un user</h2>

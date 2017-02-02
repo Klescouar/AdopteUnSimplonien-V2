@@ -26,7 +26,6 @@ app.controller('profilUserEntreprise', [
 		            lastName: $scope.member.lastName,
 		            email: $scope.member.email
 		        }
-		        console.log(newInfos);
 		        AuthService.updateUser(id, newInfos).then((res) => {
 
 		            alert("Vos informations on bien été mises à jour !");
@@ -46,7 +45,6 @@ app.controller('profilUserEntreprise', [
 		$scope.updateUserPass = (id, newPassword) => {
 			AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
 				alert(res.data.msg);
-				console.log(res);
 			});
 		};
 }
