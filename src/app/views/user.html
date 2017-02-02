@@ -1,18 +1,18 @@
 <div class="ProfilUser">
   <div class="global-profile-container">
     <div class="tab-container">
-      <div class="tab" ng-click="tab = 'fiche'" ng-class="{border-focus:tab ==='fiche'}">
+      <div class="tab" ng-click="tab = 'fiche'" ng-class="{'border-focus':tab ==='fiche'}">
         <h3 class="tab-name">Fiche</h3>
       </div>
-      <div class="tab" ng-click="tab = 'infos'" ng-class="{border-focus:tab ==='infos'}">
+      <div class="tab" ng-click="tab = 'infos'" ng-class="{'border-focus':tab ==='infos'}">
         <h3 class="tab-name">Infos Personnelles</h3>
       </div>
     </div>
-    <div class="container-info_perso" ng-if="tab == 'infos'">
+    <div class="container-info_perso">
 
     </div>
 
-    <div class="container-fiche" ng-if="tab == 'fiche'">
+    <div class="container-fiche">
       <div class="container-create">
         <div class="choose-pic">
           <div id="upload-pic"></div>
@@ -50,44 +50,43 @@
             </div>
             <div class="cont-input">
               <label for="boCreatePromoSimploniens">Ville</label>
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school" ng-options='school as school.name for school in schools' ng-init="student.school = school.name" placeholder="Ville" required>
+              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school.name" ng-options='school as school.name for school in schools' ng-init="student.school = school.name" placeholder="Ville" required>
                 <option value="" disabled>Ville</option>
               </select>
-
             </div>
             <div class="cont-input">
-              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
+              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat.name" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
                 <option value="" disabled> Type de Contrat</option>
               </select>
             </div>
             <div class="cont-input">
               <label for="boCreateDatePromoSimploniens">Date de votre Promo Simplon</label>
-              <input id="boCreateDatePromoSimploniens" class="input-style" type='date' ng-model="student.DatePromo" placeholder="Date de votre Promo Simplon" required="required">
+              <input id="boCreateDatePromoSimploniens" class="input-style" ng-model="student.DatePromo" placeholder="Date de votre Promo Simplon" required>
             </div>
-          <div class="cont-input">
-            <label for="boCreateMailSimploniens">E-mail</label>
-            <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="E-mail" required>
-          </div>
-          <div class="cont-input">
-            <label for="boCreateGithubSimploniens">Github</label>
-            <input id="boCreateGithubSimploniens" class="input-style" ng-model="student.Github" placeholder="Github" required>
-          </div>
-          <div class="cont-input">
-            <label for="boCreateLinkedinSimploniens">Linkedin</label>
-            <input id="boCreateLinkedinSimploniens" class="input-style" ng-model="student.Linkedin" placeholder="Linkedin" required>
-          </div>
-          <div class="cont-input">
-            <label for="boCreatePortfolioSimploniens">Portfolio</label>
-            <input id="boCreatePortfolioSimploniens" class="input-style" ng-model="student.Portfolio" placeholder="Portfolio">
-          </div>
-          <div class="cont-input">
-            <label for="boCreateTwitterSimploniens">Twitter</label>
-            <input id="boCreateTwitterSimploniens" class="input-style" ng-model="student.Twitter" placeholder="Twitter">
-          </div>
-          <div class="cont-input">
-            <label for="boCreateStackOverFlowSimploniens">StackOverFlow</label>
-            <input id="boCreateStackOverFlowSimploniens" class="input-style" ng-model="student.StackOverFlow" placeholder="StackOverFlow">
-          </div>
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">E-mail</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="E-mail" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateGithubSimploniens">Github</label>
+              <input id="boCreateGithubSimploniens" class="input-style" ng-model="student.Github" placeholder="Github" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateLinkedinSimploniens">Linkedin</label>
+              <input id="boCreateLinkedinSimploniens" class="input-style" ng-model="student.Linkedin" placeholder="Linkedin" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreatePortfolioSimploniens">Portfolio</label>
+              <input id="boCreatePortfolioSimploniens" class="input-style" ng-model="student.Portfolio" placeholder="Portfolio">
+            </div>
+            <div class="cont-input">
+              <label for="boCreateTwitterSimploniens">Twitter</label>
+              <input id="boCreateTwitterSimploniens" class="input-style" ng-model="student.Twitter" placeholder="Twitter">
+            </div>
+            <div class="cont-input">
+              <label for="boCreateStackOverFlowSimploniens">StackOverFlow</label>
+              <input id="boCreateStackOverFlowSimploniens" class="input-style" ng-model="student.StackOverFlow" placeholder="StackOverFlow">
+            </div>
         </div>
       </div>
 
@@ -103,40 +102,39 @@
       <div class="section">
         <h1 class="info-title">Compétences</h1>
 
-        <div class="info-group">
-          <div class="cont-input">
-            <select id="boCreateDomaineSimploniens" class="input-style" ng-model="boCreateDomaine" required="required">
-              <option value="" disabled>Domaine</option>
-              <option value="Front-End">Front-End</option>
-              <option value="Back-End">Back-End</option>
-              <option value="Full-Stack">Full-Stack</option>
-            </select>
-          </div>
-          <div class="cont-input">
-            <label for="boCreateCVSimploniens">Lien vers votre CV</label>
-            <input id="boCreateCVSimploniens" type="url" class="input-style" name="cv" placeholder="Lien vers votre CV" ng-model="student.CV" required>
-          </div>
-          <div class="cont-input">
-            <label for="boCreateSpeOneSimploniens">Spécialité 1</label>
-            <input id="boCreateSpeOneSimploniens" class="input-style" placeholder="Specialite 1" ng-model="student.SpecialiteUn" required>
-          </div>
-          <div class="cont-input">
-            <label for="boCreateSpeTwoSimploniens">Spécialité 2</label>
-            <input id="boCreateSpeTwoSimploniens" class="input-style" placeholder="Specialite 2" ng-model="student.SpecialiteDeux" required>
-          </div>
-          <div class="cont-input">
-            <label for="boCreateSpeThreeSimploniens">Spécialité 3</label>
-            <input id="boCreateSpeThreeSimploniens" class="input-style" placeholder="Specialite 3" ng-model="student.SpecialiteTrois" required>
-          </div>
-          <div class="cont-input">
-            <label for="boCreateTagsSimploniens">Vos Compétences</label>
-            <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
-            <button type="button"ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
-          </div>
-          <ul class="tags-list">
-            <li class="tagViewVille" ng-repeat='tag in tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
-          </ul>
-
+      <div class="info-group">
+        <div class="cont-input">
+          <select id="boCreateDomaineSimploniens" class="input-style" ng-model="student.domaine" required>
+            <option value="" disabled>Domaine</option>
+            <option value="Front-End">Front-End</option>
+            <option value="Back-End">Back-End</option>
+            <option value="Full-Stack">Full-Stack</option>
+          </select>
+        </div>
+        <div class="cont-input">
+          <label for="boCreateCVSimploniens">Lien vers votre CV</label>
+          <input id="boCreateCVSimploniens" type="url" class="input-style" name="cv" placeholder="Lien vers votre CV" ng-model="student.CV" required>
+        </div>
+        <div class="cont-input">
+          <label for="boCreateSpeOneSimploniens">Spécialité 1</label>
+          <input id="boCreateSpeOneSimploniens" class="input-style" placeholder="Specialite 1" ng-model="student.SpecialiteUn" required>
+        </div>
+        <div class="cont-input">
+          <label for="boCreateSpeTwoSimploniens">Spécialité 2</label>
+          <input id="boCreateSpeTwoSimploniens" class="input-style" placeholder="Specialite 2" ng-model="student.SpecialiteDeux" required>
+        </div>
+        <div class="cont-input">
+          <label for="boCreateSpeThreeSimploniens">Spécialité 3</label>
+          <input id="boCreateSpeThreeSimploniens" class="input-style" placeholder="Specialite 3" ng-model="student.SpecialiteTrois" required>
+        </div>
+        <div class="cont-input">
+          <label for="boCreateTagsSimploniens">Vos Compétences</label>
+          <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
+          <button type="button"ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
+        </div>
+        <ul class="tags-list">
+          <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
+        </ul>
         </div>
         <h3 class="info-title-sm">Projets</h3>
         <div class="info-group">
@@ -158,11 +156,11 @@
     </div>
     <!-- Submit Buttons -->
 
-      <div class="button-container">
-        <input class="input-style edit-button" ng-show="!student" value="Enregistrer" type="submit" ng-click='createSimplonien()'>
-        <input class="input-style edit-button" value="Modifier sa fiche" ng-show="student" type="submit" ng-click="updateStudent(student._id)">
-        <input class="input-style delete-button" value="Supprimer sa fiche" type="submit" ng-click="deleteCard(student._id)">
-      </div>
+
+    <div class="button-container">
+      <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='createSimplonien()'>
+      <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click="updateStudent(student._id)">
+      <input class="input-style delete-button" value="Supprimer sa fiche" ng-if="cardExist" type="submit" ng-click="deleteCard(student._id)">
     </div>
   </div>
 </div>
