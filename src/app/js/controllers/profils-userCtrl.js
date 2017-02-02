@@ -34,6 +34,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
               if (response.data === 'fail') {
                 $scope.cardExist = false;
               } else {
+                console.log(response.data);
                 $scope.cardExist = true;
                   $scope.student = response.data;
                   const path = '/assets/images/' + $scope.student.photo;
@@ -55,7 +56,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   $scope.cardExist = false;
                     $scope.getMemberInfo($scope.member._id);
                     $state.reload();
-
                 });
             }
         }
@@ -82,8 +82,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 nom: $scope.student.nom,
                 prenom: $scope.student.prenom,
                 age: $scope.student.age,
-                ville: $scope.student.school,
-                photo: $scope.student.photo,
+                ville: $scope.student.school.name,
+                photo: $scope.photo,
                 tags: $scope.student.tags,
                 description: $scope.student.description,
                 Sexe: $scope.student.Sexe,
@@ -97,13 +97,14 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 Twitter: $scope.student.Twitter,
                 StackOverFlow: $scope.student.StackOverFlow,
                 Mail: $scope.student.Mail,
-                Contrat: $scope.student.Contrat,
+                Contrat: $scope.student.Contrat.name,
                 DatePromo: $scope.student.DatePromo,
-                Domaine: $scope.student.DatePromo,
+                Domaine: $scope.student.domaine,
                 ProjetUn: $scope.student.ProjetUn,
                 ProjetDeux: $scope.student.ProjetDeux,
                 ProjetTrois: $scope.student.ProjetTrois
             };
+            console.log(dataStudent);
 
             serviceStudent.addStudent(dataStudent).then((response) => {
                 if (response.data === 'error') {
@@ -142,7 +143,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   Mail: $scope.student.Mail,
                   Contrat: $scope.student.Contrat,
                   DatePromo: $scope.student.DatePromo,
-                  Domaine: $scope.student.DatePromo,
+                  Domaine: $scope.student.domaine,
                   ProjetUn: $scope.student.ProjetUn,
                   ProjetDeux: $scope.student.ProjetDeux,
                   ProjetTrois: $scope.student.ProjetTrois

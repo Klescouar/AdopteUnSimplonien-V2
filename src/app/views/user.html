@@ -37,19 +37,19 @@
           </div>
           <div class="cont-input">
             <label for="boCreatePromoSimploniens">Ville</label>
-            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school" ng-options='school as school.name for school in schools' ng-init="student.school = school.name" placeholder="Ville" required>
+            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school.name" ng-options='school as school.name for school in schools' ng-init="student.school = school.name" placeholder="Ville" required>
               <option value="" disabled>Ville</option>
             </select>
 
           </div>
           <div class="cont-input">
-            <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
+            <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat.name" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
               <option value="" disabled> Type de Contrat</option>
             </select>
           </div>
           <div class="cont-input">
             <label for="boCreateDatePromoSimploniens">Date de votre Promo Simplon</label>
-            <input id="boCreateDatePromoSimploniens" class="input-style" type='date' ng-model="student.DatePromo" placeholder="Date de votre Promo Simplon" required="required">
+            <input id="boCreateDatePromoSimploniens" class="input-style" ng-model="student.DatePromo" placeholder="Date de votre Promo Simplon" required>
           </div>
         <div class="cont-input">
           <label for="boCreateMailSimploniens">E-mail</label>
@@ -93,7 +93,7 @@
 
       <div class="info-group">
         <div class="cont-input">
-          <select id="boCreateDomaineSimploniens" class="input-style" ng-model="boCreateDomaine" required="required">
+          <select id="boCreateDomaineSimploniens" class="input-style" ng-model="student.domaine" required>
             <option value="" disabled>Domaine</option>
             <option value="Front-End">Front-End</option>
             <option value="Back-End">Back-End</option>
@@ -122,7 +122,7 @@
           <button type="button"ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
         </div>
         <ul class="tags-list">
-          <li class="tagViewVille" ng-repeat='tag in tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
+          <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
         </ul>
 
       </div>
