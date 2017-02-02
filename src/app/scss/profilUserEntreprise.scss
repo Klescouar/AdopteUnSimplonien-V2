@@ -14,7 +14,7 @@
     color: black;
     background-color: white;
     width: 30vw;
-    min-width: 400px;
+    min-width: 420px;
     display: flex;
     flex-flow: column;
     justify-content: space-around;
@@ -28,6 +28,7 @@
       align-items: center;
       width: $full;
           h4{
+      padding: 10px;
       text-align: center;
     }
 
@@ -80,7 +81,7 @@
  	align-items: center;
  	margin-bottom: 20px;
  	border:1px solid #6c94b4;
-
+      margin-top: 40px;
    
   }
 
@@ -88,7 +89,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
-    width: $full;
+    width: 80%;
     background-color: white;
     justify-content:center;
 
@@ -102,7 +103,7 @@
     }
 
     .button-change-view{
-      width: 100%;
+      width: 70%;
       color: white;
       background-color: #2F3E52;
     }
@@ -117,26 +118,31 @@
     	transition-duration: 1.2s;
     	position: absolute;
     	top:2000px;
- 	min-width: 25vw;
+ 	width: 400px;
  	display: flex;
  	flex-direction:column;
   	justify-content: center;
  	align-items: center;
  	margin-bottom: 20px;
  	border:1px solid #6c94b4;
-
+      margin-left: -200px;
+      left: 50%;
  }
 
 .form-entreprise{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   width: 100%;
-  min-width: 350px;
+  width: 400px;
 }
 
 	.info-password{
             background-color: white;
 		transition-duration: 1.2s;
 		position: absolute;
-		min-width: 25vw;
+		width: 400px;
  		display: flex;
  		flex-direction:column;
   		justify-content: center;
@@ -144,6 +150,8 @@
  		margin-bottom: 20px;
  		border:1px solid #6c94b4;
 		top: 22%;
+            margin-left: -200px;
+            left: 50%;
 
 	}
 
@@ -165,3 +173,5 @@
     color: green;
     display: block;
   }
+
+
