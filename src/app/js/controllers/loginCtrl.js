@@ -1,5 +1,5 @@
-app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', '$rootScope',
- function($scope, $rootScope, AuthService, $state, $window, $rootScope) {
+app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', '$rootScope', 'serviceMailer',
+ function($scope, $rootScope, AuthService, $state, $window, $rootScope, serviceMailer) {
     $scope.user = {
         email: '',
         password: ''
@@ -9,6 +9,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
 
     $scope.login = () => {
         AuthService.login($scope.user).then(function(response) {
+            $rootScope.userRole = AuthService.userRole();
             $rootScope.showLogout = true;
             if (response.status != 404) {
                 if (response.data.user.role === 'Simplonien') {
@@ -24,6 +25,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
         }).catch(function(error) {
             $scope.verifLogin = false;
             $rootScope.showLogout = false;
+            $rootScope.userRole = AuthService.userRole();
             AuthService.clearLocalStorage();
             const alertPopup = $window.alert('Login failed!');
             $state.go('login');

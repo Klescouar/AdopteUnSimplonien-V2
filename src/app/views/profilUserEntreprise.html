@@ -32,16 +32,16 @@
           <h4 class="info-title">Changer de mot de passe</h4>
           <form class="form-entreprise">
           <div class="cont-input-entreprise">
-            <input id="" class="input-style"  placeholder="Ancien mot de passe" required>
+            <input id="" class="input-style" ng-model= "newPassword.oldpass"  placeholder="Ancien mot de passe" required>
           </div>
         <div class="cont-input-entreprise">
-          <input id="" class="input-style"  placeholder="Nouveau mot de passe" required>
+          <input id="" class="input-style" ng-model= "newPassword.newpass"  placeholder="Nouveau mot de passe" required>
         </div>
         <div class="cont-input-entreprise">
           <input id="" class="input-style"  placeholder="Confirmation du nouveau mot de passe" required>
         </div>
         <div class="button-container-entreprise">
-            <input class="input-style edit-button-entreprise" value="Modifier" type="submit" ng-click='updateMdp(member._id)'>
+            <input class="input-style edit-button-entreprise" value="Modifier" type="submit" ng-click="updateUserPass(member._id, newPassword)">
           </div>
           </form>
       </div>
@@ -50,7 +50,24 @@
             <input class="input-style edit-button-entreprise button-change-view" name="mdp"  value="Gérer mon mot de passe" type="submit" ng-click='changeView()'>
         </div>
 
+    <!-- <div class="button-container-entreprise">
+      <input class="input-style edit-button-entreprise" ng-show="!student" value="Modifier" type="submit" ng-click='updateUser(member._id)'>
+    </div>
+
+    <div class="">
+      <div class="cont-input-entreprise">
+        <input id="" class="input-style"  placeholder="Ancien mot de passe" required>
+      </div>
+    <div class="cont-input-entreprise">
+      <input id="" class="input-style" ng-model= "newPassword.oldpass"  placeholder="Nouveau mot de passe" required>
+    </div>
+    <div class="cont-input-entreprise">
+      <input id="" class="input-style" ng-model= "newPassword.newpass"  placeholder="Confirmation du nouveau mot de passe" required>
+    </div>
+    <input type="button" ng-click="updateUserPass(member._id, newPassword)" value="GOGOGO">
+    </div> -->
+
+
   </div>
 </div>
 </div>
-

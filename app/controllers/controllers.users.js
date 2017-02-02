@@ -1,6 +1,7 @@
 const User        = require('../models/user');
 const jwt         = require('jwt-simple');
 const config      = require('../../config/database');
+const payload     = { foo: 'bar' };
 
 
 exports.updateUser = function(req, res) {
@@ -21,6 +22,59 @@ exports.updateUser = function(req, res) {
                 });
             }
         });
+};
+
+
+exports.updateUserPassFromProfil = function(req, res) {
+    User.findById(req.params.id, function(err, user) {
+        if (!user) {
+          return res.json({success: false, msg: 'Email doesn\'t exists.'});
+        } else {
+          user.comparePassword(req.body.oldpass, function (err, isMatch) {
+            if (isMatch && !err) {
+              // if user is found and password is right create a token
+              const token = jwt.encode(user, config.secret);
+              // return the information including token as JSON
+                user.password = req.body.newpass,
+                user.save(function(err) {
+                    if (err) {
+                        return res.json({success: false, msg: 'Email already exists.'});
+                    }
+                    res.json({success: true, msg: 'Successful update password.'});
+                });
+              res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
+            } else {
+              res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+            }
+          });
+        }
+    });
+};
+
+exports.resetPass = function(req, res) {
+    User.findById(req.params.id, function(err, user) {
+        if (!user) {
+          return res.json({success: false, msg: 'Email doesn\'t exists.'});
+        } else {
+          user.comparePassword(req.body.oldpass, function (err, isMatch) {
+            if (isMatch && !err) {
+              // if user is found and password is right create a token
+              const token = jwt.encode(user, config.secret);
+              // return the information including token as JSON
+                user.password = req.body.newpass,
+                user.save(function(err) {
+                    if (err) {
+                        return res.json({success: false, msg: 'Email already exists.'});
+                    }
+                    res.json({success: true, msg: 'Successful update password.'});
+                });
+              res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
+            } else {
+              res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+            }
+          });
+        }
+    });
 };
 
 
@@ -48,8 +102,12 @@ exports.authenticate = function(req, res) {
    });
  };
 
+ exports.createToken = function(req, res){
+   const token = jwt.encode(req.params.mail, config.secret);
+   res.json(token);
+ };
+
 exports.signup =  function(req, res) {
-  console.log(req.body);
   User.findOne({
     email: req.body.email
   }, function(err, user) {

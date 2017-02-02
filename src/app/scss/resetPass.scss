@@ -1,0 +1,27 @@
+.reset-pass-page{
+  min-height: calc(100vh - 110px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(64,71,90);
+  .form-reset{
+    width: 50%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .confirm-button{
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    border: 1px solid rgb(181, 181, 181);
+    background-color: transparent;
+    transition: 0.2s ease;
+  }
+  .confirm-button:hover{
+    background-color: rgb(79, 87, 111);
+    transition: 0.2s ease;
+  }
+}

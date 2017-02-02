@@ -1,5 +1,5 @@
 app.service('AuthService', function($q, $http, API_ENDPOINT) {
-  let LOCAL_TOKEN_KEY = 'evalShopAppTokenKey';
+  let LOCAL_TOKEN_KEY = 'AdopteAppTokenKey';
   let isAuthenticated = false;
   let authToken;
   let role = '';
@@ -79,6 +79,32 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       );
   };
 
+  const createToken = (mail) => {
+      return $http.get(API_ENDPOINT.url + '/createToken/' + mail).then(function(response) {
+        const dataUser = {token: response.data, mail: mail};
+        constantUser = localStorage.setItem('user', angular.toJson(dataUser));
+          return response;
+      }, function(error) {
+          return error;
+      });
+  };
+
+  const updateUserPassFromProfil = (id, newInfos) => {
+      return $http.put(API_ENDPOINT.url + '/update/pass/profil/' + id, newInfos).then(function(response) {
+          return response;
+      }, function(error) {
+          return error;
+      });
+  };
+
+  const resetUserPass = (data, pass) => {
+      return $http.put(API_ENDPOINT.url + '/update/pass/reset', {data, pass}).then(function(response) {
+          return response;
+      }, function(error) {
+          return error;
+      });
+  };
+
   const register = (user) => {
       return $http.post(API_ENDPOINT.url + '/signup', user).then(
        function(response){
@@ -126,6 +152,8 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   loadUserCredentials();
 
   return {
+    updateUserPassFromProfil : updateUserPassFromProfil,
+    resetUserPass : resetUserPass,
     updateUser : updateUser,
     user: getConstantUser,
     setUser: setConstantUser,

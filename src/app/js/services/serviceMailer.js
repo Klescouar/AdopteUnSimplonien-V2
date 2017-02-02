@@ -7,4 +7,12 @@ app.service("serviceMailer", function($http, API_ENDPOINT) {
             return error;
         });
     };
+
+    this.sendMailForPass = function(dataMail) {
+        return $http.post(API_ENDPOINT.url + '/sendmail/pass', dataMail).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
 });

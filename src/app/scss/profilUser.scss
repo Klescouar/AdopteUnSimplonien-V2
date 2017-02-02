@@ -1,3 +1,7 @@
+body{
+    -webkit-backface-visibility: hidden;
+}
+
 .ProfilUser{
   min-height: calc(100vh - 110px);
   background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
@@ -53,6 +57,7 @@
     justify-content: center;
     align-items: center;
 
+// form sections
     .section{
       display: flex;
       flex-flow: column;
@@ -68,63 +73,96 @@
       .info-title-sm{
         align-self: flex-start;
         margin-left: 20px;
+        margin-bottom: 15px;
       }
     }
-
+    // Group of form-fields
     .info-group{
       display: flex;
       flex-flow: row wrap;
       justify-content: space-around;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
   }
+}
 
-  .cont-input{
-    width: 50%;
-    margin-top: 15px;
-    padding: 0 20px;
+// Standart Form-field
+.cont-input{
+  width: 50%;
+  margin: 10px 0;
+  padding: 0 20px;
+  position: relative;
+  height: 50px;
+
+  &.full-width{
+    width: 100%;
+    // flex-grow: 1;
+    input{
+      width: 30%;
+      min-width: 50px;
+    }
+
+  }
+
+  input, select, textarea{
     position: relative;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+    color: black;
+    outline: none;
+    background: white;
+    border-radius: 0;
+  // -webkit-appearance: none;
+  }
+  textarea{
+    height: 50px;
+    resize: vertical;
+  }
+  label{
+    position:absolute;
+    // top:-13px;
+    left:20px;
+    font-size:11px;
+    color:#aaa;
+    transition: all 0.1s linear;
+    opacity:0;
+    // font-weight:bold;
+  }
+  label.on {
+    // color:#4481C4;
+    color: rgba(115, 159, 190, 0.85)
+  }
+  label.show {
+    top:-15px;
+    opacity:1;
+  }
+}
 
-    &.full-width{
-        width: 100%;
-    }
+.tags-list{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-    input, select, textarea{
-      position: relative;
-      height: 30px;
-      width: 100%;
-      border: none;
-      border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-      color: black;
-      outline: none;
-      background: none;
-      border-radius: 0;
-    // -webkit-appearance: none;
-    }
-    textarea{
-      height: 50px;
-    }
-    label{
-      position: absolute;
-    }
+// Form Buttons
+.button-container{
+  display: flex;
+  width: $full;
+  .delete-button{
+    background-color: #de5b49;
   }
 
-  .button-container{
-    display: flex;
-    width: $full;
-    .delete-button{
-      background-color: #de5b49;
-    }
-
-    .edit-button{
-      background-color: #2F3E52;
-    }
-    .edit-button, .delete-button{
-      bottom: 0;
-      height: 50px;
-      width: 50%;
-      border: none;
-      color: white
-    }
+  .edit-button{
+    background-color: #2F3E52;
+  }
+  .edit-button, .delete-button{
+    bottom: 0;
+    height: 50px;
+    width: 50%;
+    border: none;
+    color: white
   }
 }
