@@ -5,8 +5,9 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.photo = '';
         $scope.turnOff = false;
         $scope.tags = [];
-        $scope.student = {};
+          $scope.student = {};
         $scope.student.tags = [];
+        $scope.cardExist = false;
 
 
         $scope.getAllContract = () => {
@@ -30,11 +31,16 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
 
         $scope.getMemberInfo = (id) => {
             serviceStudent.getStudentByMemberId(id).then((response) => {
-                $scope.student = response.data;
-                const path = '/assets/images/' + $scope.student.photo;
-                let html = '';
-                    html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
-                $('#upload-pic').html(html);
+              if (response.data === 'fail') {
+                $scope.cardExist = false;
+              } else {
+                $scope.cardExist = true;
+                  $scope.student = response.data;
+                  const path = '/assets/images/' + $scope.student.photo;
+                  let html = '';
+                      html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
+                  $('#upload-pic').html(html);
+              }
             }, (err) => {
                 console.log("Error");
             });
@@ -46,8 +52,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             const response = confirm("Voulez vous vraiment supprimer votre fiche?");
             if (response === true) {
                 serviceStudent.removeStudent(id).then(function(response) {
+                  $scope.cardExist = false;
                     $scope.getMemberInfo($scope.member._id);
                     $state.reload();
+
                 });
             }
         }
@@ -59,16 +67,12 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
           else if(tag.length !== 0){
             $scope.tags.push(tag);
           }
-          console.log("TAGS "+ $scope.tags);
           $scope.student.tags = $scope.tags;
-          console.log("Student TAGS "+$scope.student.tags);
         }
 
         $scope.removeTag = function(tag){
           $scope.tags.splice($scope.tags.indexOf(tag),1);
-          console.log("TAGS "+ $scope.tags);
           $scope.student.tags = $scope.tags;
-          console.log("Student TAGS "+$scope.student.tags);
         }
 
         $scope.createSimplonien = () => {

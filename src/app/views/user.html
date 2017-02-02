@@ -147,9 +147,9 @@
   <!-- Submit Buttons -->
 
     <div class="button-container">
-      <input class="input-style edit-button" ng-show="!student" value="Enregistrer" type="submit" ng-click='createSimplonien()'>
-      <input class="input-style edit-button" value="Modifier sa fiche" ng-show="student" type="submit" ng-click="updateStudent(student._id)">
-      <input class="input-style delete-button" value="Supprimer sa fiche" type="submit" ng-click="deleteCard(student._id)">
+      <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='createSimplonien()'>
+      <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click="updateStudent(student._id)">
+      <input class="input-style delete-button" value="Supprimer sa fiche" ng-if="cardExist" type="submit" ng-click="deleteCard(student._id)">
     </div>
   </div>
 </div>
