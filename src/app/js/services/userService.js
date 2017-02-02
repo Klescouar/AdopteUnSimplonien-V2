@@ -79,9 +79,26 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       );
   };
 
-  const updateUserPass = (mail) => {
-      return $http.get(API_ENDPOINT.url + '/update/pass/' + mail).then(function(response) {
-        constantUser = localStorage.setItem('user', angular.toJson(response.data));
+  const createToken = (mail) => {
+      return $http.get(API_ENDPOINT.url + '/createToken/' + mail).then(function(response) {
+        const dataUser = {token: response.data, mail: mail};
+        constantUser = localStorage.setItem('user', angular.toJson(dataUser));
+          return response;
+      }, function(error) {
+          return error;
+      });
+  };
+
+  const updateUserPassFromProfil = (id, newInfos) => {
+      return $http.put(API_ENDPOINT.url + '/update/pass/profil/' + id, newInfos).then(function(response) {
+          return response;
+      }, function(error) {
+          return error;
+      });
+  };
+
+  const resetUserPass = (data, pass) => {
+      return $http.put(API_ENDPOINT.url + '/update/pass/reset', {data, pass}).then(function(response) {
           return response;
       }, function(error) {
           return error;
@@ -135,7 +152,9 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   loadUserCredentials();
 
   return {
-    updateUserPass : updateUserPass,
+    updateUserPassFromProfil : updateUserPassFromProfil,
+    resetUserPass : resetUserPass,
+    createToken: createToken,
     updateUser : updateUser,
     user: getConstantUser,
     setUser: setConstantUser,

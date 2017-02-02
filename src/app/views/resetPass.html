@@ -1,6 +1,7 @@
 <div class="reset-pass-page">
     <div class="form-reset">
-        <input type="text" ng-model="email" class="input-BO-style" placeholder="Email...">
-        <button type="button" ng-click="startResetPass(email)" class="confirm-button" name="button">Envoyer</button>
+        <input type="password" ng-model="password" class="input-BO-style" placeholder="Tapez votre nouveau mot de passe...">
+        <input type="password" class="input-BO-style" placeholder="Confirmez votre nouveau mot de passe">
+        <button type="button" ng-click="updatePassword(password)" class="confirm-button" name="button">Envoyer</button>
     </div>
 </div>

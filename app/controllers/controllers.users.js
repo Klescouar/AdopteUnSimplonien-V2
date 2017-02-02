@@ -25,7 +25,7 @@ exports.updateUser = function(req, res) {
 };
 
 
-exports.updateUserPass = function(req, res) {
+exports.updateUserPassFromProfil = function(req, res) {
     User.findById(req.params.id, function(err, user) {
         if (!user) {
           return res.json({success: false, msg: 'Email doesn\'t exists.'});
@@ -47,6 +47,28 @@ exports.updateUserPass = function(req, res) {
               res.send({success: false, msg: 'Authentication failed. Wrong password.'});
             }
           });
+        }
+    });
+};
+
+exports.resetPass = function(req, res) {
+    User.findOne({
+      email: req.body.data.mail
+    }, function(err, user) {
+        if (!user) {
+          return res.json({success: false, msg: 'Email doesn\'t exists.'});
+        } else {
+              // if user is found and password is right create a token
+              const token = jwt.encode(user, config.secret);
+              // return the information including token as JSON
+                user.password = req.body.pass,
+                user.save(function(err) {
+                    if (err) {
+                        return res.json({success: false, msg: 'Email already exists.'});
+                    }
+                    res.json({success: true, msg: 'Successful update password.'});
+                });
+              res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
         }
     });
 };
