@@ -6,6 +6,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.turnOff = false;
         $scope.tags = [];
         $scope.student = {};
+        $scope.student.tags = [];
 
 
         $scope.getAllContract = () => {
@@ -17,6 +18,15 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
         $scope.getAllContract();
+
+        $scope.getAllSchool = () => {
+            serviceFilter.getAllSchool().then(function(response) {
+                $scope.schools = response.data;
+            }).catch(function(errMsg) {
+                console.log('show school failed!');
+            });
+        }
+        $scope.getAllSchool();
 
         $scope.getMemberInfo = (id) => {
             serviceStudent.getStudentByMemberId(id).then((response) => {
@@ -49,14 +59,16 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
           else if(tag.length !== 0){
             $scope.tags.push(tag);
           }
-          console.log($scope.tags);
-          // $scope.student.tags = $scope.tags;
+          console.log("TAGS "+ $scope.tags);
+          $scope.student.tags = $scope.tags;
+          console.log("Student TAGS "+$scope.student.tags);
         }
 
         $scope.removeTag = function(tag){
           $scope.tags.splice($scope.tags.indexOf(tag),1);
-          console.log($scope.tags);
+          console.log("TAGS "+ $scope.tags);
           $scope.student.tags = $scope.tags;
+          console.log("Student TAGS "+$scope.student.tags);
         }
 
         $scope.createSimplonien = () => {
@@ -66,7 +78,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 nom: $scope.student.nom,
                 prenom: $scope.student.prenom,
                 age: $scope.student.age,
-                ville: $scope.student.ville,
+                ville: $scope.student.school,
                 photo: $scope.student.photo,
                 tags: $scope.student.tags,
                 description: $scope.student.description,
@@ -108,7 +120,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   nom: $scope.student.nom,
                   prenom: $scope.student.prenom,
                   age: $scope.student.age,
-                  ville: $scope.student.ville,
+                  ville: $scope.student.school,
                   age: $scope.student.age,
                   photo: $scope.photo ? $scope.photo : $scope.student.photo,
                   tags: $scope.student.tags,

@@ -1,7 +1,6 @@
 <div class="ProfilUser">
   <div class="global-profile-container">
     <div class="container-create">
-
       <div class="choose-pic">
         <div id="upload-pic"></div>
         <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
@@ -38,7 +37,10 @@
           </div>
           <div class="cont-input">
             <label for="boCreatePromoSimploniens">Ville</label>
-            <input id="boCreatePromoSimploniens" class="input-style" ng-model="student.ville" placeholder="Ville" required>
+            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school" ng-options='school as school.name for school in schools' ng-init="student.school = school.name" placeholder="Ville" required>
+              <option value="" disabled>Ville</option>
+            </select>
+
           </div>
           <div class="cont-input">
             <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
@@ -114,14 +116,14 @@
           <label for="boCreateSpeThreeSimploniens">Spécialité 3</label>
           <input id="boCreateSpeThreeSimploniens" class="input-style" placeholder="Specialite 3" ng-model="student.SpecialiteTrois" required>
         </div>
-        <div class="cont-input full-width">
+        <div class="cont-input">
           <label for="boCreateTagsSimploniens">Vos Compétences</label>
           <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
-          <button type="button"ng-click='addTag(tag)' name="button">ADD</button>
-          <ul class="tags-list">
-            <li class="tagViewVille" ng-repeat='tag in tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
-          </ul>
+          <button type="button"ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
         </div>
+        <ul class="tags-list">
+          <li class="tagViewVille" ng-repeat='tag in tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
+        </ul>
 
       </div>
       <h3 class="info-title-sm">Projets</h3>
