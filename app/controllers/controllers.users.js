@@ -52,16 +52,16 @@ exports.updateUserPassFromProfil = function(req, res) {
 };
 
 exports.resetPass = function(req, res) {
-    User.findById(req.params.id, function(err, user) {
+    User.findOne({
+      email: req.body.data.mail
+    }, function(err, user) {
         if (!user) {
           return res.json({success: false, msg: 'Email doesn\'t exists.'});
         } else {
-          user.comparePassword(req.body.oldpass, function (err, isMatch) {
-            if (isMatch && !err) {
               // if user is found and password is right create a token
               const token = jwt.encode(user, config.secret);
               // return the information including token as JSON
-                user.password = req.body.newpass,
+                user.password = req.body.pass,
                 user.save(function(err) {
                     if (err) {
                         return res.json({success: false, msg: 'Email already exists.'});
@@ -69,10 +69,6 @@ exports.resetPass = function(req, res) {
                     res.json({success: true, msg: 'Successful update password.'});
                 });
               res.json({success: true, token: 'JWT ' + token, user:user, msg: 'Successful update password.'});
-            } else {
-              res.send({success: false, msg: 'Authentication failed. Wrong password.'});
-            }
-          });
         }
     });
 };

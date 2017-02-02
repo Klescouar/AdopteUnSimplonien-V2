@@ -154,6 +154,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   return {
     updateUserPassFromProfil : updateUserPassFromProfil,
     resetUserPass : resetUserPass,
+    createToken: createToken,
     updateUser : updateUser,
     user: getConstantUser,
     setUser: setConstantUser,
