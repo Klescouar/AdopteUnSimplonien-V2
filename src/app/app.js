@@ -1,1 +1,1 @@
-const app = angular.module('app', ['directives.customvalidation.customValidationTypes','ui.router', 'ui.bootstrap']);
+const app = angular.module('app', ['ui.router', 'ui.bootstrap']);

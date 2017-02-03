@@ -34,7 +34,7 @@ exports.sendMailForPass = (req, res) => {
     let mailOptions = {
         from: 'lescouarneckevin@yahoo.fr',
         to: req.body.mail,
-        subject:'lol',
+        subject:'Nouveau mot de passe',
         html: html
     };
 

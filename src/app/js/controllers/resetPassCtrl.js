@@ -6,6 +6,7 @@ app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthServ
   $scope.updatePassword = (password) => {
     if (token = infoUser.token) {
       AuthService.resetUserPass(infoUser, password).then((res) => {
+        alert('Mot de passe changé!')
       });
     }
     else {
