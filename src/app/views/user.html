@@ -19,7 +19,40 @@
     </div>
     <div class="container-info_perso" ng-if="tab === 'infos'">
       <div class="container-create">
-
+        <div class="section">
+          <h1 class="info-title">Modifier infos personnelles</h1>
+          <div class="info-group">
+            <div class="cont-input">
+              <label for="boCreateLastNameSimploniens">Nom</label>
+              <input id="boCreateLastNameSimploniens" class="input-style" ng-model="student.nom" placeholder="Nom" type="text" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateNameSimploniens">Prénom</label>
+              <input id="boCreateNameSimploniens" class="input-style" ng-model="student.prenom" placeholder="Prénom" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">E-mail</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="E-mail" required>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h1 class="info-title">Modifier mot de passe</h1>
+          <div class="info-group">
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">Ancien Mot de Passe</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Ancien Mot de Passe" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">Nouveau Mot de Passe</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Nouveau Mot de Passe" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">Confirmer Nouveau Mot de Passe</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Confirmer Nouveau Mot de Passe" required>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
