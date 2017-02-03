@@ -16,7 +16,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         };
 
         $scope.member = AuthService.user();
-
+        console.log($scope.member);
 
         $scope.updateUser = (id) => {
             const response = confirm("Voulez vous vraiment modifier vos informations ?");
@@ -37,25 +37,25 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
 
-        $scope.updateUserPass = (id, newPassword) => {
-                 if (newPassword.newpass.trim().length >= 8) {
-                    if (newPassword.newpass === $scope.passwordChecked) {
-          AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
-                        if (res.data.msg === 'Wrong password') {
-            $scope.oldPassVerif = false;
-                        }else{
-                          $scope.oldPassVerif = true;
-                          $scope.validate = false;
-                          $scope.newPassword = {
-                            newpass: '',
-                            oldpass: ''
-                          };
-                          $scope.passwordChecked = '';
-                        }
-          });
-                  }
-              }
-          }
+        // $scope.updateUserPass = (id, newPassword) => {
+        //          if (newPassword.newpass.trim().length >= 8) {
+        //             if (newPassword.newpass === $scope.passwordChecked) {
+        //   AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
+        //                 if (res.data.msg === 'Wrong password') {
+        //     $scope.oldPassVerif = false;
+        //                 }else{
+        //                   $scope.oldPassVerif = true;
+        //                   $scope.validate = false;
+        //                   $scope.newPassword = {
+        //                     newpass: '',
+        //                     oldpass: ''
+        //                   };
+        //                   $scope.passwordChecked = '';
+        //                 }
+        //   });
+        //           }
+        //       }
+        //   }
 
 
 
