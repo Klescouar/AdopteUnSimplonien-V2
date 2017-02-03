@@ -35,6 +35,9 @@
               <input id="boCreateMailSimploniens" class="input-style" ng-model="member.email" placeholder="E-mail" required>
             </div>
           </div>
+          <div class="button-container">
+            <input class="input-style edit-button" value="Modifier mes infos" type="submit" ng-click="updateStudent(student._id)">
+          </div>
         </div>
         <div class="section">
           <h1 class="info-title">Modifier mot de passe</h1>
@@ -51,6 +54,9 @@
               <label for="boCreateMailSimploniens">Confirmer Nouveau Mot de Passe</label>
               <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Confirmer Nouveau Mot de Passe" required>
             </div>
+          </div>
+          <div class="button-container">
+            <input class="input-style edit-button" value="Modifier mon mot de passe" type="submit" ng-click="updateStudent(student._id)">
           </div>
         </div>
       </div>
