@@ -56,16 +56,19 @@ body{
     display: flex;
     margin-top: 40px;
     .tab{
-      height: 50px;
+      min-height: 50px;
       width: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
-      font-weight: bold;
+      cursor: pointer;
+      padding: 0 10px;
+      text-align: center;
       .tab-name{
         font-size: 1.2em;
-        cursor: pointer;
+        font-weight: bold;
+        word-wrap: break-word;
       }
     }
     .border-focus{
@@ -208,5 +211,16 @@ body{
     width: 50%;
     border: none;
     color: white
+  }
+}
+
+.container-info_perso{
+  .button-container{
+    justify-content: center;
+  }
+}
+.container-fiche{
+  .edit-button, .delete-button{
+    flex-grow: 1;
   }
 }

@@ -11,16 +11,16 @@
     </div>
     <div class="tab-container">
       <div class="tab" ng-click="tab = 'fiche'" ng-class="{'border-focus':tab ==='fiche'}">
-        <h3 class="tab-name">Fiche</h3>
+        <h3 class="tab-name">Ma Fiche</h3>
       </div>
       <div class="tab" ng-click="tab = 'infos'" ng-class="{'border-focus':tab ==='infos'}">
-        <h3 class="tab-name">Infos Personnelles</h3>
+        <h3 class="tab-name">Mes Infos Personnelles</h3>
       </div>
     </div>
     <div class="container-info_perso" ng-if="tab === 'infos'">
       <div class="container-create">
         <div class="section">
-          <h1 class="info-title">Modifier infos personnelles</h1>
+          <h3 class="info-title">Modifier infos personnelles</h3>
           <div class="info-group">
             <div class="cont-input">
               <label for="boCreateLastNameSimploniens">Nom</label>
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="section">
-          <h1 class="info-title">Modifier mot de passe</h1>
+          <h3 class="info-title">Modifier mot de passe</h3>
           <div class="info-group">
             <div class="cont-input">
               <label for="boCreateMailSimploniens">Ancien Mot de Passe</label>
