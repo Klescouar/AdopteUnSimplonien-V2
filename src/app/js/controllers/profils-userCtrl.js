@@ -23,7 +23,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             if (response === true) {
                 $scope.validate = false;
                 const newInfos = {
-                    company: $scope.member.company,
                     firstName: $scope.member.firstName,
                     lastName: $scope.member.lastName,
                     email: $scope.member.email
@@ -37,25 +36,15 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
 
-        // $scope.updateUserPass = (id, newPassword) => {
-        //          if (newPassword.newpass.trim().length >= 8) {
-        //             if (newPassword.newpass === $scope.passwordChecked) {
-        //   AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
-        //                 if (res.data.msg === 'Wrong password') {
-        //     $scope.oldPassVerif = false;
-        //                 }else{
-        //                   $scope.oldPassVerif = true;
-        //                   $scope.validate = false;
-        //                   $scope.newPassword = {
-        //                     newpass: '',
-        //                     oldpass: ''
-        //                   };
-        //                   $scope.passwordChecked = '';
-        //                 }
-        //   });
-        //           }
-        //       }
-        //   }
+        $scope.updateUserPass = (id) => {
+            AuthService.updateUserPassFromProfil(id, $scope.newPassword).then((res) => {
+                if (res.data.msg === 'Wrong password') {
+                    alert('Mauvais mot de passe')
+                } else {
+                  alert('Mot de passe modifié!')
+                }
+            });
+        }
 
 
 
