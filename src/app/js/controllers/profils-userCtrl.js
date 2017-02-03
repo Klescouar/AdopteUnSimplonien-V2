@@ -4,7 +4,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.photo = '';
         $scope.turnOff = false;
         $scope.student = {};
-        $scope.tab = 'infos';
+        $scope.tab = 'fiche';
 
         if (!$scope.student.tags) {
           $scope.student.tags = [];
