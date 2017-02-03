@@ -24,19 +24,19 @@
           <div class="info-group">
             <div class="cont-input">
               <label for="boCreateLastNameSimploniens">Nom</label>
-              <input id="boCreateLastNameSimploniens" class="input-style" ng-model="student.nom" placeholder="Nom" type="text" required>
+              <input class="input-style" ng-model="member.lastName" placeholder="Nom" type="text" required>
             </div>
             <div class="cont-input">
               <label for="boCreateNameSimploniens">Prénom</label>
-              <input id="boCreateNameSimploniens" class="input-style" ng-model="student.prenom" placeholder="Prénom" required>
+              <input id="boCreateNameSimploniens" class="input-style" ng-model="member.firstName" placeholder="Prénom" required>
             </div>
             <div class="cont-input">
               <label for="boCreateMailSimploniens">E-mail</label>
-              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="E-mail" required>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="member.email" placeholder="E-mail" required>
             </div>
           </div>
           <div class="button-container">
-            <input class="input-style edit-button" value="Modifier mes infos" type="submit" ng-click="updateStudent(student._id)">
+            <input class="input-style edit-button" value="Modifier mes infos" type="submit" ng-click="updateUser(member._id)">
           </div>
         </div>
         <div class="section">
@@ -44,11 +44,11 @@
           <div class="info-group">
             <div class="cont-input">
               <label for="boCreateMailSimploniens">Ancien Mot de Passe</label>
-              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Ancien Mot de Passe" required>
+              <input id="boCreateMailSimploniens" class="input-style" placeholder="Ancien Mot de Passe" required ng-model="newPassword.oldpass">
             </div>
             <div class="cont-input">
               <label for="boCreateMailSimploniens">Nouveau Mot de Passe</label>
-              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Nouveau Mot de Passe" required>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="newPassword.newpass" placeholder="Nouveau Mot de Passe" required>
             </div>
             <div class="cont-input">
               <label for="boCreateMailSimploniens">Confirmer Nouveau Mot de Passe</label>
@@ -56,7 +56,7 @@
             </div>
           </div>
           <div class="button-container">
-            <input class="input-style edit-button" value="Modifier mon mot de passe" type="submit" ng-click="updateStudent(student._id)">
+            <input class="input-style edit-button" value="Modifier mon mot de passe" type="submit" ng-click="updateUserPass(member._id)">
           </div>
         </div>
       </div>
