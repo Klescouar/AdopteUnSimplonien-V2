@@ -112,7 +112,7 @@
             <input class="input-BO-style" value="Modifier une fiche Simplonien" type="submit" ng-click="updateStudent(student._id)">
         </form>
         <div class="container-delete-user" ng-show="show==7">
-            <h2>Fiche simplonien en attente de vérifiaction</h2>
+            <h2>Fiche simplonien en attente de validation</h2>
             <div class="container-users">
                 <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === false">
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
