@@ -12,6 +12,7 @@ app.controller('profilUserEntreprise', [
 		    newpass: '',
 		    oldpass: ''
 		};
+
 		$scope.anime = true;
 		$scope.validate = true;
             $scope.oldPassVerif = true;
@@ -45,13 +46,13 @@ app.controller('profilUserEntreprise', [
 		    }
 		}
 		$scope.updateUserPass = (id, newPassword) => {
+              console.log($scope.oldPassVerif)
              if (newPassword.newpass.trim().length >= 8) {
                 if (newPassword.newpass === $scope.passwordChecked) {
 			AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
                     if (res.data.msg === 'Wrong password') {
 				$scope.oldPassVerif = false;
                     }else{
-                      $scope.oldPassVerif = true;
                       $scope.validate = false;
                       $scope.newPassword = {
                         newpass: '',

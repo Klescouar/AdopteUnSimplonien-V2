@@ -41,10 +41,6 @@
       margin-top: 15px;
       padding: 0 20px;
 
-      span{
-        font-size: 10px;
-        color: red;
-      }
 
       &.full-width{
           width: 100%;
@@ -172,6 +168,11 @@
 
   .invisible-message-entreprise{
     display: none;
+  }
+
+  .error-msg{
+        font-size: 0.9em;
+        color: red;
   }
 
   .visible-message-entreprise{
