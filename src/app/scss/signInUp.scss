@@ -3,7 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/photo-1429051883746-afd9d56fbdaf.jpeg") no-repeat center / cover;
+    background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/connexion.jpg") no-repeat center / cover;
+    background-size: 110% 110%;
 
     .cont-form-login {
         background-color: #425877;
@@ -212,7 +213,7 @@
                 color: white;
                 font-style: italic;
                 margin-bottom: 120px;
-                text-align: center;
+                
             }
         }
 
@@ -279,11 +280,14 @@
 .redirect-login {
             width: 100%;
             display: flex;
+            flex-direction:column;
+            align-items:flex-end;
             justify-content: flex-end;
             padding: 0 20px;
             padding-top: 70px;
 
             a {
+                margin-top: 5px;
               color: white;
               font-style: italic;
               font-size: 0.9em;
@@ -293,9 +297,6 @@
 
 //VERIF PASSWORDS
 .match{
-              text-align: center;
-              
-            
               display: block;
               color: #de5b49;
               font-size: 0.9em;

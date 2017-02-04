@@ -30,55 +30,39 @@
           </div>
         <div class="info-group-entreprise-password"  ng-class="{'info-password':!anime}">
           <h4 class="info-title">Changer de mot de passe</h4>
-          <form class="form-entreprise">
+
+          <!-- MDP FORM -->
+
+          <form class="form-entreprise" name="formMdp">
+
+          <!-- OLD PASSWORD -->
           <div class="cont-input-entreprise">
             <input class="input-style" type="password" ng-model="newPassword.oldpass"  placeholder="Ancien mot de passe" type="password" required>
+            <p class="error-msg" ng-show="!oldPassVerif">
+              Mot de passe actuel invalide.
+      </p>
           </div>
+
+          <!-- NEW PASSWORD -->
         <div class="cont-input-entreprise">
-          <input class="input-style" id="password" type="password" name="pwd" ng-model="newPassword.newpass"  placeholder="Nouveau mot de passe" required validation-min-length="8" validation-no-space="true" validation-no-special-chars="true">
+          <input class="input-style" type="password" ng-model="newPassword.newpass"  placeholder="Nouveau mot de passe" required name="password" ng-minlength="8">
+          <p class="error-msg" ng-show="formMdp.password.$error.minlength">8 caractères minimum.</p>
         </div>
+
+        <!-- VALIDATION NEW PASSWORD -->
         <div class="cont-input-entreprise">
-          <input class="input-style" type="password" ng-model= "passwordChecked" placeholder="Confirmation du nouveau mot de passe" required validation-min-length="8" validation-no-space="true" validation-no-special-chars="true" validation-confirm-password="true" id="confirmPassword" name="confirmPassword" passwordFieldId="password">
+          <input class="input-style" type="password" ng-model= "passwordChecked" placeholder="Confirmation du nouveau mot de passe" required>
+          <p class="error-msg" ng-show="newPassword.newpass != passwordChecked || passwordChecked != newPassword.newpass">Les nouveau mots de passe sont différents.</p>
         </div>
         <div class="button-container-entreprise">
             <input class="input-style edit-button-entreprise" value="Modifier" type="submit" ng-click="updateUserPass(member._id, newPassword)">
           </div>
           </form>
       </div>
-      <div class="invisible-message-entreprise" ng-class="{'match':!oldPassVerif}">
-              Mot de passe actuel invalide.
-      </div>
-<!--       <div class="invisible-message-entreprise" ng-class="{'match':!verifPass}">
-            Les mots de passe ne correspondent pas.
-      </div>
-      <div class="invisible-message-entreprise" ng-class="{'match':!passLength}">
-              Veuillez renseigner un mot de passe d'au moins 8 caractères.
-      </div>
-      <div class="invisible-message-entreprise" ng-class="{'match':!oldPassVerif}">
-              Mot de passe actuel invalide.
-      </div> -->
     </div>
     <div class="button-container-entreprise switch" >
             <input class="input-style edit-button-entreprise button-change-view" name="mdp"  value="Gérer mon mot de passe" type="submit" ng-click='changeView()'>
         </div>
-
-    <!-- <div class="button-container-entreprise">
-      <input class="input-style edit-button-entreprise" ng-show="!student" value="Modifier" type="submit" ng-click='updateUser(member._id)'>
-    </div>
-
-    <div class="">
-      <div class="cont-input-entreprise">
-        <input id="" class="input-style"  placeholder="Ancien mot de passe" required>
-      </div>
-    <div class="cont-input-entreprise">
-      <input id="" class="input-style" ng-model= "newPassword.oldpass"  placeholder="Nouveau mot de passe" required>
-    </div>
-    <div class="cont-input-entreprise">
-      <input id="" class="input-style" ng-model= "newPassword.newpass"  placeholder="Confirmation du nouveau mot de passe" required>
-    </div>
-    <input type="button" ng-click="updateUserPass(member._id, newPassword)" value="GOGOGO">
-    </div> -->
-
 
   </div>
 </div>
