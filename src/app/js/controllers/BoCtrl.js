@@ -1,6 +1,6 @@
 app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state','$timeout', 'serviceFilter', 'serviceStudent', function($scope, AuthService, $http, serviceFilter, $state, $timeout, serviceFilter, serviceStudent) {
 
-      $scope.show = 3;
+      $scope.show = 0;
       $scope.resetStudent = () => {
         $scope.student = {};
         $scope.student.tags = [];
