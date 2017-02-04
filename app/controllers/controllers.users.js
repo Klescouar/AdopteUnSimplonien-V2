@@ -1,7 +1,6 @@
 const User        = require('../models/user');
 const jwt         = require('jwt-simple');
 const config      = require('../../config/database');
-const payload     = { foo: 'bar' };
 
 
 exports.updateUser = function(req, res) {

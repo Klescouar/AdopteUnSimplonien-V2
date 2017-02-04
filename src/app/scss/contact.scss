@@ -3,7 +3,8 @@
     display: flex;
     justify-content: space-between;
     h1 {
-        font-size: 1.5em;
+        font-size: 1.4em;
+        font-weight: bold;
         text-align: center;
         line-height: 1.5em;
         color: white;
@@ -25,9 +26,7 @@
     input,
     textarea {
         padding: 5px;
-        font-family: 'Lato', calibri, arial;
         font-size: 0.9em;
-        font-weight: 300;
         color: white;
         width:80%;
         background-color: transparent;
@@ -68,7 +67,6 @@
 
     .submit-button {
         font-size: 0.8em;
-        font-weight: 300;
         width: 100px;
         background-color: transparent;
         border: 1px solid #fff;
@@ -121,7 +119,6 @@
         h1 {
             color: white;
             letter-spacing: 0.10em;
-            font-weight: bold;
             text-align: center;
             font-size: 1.3em;
         }
@@ -138,108 +135,3 @@
         }
     }
 }
-//.simplonPicture {
-//    * {
-//        padding: 0;
-//        margin: 0;
-//    }
-//    min-height: calc(100vh - 112px);
-//    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../assets/images/simplonContact.jpg");
-//    background-position: center;
-//    background-size: cover;
-//    background-repeat: no-repeat;
-//    display: flex;
-//    justify-content: space-around;
-//    align-items: center;
-//}
-//.adressSimplon {
-//    display: flex;
-//    justify-content: center;
-//    flex-direction: column;
-//    align-items: center;
-//    padding: 30px;
-//}
-//.contactForm {
-//    display: flex;
-//    flex-direction: column;
-//    justify-content: space-between;
-//    align-items: center;
-//    background-color: rgba(0, 0, 0, 0.85);
-//    padding-top: 30px;
-//    padding-right: 60px;
-//    padding-left: 60px;
-//    width: 33%;
-//    min-width: 550px;
-//    animation-duration: 0.8s;
-//    margin: 10px;
-//    h1 {
-//        font-size: 1.5em;
-//        text-align: center;
-//        color: white;
-//        line-height: 1.6em;
-//    }
-//    p {
-//        font-style: italic;
-//        text-align: center;
-//        color: white;
-//    }
-//    form {
-//        display: flex;
-//        flex-direction: column;
-//        width: 90%;
-//        margin-top: 30px;
-//    }
-//    input,
-//    textarea {
-//        padding: 5px;
-//        font-size: 0.9em;
-//        font-weight: 300;
-//        color: #fff;
-//        background-color: transparent;
-//        border-top: 1px solid transparent;
-//        border-left: 1px solid transparent;
-//        border-right: 1px solid transparent;
-//        border-bottom: 1px solid #c4c2c2;
-//        margin-bottom: 15px;
-//    }
-//    input:focus,
-//    textarea:focus {
-//        background-color: 0.333;
-//        border-bottom: 1px solid #fff;
-//        outline: none;
-//    }
-//    textarea {
-//        height: 130px;
-//        max-width: 100%;
-//    }
-//    .submit-button {
-//        font-size: 0.8em;
-//        font-weight: 300;
-//        width: 100px;
-//        background-color: transparent;
-//        border: 1px solid #fff;
-//        transition: all 0.1s ease-in-out;
-//    }
-//    .submit-button:hover {
-//        background-color: white;
-//        color: black;
-//    }
-//}
-//@media screen and (max-width: 640px) {
-//    .contactForm {
-//        min-width: 360px;
-//        display: flex;
-//        flex-direction: column;
-//        justify-content: space-between;
-//        align-items: center;
-//        background-color: rgba(0, 0, 0, 0.70);
-//        padding-top: 30px;
-//        padding-right: 20px;
-//        padding-left: 20px;
-//        width: 33%;
-//        margin: 30px;
-//        h1 {
-//            font-size: 1.2em;
-//        }
-//    }
-//}

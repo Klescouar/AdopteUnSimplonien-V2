@@ -95,7 +95,7 @@
               </select>
             </div>
             <div class="cont-input">
-              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-options='contract.name for contract in contracts'>
+              <select id="boCreateContratSimploniens" class="input-style"  ng-options='contract.name for contract in contracts' ng-model="student.Contrat">
                 <option value="" disabled> Type de Contrat</option>
               </select>
             </div>
@@ -170,7 +170,7 @@
         <div class="cont-input">
           <label for="boCreateTagsSimploniens">Vos Compétences</label>
           <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
-          <button type="button"ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
+          <button type="button"ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
         </div>
         <ul class="tags-list">
           <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>

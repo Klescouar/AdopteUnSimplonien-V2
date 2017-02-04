@@ -1,21 +1,21 @@
 // Mise a disposition de la police dans ses différents formats
 @font-face {
-    font-family: "ROBOTO";
+    font-family: "Quicksand";
     src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book.otf");
 }
 @font-face {
-    font-family: "ROBOTO";
+    font-family: "Quicksand";
     src: url("../../assets/lib/fonts/Quicksand/Quicksand_Bold.otf");
     font-weight: bold;
 }
 @font-face {
-    font-family: "ROBOTO";
+    font-family: "Quicksand";
     src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book_Oblique.otf");
     font-style: oblique;
 }
 
-* {
-    font-family: "ROBOTO";
+*, body {
+    font-family: "Quicksand";
 }
 
 .open {
@@ -60,7 +60,6 @@ button.close {
 }
 
 body {
-    font-family: "avenir";
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

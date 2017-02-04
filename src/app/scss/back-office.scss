@@ -188,6 +188,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+			width: 60%;
 		}
 	}
 
@@ -279,7 +280,24 @@
 	}
 }
 
+.cont-BO-input{
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin: 20px 0;
+width: 100%;
+}
+
+.section-BO{
+	width: 100%;
+}
+
+.select-BO{
+
+}
+
 .input-BO-style {
+		width: 250px;
 		height: 35px;
 		border: none;
 		border-bottom: 1px solid rgba(166, 166, 166, 0.85);

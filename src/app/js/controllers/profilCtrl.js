@@ -9,6 +9,7 @@ app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$sta
     }
 
     serviceStudent.getStudentById(id).then((res) => {
+      console.log(res.data);
         $scope.student = res.data;
     }, (err) => {
         console.log("Error");
