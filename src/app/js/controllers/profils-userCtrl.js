@@ -96,11 +96,11 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         }
 
         $scope.addTag = function(tag) {
-          if (tag.length !== 0) {
-            $scope.student.tags.push(tag);
-            $scope.tag = '';
-          } else {
+          if (!tag || tag.length === 0) {
             return
+          }
+          else if (tag.length !== 0) {
+            $scope.student.tags.push(tag);
           }
         }
 
@@ -151,11 +151,12 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.updateStudent = (id) => {
             const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
             if (response === true) {
+              console.log($scope.school);
                 const newInfos = {
                   nom: $scope.student.nom,
                   prenom: $scope.student.prenom,
                   age: $scope.student.age,
-                  ville: $scope.student.school.name,
+                  ville: $scope.student.ville.name,
                   age: $scope.student.age,
                   photo: $scope.photo ? $scope.photo : $scope.student.photo,
                   tags: $scope.student.tags,
