@@ -11,15 +11,54 @@
     </div>
     <div class="tab-container">
       <div class="tab" ng-click="tab = 'fiche'" ng-class="{'border-focus':tab ==='fiche'}">
-        <h3 class="tab-name">Fiche</h3>
+        <h3 class="tab-name">Ma Fiche</h3>
       </div>
       <div class="tab" ng-click="tab = 'infos'" ng-class="{'border-focus':tab ==='infos'}">
-        <h3 class="tab-name">Infos Personnelles</h3>
+        <h3 class="tab-name">Mes Infos Personnelles</h3>
       </div>
     </div>
     <div class="container-info_perso" ng-if="tab === 'infos'">
       <div class="container-create">
-
+        <div class="section">
+          <h3 class="info-title">Modifier infos personnelles</h3>
+          <div class="info-group">
+            <div class="cont-input">
+              <label for="boCreateLastNameSimploniens">Nom</label>
+              <input class="input-style" ng-model="member.lastName" placeholder="Nom" type="text" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateNameSimploniens">Prénom</label>
+              <input id="boCreateNameSimploniens" class="input-style" ng-model="member.firstName" placeholder="Prénom" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">E-mail</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="member.email" placeholder="E-mail" required>
+            </div>
+          </div>
+          <div class="button-container">
+            <input class="input-style edit-button" value="Modifier mes infos" type="submit" ng-click="updateUser(member._id)">
+          </div>
+        </div>
+        <div class="section">
+          <h3 class="info-title">Modifier mot de passe</h3>
+          <div class="info-group">
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">Ancien Mot de Passe</label>
+              <input id="boCreateMailSimploniens" class="input-style" placeholder="Ancien Mot de Passe" required ng-model="newPassword.oldpass">
+            </div>
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">Nouveau Mot de Passe</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="newPassword.newpass" placeholder="Nouveau Mot de Passe" required>
+            </div>
+            <div class="cont-input">
+              <label for="boCreateMailSimploniens">Confirmer Nouveau Mot de Passe</label>
+              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Confirmer Nouveau Mot de Passe" required>
+            </div>
+          </div>
+          <div class="button-container">
+            <input class="input-style edit-button" value="Modifier mon mot de passe" type="submit" ng-click="updateUserPass(member._id)">
+          </div>
+        </div>
       </div>
     </div>
 
@@ -51,12 +90,12 @@
             </div>
             <div class="cont-input">
               <label for="boCreatePromoSimploniens">Ville</label>
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school.name" ng-options='school as school.name for school in schools' ng-init="student.school = school.name" placeholder="Ville" required>
+              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.school" ng-options='school.name for school in schools' placeholder="Ville" required>
                 <option value="" disabled>Ville</option>
               </select>
             </div>
             <div class="cont-input">
-              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat.name" ng-init="student.Contrat = contract.name" ng-options='contract as contract.name for contract in contracts'>
+              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-options='contract.name for contract in contracts'>
                 <option value="" disabled> Type de Contrat</option>
               </select>
             </div>

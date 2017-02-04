@@ -1,6 +1,7 @@
 .ProfilUser{
   min-height: calc(100vh - 110px);
   background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +40,7 @@
       flex-direction:column;
       margin-top: 15px;
       padding: 0 20px;
-    
+
 
       &.full-width{
           width: 100%;
@@ -71,7 +72,7 @@
       }
 
     }
-    
+
 
 
 
@@ -85,7 +86,7 @@
  	margin-bottom: 20px;
  	border:1px solid #6c94b4;
       margin-top: 40px;
-   
+
   }
 
   .button-container-entreprise{
@@ -183,7 +184,7 @@
   }
 
 @media screen and (max-width: 450px){
-  
+
 
 
 
@@ -193,12 +194,11 @@
     position: initial;
     margin-left: 0px;
     }
-  
+
     .switch{
     display: none!important;
     }
 
-    
+
   }
 }
-

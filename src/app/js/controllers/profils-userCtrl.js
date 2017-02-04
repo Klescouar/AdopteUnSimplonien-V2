@@ -1,4 +1,4 @@
-app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter) {
+app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', 'AuthService', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter, AuthService) {
         $scope.member = AuthService.user();
         $scope.showEditProfilUser = false;
         $scope.photo = '';
@@ -9,6 +9,43 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         if (!$scope.student.tags) {
           $scope.student.tags = [];
         }
+
+        $scope.newPassword = {
+            newpass: '',
+            oldpass: ''
+        };
+
+        $scope.member = AuthService.user();
+        console.log($scope.member);
+
+        $scope.updateUser = (id) => {
+            const response = confirm("Voulez vous vraiment modifier vos informations ?");
+            if (response === true) {
+                $scope.validate = false;
+                const newInfos = {
+                    firstName: $scope.member.firstName,
+                    lastName: $scope.member.lastName,
+                    email: $scope.member.email
+                }
+                AuthService.updateUser(id, newInfos).then((res) => {
+
+                    alert("Vos informations on bien été mises à jour !");
+
+                })
+            }
+        }
+
+
+        $scope.updateUserPass = (id) => {
+            AuthService.updateUserPassFromProfil(id, $scope.newPassword).then((res) => {
+                if (res.data.msg === 'Wrong password') {
+                    alert('Mauvais mot de passe')
+                } else {
+                  alert('Mot de passe modifié!')
+                }
+            });
+        }
+
 
 
 
@@ -117,7 +154,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   nom: $scope.student.nom,
                   prenom: $scope.student.prenom,
                   age: $scope.student.age,
-                  ville: $scope.student.school,
+                  ville: $scope.student.school.name,
                   age: $scope.student.age,
                   photo: $scope.photo ? $scope.photo : $scope.student.photo,
                   tags: $scope.student.tags,
@@ -133,7 +170,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   Twitter: $scope.student.Twitter,
                   StackOverFlow: $scope.student.StackOverFlow,
                   Mail: $scope.student.Mail,
-                  Contrat: $scope.student.Contrat,
+                  Contrat: $scope.student.Contrat.name,
                   DatePromo: $scope.student.DatePromo,
                   Domaine: $scope.student.domaine,
                   ProjetUn: $scope.student.ProjetUn,

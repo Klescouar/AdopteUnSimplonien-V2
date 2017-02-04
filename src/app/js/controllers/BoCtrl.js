@@ -29,8 +29,9 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.refreshInfoStudents();
 
       $scope.acceptSimplonien = (studentId) => {
-          serviceStudent.studentVerified(studentId);
-          refreshInfoStudents();
+          serviceStudent.studentVerified(studentId).then((res) => {
+            $scope.refreshInfoStudents();
+          });
       };
 
       $scope.createSimplonien = () => {
@@ -66,8 +67,9 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.deleteStudent = (id) => {
           const response = confirm("Voulez vous vraiment supprimer cet apprenant?");
           if (response === true) {
-              serviceStudent.removeStudent(id);
-              $scope.refreshInfoStudents();
+              serviceStudent.removeStudent(id).then((res) => {
+                $scope.refreshInfoStudents();
+              });
           }
       };
 
@@ -95,10 +97,9 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
                   Mail: $scope.student.Mail,
                   Contrat: $scope.student.Contrat,
                   DatePromo: $scope.student.DatePromo,
-                  Domaine: ç
+                  Domaine: $scope.student.Domaine
 
               };
-
               serviceStudent.updateStudent(id, newInfos).then(alert("Apprenant modifié!"))
           };
           $state.reload();
