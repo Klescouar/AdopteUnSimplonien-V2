@@ -10,6 +10,8 @@ body{
   flex-direction: column;
   align-items: center;
   color: black;
+  }
+
   .choose-pic{
     display: flex;
     flex-direction: column;
@@ -42,7 +44,6 @@ body{
         width: auto;
       }
     }
-  }
 
   .global-profile-container{
     width: $full;

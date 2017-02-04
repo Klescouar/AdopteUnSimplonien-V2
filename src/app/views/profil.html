@@ -12,13 +12,13 @@
             #{{student.SpecialiteDeux}}
             #{{student.SpecialiteTrois}}</p>
         <div class="container-social">
-            <a ng-href="{{student.Github}}">
+            <a ng-href="{{student.Github}}" target="_blank">
                 <div class="github"></div>
             </a>
-            <a ng-href="{{student.CV}}">
+            <a ng-href="{{student.CV}}" target="_blank">
                 <div class="cv"></div>
             </a>
-            <a ng-href="{{student.Linkedin}}">
+            <a ng-href="{{student.Linkedin}}" target="_blank">
                 <div class="linkedin"></div>
             </a>
         </div>
@@ -27,14 +27,16 @@
         <div class="main-cont-tags">
             <div class="cont-tags">
                 <h4 class="title-comp">Compétences</h4>
-                <p>{{student.tags}}</p>
+                <div class="tags-box">
+                  <p ng-repeat = "tag in student.tags track by $index"> {{tag}}, </p>
+                </div>
             </div>
         </div>
         <h4 class="projects">Projets</h4>
         <div class="cont-project">
-            <a ng-href="{{student.ProjetUn}}"><div class="project"></div></a>
-            <a ng-href="{{student.ProjetDeux}}"><div class="project"></div></a>
-            <a ng-href="{{student.ProjetTrois}}"><div class="project"></div></a>
+            <a ng-href="{{student.ProjetUn}}" target="_blank"><div class="project"></div></a>
+            <a ng-href="{{student.ProjetDeux}}" target="_blank"><div class="project"></div></a>
+            <a ng-href="{{student.ProjetTrois}}" target="_blank"><div class="project"></div></a>
         </div>
         <button data-toggle="modal" data-target="#contactDirect">Contacter
             {{student.prenom}}</button>

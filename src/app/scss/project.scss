@@ -1,5 +1,10 @@
 .cont-simplon-description {
 	overflow: hidden;
+	.first-view-project{
+		height: calc(100vh - 60px);
+		background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), url("../../assets/images/projectBack.png") no-repeat center;
+		background-size: cover;
+	}
 
 	.title-simplon {
 		position: relative;

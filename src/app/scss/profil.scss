@@ -9,6 +9,12 @@
 	overflow: hidden;
 }
 
+.tags-box{
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
 .main-container-profil {
 	width: 100%;
 	display: flex;
@@ -130,10 +136,9 @@
 				align-items: center;
 
 				p {
-					margin: 3px;
-					width: 350px;
 					text-align: center;
 					color: #41ccf4;
+					margin: 0 3px;
 				}
 
 				.title-comp {
