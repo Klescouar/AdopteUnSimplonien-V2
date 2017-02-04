@@ -12,13 +12,14 @@ app.controller('profilUserEntreprise', [
 		    newpass: '',
 		    oldpass: ''
 		};
-
+		$scope.passwordChecked='';
 		$scope.anime = true;
 		$scope.validate = true;
-            $scope.oldPassVerif = true;
+            		$scope.oldPassVerif = true;
 		$scope.member = AuthService.user();
 
 		$scope.updateUser = (id) => {
+		$scope.validate = true;
 		    const response = confirm("Voulez vous vraiment modifier vos informations ?");
 		    if (response === true) {
 		        $scope.validate = false;
@@ -36,8 +37,8 @@ app.controller('profilUserEntreprise', [
 		    }
 		}
 		$scope.changeView = () => {
-                $scope.oldPassVerif = true;
-                $scope.validate = true;
+                	$scope.oldPassVerif = true;
+               	 $scope.validate = true;
 		    $scope.anime = !$scope.anime;
 		    if ($scope.anime === false) {
 		        $('.button-change-view').val("Gérer mes informations personnelles");
@@ -45,14 +46,15 @@ app.controller('profilUserEntreprise', [
 		        $('.button-change-view').val("Gérer mon mot de passe");
 		    }
 		}
-		$scope.updateUserPass = (id, newPassword) => {
-              console.log($scope.oldPassVerif)
+	$scope.updateUserPass = (id, newPassword) => {
+	$scope.validate = true;
              if (newPassword.newpass.trim().length >= 8) {
                 if (newPassword.newpass === $scope.passwordChecked) {
-			AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
+		AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
                     if (res.data.msg === 'Wrong password') {
-				$scope.oldPassVerif = false;
+		$scope.oldPassVerif = false;
                     }else{
+                    	$scope.oldPassVerif = true;
                       $scope.validate = false;
                       $scope.newPassword = {
                         newpass: '',
@@ -60,7 +62,7 @@ app.controller('profilUserEntreprise', [
                       };
                       $scope.passwordChecked = '';
                     }
-			});
+		});
               }
           }
       }

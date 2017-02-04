@@ -1,6 +1,8 @@
 app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$timeout', '$location', function($scope, AuthService, $state, $window, $timeout,$location, $stateProvider,$urlRouterProvider) {
 
         $scope.borderClass = true;
+        passwordCheckedSimplonien='';
+        passwordCheckedRecruteur='';
         $scope.email=true;
         $scope.user= {
             role: 'Recruteur'

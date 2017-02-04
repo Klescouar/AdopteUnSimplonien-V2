@@ -20,7 +20,7 @@
                     <input class="input-register" required="required" type="text" id="nom" ng-model="userRecruteur.company" placeholder="Entreprise">
                 </div>
                 <div class="cont-input">
-                    <input class="input-register" type="text" id="nom" ng-model="userRecruteur.lastName" required placeholder="Nom"></input>
+                    <input class="input-register" type="text" id="nom" ng-model="userRecruteur.lastName" required placeholder="Nom">
                 </div>
                 <div class="cont-input">
                     <input class="input-register" type="text" id="prenom"  ng-model="userRecruteur.firstName" required placeholder="Prénom">
@@ -35,13 +35,12 @@
                 <!-- PASSWORD -->
                 <div class="cont-input">
                     <input class="input-register" id="inputMdp" type="password" id="mdp" ng-model="userRecruteur.password" required placeholder="Mot de passe" ng-minlength="8">
-                    <p class="match" ng-show="formRecruiter.password.$error.minlength">8 caractères minimum.</p>
                 </div>
 
                 <!-- VERIF PASSWORD -->
                 <div class="cont-input">
                     <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedRecruteur" required placeholder="Confirmation du mot de passe">
-                    <p class="match" ng-show="passwordCheckedRecruteur != userRecruteur.password">Les mots de passe ne correspondent pas.</p>
+                    <p class="match" ng-hide="userRecruteur.password.length<1"  ng-show="passwordCheckedRecruteur != userRecruteur.password || passwordCheckedRecruteur.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
                 </div>
             </div>
             <div class="cont-button">
@@ -71,12 +70,11 @@
                 <!-- PASSWORD -->
                 <div class="cont-input">
                     <input class="input-register" id="inputMdp" type="password" id="mdp" ng-model="userSimplonien.password" name="password" required placeholder="Mot de passe" ng-minlength="8">
-                    <p class="match" ng-show="formSimplonien.password.$error.minlength">8 caractères minimum.</p>
                 </div>
                 <!-- VERIF PASSWORD -->
                 <div class="cont-input">
                     <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedSimplonien" required placeholder="Confirmation du mot de passe">
-                    <p class="match" ng-show="passwordCheckedSimplonien != userSimplonien.password">Les mots de passe ne correspondent pas.</p>
+                    <p class="match" ng-hide="userSimplonien.password.length<1"  ng-show="passwordCheckedSimplonien != userSimplonien.password || passwordCheckedSimplonien.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
                 </div>
             </div>
             <div class="cont-button">

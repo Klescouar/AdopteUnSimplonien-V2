@@ -46,13 +46,12 @@
           <!-- NEW PASSWORD -->
         <div class="cont-input-entreprise">
           <input class="input-style" type="password" ng-model="newPassword.newpass"  placeholder="Nouveau mot de passe" required name="password" ng-minlength="8">
-          <p class="error-msg" ng-show="formMdp.password.$error.minlength">8 caractères minimum.</p>
         </div>
 
         <!-- VALIDATION NEW PASSWORD -->
         <div class="cont-input-entreprise">
           <input class="input-style" type="password" ng-model= "passwordChecked" placeholder="Confirmation du nouveau mot de passe" required>
-          <p class="error-msg" ng-show="newPassword.newpass != passwordChecked || passwordChecked != newPassword.newpass">Les nouveau mots de passe sont différents.</p>
+          <p class="error-msg" ng-hide="newPassword.newpass.length<1" ng-show="newPassword.newpass != passwordChecked || passwordChecked.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
         </div>
         <div class="button-container-entreprise">
             <input class="input-style edit-button-entreprise" value="Modifier" type="submit" ng-click="updateUserPass(member._id, newPassword)">
