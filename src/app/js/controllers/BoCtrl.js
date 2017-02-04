@@ -84,7 +84,13 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             ProjetTrois: $scope.student.ProjetTrois
           };
 
-          serviceStudent.addStudent(dataStudent);
+          serviceStudent.addStudent(dataStudent).then((res) => {
+            if (res.statusText === 'OK') {
+              alert('Simplonien créé!')
+            } else {
+              alert('FAIL!')
+            }
+          });
 
       };
 

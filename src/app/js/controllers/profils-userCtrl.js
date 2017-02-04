@@ -98,6 +98,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.addTag = function(tag) {
           if (tag.length !== 0) {
             $scope.student.tags.push(tag);
+            $scope.tag = '';
           } else {
             return
           }
