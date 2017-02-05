@@ -81,7 +81,7 @@
               <input id="boCreateOldSimploniens" type="number" class="input-style" ng-model="student.age" placeholder="Age" required>
             </div>
             <div class="cont-input">
-              <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe" placeholder="Sexe" required>
+              <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe" required>
                 <option value="" disabled>Sexe</option>
                 <option value="Homme">Homme</option>
                 <option value="Femme">Femme</option>
@@ -95,7 +95,7 @@
               </select>
             </div>
             <div class="cont-input">
-              <select id="boCreateContratSimploniens" class="input-style"  ng-options='contract.name for contract in contracts' ng-model="student.Contrat">
+              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat.name" ng-options='contract.name for contract in contracts'>
                 <option value="" disabled> Type de Contrat</option>
               </select>
             </div>

@@ -114,7 +114,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 nom: $scope.student.nom,
                 prenom: $scope.student.prenom,
                 age: $scope.student.age,
-                ville: $scope.student.school.name,
+                ville: $scope.student.ville,
                 photo: $scope.photo,
                 tags: $scope.student.tags,
                 description: $scope.student.description,
@@ -131,7 +131,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 Mail: $scope.student.Mail,
                 Contrat: $scope.student.Contrat.name,
                 DatePromo: $scope.student.DatePromo,
-                Domaine: $scope.student.domaine,
+                Domaine: $scope.student.Domaine,
                 ProjetUn: $scope.student.ProjetUn,
                 ProjetDeux: $scope.student.ProjetDeux,
                 ProjetTrois: $scope.student.ProjetTrois
@@ -179,6 +179,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   ProjetDeux: $scope.student.ProjetDeux,
                   ProjetTrois: $scope.student.ProjetTrois
                 };
+                console.log($scope.student);
                 serviceStudent.updateStudent(id, newInfos).then((response) => {})
                 alert("Apprenant modifié!")
             };
