@@ -1,4 +1,4 @@
-app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$stateParams', function($scope, serviceStudent, serviceMailer, $stateParams){
+app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$stateParams', 'AuthService', function($scope, serviceStudent, serviceMailer, $stateParams, AuthService){
     $scope.contactStud = 1;
     $scope.verifChamps = false;
     const id = $stateParams.student;
@@ -7,6 +7,9 @@ app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$sta
         sender: '',
         content: ''
     }
+
+    $scope.memberInfo = AuthService.user();
+    console.log($scope.memberInfo);
 
     serviceStudent.getStudentById(id).then((res) => {
       console.log(res.data);

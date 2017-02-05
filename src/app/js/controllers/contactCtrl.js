@@ -1,5 +1,4 @@
 app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMailer', '$window', function($scope, $http, serviceFilter, serviceMailer, $window){
-    $scope.schools = serviceFilter.schools;
     $scope.showForm = false;
     $scope.mail = {
         layout: 'contact',
@@ -11,6 +10,15 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
         phone: '',
         content: ''
     };
+
+    const getAllSchool = () => {
+      serviceFilter.getAllSchool().then((res) => {
+        $scope.schools = res.data;
+        console.log($scope.schools);
+      })
+    }
+
+    getAllSchool();
 
 //////////////////////GOOGLE MAP API/////////////////////
 
