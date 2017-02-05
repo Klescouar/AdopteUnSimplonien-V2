@@ -46,7 +46,7 @@
           width: 100%;
       }
 
-      input, select, textarea{
+      input{
         height: 30px;
         width: 100%;
         border: none;
@@ -54,9 +54,12 @@
         color: black;
         outline: none;
       }
-      textarea{
-        height: 50px;
-      }
+      
+      input:invalid {
+          box-shadow: none;
+
+    }
+
     }
 
       .info-title{

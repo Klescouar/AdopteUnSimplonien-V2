@@ -1,7 +1,6 @@
 <div class="ProfilUser">
   <div class="global-profile-container-entreprise">
     <div class="container-create-entreprise">
-
       <!-- User Info Section -->
       <div class="section-entreprise">
         <h2>Entreprise : {{member.company}}</h2>
@@ -37,10 +36,10 @@
 
           <!-- OLD PASSWORD -->
           <div class="cont-input-entreprise">
-            <input class="input-style" type="password" ng-model="newPassword.oldpass"  placeholder="Ancien mot de passe" type="password" required>
+            <input ng-click="oldPassVerif = true; validate=true" class="input-style" type="password" ng-model="newPassword.oldpass"  placeholder="Ancien mot de passe" type="password" required>
             <p class="error-msg" ng-show="!oldPassVerif">
               Mot de passe actuel invalide.
-      </p>
+            </p>
           </div>
 
           <!-- NEW PASSWORD -->
