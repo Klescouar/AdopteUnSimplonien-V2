@@ -1,4 +1,4 @@
-.ProfilUser{
+.ProfilUser-ent{
   min-height: calc(100vh - 110px);
   background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
   background-attachment: fixed;
@@ -8,6 +8,15 @@
   justify-content:center;
   color: black;
   overflow: hidden;
+
+  .cont-title-ent{
+    display: flex;
+    justify-content:center;
+    background-color: rgba(115,159,190,0.85);
+    width: 30vw;
+    min-width: 420px;
+    color: white;
+  }
 
   .container-create-entreprise{
     position: relative;
@@ -46,7 +55,7 @@
           width: 100%;
       }
 
-      input, select, textarea{
+      input{
         height: 30px;
         width: 100%;
         border: none;
@@ -54,9 +63,12 @@
         color: black;
         outline: none;
       }
-      textarea{
-        height: 50px;
-      }
+      
+      input:invalid {
+          box-shadow: none;
+
+    }
+
     }
 
       .info-title{
@@ -153,7 +165,7 @@
  		align-items: center;
  		margin-bottom: 20px;
  		border:1px solid #6c94b4;
-		top: 22%;
+		top: 13%;
             margin-left: -200px;
             left: 50%;
 
@@ -185,9 +197,6 @@
 
 @media screen and (max-width: 450px){
 
-
-
-
 .ProfilUser{
 
     .info-group-entreprise-password{
@@ -198,7 +207,7 @@
     .switch{
     display: none!important;
     }
-
-
   }
 }
+
+

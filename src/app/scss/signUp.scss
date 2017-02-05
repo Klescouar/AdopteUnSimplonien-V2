@@ -20,7 +20,7 @@
           
 
         .cont-button{
-           justify-content:center;
+          justify-content:center;
           display: flex;
           background-color: #425877;
 
@@ -29,15 +29,6 @@
                   font-size: 17px;
                   margin: 0px;
                 }
-
-          a{
-            display: flex;
-              align-items:center;
-              justify-content:center;
-            width: 50%;
-                background-color: #2e3e53;
-            cursor: pointer;
-            text-decoration: none;
 
             .simplonien-button{
               display: flex;
@@ -48,9 +39,6 @@
               color: white;
               border:none;
               border-bottom: 1px solid #6c94b4;
-
-
-
             }
 
 
@@ -63,9 +51,6 @@
               background-color: #425877;
               color: white;
               border:none;
-
-
-
             }
 
 
@@ -75,15 +60,11 @@
             }
 
             .button-focus-right{
-
               border-top: 1px solid #6c94b4;
               outline: none;
               border-top-right-radius: 7px;
               border-right: 1px solid #6c94b4;
               border-left: 1px solid #6c94b4;
-
-
-
             }
 
             .button-focus-left{
@@ -93,22 +74,15 @@
               border-top-left-radius: 7px;
               border-left: 1px solid #6c94b4;
               border-right: 1px solid #6c94b4;
-
             }
 
             .border-bottom-focus{
               border-bottom: 1px solid #6c94b4;
               background-color: #2e3e53;
-
-
-
             }
 
-            }
 
-        }
-
-
+      }
 
         .cont-title-inscription {
             height: 20px;
@@ -142,7 +116,6 @@
 
 
           .cont-input{
-
             width: 90%;
             display: flex;
             flex-direction:column;
@@ -222,16 +195,9 @@
                     text-decoration: none;
                 }
             }
-
-            select {
-                background-color: white;
-                color: black;
-                height: 25px;
-                width: 150px;
-                border-radius: 0;
-            }
         }
     }
+
     .redirect {
             width: 100%;
             display: flex;
@@ -252,29 +218,8 @@
 
 .dont-match{
               display: none;
-            }
-
-.loginSignupRecruteur {
-    min-height: calc(100vh - 110px);
-    background-color: rgb(83, 83, 83);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/espace-recruteur.jpg") no-repeat center / cover;
-    transition: background linear 3.5s;
 }
 
-.loginSignupSimplonien {
-    min-height: calc(100vh - 110px);
-    background-color: rgb(83, 83, 83);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/connexion-simplonien.jpg") no-repeat center / cover;
-    transition: background linear 3.5s;
-}
 @media screen and (max-width: 1375px) {
     .loginSignup {
         .cont-form {
@@ -282,6 +227,7 @@
         }
     }
 }
+
 @media screen and (max-width: 850px) {
     .loginSignup {
         .cont-form {
@@ -289,6 +235,7 @@
         }
     }
 }
+
 @media screen and (max-width: 600px) {
     .loginSignup {
         .cont-form {
@@ -296,6 +243,7 @@
         }
     }
 }
+
 @media screen and (max-width: 400px) {
     .loginSignup {
         .cont-form {
