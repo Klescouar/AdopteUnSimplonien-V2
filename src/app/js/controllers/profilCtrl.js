@@ -4,15 +4,12 @@ app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$sta
     const id = $stateParams.student;
 
     $scope.dataMail = {
-        sender: '',
         content: ''
     }
 
     $scope.memberInfo = AuthService.user();
-    console.log($scope.memberInfo);
 
     serviceStudent.getStudentById(id).then((res) => {
-      console.log(res.data);
         $scope.student = res.data;
     }, (err) => {
         console.log("Error");
@@ -22,7 +19,7 @@ app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$sta
         let dataMail = {
             layout: 'profil',
             to: $scope.student.Mail,
-            sender: $scope.dataMail.sender,
+            sender: $scope.memberInfo.email,
             content: $scope.dataMail.content
         }
 
