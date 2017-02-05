@@ -25,8 +25,9 @@
           </div>
           </form novalidate>
         </div>
-        <div class="invisible-message-entreprise" ng-class="{'visible-message-entreprise':!validate}">
-              Vos informations ont bien été modifiées !
+        <div class="visible-message-entreprise" ng-show='!validate'>
+            <div class="img-validate"></div>
+              <p>Informations modifiées !</p>
           </div>
         <div class="info-group-entreprise-password"  ng-class="{'info-password':!anime}">
           <h4 class="info-title">Changer de mot de passe</h4>
