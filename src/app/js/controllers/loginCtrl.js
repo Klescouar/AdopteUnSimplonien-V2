@@ -1,9 +1,19 @@
-app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', '$rootScope', 'serviceMailer',
- function($scope, $rootScope, AuthService, $state, $window, $rootScope, serviceMailer) {
+app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', '$rootScope', 'serviceMailer', '$stateParams',
+ function($scope, $rootScope, AuthService, $state, $window, $rootScope, serviceMailer, $stateParams) {
     $scope.user = {
         email: '',
         password: ''
     };
+
+    if (typeof $stateParams.token !== 'undefined') {
+        AuthService.confirmMail($stateParams.token).then(function(res) {
+            if (res.data.msg === 'Erreur') {
+                alert('error')
+            } else {
+                alert('compte validé')
+            }
+        })
+    }
 
     $scope.verifLogin = true;
 

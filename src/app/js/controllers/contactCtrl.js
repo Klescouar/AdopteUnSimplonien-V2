@@ -1,5 +1,9 @@
 app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMailer', '$window', function($scope, $http, serviceFilter, serviceMailer, $window){
+    let htmlInfos = [];
     $scope.showForm = false;
+
+    //////////////////////SEND MAIL FROM CONTACT FORM/////////////////////
+
     $scope.mail = {
         layout: 'contact',
         to: 'Test.project.simplon@gmail.com',
@@ -11,16 +15,39 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
         content: ''
     };
 
+    $scope.sendMail = () => {
+        serviceMailer.sendMail($scope.mail);
+    }
+
+
+    //////////////////////GOOGLE MAP API/////////////////////
+
+    const getInfo = (element) => {
+      htmlInfos.push({
+        latitude : element.latitude,
+        longitude : element.longitude,
+        html : '<div id="contentMap">' +
+        '<div id="siteNotice">' +
+        '</div>' +
+        '<h1>Simplon ' + element.name + '</h1>' +
+        '<div id="bodyContent">' +
+        '<p>' + element.adress + '</p>' +
+        '<a target="_blank" href=" ' + element.website + ' ">Site Web</a> ' +
+        '</div>' +
+        '</div>'})
+    };
+
     const getAllSchool = () => {
       serviceFilter.getAllSchool().then((res) => {
         $scope.schools = res.data;
-        console.log($scope.schools);
+        $scope.schools.map(getInfo);
+        console.log(htmlInfos);
+        initialize();
       })
     }
 
     getAllSchool();
 
-//////////////////////GOOGLE MAP API/////////////////////
 
     function initialize() {
         const mapProp = {
@@ -34,98 +61,23 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
         };
         const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-        const contentMontreuil = '<div id="contentMap">' +
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h1>Simplon Montreuil</h1>' +
-        '<div id="bodyContent">' +
-        '<p>55 Rue de Vincennes, 93100 Montreuil</p>' +
-        '<a target="_blank" href="http://simplon.co/">Site Web</a> ' +
-        '</div>' +
-        '</div>';
+        const newMapAdress = (element) => {
+          const marker = new google.maps.Marker({
+              position: {
+                  lat: element.latitude,
+                  lng: element.longitude
+              },
+              map: map
+          });
 
-        const contentSarcelles = '<div id="contentMap">' +
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h1>Simplon Sarcelles</h1>' +
-        '<div id="bodyContent">' +
-        '<p>18 avenue du 8 mai 1945 95200 Sarcelles</p>' +
-        '<a target="_blank" href="http://simplon.co/">Site Web</a> ' +
-        '</div>' +
-        '</div>';
+          marker.addListener('click', () => {
+              new google.maps.InfoWindow({content: element.html}).open(map, marker);
+          });
+        }
 
-        const contentAulnay = '<div id="contentMap">' +
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h1>Simplon Aulnay-Sous-Bois</h1>' +
-        '<div id="bodyContent">' +
-        '<p>1 Rue Auguste Renoir 93600 Aulnay-sous-Bois</p>' +
-        '<a target="_blank" href="http://simplon.co/">Site Web</a> ' +
-        '</div>' +
-        '</div>';
-        const contentParis20 = '<div id="contentMap">' +
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h1>Simplon Paris 20ème</h1>' +
-        '<div id="bodyContent">' +
-        '<p>8 rue Serpollet 75020 Paris</p>' +
-        '<a target="_blank" href="http://simplon.co/">Site Web</a> ' +
-        '</div>' +
-        '</div>';
+        htmlInfos.map(newMapAdress);
 
-        const infoMontreuil = new google.maps.InfoWindow({content: contentMontreuil});
-        const infoSarcelles = new google.maps.InfoWindow({content: contentSarcelles});
-        const infoAulnay = new google.maps.InfoWindow({content: contentAulnay});
-        const infoParis = new google.maps.InfoWindow({content: contentParis20});
-
-        const marker = new google.maps.Marker({
-            position: {
-                lat: 48.854491,
-                lng: 2.435967
-            },
-            map: map
-        });
-        const marker2 = new google.maps.Marker({
-            position: {
-                lat: 48.9776739,
-                lng: 2.372309399999949
-            },
-            map: map
-        });
-        const marker3 = new google.maps.Marker({
-            position: {
-                lat: 48.9527378,
-                lng: 2.4901563999999325
-            },
-            map: map
-        });
-        const marker4 = new google.maps.Marker({
-            position: {
-                lat: 48.8607154,
-                lng: 2.4110412999999653
-            },
-            map: map
-        });
-
-        marker.addListener('click', function() {
-            infoMontreuil.open(map, marker);
-        });
-        marker2.addListener('click', function() {
-            infoSarcelles.open(map, marker2);
-        });
-        marker3.addListener('click', function() {
-            infoAulnay.open(map, marker3);
-        });
-        marker4.addListener('click', function() {
-            infoParis.open(map, marker4);
-        });
-    }
-
-    $scope.sendMail = () => {
-        serviceMailer.sendMail($scope.mail);
-    }
-
-    initialize();
+      }
 
     google.maps.event.addDomListener(window, 'load', initialize);
 

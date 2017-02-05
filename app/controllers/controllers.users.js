@@ -1,5 +1,6 @@
 const User        = require('../models/user');
 const jwt         = require('jwt-simple');
+const email       = require('./controllers.emails');
 const config      = require('../../config/database');
 
 
@@ -101,20 +102,23 @@ exports.authenticate = function(req, res) {
  };
 
 exports.signup =  function(req, res) {
+  let data = req.body;
+  data.token = jwt.encode(data.email, config.secret);
   User.findOne({
-    email: req.body.email
+    email: data.email
   }, function(err, user) {
     if (!user){
-      if (!req.body.email || !req.body.password) {
+      if (!data.email || !data.password) {
         res.json({success: false, msg: 'Please pass name and password.'});
       } else {
-        const newUser = new User(req.body);
+        const newUser = new User(data);
         // save the user
         newUser.save(function(err) {
           if (err) {
             return res.json({success: false, msg: 'email already exists.'});
-          }
-          res.json({success: true, msg: 'Successful created new user.'});
+        }
+        email.mailConfirm({email: data.email, token: data.token})
+        res.json({success: true, msg: 'Successful created new user.'});
         });
       }
     } else {
@@ -122,7 +126,6 @@ exports.signup =  function(req, res) {
     }
   });
  };
-
 
 exports.RecruiterUsers = function(req, res) {
    const token = getToken(req.headers);
@@ -176,7 +179,24 @@ exports.memberinfo = function(req, res) {
    }
  };
 
-
+exports.validMail = function(req, res) {
+    User.findOne({
+      token: req.body.token
+    }, function(err, user) {
+        if (!user) {
+          return res.json({success: false, msg: 'Erreur'});
+        } else {
+            user.token = '',
+            user.actif = true,
+            user.save(function(err) {
+                if (err) {
+                    return res.json({success: false, msg: 'Email already exists.'});
+                }
+                res.json({success: true, msg: 'Compte Actif'});
+            });
+        }
+    });
+}
 
  getToken = function (headers) {
    if (headers && headers.authorization) {

@@ -115,6 +115,17 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       );
   };
 
+  const confirmMail = (token) => {
+      let data = {token: token};
+      return $http.post(API_ENDPOINT.url + '/valid/mail', data).then(
+       function(response){
+        return response;
+       }, function(error){
+        return error;
+       }
+      );
+  }
+
   const getInfo = (user) => {
    return $http.get(API_ENDPOINT.url + '/memberinfo').then(
     function(response) {
@@ -161,6 +172,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
     userRole: getConstantUserRole,
     loadUserCredentials: loadUserCredentials,
     login: login,
+    confirmMail: confirmMail,
     register: register,
     getInfo: getInfo,
     getAllUser: getAllUser,

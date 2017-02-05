@@ -217,6 +217,10 @@
 			outline: none;
 	}
 
+	.input-FILTER-style-school{
+		width: 200px!important;
+	}
+
 	.input-FILTER-style:hover {
 		border-bottom: 1px solid rgba(212, 212, 212, 0.85);
 			outline: none;
@@ -230,6 +234,19 @@
 		display: flex;
 		align-items: flex-end;
 		margin-bottom: 20px;
+	}
+	.input-add-school{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		height: 300px;
+		a{
+			text-decoration: none;
+			text-align: center;
+			font-size: 0.8em;
+			width: 150px;
+		}
 	}
 	.delete-filter-button{
 		width: 80px;
@@ -251,6 +268,7 @@
 	.filter-card {
 		display: flex;
 		flex-direction: column;
+		width: 250px;
 		align-items: center;
 		margin: 20px;
 

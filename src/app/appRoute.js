@@ -58,6 +58,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('confirmMail', {
+    url: '/confirm/email/:token',
+    views:{
+     'home':{
+      templateUrl: 'app/views/login.html',
+      controller: 'loginCtrl'
+     }
+    }
+  })
   .state('sendPass', {
     url: '/sendPass',
     views:{

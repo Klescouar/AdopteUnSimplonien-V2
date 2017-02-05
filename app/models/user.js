@@ -8,6 +8,11 @@ const UserSchema = new Schema({
     company: String,
     lastName: String,
     email: String,
+    token: String,
+    actif: {
+        type: Boolean,
+        default: false
+    },
     password: {
           type: String,
           required: true
