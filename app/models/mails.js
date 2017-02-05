@@ -43,3 +43,12 @@ exports.passLink = (data) => {
         </div>`
     )
 }
+
+exports.confirm = (data) => {
+    return(
+        `<div>
+            <p>Cliquez sur ce lien pour finaliser votre inscription</p>
+            <a target="_blank" href="http://localhost:6868/#!/confirm/email/${data.token}"> http://localhost:6868/#!/confirm/email/${data.token}</a>
+        </div>`
+    )
+}

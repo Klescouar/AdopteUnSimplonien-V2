@@ -28,13 +28,29 @@ exports.contactMail = (req, res) => {
 };
 
 exports.sendMailForPass = (req, res) => {
-  console.log(req.body);
     let html = sendPassLink(req.body);
 
     let mailOptions = {
         from: 'lescouarneckevin@yahoo.fr',
         to: req.body.mail,
         subject:'Nouveau mot de passe',
+        html: html
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            return console.log(error);
+        }
+    });
+};
+
+exports.mailConfirm = (req, res) => {
+    let html = layout.confirm(req);
+
+    let mailOptions = {
+        from: transporter._options.auth.user,
+        to: transporter._options.auth.user,
+        subject: `Confirmation de votre email`,
         html: html
     };
 
