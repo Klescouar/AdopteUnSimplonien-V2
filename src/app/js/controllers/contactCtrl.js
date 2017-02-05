@@ -62,20 +62,16 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
         const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
         const newMapAdress = (element) => {
-          new google.maps.Marker({
+          const marker = new google.maps.Marker({
               position: {
                   lat: element.latitude,
                   lng: element.longitude
               },
               map: map
-          }).addListener('click', function() {
-              new google.maps.InfoWindow({content: element.html}).open(map, new google.maps.Marker({
-                  position: {
-                    lat: element.latitude,
-                    lng: element.longitude
-                  },
-                  map: map
-              }));
+          });
+
+          marker.addListener('click', () => {
+              new google.maps.InfoWindow({content: element.html}).open(map, marker);
           });
         }
 
