@@ -1,9 +1,10 @@
-<div class="ProfilUser">
-  <div class="global-profile-container-entreprise">
+<div class="ProfilUser-ent">
+  <div class="cont-title-ent">
+    <h2>Entreprise : {{member.company}}</h2>
+  </div>
     <div class="container-create-entreprise">
       <!-- User Info Section -->
       <div class="section-entreprise">
-        <h2>Entreprise : {{member.company}}</h2>
         <div class="info-group-entreprise" ng-class="{'info-ent':!anime}">
         <h4 class="info-title">Modifier mes informations personnelles</h4>
         <form class="form-entreprise" ng-submit='updateUser(member._id)'>
@@ -63,5 +64,4 @@
         </div>
 
   </div>
-</div>
 </div>

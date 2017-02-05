@@ -21,8 +21,8 @@
             justify-content:space-between;
             width: 100%;
             height: 50px;
-            .left-co-login{
 
+            .left-co-login{
                 background-color: #2e3e53;
                 height: 50px;
                 width: 50%;
@@ -37,27 +37,28 @@
         text-align: center;
         height: 20px;
         }
+
         .cont-title-login{
-       background-color: #2e3e53;
-        width: 100%;
+         background-color: #2e3e53;
+         width: 100%;
 
         .title-login{
             border-top: 1px solid #6c94b4;
-            outline: none;
             border-left: 1px solid #6c94b4;
-            border-top-right-radius: 7px;
             border-right: 1px solid #6c94b4;
+            border-top-right-radius: 7px;
             height: 50px;
             margin-top: 0px;
             margin-bottom: 10px;
             padding: 0;
             padding-right: 10px;
             padding-left: 10px;
-            text-align: center;
             padding-top: 15px;
+            text-align: center;
             font-size: 22px;
             font-weight: normal;
             background-color: rgb(66,88,119);
+            outline: none;
         }
         
         }
@@ -90,15 +91,8 @@
             display: flex;
             align-items: center;
             margin-top: 15px;
-            
-            // .img-mail{
-            //     height: 20px;
-            //     width: 20px;
-                
-            // }
 
             input {
-                
                 padding-top: 3px;
                 height: 35px;
                 width: 85%;
@@ -107,7 +101,6 @@
                 border: none;
                 border-bottom: 1px solid rgba(115, 159, 190, 0.85);
                 background-color: rgb(66,88,119);
-                color: black;
                 color: white;
                 outline: none;
             }
@@ -149,132 +142,6 @@
     }
 }
 
-.inputMail {
-    background-color: rgb(115,159,190) !important;
-    width: 300px !important;
-}
-
-.signInUp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #425877;
-
-
-
-    .logbox {
-        padding: 10px;
-        width: 80%;
-        min-width: 330px;
-        background-color: #fff;
-        height: 600px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #425877;
-
-        h1 {
-            text-align: center;
-            font-size: 2em;
-            width: 90%;
-            font-weight: 300;
-            padding: 20px;
-            border: 1px solid rgba(115,159,190,0.85);
-        }
-
-        a,
-        h1,
-        input {
-            color: white;
-        }
-
-        input {
-            font-size: 1.1em;
-            background-color: #425877;
-            color: white;
-        }
-
-        a {
-            font-style: italic;
-            text-align: right;
-            cursor: pointer;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-
-            p {
-                color: white;
-                font-style: italic;
-                margin-bottom: 120px;
-                
-            }
-        }
-
-        .inputSign {
-            width: 75%;
-            height: 50px;
-            margin: 0 auto 15px;
-            padding: 0 15px;
-            border: none;
-            border-bottom: 1px solid rgba(115,159,190,0.85);
-        }
-
-        .inputSignError {
-            width: 75%;
-            height: 50px;
-            margin: 0 auto 15px;
-            padding: 0 15px;
-            border: none;
-            border-bottom: 2px solid #e05e5e;
-        }
-
-        .inputSignError:focus {
-            outline: none;
-            border-bottom-color: #e05e5e !important;
-        }
-
-        .inputSignError:hover {
-            border-bottom-color: #e05e5e;
-        }
-
-        .inputSign:focus {
-            outline: none;
-            border-bottom: 1px solid #ebebeb !important;
-            color: white !important;
-        }
-
-        .inputSign:hover {
-            border-bottom: 1px solid rgba(144, 187, 217, 0.85);
-        }
-
-        .inputSign:invalid {
-            box-shadow: none;
-        }
-
-        .inputButton {
-            width: 85%;
-            height: 50px;
-            margin: 30px auto;
-            color: white;
-            background-color: rgba(115,159,190,0.85);
-            border: none;
-        }
-
-        .inputButton:hover {
-            background-color: lighten(#739fbe, 7%);
-        }
-
-        .inputButton:focus {
-            outline: none;
-        }
-    }
-}
 
 .redirect-login {
             width: 100%;

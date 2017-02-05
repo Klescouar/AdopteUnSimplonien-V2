@@ -2,16 +2,12 @@
     <div class="cont-form">
         <div class="cont-title-inscription"></div>
         <div class="cont-button">
-            <a class="cont-recruteur">
                 <button class="recruteur-button" ng-click="SetStyle('Recruteur')" ng-class="{'button-focus-right': borderClass, 'border-bottom-focus': !borderClass}">
                     <h4>Inscription Recruteur</h4>
                 </button>
-            </a>
-            <a class="cont-simplonien">
                 <button class="simplonien-button" ng-click="SetStyle('Simplonien')" ng-class="{'button-focus-left':!borderClass, 'border-bottom-focus': borderClass}">
                     <h4>Inscription Simplonien</h4>
                 </button>
-            </a>
         </div>
         <!-- FORM RECRUITER -->
         <form ng-submit="registerRecruteur()" ng-show="user.role == 'Recruteur'" name="formRecruiter">
