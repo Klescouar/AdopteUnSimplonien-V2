@@ -174,7 +174,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   Mail: $scope.student.Mail,
                   Contrat: $scope.student.Contrat.name,
                   DatePromo: $scope.student.DatePromo,
-                  Domaine: $scope.student.domaine,
+                  Domaine: $scope.student.Domaine,
                   ProjetUn: $scope.student.ProjetUn,
                   ProjetDeux: $scope.student.ProjetDeux,
                   ProjetTrois: $scope.student.ProjetTrois

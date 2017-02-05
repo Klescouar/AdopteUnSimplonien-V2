@@ -231,6 +231,13 @@
 		align-items: flex-end;
 		margin-bottom: 20px;
 	}
+	.input-add-school{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		height: 200px;
+	}
 	.delete-filter-button{
 		width: 80px;
 		margin-left: 10px;

@@ -1,6 +1,6 @@
 app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state','$timeout', 'serviceFilter', 'serviceStudent', function($scope, AuthService, $http, serviceFilter, $state, $timeout, serviceFilter, serviceStudent) {
 
-      $scope.show = 0;
+      $scope.show = 6;
       $scope.resetStudent = () => {
         $scope.student = {};
         $scope.student.tags = [];
@@ -147,7 +147,6 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           $scope.show = 5;
           serviceStudent.getStudentById(index).then((res) => {
               $scope.student = res.data;
-              console.log($scope.student.photo);
               const path = '/assets/images/' + $scope.student.photo;
               let html = '';
                   html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -160,7 +159,6 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.getAllUser = () => {
           AuthService.getAllUser($scope.user).then(function(response) {
               $scope.allUser = response.data.user;
-              console.log(response.data);
           }).catch(function(errMsg) {
               const alertPopup = $window.alert('show profils members failed!');
           });
@@ -229,6 +227,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.getAllSchool = () => {
           serviceFilter.getAllSchool().then(function(response) {
               $scope.schools = response.data;
+              console.log($scope.schools);
           }).catch(function(errMsg) {
               console.log('show school failed!');
           });
