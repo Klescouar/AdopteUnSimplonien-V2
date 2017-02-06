@@ -16,7 +16,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         };
 
         $scope.member = AuthService.user();
-        console.log($scope.member);
 
         $scope.updateUser = (id) => {
             const response = confirm("Voulez vous vraiment modifier vos informations ?");
@@ -117,7 +116,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 nom: $scope.student.nom,
                 prenom: $scope.student.prenom,
                 age: $scope.student.age,
-                ville: $scope.student.Ville,
+                ville: $scope.student.ville,
                 photo: $scope.photo,
                 tags: $scope.student.tags,
                 description: $scope.student.description,
@@ -132,7 +131,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 Twitter: $scope.student.Twitter,
                 StackOverFlow: $scope.student.StackOverFlow,
                 Mail: $scope.student.Mail,
-                Contrat: $scope.student.Contrat.name,
+                Contrat: $scope.student.Contrat,
                 DatePromo: $scope.student.DatePromo,
                 Domaine: $scope.student.Domaine,
                 ProjetUn: $scope.student.ProjetUn,
@@ -154,12 +153,12 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.updateStudent = (id) => {
             const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
             if (response === true) {
-              console.log($scope.school);
+              console.log($scope.student.ville);
                 const newInfos = {
                   nom: $scope.student.nom,
                   prenom: $scope.student.prenom,
                   age: $scope.student.age,
-                  ville: $scope.student.Ville,
+                  ville: $scope.student.ville,
                   age: $scope.student.age,
                   photo: $scope.photo ? $scope.photo : $scope.student.photo,
                   tags: $scope.student.tags,
@@ -175,7 +174,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   Twitter: $scope.student.Twitter,
                   StackOverFlow: $scope.student.StackOverFlow,
                   Mail: $scope.student.Mail,
-                  Contrat: $scope.student.Contrat.name,
+                  Contrat: $scope.student.Contrat,
                   DatePromo: $scope.student.DatePromo,
                   Domaine: $scope.student.Domaine,
                   ProjetUn: $scope.student.ProjetUn,

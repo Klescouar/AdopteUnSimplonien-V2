@@ -15,7 +15,7 @@ exports.contactMail = (req, res) => {
 
     let mailOptions = {
         from: req.body.sender,
-        to: req.body.to,
+        to: 'Test.project.simplon@gmail.com',
         subject: `Contact de ${req.body.sender}`,
         html: html
     };
