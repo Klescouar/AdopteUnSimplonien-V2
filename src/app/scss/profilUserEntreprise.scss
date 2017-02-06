@@ -111,15 +111,15 @@
 
 
     .edit-button-entreprise{
-      height: 50px;
-      width: 35%;
+      height: 40px;
+      width: 30%;
       color: white;
       background-color: #de5b49;
       border: none;
     }
 
     .button-change-view{
-      width: 90%;
+      width: 80%;
       color: white;
       background-color: #2F3E52;
     }
@@ -188,11 +188,31 @@
   }
 
   .visible-message-entreprise{
+    display: flex;
+    justify-content:center;
+    align-items:center;
     text-align: center;
-    width: 70%;
-    border: 1px green solid;
-    color: green;
-    display: block;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #69C193 ;
+    color: white;
+
+
+  .img-validate{
+    background: url("../../assets/images/validate.png") no-repeat center / cover;
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+  }
+
+  p{
+    margin: 0px;
+    padding: 0px;
+    margin-top: 2px;
+  }
+
   }
 
 @media screen and (max-width: 450px){

@@ -5,15 +5,39 @@
   align-items: center;
   background-color: rgb(64,71,90);
   .form-reset{
-    width: 50%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-right: 50px;
+    padding-left: 50px;
     height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: #2e3e53;
+    
+    h4{
+      margin-bottom: 20px;
+    }
+
+    .cont-mail{
+      display: flex;
+      justify-content:center;
+      align-items:center;
+
+    .img-mail{
+      height: 30px;
+      width: 30px;
+      background: url("../../assets/images/envelope.png") no-repeat center / cover;
+      margin-right: 10px;
+
+    }
+
+    }
+
   }
   .confirm-button{
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 8px;
     border: none;
     border: 1px solid rgb(181, 181, 181);
