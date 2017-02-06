@@ -421,7 +421,6 @@
 }
 
 .flip-cont-description, .description-simlpon, .flip-description-simlpon-back {
-		background-color: #DE5B49;
 		 min-height: 400px;
 		min-width: 400px;
 		 width: 30%;
@@ -464,6 +463,14 @@
 			margin: 30px;
 		}
 	}
+}
+
+.flip-cont-description, .description-simlpon, .flip-description-simlpon-back {
+		min-height: 400px;
+		min-width: 320px;
+		 width: 30%;
+		 font-size: 0.8em;
+
 }
 
 
