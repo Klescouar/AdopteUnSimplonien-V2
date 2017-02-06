@@ -29,9 +29,9 @@
 		}
 
 		//.flip-cont-description{
-			
+
 		//	.flip-description{
-				
+
 
 				.description-simlpon-back{
 					background-color: #87adc7;
@@ -179,11 +179,12 @@
 	height: 2vh;
 }
 
-@media screen and (max-width: 1350px){
+@media screen and (max-width: 1370px){
 	.main-cont-project{
 	overflow: hidden;
 
  		.cont-img-description {
+			padding: 60px;
 			.title-project{
  				font-size: 2.2em;
 			}
@@ -198,11 +199,11 @@
  			display: flex;
 			flex-direction:column;
 			align-items:center;
+			justify-content: center;
 
 
 			.title-project{
  				width:700px;
- 				margin-bottom: 50px;
 			}
 
 			.description-simlpon{
@@ -256,7 +257,7 @@
 		 min-height: 300px;
 
 
-		 a{	
+		 a{
 		 	color: white;
 		 	text-decoration: none;
 			font-size: 28px;
@@ -297,5 +298,3 @@
 		}
 	}
 }
-
-

@@ -46,10 +46,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             });
         }
 
-
-
-
         $scope.cardExist = false;
+
         $scope.getAllContract = () => {
             serviceFilter.getAllContract().then(function(response) {
                 $scope.contracts = response.data;
@@ -58,6 +56,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             });
         }
         $scope.getAllContract();
+
         $scope.getAllSchool = () => {
             serviceFilter.getAllSchool().then(function(response) {
                 $scope.schools = response.data;
@@ -66,6 +65,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
             });
         }
         $scope.getAllSchool();
+
+
         $scope.getMemberInfo = (id) => {
             serviceStudent.getStudentByMemberId(id).then((response) => {
               if (response.data === 'fail') {
@@ -73,17 +74,19 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
               } else {
                 console.log(response.data);
                 $scope.cardExist = true;
-                  $scope.student = response.data;
-                  const path = '/assets/images/' + $scope.student.photo;
-                  let html = '';
-                      html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
-                  $('#upload-pic').html(html);
+                $scope.student = response.data;
+                $scope.student.Ville = $scope.student.Ville;
+                const path = '/assets/images/' + $scope.student.photo;
+                let html = '';
+                    html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
+                $('#upload-pic').html(html);
               }
             }, (err) => {
                 console.log("Error");
             });
           }
         $scope.getMemberInfo($scope.member._id);
+
         $scope.deleteCard = (id) => {
             const response = confirm("Voulez vous vraiment supprimer votre fiche?");
             if (response === true) {
@@ -114,7 +117,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 nom: $scope.student.nom,
                 prenom: $scope.student.prenom,
                 age: $scope.student.age,
-                ville: $scope.student.school.name,
+                ville: $scope.student.Ville,
                 photo: $scope.photo,
                 tags: $scope.student.tags,
                 description: $scope.student.description,
@@ -131,7 +134,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                 Mail: $scope.student.Mail,
                 Contrat: $scope.student.Contrat.name,
                 DatePromo: $scope.student.DatePromo,
-                Domaine: $scope.student.domaine,
+                Domaine: $scope.student.Domaine,
                 ProjetUn: $scope.student.ProjetUn,
                 ProjetDeux: $scope.student.ProjetDeux,
                 ProjetTrois: $scope.student.ProjetTrois
@@ -156,7 +159,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   nom: $scope.student.nom,
                   prenom: $scope.student.prenom,
                   age: $scope.student.age,
-                  ville: $scope.student.ville.name,
+                  ville: $scope.student.Ville,
                   age: $scope.student.age,
                   photo: $scope.photo ? $scope.photo : $scope.student.photo,
                   tags: $scope.student.tags,
@@ -179,6 +182,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
                   ProjetDeux: $scope.student.ProjetDeux,
                   ProjetTrois: $scope.student.ProjetTrois
                 };
+                console.log($scope.student);
                 serviceStudent.updateStudent(id, newInfos).then((response) => {})
                 alert("Apprenant modifié!")
             };

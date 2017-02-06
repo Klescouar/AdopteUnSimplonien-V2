@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: column;
         border-bottom: 1px solid #6c94b4;
-        
+
         .cont-login{
             display: flex;
             justify-content:space-between;
@@ -60,9 +60,9 @@
             background-color: rgb(66,88,119);
             outline: none;
         }
-        
+
         }
-    
+
 
         form {
             display: flex;
@@ -73,12 +73,12 @@
             border-right: 1px solid #6c94b4;
             border-left: 1px solid #6c94b4;
             padding-top: 6px;
-            
 
 
-            
+
+
         }
-        
+
 
 
         .form-simplonien{
@@ -103,11 +103,11 @@
                 color: white;
                 outline: none;
             }
-            
+
             .input-mail{
                 background: url("../../assets/images/email.png") no-repeat scroll 7px 7px;
             }
-            
+
             .input-password{
                 background: url("../../assets/images/password2.png") no-repeat scroll 7px 7px;
             }
@@ -163,4 +163,8 @@
 
 //VERIF PASSWORDS
 
-
+.match{
+              display: block;
+              color: #de5b49;
+              font-size: 0.9em;
+            }
