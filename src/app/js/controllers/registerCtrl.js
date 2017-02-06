@@ -1,8 +1,8 @@
 app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$timeout', '$location', function($scope, AuthService, $state, $window, $timeout,$location, $stateProvider,$urlRouterProvider) {
 
         $scope.borderClass = true;
-        passwordCheckedSimplonien='';
-        passwordCheckedRecruteur='';
+        $scope.passwordCheckedSimplonien='';
+        $scope.passwordCheckedRecruteur='';
         $scope.email=true;
         $scope.user= {
             role: 'Recruteur'
@@ -37,7 +37,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
                     }).catch(function(errMsg) {
                         const alertPopup = $window.alert('Fail!!');
                     });
-                } 
+                }
             }
         };
 
