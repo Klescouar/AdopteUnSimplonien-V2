@@ -7,6 +7,11 @@
     "node": "6.9.2",
     "npm": "4.0.3"
   },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "browser-sync start --proxy localhost:6868 --port 3000 --files 'dist'"
@@ -49,6 +54,9 @@
     "ui-router": "^1.0.0-alpha.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
     "bcryptjs": "^1.1.0"
   }
 }
