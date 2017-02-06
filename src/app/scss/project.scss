@@ -192,28 +192,6 @@
 	}
 }
 
-@media screen and (max-width: 1200px){
-	.main-cont-project{
-
- 		.cont-img-description {
- 			display: flex;
-			flex-direction:column;
-			align-items:center;
-			justify-content: center;
-
-
-			.title-project{
- 				width:700px;
-			}
-
-			.description-simlpon{
- 				min-height: 300px;
- 				width: 700px;
- 			}
-		}
-	}
-}
-
 
 // ANIMATION JEAN KEKE YASS MATH
 
@@ -280,21 +258,213 @@
 	transform: rotateY(180deg);
 }
 
-@media screen and (max-width: 700px){
-	.main-cont-project{
-	overflow: hidden;
 
+@media screen and (max-width: 1200px){
+	.main-cont-project{
+	
  		.cont-img-description {
+ 			display: flex;
+			flex-direction:column;
+			align-items:center;
+			justify-content: center;
+
+
 			.title-project{
-				width:100%;
-				margin-bottom: 50px;
+ 				width:700px;
 			}
-			.description-simlpon{
-				opacity: 0.9;
- 				min-height: 300px;
-				min-width: 360px;
- 				width: 100%;
+
+
+		}
+
+		.cont-img-description-simplonien{
+			justify-content:center;
+			
+			.description-show-left{
+				margin-left: auto;
+				margin-right: auto;
+				left:0;
+				right: 0;
+			}
+
+ 			.title-right{
+ 				margin-left: 0px;
+ 				margin-right: 0px;
+ 				margin-bottom: 75%;
  			}
+
+
+
+		}
+		.cont-img-description-simplon{
+			justify-content:center;
+			
+			.description-show-rigth{
+				margin-left: auto;
+				margin-right: auto;
+				left:0;
+				right: 0;
+			}
+
+ 			.title-left{
+ 				margin-left: 0px;
+ 				margin-right: 0px;
+ 				margin-bottom: 75%;
+ 			}
+
+
+
 		}
 	}
+}
+
+
+@media screen and (max-width: 1000px){
+
+	.main-cont-project{
+
+		.cont-img-description-simplonien{
+
+ 			.title-right{
+ 				
+ 				margin-bottom: 90%;
+ 			}
+
+		}
+
+		.cont-img-description-simplon{
+
+  			.title-left{
+ 				
+ 				margin-bottom: 90%;
+ 			}
+		}
+
+
+	}
+
+}
+
+@media screen and (max-width: 800px){
+.main-cont-project{	
+	.cont-img-description{
+		padding: 30px;
+	}
+	.cont-img-description-simplonien{
+		display: flex;
+		flex-direction:column-reverse;
+		justify-content:center;
+		align-items:center;
+
+		.title-right{
+			margin-bottom: 20px;
+		}
+	}
+
+	.cont-img-description-simplon{
+		display: flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+
+		.title-left{
+			margin-bottom: 20px;
+		}
+	}
+}
+
+ .description-hide-left{
+	transition: none;
+	position: initial;
+            opacity: 1;
+
+    	margin-top: 0px;
+ }
+
+.description-hide-right{
+	transition: none;
+	position: initial;
+            opacity: 1;
+            margin-top: 0px;
+}	
+
+}
+
+@media screen and (max-width: 600px){
+
+.main-cont-project{	
+	.cont-img-description{
+		padding: 0px;
+		padding-bottom: 20px;
+
+		.title-project{
+			width: 450px;
+			font-size: 1.6em;
+		}
+
+		.corpus-description{
+			font-size: 1.3em;
+			margin: 40px;
+		}
+
+		.flip-cont-description{
+			min-height: 400px;
+			min-width: 400px;
+		}
+
+		.description-simlpon {
+			min-height: 400px;
+			min-width: 400px;
+		}
+	}
+
+
+}
+
+.flip-cont-description, .description-simlpon, .flip-description-simlpon-back {
+		background-color: #DE5B49;
+		 min-height: 400px;
+		min-width: 400px;
+		 width: 30%;
+		 font-size: 0.8em;
+
+}
+
+
+}
+
+@media screen and (max-width: 375px){
+
+.main-cont-project{	
+	.cont-img-description{
+		padding: 0px;
+		padding-bottom: 20px;
+
+		.title-project{
+			width: 350px;
+			font-size: 1.4em;
+		}
+
+		.corpus-description{
+			font-size: 1.1em;
+			margin: 40px;
+
+		}
+
+		.flip-cont-description{
+			min-height: 400px;
+			min-width: 320px;
+		}
+
+		.description-simlpon {
+			min-height: 400px;
+			min-width: 320px;
+		}
+
+		.corpus-description{
+			margin: 30px;
+		}
+	}
+}
+
+
 }
