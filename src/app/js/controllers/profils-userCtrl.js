@@ -1,4 +1,4 @@
-app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', 'AuthService', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter, AuthService) {
+app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter) {
         $scope.member = AuthService.user();
         $scope.showEditProfilUser = false;
         $scope.photo = '';

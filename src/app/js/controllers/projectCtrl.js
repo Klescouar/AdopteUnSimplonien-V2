@@ -16,4 +16,9 @@ app.controller('projectCtrl', ['$scope', '$http', 'serviceFilter', '$timeout', '
          }
          $scope.$apply(() => {});
      });
+
+        $scope.setFlip = () => {
+
+            document.querySelector('#flip-toggle').classList.toggle('hover');
+        }
 }]);

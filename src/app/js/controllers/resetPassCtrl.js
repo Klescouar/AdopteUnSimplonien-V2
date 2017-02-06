@@ -1,4 +1,4 @@
-app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthService', 'AuthService', '$stateParams', function($scope, serviceMailer, $window, AuthService, AuthService, $stateParams){
+app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthService', '$stateParams', function($scope, serviceMailer, $window, AuthService, $stateParams){
 
   const infoUser = AuthService.user();
   let token = $stateParams.token;

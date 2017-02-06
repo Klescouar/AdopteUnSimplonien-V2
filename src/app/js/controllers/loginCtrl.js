@@ -1,5 +1,5 @@
-app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', '$rootScope', 'serviceMailer', '$stateParams',
- function($scope, $rootScope, AuthService, $state, $window, $rootScope, serviceMailer, $stateParams) {
+app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams',
+ function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams) {
     $scope.user = {
         email: '',
         password: ''

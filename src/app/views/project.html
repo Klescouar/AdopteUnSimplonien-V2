@@ -2,12 +2,28 @@
 	<div class="mask" ng-class="{'mask-is-open': !showTitle}">
 	</div>
 	<div class="cont-img-description">
-		<h2 class="title-project">Adopte un Simplonien : une plateforme faite par les Simploniens pour les Simploniens</h2>
-		<div class="description-simlpon">
-			<p class="corpus-description">
-					Adopte un Simplonien est une plateforme réalisée pour permettre aux recruteurs de sélectionner au mieux les talents de la fabrique Simplon.co.
-					Elle aura vu le jour grâce à l'immense talent et la pugnacité dont ont su faire preuve les élève de Simplon.</p>
-			<p class="end-description">FABRIQUE DE TALENTS 3.0</p>
+		<h2 class="title-project">Adopte un Simplonien : une plateforme faite<a ng-click="setFlip()"> par les Simploniens</a> a pour les Simploniens</h2>
+		<div class="flip-cont-description" id="flip-toggle">
+			<div class="flip-description">
+				<div class="flip-description-simlpon">
+					<p class="corpus-description">
+							Adopte un Simplonien est une plateforme réalisée pour permettre aux recruteurs de sélectionner au mieux les talents de la fabrique Simplon.co.
+							Elle aura vu le jour grâce à l'immense talent et la pugnacité dont ont su faire preuve les élève de Simplon.</p>
+					<p class="end-description">FABRIQUE DE TALENTS 3.0</p>
+				</div>
+				<div class="flip-description-simlpon-back">
+					<p class="corpus-description">
+						<div class="cont-linkedin">
+							<a href="https://fr.linkedin.com/in/yacinechibanedejesus/fr" target="_blank">Yacine Chibane-De Jésus</a>
+							<a href="https://fr.linkedin.com/in/kevin-le-scouarnec-70aa76b0" target="_blank">Kevin Le Scouarnec</a>
+<!-- 						</div>
+						<div class="cont-linkedin"> -->
+							<a href="https://fr.linkedin.com/in/mathieu-larrieu-b18447a4" target="_blank">Mathieu Larrieu</a>
+							<a href="https://fr.linkedin.com/in/mathieu-larrieu-b18447a4" target="_blank">Jean Andreani</a>
+						</div>
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="mask" ng-class="{'mask-is-open-blue': !showTitle}">

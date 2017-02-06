@@ -16,38 +16,62 @@
  			font-size: 2.6em;
 			padding: 30px;
 			text-decoration: none;
+
+			a{
+				color: #DE5B49;
+				cursor: pointer;
+				text-decoration: underline;
+			}
+
+			a:hover{
+				color:#87adc7
+			}
 		}
 
+		//.flip-cont-description{
+			
+		//	.flip-description{
+				
 
-		.description-simlpon{
-			background-color: #DE5B49;
- 			min-height: 450px;
- 			min-width: 500px;
- 			width: 30%;
- 			font-size: 0.8em;
+				.description-simlpon-back{
+					background-color: #87adc7;
+		 			min-height: 450px;
+		 			min-width: 500px;
+		 			width: 30%;
+		 			font-size: 0.8em;
+				}
 
+				.description-simlpon{
+					background-color: #DE5B49;
+		 			min-height: 450px;
+		 			min-width: 500px;
+		 			width: 30%;
+		 			font-size: 0.8em;
+		 		}
 
-  			.corpus-description {
- 				color: white;
- 				margin: 50px;
- 				font-size: 1.6em;
- 				font-style: normal;
- 				font-variant: normal;
- 				font-weight: 400;
- 				font-stretch: normal;
- 				line-height: 35px;
- 			}
-  			.end-description {
- 				color: white;
- 				margin: 50px;
- 				font-size: 1em;
- 				font-style: normal;
- 				font-variant: normal;
- 				font-weight: 300;
- 				font-stretch: normal;
- 				line-height: 35px;
- 			}
- 		}
+		  			.corpus-description {
+		 				color: white;
+		 				margin: 50px;
+		 				font-size: 1.6em;
+		 				font-style: normal;
+		 				font-variant: normal;
+		 				font-weight: 400;
+		 				font-stretch: normal;
+		 				line-height: 35px;
+
+		 			}
+		  			.end-description {
+		 				color: white;
+		 				margin: 50px;
+		 				font-size: 1em;
+		 				font-style: normal;
+		 				font-variant: normal;
+		 				font-weight: 300;
+		 				font-stretch: normal;
+		 				line-height: 35px;
+		 			}
+		//	}
+		//}
 
  		.description-simlpon-left{
  			background-color: #87adc7;
@@ -189,6 +213,72 @@
 	}
 }
 
+
+// ANIMATION JEAN KEKE YASS MATH
+
+/* entire container, keeps perspective */
+.flip-cont-description {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-cont-description:hover .flip-description, .flip-cont-description.hover .flip-description {
+		transform: rotateY(180deg);
+	}
+
+.flip-cont-description, .description-simlpon, .flip-description-simlpon-back {
+		background-color: #DE5B49;
+		 min-height: 450px;
+		 min-width: 500px;
+		 width: 30%;
+		 font-size: 0.8em;
+
+}
+
+/* flip speed goes here */
+.flip-description {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.flip-description-simlpon, .flip-description-simlpon-back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	.cont-linkedin{
+		 display: flex;
+		 flex-direction:column;
+		 justify-content:space-around;
+		 align-items:center;
+		 min-height: 300px;
+
+
+		 a{	
+		 	color: white;
+		 	text-decoration: none;
+			font-size: 28px;
+		 }
+		 a:hover{
+		 	text-decoration: underline;
+		 	color: #87adc7;
+		 }
+	}
+}
+/* front pane, placed above back */
+.flip-description-simlpon {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.flip-description-simlpon-back {
+	transform: rotateY(180deg);
+}
+
 @media screen and (max-width: 700px){
 	.main-cont-project{
 	overflow: hidden;
@@ -207,3 +297,5 @@
 		}
 	}
 }
+
+
