@@ -90,12 +90,12 @@
             </div>
             <div class="cont-input">
               <label for="boCreatePromoSimploniens">Ville</label>
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.ville" ng-options='school.name for school in schools' placeholder="Ville" required>
-                <option value="" disabled>Ville</option>
+              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.Ville" ng-options='school as school.name for school in schools track by school._id' required>
+                <option value="" ng-if='!student.Ville' disabled>Ville</option>
               </select>
             </div>
             <div class="cont-input">
-              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat.name" ng-options='contract.name for contract in contracts'>
+              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-options='contract.name for contract in contracts'>
                 <option value="" disabled> Type de Contrat</option>
               </select>
             </div>
