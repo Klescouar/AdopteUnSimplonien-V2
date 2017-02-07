@@ -271,6 +271,37 @@
 	}
 }
 
+@media screen and (max-width: 1500px){
+
+.description-show-left{
+	right: 60%;
+ }
+
+ .description-show-rigth{
+	left: 60%;
+ }
+
+}
+
+@media screen and (max-width: 1300px){
+
+.description-show-left{
+	right: 55%;
+ }
+
+ .description-show-rigth{
+	left: 55%;
+ }
+
+.title-right{
+	margin-left: 50%;
+}
+
+.title-left{
+	margin-right: 50%;
+}
+
+}
 
 @media screen and (max-width: 1200px){
 	.main-cont-project{
