@@ -52,7 +52,7 @@
 		  			.corpus-description {
 		 				color: white;
 		 				margin: 50px;
-		 				font-size: 1.6em;
+		 				font-size: 1.7em;
 		 				font-style: normal;
 		 				font-variant: normal;
 		 				font-weight: 400;
@@ -60,6 +60,7 @@
 		 				line-height: 35px;
 
 		 			}
+
 		  			.end-description {
 		 				color: white;
 		 				margin: 50px;
@@ -109,7 +110,7 @@
  .description-hide-left{
  	transition: all 2s;
 	position: absolute;
- 	left: 2000px;
+ 	right: 2000px;
  	margin-top: -275px;
             top: 50%;
             opacity: 0.2;
@@ -118,32 +119,27 @@
 .description-hide-right{
 	transition: all 2s;
 	position: absolute;
- 	right: 2000px;
+ 	left: 2000px;
  	margin-top: -275px;
             top: 50%;
             opacity: 0.2;
 }
 
-// .title-show-right{
-// 	transition: all 1s;
-// 	right: 7%;
-// 	left: 40%;
-// }
 
 .description-show-left{
  	transition: all 2s;
-	left: 6%;
+	right: 65%;
 	margin-top: -275px;
             top: 50%;
-            opacity: 1;
+            opacity: 0.9;
  }
 
  .description-show-rigth{
  	transition: all 2s;
-	right: 6%;
+	left: 65%;
 	margin-top: -275px;
             top: 50%;
-            opacity: 1;
+            opacity: 0.9;
  }
 
  .mask {
@@ -200,14 +196,18 @@
 	perspective: 1000px;
 }
 	/* flip the pane when hovered */
-	.flip-cont-description:hover .flip-description, .flip-cont-description.hover .flip-description {
+	.flip-cont-description.hover .flip-description {
+
 		transform: rotateY(180deg);
 	}
 
 .flip-cont-description, .description-simlpon, .flip-description-simlpon-back {
+
+	
+
 		background-color: #DE5B49;
 		 min-height: 450px;
-		 min-width: 500px;
+		 min-width: 510px;
 		 width: 30%;
 		 font-size: 0.8em;
 
@@ -226,19 +226,26 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	
 
 	.cont-linkedin{
+		min-height: 440px;
+		background:linear-gradient(rgba(222, 91, 73, 0.7), rgba(222,91,73,0.7)),url("../../assets/images/simplonContact2.jpg") no-repeat center /cover;
 		 display: flex;
 		 flex-direction:column;
 		 justify-content:space-around;
 		 align-items:center;
-		 min-height: 300px;
+		 border: solid #6c94b4 1px;
 
+		h5{
+			font-size: 2.5em;
+			font-weight: bold;
+		}
 
 		 a{
 		 	color: white;
 		 	text-decoration: none;
-			font-size: 28px;
+			font-size: 2em;
 		 }
 		 a:hover{
 		 	text-decoration: underline;
@@ -255,7 +262,12 @@
 
 /* back, initially hidden pane */
 .flip-description-simlpon-back {
+
 	transform: rotateY(180deg);
+
+		.corpus-description{
+		display: none;
+	}
 }
 
 
@@ -375,7 +387,7 @@
  .description-hide-left{
 	transition: none;
 	position: initial;
-            opacity: 1;
+            opacity: 0.9;
 
     	margin-top: 0px;
  }
@@ -383,7 +395,7 @@
 .description-hide-right{
 	transition: none;
 	position: initial;
-            opacity: 1;
+            opacity: 0.9;
             margin-top: 0px;
 }	
 
