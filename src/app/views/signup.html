@@ -21,7 +21,13 @@
                 <div class="cont-input">
                     <input class="input-register" type="text" id="prenom"  ng-model="userRecruteur.firstName" required placeholder="Prénom">
                 </div>
-
+                <div class="cont-input">
+                    <select id="boCreatePromoSimploniens" class="input-style" ng-model="userRecruteur.technology"
+                        placeholder="technology" required>
+                        <option class="labelOption" disabled selected value>Technologie</option>
+                        <option ng-repeat="skill in skills">{{skill.name}}</option>
+                    </select>
+                </div>
                 <!-- EMAIL -->
                 <div class="cont-input">
                     <input class="input-register" type="email" id="email" ng-model="userRecruteur.email" required placeholder="E-mail">

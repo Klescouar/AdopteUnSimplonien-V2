@@ -1,4 +1,4 @@
-app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$timeout', '$location', function($scope, AuthService, $state, $window, $timeout,$location, $stateProvider,$urlRouterProvider) {
+app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state', '$window', '$timeout', '$location', function($scope, AuthService, serviceFilter,$state, $window, $timeout,$location, $stateProvider,$urlRouterProvider) {
 
         $scope.borderClass = true;
         $scope.passwordCheckedSimplonien='';
@@ -8,6 +8,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
             role: 'Recruteur'
         };
         $scope.userRecruteur = {
+            technology:'',
             company: '',
             firstName: '',
             lastName: '',
@@ -69,5 +70,15 @@ app.controller('registerCtrl', ['$scope', 'AuthService', '$state', '$window', '$
                 $scope.borderClass = false;
             }
         }
+      $scope.getAllSkill = () => {
+          serviceFilter.getAllSkill().then(function(response) {
+              $scope.skills = response.data;
+              console.log($scope.skills)
+          }).catch(function(errMsg) {
+              console.log('show skill failed!');
+          });
+      }
+      $scope.getAllSkill();
+
     }
 ]);
