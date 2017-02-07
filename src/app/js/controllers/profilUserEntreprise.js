@@ -16,7 +16,7 @@ app.controller('profilUserEntreprise', [
 		$scope.validate = true;
             		$scope.oldPassVerif = true;
 		$scope.member = AuthService.user();
-
+    console.log($scope.member);
 	// ANIMATION CHANGING VIEW
 
 	$scope.changeView = () => {

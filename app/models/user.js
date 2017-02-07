@@ -6,6 +6,7 @@ const bcrypt  = require('bcryptjs');
 const UserSchema = new Schema({
     firstName: String,
     company: String,
+    technology : String,
     lastName: String,
     email: String,
     token: String,
