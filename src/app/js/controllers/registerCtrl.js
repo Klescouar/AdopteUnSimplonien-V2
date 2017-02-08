@@ -45,11 +45,14 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
 
         $scope.registerSimplonien = () => {
           $scope.checkInput = true;
+          $scope.invalidInput = [];
           Object.keys($scope.userSimplonien).map(function(key, index) {
               if ($scope.userSimplonien[key] === '') {
-                return $scope.checkInput = false;
+                $scope.invalidInput.push(key);
+                $scope.checkInput = false;
               };
           });
+          console.log($scope.invalidInput);
             if ($scope.checkInput === true) {
                 $scope.input=true;
                 if ($scope.userSimplonien.password.trim().length >= 8) {
