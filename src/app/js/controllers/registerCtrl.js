@@ -4,9 +4,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         $scope.passwordCheckedSimplonien='';
         $scope.passwordCheckedRecruteur='';
         $scope.email=true;
-        // $scope.userSimplonienArray =[$scope.lastName];
         $scope.input=true;
-        $scope.checkInput= $('.input-register').val();
         $scope.user= {
             role: 'Recruteur'
         };
@@ -46,14 +44,14 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         };
 
         $scope.registerSimplonien = () => {
-            // $scope.userSimplonienArray.forEach(val => {
-            //     console.log("coucou")
-            //     if ($scope.userSimplonienArray[val] === '') 
-            //         console.log("couocu")
-            //         return 'Veuillez remplir le champ'
-            // })
-            // if ($scope.checkInput !=="") {
-                // $scope.input=true;
+          $scope.checkInput = true;
+          Object.keys($scope.userSimplonien).map(function(key, index) {
+              if ($scope.userSimplonien[key] === '') {
+                return $scope.checkInput = false;
+              };
+          });
+            if ($scope.checkInput === true) {
+                $scope.input=true;
                 if ($scope.userSimplonien.password.trim().length >= 8) {
                     if ($scope.user.password === $scope.passwordChecked) {
                         AuthService.register($scope.userSimplonien).then(function(response) {
@@ -69,10 +67,10 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                         });
                     }
                 }
-            //}
-            // else{
-            //     $scope.input=false;
-            // }
+            }
+            else{
+                $scope.input=false;
+            }
         };
 
         $scope.SetStyle = function(role) {
