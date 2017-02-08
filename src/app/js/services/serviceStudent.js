@@ -1,7 +1,15 @@
 app.service("serviceStudent", function($http, API_ENDPOINT) {
 
-    this.addStudent = function(dataStudent) {
+    this.addStudentFromAdmin = function(dataStudent) {
         return $http.post(API_ENDPOINT.url + '/backOffice/addStudentFromAdmin', dataStudent).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.addStudent = function(dataStudent) {
+        return $http.post(API_ENDPOINT.url + '/backOffice/addStudent', dataStudent).then((response) => {
             return response;
         }, function(error) {
             return error;

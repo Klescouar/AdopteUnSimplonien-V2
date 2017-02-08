@@ -68,7 +68,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
 
         $scope.getMemberInfo = (id) => {
             serviceStudent.getStudentByMemberId(id).then((response) => {
-              if (response.data === 'fail') {
+              if (response.data.success === false) {
                 $scope.cardExist = false;
               } else {
                 console.log(response.data);
