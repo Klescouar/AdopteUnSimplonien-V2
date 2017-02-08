@@ -109,7 +109,7 @@
  }
 
  .description-hide-left{
- 	transition: all 2s;
+ 	transition: all 1s;
 	position: absolute;
  	right: 2000px;
  	margin-top: -275px;
@@ -118,7 +118,7 @@
  }
 
 .description-hide-right{
-	transition: all 2s;
+	transition: all 1s;
 	position: absolute;
  	left: 2000px;
  	margin-top: -275px;
@@ -128,7 +128,7 @@
 
 
 .description-show-left{
- 	transition: all 2s;
+ 	transition: all 1s;
 	right: 65%;
 	margin-top: -275px;
             top: 50%;
@@ -136,7 +136,7 @@
  }
 
  .description-show-rigth{
- 	transition: all 2s;
+ 	transition: all 1s;
 	left: 65%;
 	margin-top: -275px;
             top: 50%;

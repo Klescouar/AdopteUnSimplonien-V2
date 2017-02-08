@@ -3,15 +3,15 @@ app.controller('projectCtrl', ['$scope', '$http', 'serviceFilter', '$timeout', '
     $scope.showSimplon = true;
 
      angular.element($window).bind("scroll", (e) => {
-        if(window.pageYOffset > 350){
+        if(window.pageYOffset > 450){
             $scope.showTitle = false;
-        }else if(window.pageYOffset < 350){
+        }else if(window.pageYOffset < 450){
             $scope.showTitle = true;
         }
-        if (window.pageYOffset > 900) {
+        if (window.pageYOffset > 1000) {
              $scope.showSimplon = false;
          }
-         else if (window.pageYOffset < 900) {
+         else if (window.pageYOffset < 1000) {
            $scope.showSimplon = true;
          }
          $scope.$apply(() => {});
