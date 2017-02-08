@@ -20,6 +20,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           password: ''
       };
       $scope.recruiterAccount = {
+          technology:'',
           company : '',
           firstName: '',
           lastName: '',

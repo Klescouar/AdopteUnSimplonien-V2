@@ -6,7 +6,7 @@
  		display: flex;
  		justify-content:space-around;
  		align-items:center;
-		background: linear-gradient(rgba(115,159,190,0.30), rgba(115,159,190,0.30)), url("../../assets/images/adopte.jpg") no-repeat center / cover;
+		background: linear-gradient(rgba(115,159,190,0.30), rgba(115,159,190,0.30)), url("../../assets/images/simplonien.jpg") no-repeat center / cover;
 		min-height: calc(100vh - 60px);
 		padding: 20px;
 
@@ -272,7 +272,6 @@
 }
 
 @media screen and (max-width: 1500px){
-
 .description-show-left{
 	right: 60%;
  }
@@ -280,19 +279,15 @@
  .description-show-rigth{
 	left: 60%;
  }
-
 }
 
 @media screen and (max-width: 1300px){
-
 .description-show-left{
 	right: 55%;
  }
-
  .description-show-rigth{
 	left: 55%;
  }
-
 .title-right{
 	margin-left: 50%;
 }
@@ -300,7 +295,6 @@
 .title-left{
 	margin-right: 50%;
 }
-
 }
 
 @media screen and (max-width: 1200px){
@@ -471,8 +465,6 @@
 		 font-size: 0.8em;
 
 }
-
-
 }
 
 @media screen and (max-width: 375px){
@@ -516,6 +508,4 @@
 		 font-size: 0.8em;
 
 }
-
-
 }
