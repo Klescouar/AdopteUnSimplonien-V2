@@ -4,6 +4,9 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         $scope.passwordCheckedSimplonien='';
         $scope.passwordCheckedRecruteur='';
         $scope.email=true;
+        // $scope.userSimplonienArray =[$scope.lastName];
+        $scope.input=true;
+        $scope.checkInput= $('.input-register').val();
         $scope.user= {
             role: 'Recruteur'
         };
@@ -25,7 +28,6 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         };
 
         $scope.registerRecruteur = () => {
-          console.log($scope.userRecruteur);
             if ($scope.userRecruteur.password.trim().length >= 8) {
                 if ($scope.userRecruteur.password === $scope.passwordCheckedRecruteur) {
                   AuthService.register($scope.userRecruteur).then(function(response) {
@@ -44,21 +46,33 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         };
 
         $scope.registerSimplonien = () => {
-            if ($scope.userSimplonien.password.trim().length >= 8) {
-                if ($scope.user.password === $scope.passwordChecked) {
-                    AuthService.register($scope.userSimplonien).then(function(response) {
-                    if (response.data.msg === "Email already used") {
-                        $scope.email=false;
-                        const alertPopup = $window.alert(response.data.msg);
-                    }else {
-                            $scope.email=true;
-                            $state.go('login');
+            // $scope.userSimplonienArray.forEach(val => {
+            //     console.log("coucou")
+            //     if ($scope.userSimplonienArray[val] === '') 
+            //         console.log("couocu")
+            //         return 'Veuillez remplir le champ'
+            // })
+            // if ($scope.checkInput !=="") {
+                // $scope.input=true;
+                if ($scope.userSimplonien.password.trim().length >= 8) {
+                    if ($scope.user.password === $scope.passwordChecked) {
+                        AuthService.register($scope.userSimplonien).then(function(response) {
+                        if (response.data.msg === "Email already used") {
+                            $scope.email=false;
+                            const alertPopup = $window.alert(response.data.msg);
+                        }else {
+                                $scope.email=true;
+                                $state.go('login');
+                        }
+                        }).catch(function(errMsg) {
+                            const alertPopup = $window.alert("Fail!");
+                        });
                     }
-                    }).catch(function(errMsg) {
-                        const alertPopup = $window.alert("Fail!");
-                    });
                 }
-            }
+            //}
+            // else{
+            //     $scope.input=false;
+            // }
         };
 
         $scope.SetStyle = function(role) {
@@ -74,7 +88,6 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
       $scope.getAllSkill = () => {
           serviceFilter.getAllSkill().then(function(response) {
               $scope.skills = response.data;
-              console.log($scope.skills)
           }).catch(function(errMsg) {
               console.log('show skill failed!');
           });
