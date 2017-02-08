@@ -1,12 +1,4 @@
-app.controller('profilUserEntreprise', [
-    '$http',
-    '$scope',
-    '$rootScope',
-    'AuthService',
-    '$state',
-    '$window',
-    'serviceStudent',
-    function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent) {
+app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent) {
 		$scope.newPassword = {
 		    newpass: '',
 		    oldpass: ''

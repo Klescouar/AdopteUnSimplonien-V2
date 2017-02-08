@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const passport = require('passport');
 const jwt = require('jwt-simple');
-const mongojs = require('mongojs');
 const fs = require('fs');
 const formidable = require('formidable');
 const readChunk = require('read-chunk');
@@ -22,7 +21,6 @@ const contract = require(__dirname + '/app/controllers/controllers.contracts');
 const school = require(__dirname + '/app/controllers/controllers.schools');
 const email = require(__dirname + '/app/controllers/controllers.emails');
 const apiRoutes = express.Router();
-const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien', 'users']);
 const nodemailer = require("nodemailer");
 
 require(__dirname + '/config/passport')(passport);

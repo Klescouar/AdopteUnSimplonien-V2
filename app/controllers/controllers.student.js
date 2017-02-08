@@ -1,9 +1,9 @@
-const mongojs = require('mongojs');
-const db = mongojs('mongodb://Poncho:simplonien@ds127928.mlab.com:27928/adopte-un-simplonien', ['simplonien']);
+const config  = require('../../config/database');
+const Student = require('../models/student');
 
 exports.infoStudent = (req, res) => {
     console.log('I received a GET request');
-    db.simplonien.find(function(err, docs) {
+    Student.find(function(err, docs) {
       if (err) {
         throw error;
       } else {
@@ -13,11 +13,10 @@ exports.infoStudent = (req, res) => {
 };
 
 exports.findStudent = (req, res) => {
+  console.log(req.params.id_profil);
     console.log('I received a GET request');
     const id = req.params.id_profil;
-    db.simplonien.findOne({
-        _id: mongojs.ObjectId(id)
-    }, function(err, doc) {
+    Student.findById(id, function (err, doc) {
       if (err) {
         throw error;
       } else {
@@ -29,27 +28,27 @@ exports.findStudent = (req, res) => {
 exports.findStudentByMemberId = (req, res) => {
     console.log('I received a GET request');
     const memberId = req.params.memberId;
-    db.simplonien.findOne({
-        memberId: memberId
+    Student.findOne({
+      memberId: memberId
     }, function(err, doc) {
-      if (!doc) {
-        res.send('fail');
-      } else {
-        res.json(doc);
-      }
+        if (!doc) {
+          return res.json({success: false, msg: 'Student doesn\'t exists.'});
+        } else if (err) {
+          return res.json({success: false, msg: 'Student doesn\'t have profil.'});
+        } else {
+          return res.json(doc)
+        }
     });
 };
 
 exports.removeStudent = (req, res) => {
     console.log('I received a GET request');
     const id = req.params.id_profil;
-    db.simplonien.remove({
-        _id: mongojs.ObjectId(id)
-    }, function(err, doc) {
-      if (!doc) {
-        res.send('fail');
+    Student.findOneAndRemove({ _id: id}, function(err) {
+      if (err) {
+        res.send(err)
       } else {
-        res.json(doc);
+        res.json({ message: 'Student removed!' });
       }
     });
 };
@@ -57,7 +56,7 @@ exports.removeStudent = (req, res) => {
 exports.addStudent = (req, res) => {
     const memberId = req.body.memberId;
     console.log('I received a GET request');
-    db.simplonien.findOne({
+    Student.findOne({
         memberId: memberId
     }, function(err, doc) {
         const p = new Promise((resolve, reject) => {
@@ -66,86 +65,87 @@ exports.addStudent = (req, res) => {
         p.then(function() {
             res.send('error')
         }, function() {
-            db.simplonien.insert(req.body, function(err, doc) {
-              if (err) {
-                throw error;
-              } else {
-                res.json(doc);
-              }
-            });
+          const newStudent = new Student(req.body);
+          newStudent.save(function(err) {
+            if (err) {
+              return res.json({success: false, msg: 'Student already exists.'});
+            } else {
+              return res.json({success: true, msg: 'Successful Add Student.'});
+            }
+          });
         })
     });
 };
 
 exports.addStudentFromAdmin =  function(req, res) {
-      db.simplonien.insert(req.body, function(err, doc) {
-        if (err) {
-          throw error;
-        } else {
-          res.json(doc);
-        }
-      });
+  console.log(req.body);
+  if (!req.body.nom || !req.body.prenom) {
+    res.json({success: false, msg: 'Please pass all infos.'});
+  } else {
+    const newStudent = new Student(req.body);
+    newStudent.save(function(err) {
+      if (err) {
+        return res.json({success: false, msg: 'Student already exists.'});
+      } else {
+        return res.json({success: true, msg: 'Successful Add Student.'});
+      }
+    });
+  }
  };
 
 exports.updateStudent = (req, res) => {
     if (!req.body.nom) {
-        const id = req.params.id;
-        db.simplonien.findAndModify({
-            query: {
-                _id: mongojs.ObjectId(id)
-            },
-            update: {
-                $set: {
-                    verified: true
-                }
-            },
-            new: true
-        }, (err, doc) => {
+      const id = req.params.id;
+      Student.findById(id, function (err, doc) {
           if (err) {
-            throw error;
+              res.status(500).send(err);
           } else {
-            res.json(doc);
+            doc.verified = true,
+              doc.save(function (err, doc) {
+                  if (err) {
+                      res.status(500).send(err)
+                  }
+                  res.send(doc);
+              });
           }
-        });
+      });
     } else {
-
-        const id = req.params.id;
-        db.simplonien.findAndModify({
-            query: {
-                _id: mongojs.ObjectId(id)
-            },
-            update: {
-                $set: {
-                    nom: req.body.nom,
-                    prenom: req.body.prenom,
-                    age: req.body.age,
-                    ville: req.body.ville,
-                    photo: req.body.photo,
-                    tags: req.body.tags,
-                    description: req.body.description,
-                    Sexe: req.body.Sexe,
-                    SpecialiteUn: req.body.SpecialiteUn,
-                    SpecialiteDeux: req.body.SpecialiteDeux,
-                    SpecialiteTrois: req.body.SpecialiteTrois,
-                    Github: req.body.Github,
-                    Linkedin: req.body.Linkedin,
-                    Portfolio: req.body.Portfolio,
-                    CV: req.body.CV,
-                    Twitter: req.body.Twitter,
-                    StackOverFlow: req.body.StackOverFlow,
-                    Mail: req.body.Mail,
-                    Contrat: req.body.Contrat,
-                    DatePromo: req.body.DatePromo,
-                    Domaine: req.body.Domaine
-                }
-            },
-            new: true
-        }, (err, doc) => {
+      const id = req.params.id;
+      Student.findById(id, function (err, doc) {
           if (err) {
-            throw error;
+              res.status(500).send(err);
           } else {
-            res.json(doc);
+            doc.nom = req.body.nom,
+            doc.prenom = req.body.prenom,
+            doc.age = req.body.age,
+            doc.ville = req.body.ville,
+            doc.photo = req.body.photo,
+            doc.tags = req.body.tags,
+            doc.description = req.body.description,
+            doc.Sexe = req.body.Sexe,
+            doc.SpecialiteUn = req.body.SpecialiteUn,
+            doc.SpecialiteDeux = req.body.SpecialiteDeux,
+            doc.SpecialiteTrois = req.body.SpecialiteTrois,
+            doc.Github = req.body.Github,
+            doc.Linkedin = req.body.Linkedin,
+            doc.Portfolio = req.body.Portfolio,
+            doc.CV = req.body.CV,
+            doc.Twitter = req.body.Twitter,
+            doc.StackOverFlow = req.body.StackOverFlow,
+            doc.Mail = req.body.Mail,
+            doc.Contrat = req.body.Contrat,
+            doc.DatePromo = req.body.DatePromo,
+            doc.Domaine = req.body.Domaine,
+            doc.ProjetUn = req.body.ProjetUn,
+            doc.ProjetDeux = req.body.ProjetDeux,
+            doc.ProjetTrois = req.body.ProjetTrois
+            doc.save(function (err, doc) {
+                  if (err) {
+                      res.status(500).send(err)
+                  }
+                  res.send(doc);
+              });
           }
-        });
+      });
     }
 };
