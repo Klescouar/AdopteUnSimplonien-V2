@@ -58,6 +58,7 @@ apiRoutes.post('/upload_photos', upload.upload);
 apiRoutes.post('/signup', user.signup);
 apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.post('/valid/mail', user.validMail);
+apiRoutes.post('/forget/pass/:mail' , user.forgetPassword);
 apiRoutes.get('/users', user.RecruiterUsers);
 apiRoutes.put('/update/user/:id', user.updateUser);
 apiRoutes.put('/update/pass/profil/:id', user.updateUserPassFromProfil);

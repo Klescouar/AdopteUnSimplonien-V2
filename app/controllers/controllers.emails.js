@@ -28,11 +28,11 @@ exports.contactMail = (req, res) => {
 };
 
 exports.sendMailForPass = (req, res) => {
-    let html = sendPassLink(req.body);
+    let html = sendPassLink(req);
 
     let mailOptions = {
         from: 'lescouarneckevin@yahoo.fr',
-        to: req.body.mail,
+        to: 'Test.project.simplon@gmail.com',
         subject:'Nouveau mot de passe',
         html: html
     };

@@ -10,6 +10,10 @@ const UserSchema = new Schema({
     lastName: String,
     email: String,
     token: String,
+    forgetPassToken: {
+        type: String,
+        default: ''
+    },
     actif: {
         type: Boolean,
         default: false
