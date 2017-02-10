@@ -2,10 +2,7 @@ app.controller('sendPassForResetCtrl', ['$scope', 'serviceMailer', '$window', 'A
 
   $scope.startResetPass = (mail) => {
     AuthService.createToken(mail).then((res) => {
-      const dataMail = {mail : mail, token : res.data};
-      serviceMailer.sendMailForPass(dataMail).then((res) => {
-        alert('Check tes mails!')
-      });
+        if (res.data.success) alert(res.data.msg);
     });
   };
 

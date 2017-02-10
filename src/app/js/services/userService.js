@@ -80,13 +80,13 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   };
 
   const createToken = (mail) => {
-      return $http.get(API_ENDPOINT.url + '/createToken/' + mail).then(function(response) {
-        const dataUser = {token: response.data, mail: mail};
-        constantUser = localStorage.setItem('user', angular.toJson(dataUser));
-          return response;
-      }, function(error) {
-          return error;
-      });
+      return $http.post(API_ENDPOINT.url + '/forget/pass/' + mail).then(
+       function(response){
+        return response;
+       }, function(error){
+        return error;
+       }
+      );
   };
 
   const updateUserPassFromProfil = (id, newInfos) => {
@@ -97,8 +97,8 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
       });
   };
 
-  const resetUserPass = (data, pass) => {
-      return $http.put(API_ENDPOINT.url + '/update/pass/reset', {data, pass}).then(function(response) {
+  const resetUserPass = (token, pass) => {
+      return $http.put(API_ENDPOINT.url + '/update/pass/reset', {token, pass}).then(function(response) {
           return response;
       }, function(error) {
           return error;

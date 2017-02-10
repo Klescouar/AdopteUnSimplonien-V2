@@ -52,21 +52,19 @@ exports.updateUserPassFromProfil = function(req, res) {
 
 exports.resetPass = function(req, res) {
     User.findOne({
-      email: req.body.data.mail
+      forgetPassToken: req.body.token
     }, function(err, user) {
         if (!user) {
-          return res.json({success: false, msg: 'Email doesn\'t exists.'});
+          return res.json({success: false, msg: 'Erreur'});
         } else {
-              // if user is found and password is right create a token
-              const token = jwt.encode(user, config.secret);
-              // return the information including token as JSON
-                user.password = req.body.pass,
-                user.save(function(err) {
-                    if (err) {
-                        return res.json({success: false, msg: 'Email already exists.'});
-                    }
-                    res.json({success: true, msg: 'Successful update password.'});
-                });
+            user.forgetPassToken = '',
+            user.password = req.body.pass,
+            user.save(function(err) {
+                if (err) {
+                    return res.json({success: false, msg: 'Erreur'});
+                }
+                res.json({success: true, msg: 'Mot de passe changé !'});
+            });
         }
     });
 };
@@ -116,11 +114,11 @@ exports.signup =  function(req, res) {
         const newUser = new User(data);
         // save the user
         newUser.save(function(err) {
-          if (err) {
-            return res.json({success: false, msg: 'email already exists.'});
-        }
-        email.mailConfirm({email: data.email, token: data.token})
-        res.json({success: true, msg: 'Successful created new user.'});
+            if (err) {
+              return res.json({success: false, msg: 'email already exists.'});
+            }
+            email.mailConfirm({email: data.email, token: data.token})
+            res.json({success: true, msg: 'Successful created new user.'});
         });
       }
     } else {
@@ -128,6 +126,26 @@ exports.signup =  function(req, res) {
     }
   });
  };
+
+ exports.forgetPassword = function(req, res) {
+     let token = jwt.encode(req.params.mail, config.secret);
+     User.findOne({
+       email: req.params.mail
+     }, function(err, user) {
+         if (!user) {
+           return res.json({success: false, msg: 'Erreur'});
+         } else {
+             user.forgetPassToken = token,
+             user.save(function(err) {
+                 if (err) {
+                     return res.json({success: false, msg: 'Error'});
+                 }
+                 email.sendMailForPass({email: req.params.mail, token: token})
+                 res.json({success: true, msg: 'Check tes mails!'});
+             });
+         }
+     });
+};
 
 exports.RecruiterUsers = function(req, res) {
    const token = getToken(req.headers);
