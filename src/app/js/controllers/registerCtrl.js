@@ -4,7 +4,8 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         $scope.passwordCheckedSimplonien='';
         $scope.passwordCheckedRecruteur='';
         $scope.email=true;
-        $scope.input=true;
+        $scope.inputS=true;
+        $scope.inputR=true;
         $scope.user= {
             role: 'Recruteur'
         };
@@ -26,6 +27,9 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         };
 
         $scope.registerRecruteur = () => {
+            console.log($scope.userRecruteur.technology)
+        if ($scope.userRecruteur.company != ''&& $scope.userRecruteur.firstName != '' && $scope.userRecruteur.lastName!= '' && $scope.userRecruteur.email!='' && $scope.userRecruteur.technology!=null && $scope.userRecruteur.password!='' && $scope.passwordCheckedRecruteur!='' ) {
+                $scope.inputR=true;
             if ($scope.userRecruteur.password.trim().length >= 8) {
                 if ($scope.userRecruteur.password === $scope.passwordCheckedRecruteur) {
                   AuthService.register($scope.userRecruteur).then(function(response) {
@@ -41,20 +45,25 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                     });
                 }
             }
-        };
+        }
+        else{
+            $scope.inputR=false;
+        }
+    };
 
         $scope.registerSimplonien = () => {
-          $scope.checkInput = true;
-          $scope.invalidInput = [];
-          Object.keys($scope.userSimplonien).map(function(key, index) {
-              if ($scope.userSimplonien[key] === '') {
-                $scope.invalidInput.push(key);
-                $scope.checkInput = false;
-              };
-          });
-          console.log($scope.invalidInput);
-            if ($scope.checkInput === true) {
-                $scope.input=true;
+            console.log($scope.userSimplonien.firstName)
+          // $scope.checkInput = true;
+          // $scope.invalidInput = [];
+          // Object.keys($scope.userSimplonien).map(function(key, index) {
+          //     if ($scope.userSimplonien[key] === '') {
+          //       $scope.invalidInput.push(key);
+          //       $scope.checkInput = false;
+          //     };
+          // });
+
+            if ($scope.userSimplonien.firstName != '' && $scope.userSimplonien.lastName!= '' && $scope.userSimplonien.email!='' && $scope.userSimplonien.password!='' && $scope.passwordCheckedSimplonien!='' ) {
+                $scope.inputS=true;
                 if ($scope.userSimplonien.password.trim().length >= 8) {
                     if ($scope.user.password === $scope.passwordChecked) {
                         AuthService.register($scope.userSimplonien).then(function(response) {
@@ -72,7 +81,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                 }
             }
             else{
-                $scope.input=false;
+                $scope.inputS=false;
             }
         };
 

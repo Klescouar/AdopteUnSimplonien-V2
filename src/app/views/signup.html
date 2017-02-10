@@ -13,37 +13,41 @@
         <form ng-submit="registerRecruteur()" ng-show="user.role == 'Recruteur'" name="formRecruiter">
             <div class="main-cont-input">
                 <div class="cont-input">
-                    <input class="input-register" required="required" type="text" id="nom" ng-model="userRecruteur.company" placeholder="Entreprise">
+                    <input class="input-register"  type="text" id="nom" ng-model="userRecruteur.company" placeholder="Entreprise">
                 </div>
                 <div class="cont-input">
-                    <input class="input-register" type="text" id="nom" ng-model="userRecruteur.lastName" required placeholder="Nom">
+                    <input class="input-register" type="text" id="nom" ng-model="userRecruteur.lastName"  placeholder="Nom">
                 </div>
                 <div class="cont-input">
-                    <input class="input-register" type="text" id="prenom"  ng-model="userRecruteur.firstName" required placeholder="Prénom">
+                    <input class="input-register" type="text" id="prenom"  ng-model="userRecruteur.firstName"  placeholder="Prénom">
                 </div>
                 <div class="cont-input">
                     <p>Maitrise principale recherchée:</p>
                     <select id="boCreatePromoSimploniens" class="input-style" ng-model="userRecruteur.technology"
-                        placeholder="technology" required>
+                        placeholder="technology" >
                         <option class="labelOption" disabled selected value>Technologie</option>
                         <option ng-repeat="skill in skills">{{skill.name}}</option>
                     </select>
                 </div>
                 <!-- EMAIL -->
                 <div class="cont-input">
-                    <input class="input-register" type="email" id="email" ng-model="userRecruteur.email" required placeholder="E-mail">
+                    <input class="input-register" type="email" id="email" ng-model="userRecruteur.email"  placeholder="E-mail">
                     <p class="match" ng-show="!email">Email déjà existant</p>
                 </div>
 
                 <!-- PASSWORD -->
                 <div class="cont-input">
-                    <input class="input-register" id="inputMdp" type="password" id="mdp" ng-model="userRecruteur.password" required placeholder="Mot de passe" ng-minlength="8">
+                    <input class="input-register" id="inputMdp" type="password" id="mdp" ng-model="userRecruteur.password" placeholder="Mot de passe" ng-minlength="8">
                 </div>
 
                 <!-- VERIF PASSWORD -->
                 <div class="cont-input">
-                    <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedRecruteur" required placeholder="Confirmation du mot de passe">
+                    <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedRecruteur"  placeholder="Confirmation du mot de passe">
                     <p class="match" ng-hide="userRecruteur.password.length<1"  ng-show="passwordCheckedRecruteur != userRecruteur.password || passwordCheckedRecruteur.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
+                </div>
+                <div class="required-cont" ng-show="inputR===false">
+                    <div class="img-required"></div>
+                    <p class="required" >Tous les champs sont requis</p>
                 </div>
             </div>
             <div class="cont-button">
@@ -79,7 +83,7 @@
                     <input class="input-register"  type="password" id="mdp" ng-model="passwordCheckedSimplonien"  placeholder="Confirmation du mot de passe">
                     <p class="match" ng-hide="userSimplonien.password.length<1"  ng-show="passwordCheckedSimplonien != userSimplonien.password || passwordCheckedSimplonien.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
                 </div>
-                <div class="required-cont" ng-show="input===false">
+                <div class="required-cont" ng-show="inputS===false">
                     <div class="img-required"></div>
                     <p class="required" >Tous les champs sont requis</p>
                 </div>
