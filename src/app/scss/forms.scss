@@ -1,0 +1,115 @@
+// Standart Form-field
+.cont-input{
+  width: 50%;
+  margin: 15px 0;
+  padding: 0 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 60px;
+
+  &.full-width{
+    width: 100%;
+    input{
+      width: 30%;
+      min-width: 50px;
+    }
+  }
+
+  input, select, textarea{
+    position: relative;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+    color: black;
+    outline: none;
+    background: white;
+    border-radius: 0;
+    // -webkit-appearance: none;
+  }
+  textarea{
+    height: 40px;
+    resize: vertical;
+  }
+
+  .ng-invalid.ng-dirty{
+    border-bottom: 1px solid red;
+    color: red;
+  }
+  //
+  // .ng-submitted {
+  //   .input-style.ng-invalid{
+  //     border-bottom: 1px solid red;
+  //     color: red;
+  //   }
+  // }
+
+  label{
+    position:absolute;
+    top:-13px;
+    left:20px;
+    font-size:11px;
+    color:#aaa;
+    transition: all 0.1s linear;
+    opacity:0;
+    // font-weight:bold;
+  }
+  label.on {
+    // color:#4481C4;
+    color: rgba(115, 159, 190, 0.85)
+  }
+  label.show {
+    top:-15px;
+    opacity:1;
+  }
+}
+
+// form sections
+.section{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: $full;
+  margin-bottom: 30px;
+
+  .info-title{
+    margin-bottom: 0;
+    margin-bottom: 20px;
+  }
+  .info-title-sm{
+    align-self: flex-start;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+}
+// Group of form-fields
+.info-group{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+
+// Form Buttons
+.button-container{
+  display: flex;
+  width: $full;
+  .delete-button{
+    background-color: #de5b49;
+  }
+
+  .edit-button{
+    background-color: #2F3E52;
+  }
+  .edit-button, .delete-button{
+    bottom: 0;
+    height: 50px;
+    width: 50%;
+    border: none;
+    color: white
+  }
+}

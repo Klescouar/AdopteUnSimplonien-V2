@@ -1,170 +1,160 @@
 .login-container {
-    min-height: calc(100vh - 110px);
+  min-height: calc(100vh - 110px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/connexion.png") no-repeat center / cover;
+  background-size: 110% 110%;
+
+  .cont-form-login {
+    background-color: #425877;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    min-width: 320px;
+    width: 22%;
+    height: 450px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/connexion.png") no-repeat center / cover;
-    background-size: 110% 110%;
+    flex-direction: column;
+    border-bottom: 1px solid #6c94b4;
 
-    .cont-form-login {
-        background-color: #425877;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        min-width: 320px;
-        width: 22%;
-        min-height: 400px;
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid #6c94b4;
+    .cont-login{
+      display: flex;
+      justify-content:space-between;
+      width: 100%;
+      height: 50px;
 
-        .cont-login{
-            display: flex;
-            justify-content:space-between;
-            width: 100%;
-            height: 50px;
-
-            .left-co-login{
-                background-color: #2e3e53;
-                height: 50px;
-                width: 50%;
-                border-bottom: 1px solid #6c94b4;
-            }
-        }
-
-       .cont-title-inscription {
-        display: flex;
+      .left-co-login{
         background-color: #2e3e53;
-        width: 100%;
-        text-align: center;
-        height: 20px;
-        }
-
-        .cont-title-login{
-         background-color: #2e3e53;
-         width: 100%;
-
-        .title-login{
-            border-top: 1px solid #6c94b4;
-            border-left: 1px solid #6c94b4;
-            border-right: 1px solid #6c94b4;
-            border-top-right-radius: 7px;
-            height: 50px;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            padding: 0;
-            padding-right: 10px;
-            padding-left: 10px;
-            padding-top: 15px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: normal;
-            background-color: rgb(66,88,119);
-            outline: none;
-        }
-
-        }
-
-
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            border-right: 1px solid #6c94b4;
-            border-left: 1px solid #6c94b4;
-            padding-top: 6px;
-
-
-
-
-        }
-
-
-
-        .form-simplonien{
-            display: none;
-        }
-
-        .cont-input-login {
-            width: 90%;
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-
-            input {
-                padding-top: 3px;
-                height: 35px;
-                width: 85%;
-                margin: 0 auto 15px;
-                padding-left:30px;
-                border: none;
-                border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-                background-color: rgb(66,88,119);
-                color: white;
-                outline: none;
-            }
-
-            .input-mail{
-                background: url("../../assets/images/email.png") no-repeat scroll 7px 7px;
-            }
-
-            .input-password{
-                background: url("../../assets/images/password2.png") no-repeat scroll 7px 7px;
-            }
-
-
-            input:hover {
-                outline: none;
-            }
-
-            input:focus {
-                border-bottom: 1px solid white;
-                outline: none;
-            }
-        }
-
-        .sendLogin {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 150px;
-            margin-top: 40px;
-            background-color: #de5b49;
-            height: 50px;
-            text-decoration: none;
-            cursor: pointer;
-            color: white;
-        }
-        .sendLogin:hover{
-          background-color: #da6555;
-        }
+        height: 50px;
+        width: 50%;
+        border-bottom: 1px solid #6c94b4;
+      }
     }
+
+    .cont-title-inscription {
+      display: flex;
+      background-color: #2e3e53;
+      width: 100%;
+      text-align: center;
+      height: 20px;
+    }
+
+    .cont-title-login{
+      background-color: #2e3e53;
+      width: 100%;
+
+      .title-login{
+        border-top: 1px solid #6c94b4;
+        border-left: 1px solid #6c94b4;
+        border-right: 1px solid #6c94b4;
+        border-top-right-radius: 7px;
+        height: 50px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding: 0;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 15px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: normal;
+        background-color: rgb(66,88,119);
+        outline: none;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      border-right: 1px solid #6c94b4;
+      border-left: 1px solid #6c94b4;
+      padding-top: 6px;
+    }
+
+    .form-simplonien{
+      display: none;
+    }
+
+    .cont-input-login {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+
+      input {
+        padding-top: 3px;
+        height: 35px;
+        width: 85%;
+        margin: 0 auto 15px;
+        padding-left:30px;
+        border: none;
+        border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+        background-color: rgb(66,88,119);
+        color: white;
+        outline: none;
+      }
+
+      .input-mail{
+        background: url("../../assets/images/email.png") no-repeat scroll 7px 7px;
+      }
+
+      .input-password{
+        background: url("../../assets/images/password2.png") no-repeat scroll 7px 7px;
+      }
+
+      input:hover {
+        outline: none;
+      }
+
+      input:focus {
+        border-bottom: 1px solid white;
+        outline: none;
+      }
+    }
+
+    .sendLogin {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      margin-top: 40px;
+      background-color: #de5b49;
+      height: 50px;
+      text-decoration: none;
+      cursor: pointer;
+      color: white;
+    }
+    .sendLogin:hover{
+      background-color: #da6555;
+    }
+  }
 }
 
-
 .redirect-login {
-            width: 100%;
-            display: flex;
-            flex-direction:column;
-            align-items:flex-end;
-            justify-content: flex-end;
-            padding: 0 20px;
-            padding-bottom: 20px;
-            padding-top: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction:column;
+  align-items:flex-end;
+  justify-content: flex-end;
+  padding: 0 20px;
+  padding-bottom: 20px;
+  padding-top: 50px;
 
-            a {
-                margin-top: 5px;
-              color: white;
-              font-style: italic;
-              font-size: 0.9em;
-              text-decoration: none;
-            }
-        }
+  a {
+    margin-top: 5px;
+    color: white;
+    font-style: italic;
+    font-size: 0.9em;
+    text-decoration: none;
+  }
+}
 
 //VERIF PASSWORDS
 
 .match{
-              display: block;
-              color: #de5b49;
-              font-size: 0.9em;
-            }
+  display: block;
+  color: #de5b49;
+  font-size: 0.9em;
+}

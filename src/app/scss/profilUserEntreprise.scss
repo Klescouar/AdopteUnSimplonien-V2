@@ -38,49 +38,49 @@
       justify-content: center;
       align-items: center;
       width: $full;
-          h4{
-      padding: 10px;
-      text-align: center;
-    }
-
-    .cont-input-entreprise{
-      width: 100%;
-      display: flex;
-      flex-direction:column;
-      margin-top: 15px;
-      padding: 0 20px;
-
-
-      &.full-width{
-          width: 100%;
+      h4{
+        padding: 10px;
+        text-align: center;
       }
 
-      input{
-        height: 30px;
+      .cont-input-entreprise{
         width: 100%;
-        border: none;
-        border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-        color: black;
-        outline: none;
-      }
-      
-      input:invalid {
+        display: flex;
+        flex-direction:column;
+        margin-top: 15px;
+        padding: 0 20px;
+
+
+        &.full-width{
+          width: 100%;
+        }
+
+        input{
+          height: 30px;
+          width: 100%;
+          border: none;
+          border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+          color: black;
+          outline: none;
+        }
+
+        input:invalid {
           box-shadow: none;
 
-    }
+        }
 
-    }
+      }
 
       .info-title{
-            display: flex;
-    	       justify-content: center;
-    	       align-items: center;
-    	       margin-bottom: 20px;
-    	       margin-top: 0px;
-    	       background-color: #2F3E52;
-    	       color: white;
-    	       height: 50px;
-    	       width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 0px;
+        background-color: #2F3E52;
+        color: white;
+        height: 50px;
+        width: 100%;
       }
 
     }
@@ -90,60 +90,60 @@
 
     .info-group-entreprise{
       transition-duration: 1.2s;
- 	min-width: 25vw;
- 	display: flex;
- 	flex-direction:column;
-  	justify-content: center;
- 	align-items: center;
- 	margin-bottom: 20px;
- 	border:1px solid #6c94b4;
+      min-width: 25vw;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      border:1px solid #6c94b4;
       margin-top: 40px;
 
-  }
-
-  .button-container-entreprise{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    width: 80%;
-    background-color: white;
-    justify-content:center;
-
-
-    .edit-button-entreprise{
-      height: 40px;
-      width: 30%;
-      color: white;
-      background-color: #de5b49;
-      border: none;
     }
 
-    .button-change-view{
+    .button-container-entreprise{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: flex;
       width: 80%;
-      color: white;
-      background-color: #2F3E52;
+      background-color: white;
+      justify-content:center;
+
+
+      .edit-button-entreprise{
+        height: 40px;
+        width: 30%;
+        color: white;
+        background-color: #de5b49;
+        border: none;
+      }
+
+      .button-change-view{
+        width: 80%;
+        color: white;
+        background-color: #2F3E52;
+      }
     }
   }
-}
 }
 
 //ANIMATION CHANGE PASSWORD
 
-    .info-group-entreprise-password{
-      background-color: white;
-    	transition-duration: 1.2s;
-    	position: absolute;
-    	top:2000px;
- 	width: 400px;
- 	display: flex;
- 	flex-direction:column;
-  	justify-content: center;
- 	align-items: center;
- 	margin-bottom: 20px;
- 	border:1px solid #6c94b4;
-      margin-left: -200px;
-      left: 50%;
- }
+.info-group-entreprise-password{
+  background-color: white;
+  transition-duration: 1.2s;
+  position: absolute;
+  top:2000px;
+  width: 400px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border:1px solid #6c94b4;
+  margin-left: -200px;
+  left: 50%;
+}
 
 .form-entreprise{
   display: flex;
@@ -154,50 +154,51 @@
   width: 400px;
 }
 
-	.info-password{
-            background-color: white;
-		transition-duration: 1.2s;
-		position: absolute;
-		width: 400px;
- 		display: flex;
- 		flex-direction:column;
-  		justify-content: center;
- 		align-items: center;
- 		margin-bottom: 20px;
- 		border:1px solid #6c94b4;
-		top: 13%;
-            margin-left: -200px;
-            left: 50%;
+.info-password{
+  background-color: white;
+  transition-duration: 1.2s;
+  position: absolute;
+  width: 400px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border:1px solid #6c94b4;
+  top: 13%;
+  margin-left: -200px;
+  left: 50%;
 
-	}
+}
 
-  .info-ent{
-    transition-duration: 1s;
-    opacity: 0;
-  }
+.info-ent{
+  transition-duration: 1s;
+  opacity: 0;
+}
 
-  //VALIDATION MESSAGE
+//VALIDATION MESSAGE
 
-  .invisible-message-entreprise{
-    display: none;
-  }
+.invisible-message-entreprise{
+  display: none;
+}
 
-  .error-msg{
-        font-size: 0.9em;
-        color: red;
-  }
+.error-msg{
+  font-size: 0.9em;
+  color: red;
+  margin: 5px 0;
+}
 
-  .visible-message-entreprise{
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    text-align: center;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-right: 10px;
-    padding-left: 10px;
-    background-color: #69C193 ;
-    color: white;
+.visible-message-entreprise{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  text-align: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: #69C193 ;
+  color: white;
 
 
   .img-validate{
@@ -213,21 +214,19 @@
     margin-top: 2px;
   }
 
-  }
+}
 
 @media screen and (max-width: 450px){
 
-.ProfilUser{
+  .ProfilUser{
 
     .info-group-entreprise-password{
-    position: initial;
-    margin-left: 0px;
+      position: initial;
+      margin-left: 0px;
     }
 
     .switch{
-    display: none!important;
+      display: none!important;
     }
   }
 }
-
-

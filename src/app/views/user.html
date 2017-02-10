@@ -2,7 +2,7 @@
   <div class="global-profile-container">
     <div class="choose-pic">
       <div id="upload-pic"></div>
-      <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
+      <form class="form-photo" id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
         <div class="form-group">
           <input id="photos-input" type="file" name="photos[]" multiple="multiple">
         </div>
@@ -19,51 +19,60 @@
     </div>
     <div class="container-info_perso" ng-if="tab === 'infos'">
       <div class="container-create">
-        <div class="section">
+        <form class="section form-info_perso" name="infoPersoForm" ng-submit="infoPersoForm.$valid && updateUser(member._id)" novalidate>
           <h3 class="info-title">Modifier infos personnelles</h3>
           <div class="info-group">
             <div class="cont-input">
               <label for="boCreateLastNameSimploniens">Nom</label>
-              <input class="input-style" ng-model="member.lastName" placeholder="Nom" type="text" required>
+              <input name='memberNom' class="input-style" ng-model="member.lastName" title="Votre nom est requis" placeholder="Nom" type="text" required>
+              <span class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.memberNom.$error.required'>Vous devez renseigner votre Nom</span class="error">
             </div>
             <div class="cont-input">
               <label for="boCreateNameSimploniens">Prénom</label>
-              <input id="boCreateNameSimploniens" class="input-style" ng-model="member.firstName" placeholder="Prénom" required>
+              <input id="boCreateNameSimploniens" name="memberPrenom" class="input-style" type="text" ng-model="member.firstName" title="Votre prénom est requis" placeholder="Prénom" required>
+              <span class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.memberPrenom.$error.required'>Veuillez renseigner votre Prénom</span class="error">
             </div>
             <div class="cont-input">
               <label for="boCreateMailSimploniens">E-mail</label>
-              <input id="boCreateMailSimploniens" class="input-style" ng-model="member.email" placeholder="E-mail" required>
+              <input id="boCreateMailSimploniens" name="memberEmail" class="input-style" type="email" ng-model="member.email" title="Votre addresse e-mail est requise" placeholder="E-mail" required>
+              <span class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.memberEmail.$error.required'>Veuillez renseigner votre E-mail</span class="error">
+              <span class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.memberEmail.$error.email'>Cette adresse E-mail n'est pas valide</span class="error">
             </div>
           </div>
           <div class="button-container">
-            <input class="input-style edit-button" value="Modifier mes infos" type="submit" ng-click="updateUser(member._id)">
+            <input class="input-style edit-button" value="Modifier mes infos" type="submit">
           </div>
-        </div>
-        <div class="section">
+        </form>
+        <form class="section form_password" name='passwordForm' ng-submit="passwordFrom.$valid && updateUserPass(member._id)">
           <h3 class="info-title">Modifier mot de passe</h3>
           <div class="info-group">
             <div class="cont-input">
               <label for="boCreateMailSimploniens">Ancien Mot de Passe</label>
-              <input id="boCreateMailSimploniens" class="input-style" placeholder="Ancien Mot de Passe" required ng-model="newPassword.oldpass">
+              <input id="boCreateMailSimploniens" name="passwordOld" class="input-style" placeholder="Ancien Mot de Passe" type="password" required ng-model="newPassword.oldpass">
+              <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordOld.$error.required'>Veuillez renseigner votre ancien Mot de Passe</span class="error">
             </div>
             <div class="cont-input">
               <label for="boCreateMailSimploniens">Nouveau Mot de Passe</label>
-              <input id="boCreateMailSimploniens" class="input-style" ng-model="newPassword.newpass" placeholder="Nouveau Mot de Passe" required>
+              <input id="boCreateMailSimploniens" name='passwordNew' class="input-style" ng-model="newPassword.newpass" placeholder="Nouveau Mot de Passe" type="password" required>
+              <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNew.$error.required'>Veuillez renseigner votre nouveau Mot de Passe</span class="error">
             </div>
             <div class="cont-input">
               <label for="boCreateMailSimploniens">Confirmer Nouveau Mot de Passe</label>
-              <input id="boCreateMailSimploniens" class="input-style" ng-model="student.Mail" placeholder="Confirmer Nouveau Mot de Passe" required>
+              <input id="boCreateMailSimploniens" name='passwordNewConfirm' class="input-style" ng-model="newPassword.confirmNewpass" placeholder="Confirmer Nouveau Mot de Passe" type="password" pw-check="newPassword.newpass" required>
+              <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNewConfirm.$error.required'>Veuillez confirmer votre nouveau Mot de Passe</span class="error">
+              <span class="error-msg" ng-show='passwordForm.$submitted && passwordNewConfirm.$validators.pwCheck.$error'>Vos nouveaux Mot de Passe doivent être identiques</span class="error">
             </div>
           </div>
           <div class="button-container">
-            <input class="input-style edit-button" value="Modifier mon mot de passe" type="submit" ng-click="updateUserPass(member._id)">
+            <input class="input-style edit-button" value="Modifier mon mot de passe" type="submit">
           </div>
-        </div>
+          <div>this form is valid : {{passwordForm.$valid}}</div>
+        </form>
       </div>
     </div>
 
     <div class="container-fiche" ng-if="tab === 'fiche'">
-      <div class="container-create">
+      <form class="container-create form-fiche">
         <!-- User Info Section -->
         <div class="section">
           <h1 class="info-title">Informations</h1>
@@ -78,7 +87,7 @@
             </div>
             <div class="cont-input">
               <label for="boCreateOldSimploniens">Age</label>
-              <input id="boCreateOldSimploniens" type="number" class="input-style" ng-model="student.age" placeholder="Age" required>
+              <input id="boCreateOldSimploniens" type="number" class="input-style" ng-model="student.age" placeholder="Age" pattern="\d{5}" maxlength="2" required>
             </div>
             <div class="cont-input">
               <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe" required>
@@ -209,7 +218,7 @@
 
         </div>
       </div>
-    </div>
+    </form>
     <!-- Submit Buttons -->
 
 

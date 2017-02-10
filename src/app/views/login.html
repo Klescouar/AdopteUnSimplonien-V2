@@ -1,25 +1,25 @@
 <div class="login-container" ng-style="CustomStyle">
-    <div class="cont-form-login">
-        <div class="cont-title-inscription"></div>
-        <div class="cont-login">
-            <div class="cont-title-login">
-        	   <h1 class="title-login">Connexion</h1>
-            </div>
-        	<div class="left-co-login"></div>
-        </div>
-        <form>
-                 <div class="cont-input-login">
-                    <input class="input-mail" type="email" placeholder="Email" ng-model="user.email" required></input>
-                 </div>
-                <div class="cont-input-login">
-                    <input class="input-password" type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
-                </div>
-                <p class="dont-match" ng-class="{'match':!verifLogin}">Email ou mot de passe non valide.</p>
-                <a class="sendLogin" ng-click="login()" type="submit" ng-disabled="disabled">Envoyer</a>
-                <div class="redirect-login">
-                    <a ui-sref="signup">Pas encore inscris ?</a>
-                    <a ui-sref="sendPass">Mot de passe oublié ?</a>
-                </div>
-        </form>
+  <div class="cont-form-login">
+    <div class="cont-title-inscription"></div>
+    <div class="cont-login">
+      <div class="cont-title-login">
+        <h1 class="title-login">Connexion</h1>
+      </div>
+      <div class="left-co-login"></div>
     </div>
+    <form>
+      <div class="cont-input-login">
+        <input class="input-mail" type="email" placeholder="Email" ng-model="user.email" required></input>
+      </div>
+      <div class="cont-input-login">
+        <input class="input-password" type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
+      </div>
+      <p class="dont-match" ng-class="{'match':!verifLogin}">Email ou mot de passe non valide.</p>
+      <a class="sendLogin" ng-click="login()" type="submit" ng-disabled="disabled">Envoyer</a>
+      <div class="redirect-login">
+        <a ui-sref="signup">Pas encore inscris ?</a>
+        <a ui-sref="sendPass">Mot de passe oublié ?</a>
+      </div>
+    </form>
+  </div>
 </div>
