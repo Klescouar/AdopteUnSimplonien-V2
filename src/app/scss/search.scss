@@ -208,6 +208,7 @@
         flex-direction: column;
 
         .promo {
+            cursor: pointer;
             background-color: #2E3E53;
             min-height: 100px;
             width: 100px;
@@ -230,6 +231,7 @@
         }
 
         .langage {
+            cursor: pointer;
             background-color: #425877;
             min-height: 100px;
             width: 100px;
@@ -252,6 +254,7 @@
         }
 
         .contrat {
+            cursor: pointer;
             background-color: #BBC1C6;
             min-height: 100px;
             width: 100px;
