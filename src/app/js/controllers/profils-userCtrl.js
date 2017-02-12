@@ -5,7 +5,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
-  $scope.student.contrats = [];
+  $scope.student.contrats = ['CDD'];
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
