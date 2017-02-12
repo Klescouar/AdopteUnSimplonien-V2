@@ -58,9 +58,13 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   const login = (user) => {
      return $http.post(API_ENDPOINT.url + '/authenticate', user).then(
       function(response){
-       storeUserCredentials(response.data.token);
-       constantUser = localStorage.setItem('user', angular.toJson(response.data.user));
-       testLocalStorage = localStorage.setItem('userRole', response.data.user.role);
+        if (response.data.msg === 'Authentication failed. Inactive account.') {
+
+        } else if (response.data.success === true) {
+          storeUserCredentials(response.data.token);
+          constantUser = localStorage.setItem('user', angular.toJson(response.data.user));
+          testLocalStorage = localStorage.setItem('userRole', response.data.user.role);
+        }
        return response;
       }, function(error){
        return error;
