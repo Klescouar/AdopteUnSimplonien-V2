@@ -29,6 +29,12 @@
     border-radius: 0;
     // -webkit-appearance: none;
   }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   textarea{
     height: 40px;
     resize: vertical;
@@ -90,26 +96,31 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
 }
 
 
 // Form Buttons
+
+.input-button-container{
+  display: flex;
+}
+
 .button-container{
   display: flex;
   width: $full;
-  .delete-button{
-    background-color: #de5b49;
-  }
+}
+.delete-button{
+  background-color: #de5b49;
+}
 
-  .edit-button{
-    background-color: #2F3E52;
-  }
-  .edit-button, .delete-button{
-    bottom: 0;
-    height: 50px;
-    width: 50%;
-    border: none;
-    color: white
-  }
+.edit-button{
+  background-color: #2F3E52;
+}
+.edit-button, .delete-button{
+  bottom: 0;
+  height: 50px;
+  width: 50%;
+  border: none;
+  color: white
 }
