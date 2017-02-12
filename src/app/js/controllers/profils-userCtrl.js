@@ -5,6 +5,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
+  $scope.contrats = [];
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
@@ -16,8 +17,12 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     confirmNewpass: ''
   };
 
+  $scope.showContracts = () => {
+    console.log($scope.contrats);
+  };
+  // UPDATE COMPTES
   $scope.member = AuthService.user();
-
+  // INFOS PERSOs
   $scope.updateUser = (id) => {
     const response = confirm("Voulez vous vraiment modifier vos informations ?");
     if (response === true) {
@@ -32,14 +37,13 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       })
     }
   }
-
+  // PASSWORD
   $scope.updateUserPass = (id) => {
     console.log($scope.newPassword);
     if ($scope.newPassword.newpass === $scope.newPassword.confirmNewpass){
       AuthService.updateUserPassFromProfil(id, $scope.newPassword).then((res) => {
         if (res.data.msg === 'Wrong password') {
           alert('Mauvais mot de passe');
-          $scope.passwordCheck = false;
         } else {
           alert('Mot de passe modifié!')
         }
@@ -51,6 +55,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
 
   $scope.cardExist = false;
 
+  // Get Data for Selects
+  // Contracts
   $scope.getAllContract = () => {
     serviceFilter.getAllContract().then(function(response) {
       $scope.contracts = response.data;
@@ -59,7 +65,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     });
   }
   $scope.getAllContract();
-
+  // Schools
   $scope.getAllSchool = () => {
     serviceFilter.getAllSchool().then(function(response) {
       $scope.schools = response.data;
@@ -68,6 +74,16 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     });
   }
   $scope.getAllSchool();
+  // Skills
+  $scope.getAllSkill = () => {
+    serviceFilter.getAllSkill().then(function(response) {
+      $scope.skills = response.data;
+      console.log($scope.skills)
+    }).catch(function(errMsg) {
+      console.log('show skill failed!');
+    });
+  }
+  $scope.getAllSkill();
 
 
   $scope.getMemberInfo = (id) => {
@@ -118,32 +134,32 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
 
   $scope.createSimplonien = () => {
     const dataStudent = {
-      memberId: $scope.member._id,
-      verified: false,
-      nom: $scope.student.nom,
-      prenom: $scope.student.prenom,
-      age: $scope.student.age,
-      ville: $scope.student.ville,
-      photo: $scope.photo,
-      tags: $scope.student.tags,
-      description: $scope.student.description,
-      Sexe: $scope.student.Sexe,
-      SpecialiteUn: $scope.student.SpecialiteUn,
-      SpecialiteDeux: $scope.student.SpecialiteDeux,
-      SpecialiteTrois: $scope.student.SpecialiteTrois,
-      Github: $scope.student.Github,
-      Linkedin: $scope.student.Linkedin,
-      Portfolio: $scope.student.Portfolio,
-      CV: $scope.student.CV,
-      Twitter: $scope.student.Twitter,
-      StackOverFlow: $scope.student.StackOverFlow,
-      Mail: $scope.student.Mail,
-      Contrat: $scope.student.Contrat,
-      DatePromo: $scope.student.DatePromo,
-      Domaine: $scope.student.Domaine,
-      ProjetUn: $scope.student.ProjetUn,
-      ProjetDeux: $scope.student.ProjetDeux,
-      ProjetTrois: $scope.student.ProjetTrois
+    memberId: $scope.member._id,
+    verified: false,
+    nom: $scope.member.lastName,
+    prenom: $scope.member.firstName,
+    age: $scope.student.age,
+    ville: $scope.student.ville,
+    photo: $scope.photo,
+    tags: $scope.student.tags,
+    description: $scope.student.description,
+    Sexe: $scope.student.Sexe,
+    SpecialiteUn: $scope.student.SpecialiteUn,
+    SpecialiteDeux: $scope.student.SpecialiteDeux,
+    SpecialiteTrois: $scope.student.SpecialiteTrois,
+    Github: $scope.student.Github,
+    Linkedin: $scope.student.Linkedin,
+    Portfolio: $scope.student.Portfolio,
+    CV: $scope.student.CV,
+    Twitter: $scope.student.Twitter,
+    StackOverFlow: $scope.student.StackOverFlow,
+    Mail: $scope.member.email,
+    Contrat: $scope.student.Contrat,
+    DatePromo: $scope.student.DatePromo,
+    Domaine: $scope.student.Domaine,
+    ProjetUn: $scope.student.ProjetUn,
+    ProjetDeux: $scope.student.ProjetDeux,
+    ProjetTrois: $scope.student.ProjetTrois
     };
     console.log(dataStudent);
     serviceStudent.addStudent(dataStudent).then((response) => {
@@ -155,12 +171,11 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       $state.reload();
     }, (err) => {
       console.log("Error");
-    });
+      });
   }
   $scope.updateStudent = (id) => {
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
     if (response === true) {
-      console.log($scope.student.ville);
       const newInfos = {
         nom: $scope.student.nom,
         prenom: $scope.student.prenom,
@@ -192,6 +207,18 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       serviceStudent.updateStudent(id, newInfos).then((response) => {})
       alert("Apprenant modifié!")
     };
+  };
+
+  $scope.submitFiche = function(){
+    console.log($scope.cardExist);
+    if (!$scope.cardExist){
+      $scope.updateStudent()
+          console.log("j'update");
+    } else {
+        $scope.createSimplonien()
+            console.log('je submit New');
+
+    }
   };
 
   // Photo Upload

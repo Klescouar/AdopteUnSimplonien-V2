@@ -29,24 +29,32 @@
     border-radius: 0;
     // -webkit-appearance: none;
   }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   textarea{
     height: 40px;
     resize: vertical;
+    word-wrap: break-word;
+    overflow: visible;
   }
 
-  .ng-invalid.ng-dirty{
+  input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-dirty{
     border-bottom: 1px solid red;
     color: red;
   }
-  //
-  // .ng-submitted {
-  //   .input-style.ng-invalid{
-  //     border-bottom: 1px solid red;
-  //     color: red;
-  //   }
-  // }
 
-  label{
+  .ng-submitted {
+    input.ng-invalid{
+      border-bottom: 1px solid red;
+      color: red;
+    }
+  }
+
+  .input-label{
     position:absolute;
     top:-13px;
     left:20px;
@@ -56,14 +64,18 @@
     opacity:0;
     // font-weight:bold;
   }
-  label.on {
+  .input-label.on {
     // color:#4481C4;
     color: rgba(115, 159, 190, 0.85)
   }
-  label.show {
+  .input-label.show {
     top:-15px;
     opacity:1;
   }
+}
+
+.form-instruction{
+  font-weight: bold;
 }
 
 // form sections
@@ -90,26 +102,56 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
 }
 
 
 // Form Buttons
+
+.input-button-container{
+  display: flex;
+}
+
+.input-checkbox-container{
+  display: flex;
+  flex-wrap: wrap;
+
+  label{
+    margin-right: 15px;
+    font-weight: 400;
+  }
+
+  input[type=checkbox]{
+    width: auto;
+    height: auto;
+  }
+}
+
+.checkbox-container{
+  display: flex;
+  align-items: center;
+  // flex-grow: 1;
+}
+
+.checkbox-label{
+  padding-left: 5px;
+}
+
 .button-container{
   display: flex;
   width: $full;
-  .delete-button{
-    background-color: #de5b49;
-  }
+}
+.delete-button{
+  background-color: #de5b49;
+}
 
-  .edit-button{
-    background-color: #2F3E52;
-  }
-  .edit-button, .delete-button{
-    bottom: 0;
-    height: 50px;
-    width: 50%;
-    border: none;
-    color: white
-  }
+.edit-button{
+  background-color: #2F3E52;
+}
+.edit-button, .delete-button{
+  bottom: 0;
+  height: 50px;
+  width: 50%;
+  border: none;
+  color: white
 }
