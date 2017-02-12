@@ -2,7 +2,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
  function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams) {
     $scope.user = {
         email: '',
-        password: ''
+        password: '',
     };
 
     if (typeof $stateParams.token !== 'undefined') {
@@ -20,6 +20,8 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
     $scope.login = () => {
         AuthService.login($scope.user).then(function(response) {
             $rootScope.userRole = AuthService.userRole();
+            //console.log(response.data.user.actif)
+
             $rootScope.showLogout = true;
             if (response.status != 404) {
                 if (response.data.user.role === 'Simplonien') {
@@ -29,6 +31,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 } else if (response.data.user.role === 'Admin') {
                   $state.go('admin');
                 }
+
                 return response;
             }
             $state.go('profilUserStudent');
@@ -37,6 +40,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
             $rootScope.showLogout = false;
             $rootScope.userRole = AuthService.userRole();
             AuthService.clearLocalStorage();
+            console.log(error)
             const alertPopup = $window.alert('Login failed!');
             $state.go('login');
         });
