@@ -1,5 +1,6 @@
 app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams',
  function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams) {
+    $scope.acountState = true;
     $scope.user = {
         email: '',
         password: '',
@@ -19,6 +20,8 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
 
     $scope.login = () => {
         AuthService.login($scope.user).then(function(response) {
+            $scope.acountState = true;
+            $scope.verifLogin = true;
           if (response.data.success === true) {
             $rootScope.userRole = AuthService.userRole();
             $rootScope.showLogout = true;
@@ -34,9 +37,11 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 return response;
             }
             $state.go('profilUserStudent');
-          } else if (response.data.msg === 'Authentication failed. Inactive account.') {
-            console.log('PAS ACTIF');
-          }
+          }else if (response.data.msg === 'Authentication failed. Inactive account.') {
+            $scope.acountState = false;
+          }else{
+            $scope.verifLogin = false;
+          } 
 
         }).catch(function(error) {
             $scope.verifLogin = false;
