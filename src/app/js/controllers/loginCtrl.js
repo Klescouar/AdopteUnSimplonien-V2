@@ -20,7 +20,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
     $scope.login = () => {
         AuthService.login($scope.user).then(function(response) {
             $rootScope.userRole = AuthService.userRole();
-            //console.log(response.data.user.actif)
+            console.log(response.data.user.actif)
 
             $rootScope.showLogout = true;
             if (response.status != 404) {

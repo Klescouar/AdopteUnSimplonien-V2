@@ -268,9 +268,12 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   transition:1s;
 
-    // .img-required{
-    //   background:url("../../assets/images/validate.png") no-repeat center / cover;
-    // }
+    .img-required{
+      height: 20px;
+      width: 20px;
+      margin-right: 5px;
+      background:url("../../assets/images/validate.png") no-repeat center / cover;
+    }
 
 }
 
