@@ -88,8 +88,15 @@ body {
         .page-container-left a {
             padding: 10px 20px;
         }
+        
+        .user-none{
+            display: none;
+        }
 
         .user-icon {
+            display: flex;
+            align-items:center;
+            justify-content:center;
             border: 1px solid white;
             height: 40px;
             margin: 10px;

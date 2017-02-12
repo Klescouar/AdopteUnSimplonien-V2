@@ -22,7 +22,7 @@
                     <input class="input-register" type="text" id="prenom"  ng-model="userRecruteur.firstName"  placeholder="Prénom">
                 </div>
                 <div class="cont-input">
-                    <p>Maitrise principale recherchée:</p>
+                    <p>Maitrise principale recherchée :</p>
                     <select id="boCreatePromoSimploniens" class="input-style" ng-model="userRecruteur.technology"
                         placeholder="technology" >
                         <option class="labelOption" disabled selected value>Technologie</option>
@@ -45,7 +45,7 @@
                     <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedRecruteur"  placeholder="Confirmation du mot de passe">
                     <p class="match" ng-hide="userRecruteur.password.length<1"  ng-show="passwordCheckedRecruteur != userRecruteur.password || passwordCheckedRecruteur.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
                 </div>
-                <div class="required-cont" ng-show="inputR===false">
+                <div class="required-cont-gen" ng-show="inputR===false">
                     <div class="img-required"></div>
                     <p class="required" >Tous les champs sont requis</p>
                 </div>
@@ -83,7 +83,7 @@
                     <input class="input-register"  type="password" id="mdp" ng-model="passwordCheckedSimplonien"  placeholder="Confirmation du mot de passe">
                     <p class="match" ng-hide="userSimplonien.password.length<1"  ng-show="passwordCheckedSimplonien != userSimplonien.password || passwordCheckedSimplonien.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
                 </div>
-                <div class="required-cont" ng-show="inputS===false">
+                <div class="required-cont-gen" ng-show="inputS===false">
                     <div class="img-required"></div>
                     <p class="required" >Tous les champs sont requis</p>
                 </div>
@@ -98,4 +98,8 @@
             </div>
         </form>
     </div>
+        <div class="required-cont-gen required-cont-hide long" ng-class="{'required-cont':!validForm}">
+            <div class="img-required"></div>
+            <p class="required long" >Un lien de confirmation a été envoyé par mail.</p>
+        </div>
 </div>

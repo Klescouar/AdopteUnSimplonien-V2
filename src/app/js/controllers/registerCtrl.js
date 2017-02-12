@@ -3,6 +3,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         $scope.borderClass = true;
         $scope.passwordCheckedSimplonien='';
         $scope.passwordCheckedRecruteur='';
+        $scope.validForm=true;
         $scope.email=true;
         $scope.inputS=true;
         $scope.inputR=true;
@@ -27,6 +28,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         };
 
         $scope.registerRecruteur = () => {
+          $scope.validForm=true;
             console.log($scope.userRecruteur.technology)
         if ($scope.userRecruteur.company != ''&& $scope.userRecruteur.firstName != '' && $scope.userRecruteur.lastName!= '' && $scope.userRecruteur.email!='' && $scope.userRecruteur.technology!=null && $scope.userRecruteur.password!='' && $scope.passwordCheckedRecruteur!='' ) {
                 $scope.inputR=true;
@@ -38,7 +40,8 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                         const alertPopup = $window.alert(response.data.msg);
                     }else {
                             $scope.email=true;
-                            $state.go('login');
+                            $scope.validForm=false;
+                            //$state.go('login');
                     }
                     }).catch(function(errMsg) {
                         const alertPopup = $window.alert('Fail!!');
@@ -52,6 +55,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
     };
 
         $scope.registerSimplonien = () => {
+          $scope.validForm=true;
             console.log($scope.userSimplonien.firstName)
           // $scope.checkInput = true;
           // $scope.invalidInput = [];
@@ -72,7 +76,8 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                             const alertPopup = $window.alert(response.data.msg);
                         }else {
                                 $scope.email=true;
-                                $state.go('login');
+                                $scope.validForm=false;
+                                //$state.go('login');
                         }
                         }).catch(function(errMsg) {
                             const alertPopup = $window.alert("Fail!");
@@ -104,6 +109,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
   // };
 
   $scope.SetStyle = function(role) {
+    $scope.validForm=true;
     $scope.user.role = role;
     if ($scope.user.role == "Recruteur") {
       $scope.changeStatus = 'Recruteur';

@@ -14,25 +14,65 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
 
     //////////////////////HANDLE FILTER/////////////////////
 
+    const filterLangage = (firstFilter, langages) => {
+        const nameSpecialite = ['SpecialiteUn', 'SpecialiteDeux', 'SpecialiteTrois'];
+        const nbLangage = langages.length;
+        let langage3 = [];
+        let langage2 = [];
+        let langage1 = [];
+
+        angular.forEach(firstFilter, (value) => {
+            if (nbLangage > 0) {
+                let maitrise = 0;
+                angular.forEach(nameSpecialite, (val) => {
+                    console.log(value.SpecialiteUn);
+                    if (value[val] === langages[0] || value[val] === langages[1] || value[val] === langages[2]) {
+                        ++maitrise;
+                    }
+                });
+
+                switch (maitrise) {
+                    case 3:
+                        langage3.push(value);
+                        break;
+                    case 2:
+                        langage2.push(value);
+                        break;
+                    case 1:
+                        langage1.push(value);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                langage1.push(value);
+            }
+        });
+
+        return [...langage3, ...langage2, ...langage1];
+    }
+
     const searchFilter = () => {
         $scope.data = [];
 
-        const lang1 = typeof $scope.searchResult.Langage[0] !== 'undefined' ? $scope.searchResult.Langage[0] : '';
-        const lang2 = typeof $scope.searchResult.Langage[1] !== 'undefined' ? $scope.searchResult.Langage[1] : '';
-        const lang3 = typeof $scope.searchResult.Langage[2] !== 'undefined' ? $scope.searchResult.Langage[2] : '';
-        const ville = typeof $scope.searchResult.Ville !== 'undefined' ? $scope.searchResult.Ville : '';
-        const contrat1 = typeof $scope.searchResult.Contrat[0] !== 'undefined' ? $scope.searchResult.Contrat[0] : '';
-        const contrat2 = typeof $scope.searchResult.Contrat[1] !== 'undefined' ? $scope.searchResult.Contrat[1] : '';
-        const contrat3 = typeof $scope.searchResult.Contrat[2] !== 'undefined' ? $scope.searchResult.Contrat[2] : '';
-        const contrat4 = typeof $scope.searchResult.Contrat[3] !== 'undefined' ? $scope.searchResult.Contrat[3] : '';
-        const contrat5 = typeof $scope.searchResult.Contrat[4] !== 'undefined' ? $scope.searchResult.Contrat[4] : '';
+        const {Langage, Ville, Contrat} = $scope.searchResult;
+        let firstFilter = [];
 
         angular.forEach($scope.cardFull, (value, key) => {
-            const recherche = value.Contrat + ' ' + value.SpecialiteUn + ' ' + value.SpecialiteDeux + ' ' + value.SpecialiteTrois + ' ' + value.ville;
-            if (recherche.match("^(?=.*" + lang1 + ")(?=.*" + lang2 + ")(?=.*" + lang3 + ")(?=.*" + ville + ")(?=.*" + contrat1 + ")(?=.*" + contrat2 + ")(?=.*" + contrat3 + ")(?=.*" + contrat4 + ")(?=.*" + contrat5 + ")", "i")) {
-                $scope.data.push(value);
-            };
+          if (Ville === '' || Ville === value.ville) {
+            if (Contrat.length > 0) {
+              angular.forEach(Contrat, (val) => {
+                if (val === value.Contrat) {
+                  firstFilter.push(value);
+                  return
+                }
+              })
+            } else {
+              firstFilter.push(value);
+            }
+          }
         });
+        $scope.data = filterLangage(firstFilter, Langage);
     };
 
     searchFilter();
@@ -41,7 +81,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     serviceStudent.getAllStudent().then((res) => {
       $scope.loading = false;
       $scope.data = res.data;
-      console.log(res.data);
       $scope.cardFull = res.data;
       searchFilter();
     })

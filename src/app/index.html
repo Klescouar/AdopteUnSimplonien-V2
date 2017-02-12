@@ -63,10 +63,10 @@
             <a class="user-icon" ui-sref="home" ng-click="logout()" ng-if="showLogout">
                 <p>Déconnexion</p>
             </a>
-            <a class="user-icon" ng-if="showLogout && userRole === 'Simplonien'" ui-sref="profilUserStudent">Espace Perso</a>
-            <a class="user-icon" ng-if="showLogout && userRole === 'Recruteur'" ui-sref="profilUserRecruiter">Espace Perso</a>
-            <a class="user-icon" ng-if="showLogout && userRole === 'Admin'" ui-sref="admin">Back Office</a>
-            <a class="user-icon" ui-sref="login" ng-if="!showLogout">Connexion</a>
+            <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Simplonien'}"  ui-sref="profilUserStudent">Espace Perso</a>
+            <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Recruteur'}" ui-sref="profilUserRecruiter">Espace Perso</a>
+            <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Admin'}" ui-sref="admin">Back Office</a>
+            <a class="user-none" ui-sref="login" ng-class="{'user-icon': !showLogout}">Connexion</a>
         </div>
 
         <main ui-view="home"></main>
@@ -98,6 +98,7 @@
         <!-- DIRECTIVES -->
         <script src="app/js/directives/passwordCheck.js"></script>
         <script src='../../../node_modules/checklist-model/checklist-model.js'></script>
+        <script src="app/js/directives/keyEnter.js"></script>
 
         <!-- CONTROLLERS -->
         <script src="app/js/controllers/registerCtrl.js"></script>

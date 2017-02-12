@@ -15,11 +15,15 @@
         <input class="input-password" type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
       </div>
       <p class="dont-match" ng-class="{'match':!verifLogin}">Email ou mot de passe non valide.</p>
-      <a class="sendLogin" ng-click="login()" type="submit" ng-disabled="disabled">Envoyer</a>
+      <input class="sendLogin" ng-click="login()" type="submit" value="Connexion" >
       <div class="redirect-login">
         <a ui-sref="signup">Pas encore inscris ?</a>
         <a ui-sref="sendPass">Mot de passe oublié ?</a>
       </div>
     </form>
   </div>
+<!--         <div class="required-cont-gen required-cont-hide long" ng-class="{'required-cont':!acountState}">
+                    <div class="img-required"></div>
+            <p class="required long" >Merci de valider votre compte en cliquant sur le lien envoyé par mail.</p>
+        </div> -->
 </div>
