@@ -19,9 +19,8 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
 
     $scope.login = () => {
         AuthService.login($scope.user).then(function(response) {
+          if (response.data.success === true) {
             $rootScope.userRole = AuthService.userRole();
-            //console.log(response.data.user.actif)
-
             $rootScope.showLogout = true;
             if (response.status != 404) {
                 if (response.data.user.role === 'Simplonien') {
@@ -35,6 +34,10 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 return response;
             }
             $state.go('profilUserStudent');
+          } else if (response.data.msg === 'Authentication failed. Inactive account.') {
+            console.log('PAS ACTIF');
+          }
+
         }).catch(function(error) {
             $scope.verifLogin = false;
             $rootScope.showLogout = false;

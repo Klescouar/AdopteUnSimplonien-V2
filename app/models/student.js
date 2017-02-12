@@ -24,7 +24,7 @@ const StudentSchema = new Schema({
     Twitter: String,
     StackOverFlow: String,
     Mail: String,
-    Contrat: String,
+    Contrat: Array,
     DatePromo: String,
     ProjetUn: String,
     ProjetDeux: String,
