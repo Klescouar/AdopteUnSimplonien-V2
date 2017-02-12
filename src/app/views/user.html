@@ -109,26 +109,14 @@
                 <option ng-repeat="school in schools">{{school.name}}</option>
               </select>
             </div>
-            <!-- <div class="cont-input">
-              <select id="boCreateContratSimploniens" class="input-style" ng-model="student.Contrat" ng-options="contract.name for contract in contracts">
-                <option value="" disabled> Type de Contrat</option>
-              </select>
-            </div> -->
-            <div class="cont-input">
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.Contrat" placeholder="Contrat*" required>
-                <option class="labelOption" disabled selected value>Contrat*</option>
-                <option ng-repeat="contract in contracts" value="{{contract.name}}">{{contract.name}}</option>
-              </select>
-            </div>
             <div class="cont-input full-width">
-                <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez*</p>
+                <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)*</p>
               <div class="input-checkbox-container">
                 <label ng-repeat="contract in contracts">
-                  <input type="checkbox" ng-click="showContracts()" checklist-model="student.contrat" checklist-value="contract.name" ng-model="checked" checklist-before-change="student.contrat.length > 1 || checked"> {{contract.name}}
+                  <input type="checkbox" ng-click="showContracts()" checklist-model="student.contrats" checklist-value="contract.name" ng-model="checked" checklist-before-change="student.contrat.length > 1 || checked"> {{contract.name}}
                 </label>
-                {{contrats | json}}
               </div>
-              <span class="error-msg" ng-show='student.contrat.$invalid && ficheForm.$submitted'>Vous devez choisir au moins un type de contrat</span>
+              <span class="error-msg" ng-show='student.contrats.$error.required'>Vous devez choisir au moins un type de contrat</span>
             </div>
             <div class="cont-input">
               <label class='input-label' for="boCreateDatePromoSimploniens">Date de votre Promo Simplon*</label>
@@ -223,9 +211,9 @@
             <ul class="tags-list">
               <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
             </ul>
-              <span class="error-msg" ng-show='ficheForm.$submitted && student.SpecialiteUn === student.SpecialiteDeux || student.SpecialiteUn === student.SpecialiteTrois || student.SpecialiteDeux === student.SpecialiteTrois'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
           </div>
           <span class="error-msg" ng-show='ficheForm.age.$invalid && ficheForm.age.$dirty'>Vous devez selectionner votre domaine et vos spécialités</span>
+          <span class="error-msg" ng-show='student.SpecialiteUn === student.SpecialiteDeux || student.SpecialiteUn === student.SpecialiteTrois || student.SpecialiteDeux === student.SpecialiteTrois'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
           <h3 class="info-title-sm">Projets</h3>
           <div class="info-group">
             <div class="cont-input">

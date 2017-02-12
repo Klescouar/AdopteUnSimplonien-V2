@@ -5,7 +5,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
-  $scope.contrats = [];
+  $scope.student.contrats = [];
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
@@ -18,7 +18,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   };
 
   $scope.showContracts = () => {
-    console.log($scope.contrats);
+    console.log($scope.student.contrats);
   };
   // UPDATE COMPTES
   $scope.member = AuthService.user();
@@ -154,7 +154,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     Twitter: $scope.student.Twitter,
     StackOverFlow: $scope.student.StackOverFlow,
     Mail: $scope.member.email,
-    Contrat: $scope.student.Contrat,
+    Contrat: $scope.student.contrats,
     DatePromo: $scope.student.DatePromo,
     Domaine: $scope.student.Domaine,
     ProjetUn: $scope.student.ProjetUn,
@@ -196,7 +196,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         Twitter: $scope.student.Twitter,
         StackOverFlow: $scope.student.StackOverFlow,
         Mail: $scope.student.Mail,
-        Contrat: $scope.student.Contrat,
+        Contrat: $scope.student.contrats,
         DatePromo: $scope.student.DatePromo,
         Domaine: $scope.student.Domaine,
         ProjetUn: $scope.student.ProjetUn,
