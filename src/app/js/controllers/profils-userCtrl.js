@@ -5,6 +5,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
+  $scope.contrats = [];
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
@@ -16,8 +17,12 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     confirmNewpass: ''
   };
 
+  $scope.showContracts = () => {
+    console.log($scope.contrats);
+  };
+  // UPDATE COMPTES
   $scope.member = AuthService.user();
-
+  // INFOS PERSOs
   $scope.updateUser = (id) => {
     const response = confirm("Voulez vous vraiment modifier vos informations ?");
     if (response === true) {
@@ -32,7 +37,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       })
     }
   }
-
+  // PASSWORD
   $scope.updateUserPass = (id) => {
     console.log($scope.newPassword);
     if ($scope.newPassword.newpass === $scope.newPassword.confirmNewpass){
@@ -50,6 +55,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
 
   $scope.cardExist = false;
 
+  // Get Data for Selects
+  // Contracts
   $scope.getAllContract = () => {
     serviceFilter.getAllContract().then(function(response) {
       $scope.contracts = response.data;
@@ -58,7 +65,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     });
   }
   $scope.getAllContract();
-
+  // Schools
   $scope.getAllSchool = () => {
     serviceFilter.getAllSchool().then(function(response) {
       $scope.schools = response.data;
@@ -67,6 +74,16 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     });
   }
   $scope.getAllSchool();
+  // Skills
+  $scope.getAllSkill = () => {
+    serviceFilter.getAllSkill().then(function(response) {
+      $scope.skills = response.data;
+      console.log($scope.skills)
+    }).catch(function(errMsg) {
+      console.log('show skill failed!');
+    });
+  }
+  $scope.getAllSkill();
 
 
   $scope.getMemberInfo = (id) => {

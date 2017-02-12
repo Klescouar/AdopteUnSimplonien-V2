@@ -144,7 +144,7 @@
                 <h1 class="info-title">Profil</h1>
                 <div class="cont-BO-input">
                     <p for="boCreateAboutSimploniens">Votre Description</p>
-                    <textarea id="boCreateAboutSimploniens" class="input-BO-style" ng-model="student.description" placeholder="Votre Description">{{student.description}}</textarea>
+                    <textarea id="boCreateAboutSimploniens" class="input-BO-style" ng-model="student.description" placeholder="Votre Description" required>{{student.description}}</textarea>
                 </div>
             </div>
 
@@ -166,16 +166,22 @@
                         <input id="boCreateCVSimploniens" type="url" class="input-BO-style" name="cv" placeholder="Lien vers votre CV" ng-model="student.CV" required>
                     </div>
                     <div class="cont-BO-input">
-                        <p for="boCreateSpeOneSimploniens">Spécialité 1</p>
-                        <input id="boCreateSpeOneSimploniens" class="input-BO-style" placeholder="Specialite 1" ng-model="student.SpecialiteUn" required>
+                      <select id="boCreateSpeOneSimploniens" class="input-BO-style" ng-model="student.SpecialiteUn" placeholder="1ère Spécialité*" required>
+                        <option class="labelOption" disabled selected value>1ère Spécialité*</option>
+                        <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+                      </select>
                     </div>
                     <div class="cont-BO-input">
-                        <p for="boCreateSpeTwoSimploniens">Spécialité 2</p>
-                        <input id="boCreateSpeTwoSimploniens" class="input-BO-style" placeholder="Specialite 2" ng-model="student.SpecialiteDeux" required>
+                      <select id="boCreateSpeTwoSimploniens" class="input-BO-style" ng-model="student.SpecialiteDeux" placeholder="Spécialité*" required>
+                        <option class="labelOption" disabled selected value>2e Spécialité*</option>
+                        <option ng-repeat="skill in skills">{{skill.name}}</option>
+                      </select>
                     </div>
                     <div class="cont-BO-input">
-                        <p for="boCreateSpeThreeSimploniens">Spécialité 3</p>
-                        <input id="boCreateSpeThreeSimploniens" class="input-BO-style" placeholder="Specialite 3" ng-model="student.SpecialiteTrois" required>
+                      <select id="boCreateSpeThreeSimploniens" class="input-BO-style" ng-model="student.SpecialiteTrois" placeholder="Spécialité*" required>
+                        <option class="labelOption" disabled selected value>3e Spécialité*</option>
+                        <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+                      </select>
                     </div>
                     <div class="cont-BO-input">
                         <p for="boCreateTagsSimploniens">Vos Compétences</p>
