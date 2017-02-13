@@ -106,9 +106,8 @@
                   <p>Contrat recherché</p>
                   <div class="input-checkbox-container input-BO-style">
                     <label ng-repeat="contract in contracts">
-                      <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" checklist-before-change="student.contrats.length > 1 || checked"> {{contract.name}}
+                      <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" checklist-before-change="student.Contrat.length > 1 || checked"> {{contract.name}}
                     </label>
-                    {{student.contrats}}
                   </div>
                   <span class="error-msg" ng-show='student.contrats.$error.required'>Vous devez choisir au moins un type de contrat</span>
                 </div>

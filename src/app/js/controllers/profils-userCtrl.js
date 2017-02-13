@@ -5,11 +5,15 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
-  $scope.student.Contrat = ['CDD'];
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
   }
+
+  if (!$scope.student.Contrat){
+    $scope.student.Contrat = ['CDD'];
+  };
+)
 
   $scope.newPassword = {
     oldpass: '',
