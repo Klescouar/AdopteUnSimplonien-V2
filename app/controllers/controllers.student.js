@@ -134,7 +134,7 @@ exports.updateStudent = (req, res) => {
             doc.StackOverFlow = req.body.StackOverFlow,
             doc.Mail = req.body.Mail,
             doc.Contrat = req.body.Contrat,
-            doc.DatePromo = req.body.DatePromo,
+            doc.promo = req.body.promo,
             doc.Domaine = req.body.Domaine,
             doc.ProjetUn = req.body.ProjetUn,
             doc.ProjetDeux = req.body.ProjetDeux,

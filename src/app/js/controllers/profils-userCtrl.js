@@ -11,7 +11,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   if (!$scope.student.Contrat){
-    $scope.student.Contrat = ['CDD'];
+    $scope.student.Contrat = [];
   };
 
 
@@ -21,7 +21,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     confirmNewpass: ''
   };
 
-  console.log($scope.student.Contrat);
 
   $scope.showContracts = () => {
     console.log($scope.student.Contrat);
@@ -45,7 +44,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
   // PASSWORD
   $scope.updateUserPass = (id) => {
-    console.log($scope.newPassword);
     if ($scope.newPassword.newpass === $scope.newPassword.confirmNewpass){
       AuthService.updateUserPassFromProfil(id, $scope.newPassword).then((res) => {
         if (res.data.msg === 'Wrong password') {
@@ -67,10 +65,11 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     serviceFilter.getAllContract().then(function(response) {
       $scope.contracts = response.data;
     }).catch(function(errMsg) {
-      console.log('show school failed!');
+      console.log('show contract failed!');
     });
   }
   $scope.getAllContract();
+
   // Schools
   $scope.getAllSchool = () => {
     serviceFilter.getAllSchool().then(function(response) {
@@ -80,6 +79,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     });
   }
   $scope.getAllSchool();
+
   // Skills
   $scope.getAllSkill = () => {
     serviceFilter.getAllSkill().then(function(response) {
@@ -91,12 +91,22 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.getAllSkill();
 
 
+  // PROMO
+  $scope.getAllPromo = () => {
+    serviceFilter.getAllPromo().then(function(response) {
+      $scope.promos = response.data;
+    }).catch(function(errMsg) {
+      console.log('show promo failed!');
+    });
+  }
+  $scope.getAllPromo();
+
+
   $scope.getMemberInfo = (id) => {
     serviceStudent.getStudentByMemberId(id).then((response) => {
       if (response.data.success === false) {
         $scope.cardExist = false;
       } else {
-        console.log(response.data);
         $scope.cardExist = true;
         $scope.student = response.data;
         const path = '/assets/images/' + $scope.student.photo;
@@ -109,8 +119,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     });
   }
   $scope.getMemberInfo($scope.member._id);
-
-  console.log($scope.student.Contrat);
 
 
   $scope.deleteCard = (id) => {
@@ -162,13 +170,13 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     StackOverFlow: $scope.student.StackOverFlow,
     Mail: $scope.member.email,
     Contrat: $scope.student.Contrat,
-    DatePromo: $scope.student.DatePromo,
+    promo: $scope.student.promo,
     Domaine: $scope.student.Domaine,
     ProjetUn: $scope.student.ProjetUn,
     ProjetDeux: $scope.student.ProjetDeux,
     ProjetTrois: $scope.student.ProjetTrois
     };
-    console.log(dataStudent);
+
     serviceStudent.addStudent(dataStudent).then((response) => {
       if (response.data === 'error') {
         alert('Déja inscrit!')
@@ -204,13 +212,13 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         StackOverFlow: $scope.student.StackOverFlow,
         Mail: $scope.member.email,
         Contrat: $scope.student.Contrat,
-        DatePromo: $scope.student.DatePromo,
+        promo: $scope.student.promo,
         Domaine: $scope.student.Domaine,
         ProjetUn: $scope.student.ProjetUn,
         ProjetDeux: $scope.student.ProjetDeux,
         ProjetTrois: $scope.student.ProjetTrois
       };
-      console.log($scope.student);
+
       serviceStudent.updateStudent(id, newInfos).then((response) => {})
       alert("Apprenant modifié!")
     };

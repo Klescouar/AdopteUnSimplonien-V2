@@ -77,7 +77,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             StackOverFlow: $scope.student.StackOverFlow,
             Mail: $scope.student.Mail,
             Contrat: $scope.student.Contrat,
-            DatePromo: $scope.student.DatePromo,
+            promo: $scope.student.promo,
             Domaine: $scope.student.Domaine,
             ProjetUn: $scope.student.ProjetUn,
             ProjetDeux: $scope.student.ProjetDeux,
@@ -127,7 +127,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
                 StackOverFlow: $scope.student.StackOverFlow,
                 Mail: $scope.student.Mail,
                 Contrat: $scope.student.Contrat,
-                DatePromo: $scope.student.DatePromo,
+                promo: $scope.student.promo,
                 Domaine: $scope.student.Domaine,
                 ProjetUn: $scope.student.ProjetUn,
                 ProjetDeux: $scope.student.ProjetDeux,
@@ -147,6 +147,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           $scope.show = 5;
           serviceStudent.getStudentById(index).then((res) => {
               $scope.student = res.data;
+              console.log($scope.student);
               const path = '/assets/images/' + $scope.student.photo;
               let html = '';
                   html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
