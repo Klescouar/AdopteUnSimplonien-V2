@@ -6,6 +6,7 @@
   align-items: center;
   background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/connexion.png") no-repeat center / cover;
   background-size: 110% 110%;
+  overflow: hidden;
 
   .cont-form-login {
     background-color: #425877;
@@ -133,6 +134,27 @@
       background-color: #da6555;
     }
   }
+}
+
+.acount-state{
+  width: 320px!important;
+  display: flex;
+  justify-content:center;
+  background-color: #FFA500;
+  color: white;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  
+  .img-required{
+      margin-top: 5px;
+      margin-right: 10px;
+        height: 25px;
+        width: 25px;
+      background:url("../../assets/images/warningWhite.png") no-repeat center / cover;
+  }
+
 }
 
 .redirect-login {
