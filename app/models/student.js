@@ -25,7 +25,7 @@ const StudentSchema = new Schema({
     StackOverFlow: String,
     Mail: String,
     Contrat: Array,
-    DatePromo: String,
+    promo: String,
     ProjetUn: String,
     ProjetDeux: String,
     ProjetTrois: String

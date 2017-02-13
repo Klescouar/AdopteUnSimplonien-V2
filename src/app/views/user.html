@@ -119,8 +119,10 @@
               <span class="error-msg" ng-show='student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
             </div>
             <div class="cont-input">
-              <label class='input-label' for="boCreateDatePromoSimploniens">Date de votre Promo Simplon*</label>
-              <input id="boCreateDatePromoSimploniens" class="input-style" ng-model="student.DatePromo" placeholder="Date de votre Promo Simplon*" required>
+              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.promo" placeholder="Promo*" required>
+                <option class="labelOption" disabled selected value>Promo*</option>
+                <option ng-repeat="promo in promos">{{promo.name}}</option>
+              </select>
             </div>
             <div class="cont-input">
               <label class='input-label' for="boCreateMailSimploniens">E-mail*</label>

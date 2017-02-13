@@ -99,4 +99,30 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
             return error;
         });
     };
+
+    //////////////////////PROMOS REQUESTS/////////////////////////:
+
+    this.addPromo = function(promo) {
+        return $http.post(API_ENDPOINT.url + '/addPromo', promo).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.getAllPromo = function() {
+        return $http.get(API_ENDPOINT.url + '/getAllPromo').then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.removePromo = function(id) {
+        return $http.delete(API_ENDPOINT.url + '/removePromo/' + id).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
 });

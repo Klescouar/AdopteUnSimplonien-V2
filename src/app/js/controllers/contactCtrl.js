@@ -57,7 +57,8 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
                 lat: 48.904607,
                 lng: 2.357898
             },
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
         };
         const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 

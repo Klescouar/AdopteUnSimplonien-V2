@@ -203,6 +203,14 @@
 	}
 }
 
+.promo-card {
+	display: flex;
+	flex-direction: column;
+	width: 350px;
+	align-items: center;
+	margin: 20px;
+}
+
 .handle-filter {
 	display: flex;
 	justify-content: space-between;
@@ -271,29 +279,28 @@
 		width: 250px;
 		align-items: center;
 		margin: 20px;
+	}
+	.input-name {
+		margin: 10px;
+	}
 
-		.input-name {
-			margin: 10px;
+	.filter-name {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 90%;
+		border: 1px solid rgb(64, 64, 64);
+		padding: 5px;
+		margin: 5px;
+
+		p {
+			margin: 0;
+			padding: 0;
 		}
 
-		.filter-name {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			width: 90%;
-			border: 1px solid rgb(64, 64, 64);
-			padding: 5px;
-			margin: 5px;
-
-			p {
-				margin: 0;
-				padding: 0;
-			}
-
-			input {
-				cursor: pointer;
-				color: black;
-			}
+		input {
+			cursor: pointer;
+			color: black;
 		}
 	}
 }
@@ -303,6 +310,14 @@ display: flex;
 justify-content: space-between;
 align-items: flex-end;
 margin: 20px 0;
+width: 100%;
+}
+.cont-CONTRAT-input{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 20px 0;
+height: 80px;
 width: 100%;
 }
 

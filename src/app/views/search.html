@@ -88,9 +88,10 @@
                     <h3>{{student.prenom}} {{student.nom}}</h3>
                     <p>
                         {{student.ville}}</p>
-                    <p>Recherche:
-                        <strong>{{student.Contrat}}</strong>
-                    </p>
+                    <strong>Recherche:</strong>
+                      <div class="contract-box">
+                        <div class="contract-box" ng-repeat="cont in student.Contrat track by $index"> <p class="pad-style" ng-if="$index > 0">/</p><p>{{cont}}</p></div>
+                      </div>
                 </div>
                 <div class="botCard">
                     <p>#{{student.SpecialiteUn}}</p>

@@ -77,7 +77,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             StackOverFlow: $scope.student.StackOverFlow,
             Mail: $scope.student.Mail,
             Contrat: $scope.student.Contrat,
-            DatePromo: $scope.student.DatePromo,
+            promo: $scope.student.promo,
             Domaine: $scope.student.Domaine,
             ProjetUn: $scope.student.ProjetUn,
             ProjetDeux: $scope.student.ProjetDeux,
@@ -127,7 +127,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
                 StackOverFlow: $scope.student.StackOverFlow,
                 Mail: $scope.student.Mail,
                 Contrat: $scope.student.Contrat,
-                DatePromo: $scope.student.DatePromo,
+                promo: $scope.student.promo,
                 Domaine: $scope.student.Domaine,
                 ProjetUn: $scope.student.ProjetUn,
                 ProjetDeux: $scope.student.ProjetDeux,
@@ -147,6 +147,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           $scope.show = 5;
           serviceStudent.getStudentById(index).then((res) => {
               $scope.student = res.data;
+              console.log($scope.student);
               const path = '/assets/images/' + $scope.student.photo;
               let html = '';
                   html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -276,6 +277,34 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           });
       }
       $scope.getAllContract();
+
+      //////////////////////////ADMIN PROMO CONTROL//////////////////////////
+
+      $scope.getAllPromo = () => {
+          serviceFilter.getAllPromo().then(function(response) {
+              $scope.promos = response.data;
+          }).catch(function(errMsg) {
+              console.log('show promo failed!');
+          });
+      }
+
+      $scope.addPromo = () => {
+          serviceFilter.addPromo($scope.promo).then(function(response) {
+            $scope.getAllPromo();
+          }).catch(function(errMsg) {
+              const alertPopup = $window.alert('Add promo failed!');
+          });
+      };
+
+      $scope.removePromo = (id) => {
+          serviceFilter.removePromo(id).then(function(response) {
+            $scope.getAllPromo();
+          }).catch(function(errMsg) {
+              console.log('remove promo failed!');
+          });
+      }
+      $scope.getAllPromo();
+
 
 
       $scope.uploadFiles = (formData) => {
