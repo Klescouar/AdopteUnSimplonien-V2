@@ -11,8 +11,7 @@
   .cont-form-login {
     background-color: #425877;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-    min-width: 320px;
-    width: 22%;
+    width: 320px;
     height: 410px;
     display: flex;
     flex-direction: column;
@@ -128,7 +127,7 @@
       cursor: pointer;
       color: white;
       border: none;
-      
+
     }
     .sendLogin:hover{
       background-color: #da6555;
@@ -146,7 +145,7 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
-  
+
   .img-required{
       margin-top: 5px;
       margin-right: 10px;

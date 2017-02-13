@@ -324,6 +324,13 @@ width: 100%;
 		outline: none;
 }
 
+.input-checkbox-container.input-BO-style{
+	border: none;
+	&:hover{
+		border: none;
+	}
+}
+
 .input-BO-style:hover {
 	border-bottom: 1px solid rgba(212, 212, 212, 0.85);
 		outline: none;
@@ -340,7 +347,7 @@ width: 100%;
 
 	justify-content:flex-start;
 	padding-top: 10%;
-	
+
 	.cont-BO-input{
 		p{
 			width: 30%;
@@ -373,4 +380,3 @@ width: 100%;
 	}
 }
 }
-

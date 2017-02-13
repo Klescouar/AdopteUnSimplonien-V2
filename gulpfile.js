@@ -21,7 +21,7 @@ gulp.task('sass', function() {
             return res;
         }
     })).pipe(sass({outputStyle: 'compressed'})). //
-    pipe(prefix('last 4 versions')).pipe(plumber()).pipe(gulp.dest('dist/app/css'));
+    pipe(prefix('last 15 versions')).pipe(plumber()).pipe(gulp.dest('dist/app/css'));
 });
 
 // 'last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR', 'ie 11'
