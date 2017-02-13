@@ -19,6 +19,9 @@
         <h1>
             <a href="" ng-click="show = 6" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les filtres</a>
         </h1>
+        <h1>
+            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les promotions</a>
+        </h1>
     </div>
     <div class="container-interface">
         <h1 ng-if="show === 0">
@@ -292,6 +295,21 @@
                 <div ng-repeat="contract in contracts" class="filter-name">
                     <p>{{contract.name}}</p>
                     <div class="delete-user" ng-click="removeContract(contract._id)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="handle-filter" ng-show="show==8">
+            <div class="promo-card">
+                <h1>Promotions</h1>
+                <div class="input-add">
+                <input type="text" id="input" value="" ng-model="promo.name" placeholder="Promo..." class="input-FILTER-style"></input>
+                <button type="button" class="delete-filter-button" ng-click="addPromo()">
+                    <h4>Ajouter</h4>
+                </button>
+              </div>
+                <div ng-repeat="promo in promos" class="filter-name">
+                    <p>{{promo.name}}</p>
+                    <div class="delete-user" ng-click="removePromo(promo._id)"></div>
                 </div>
             </div>
         </div>

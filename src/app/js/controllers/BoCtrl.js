@@ -278,6 +278,34 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       }
       $scope.getAllContract();
 
+      //////////////////////////ADMIN PROMO CONTROL//////////////////////////
+
+      $scope.getAllPromo = () => {
+          serviceFilter.getAllPromo().then(function(response) {
+              $scope.promos = response.data;
+          }).catch(function(errMsg) {
+              console.log('show promo failed!');
+          });
+      }
+
+      $scope.addPromo = () => {
+          serviceFilter.addPromo($scope.promo).then(function(response) {
+            $scope.getAllPromo();
+          }).catch(function(errMsg) {
+              const alertPopup = $window.alert('Add promo failed!');
+          });
+      };
+
+      $scope.removePromo = (id) => {
+          serviceFilter.removePromo(id).then(function(response) {
+            $scope.getAllPromo();
+          }).catch(function(errMsg) {
+              console.log('remove promo failed!');
+          });
+      }
+      $scope.getAllPromo();
+
+
 
       $scope.uploadFiles = (formData) => {
           $.ajax({url: '/api/upload_photos', method: 'post', data: formData, processData: false, contentType: false}).done($scope.handleSuccess).fail(function(xhr, status) {

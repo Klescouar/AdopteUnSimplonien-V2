@@ -1,9 +1,9 @@
 const config      = require('../../config/database');
-const Skill = require('../models/skill');
+const Promo = require('../models/promo');
 
-exports.getAllSkill = (req, res) => {
+exports.getAllPromo = (req, res) => {
     console.log('I received a GET request');
-    Skill.find( function(err, doc) {
+    Promo.find( function(err, doc) {
         if (err) throw err;
 
         else {
@@ -12,27 +12,27 @@ exports.getAllSkill = (req, res) => {
     });
 };
 
-exports.removeSkill = (req, res) => {
+exports.removePromo = (req, res) => {
     console.log('I received a GET request');
-    Skill.findOneAndRemove({ _id: req.params.id}, function(err) {
+    Promo.findOneAndRemove({ _id: req.params.id}, function(err) {
       if (err)
         res.send(err);
 
-      res.json({ message: 'Skill removed!' });
+      res.json({ message: 'Promo removed!' });
     });
 };
 
 
-exports.addSkill =  function(req, res) {
+exports.addPromo =  function(req, res) {
   console.log(req.body);
    if (!req.body.name) {
      res.json({success: false, msg: 'Please pass all infos.'});
    } else {
-     const newSkill = new Skill(req.body);
+     const newPromo = new Promo(req.body);
      // save the user
-     newSkill.save(function(err) {
+     newPromo.save(function(err) {
        if (err) {
-         return res.json({success: false, msg: 'Skill already exists.'});
+         return res.json({success: false, msg: 'Promo already exists.'});
        }
        res.json({success: true, msg: 'Successful Add Song.'});
      });
