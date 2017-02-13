@@ -186,6 +186,13 @@
     }
 }
 
+.contract-box{
+  display: flex;
+  .pad-style{
+    padding: 0 5px;
+  }
+}
+
 .filterMain {
     height: 99%;
     width: 315px;
