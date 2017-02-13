@@ -177,8 +177,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
     if (response === true) {
       const newInfos = {
-        nom: $scope.student.nom,
-        prenom: $scope.student.prenom,
+        nom: $scope.member.lastName,
+        prenom: $scope.member.firstName,
         age: $scope.student.age,
         ville: $scope.student.ville,
         age: $scope.student.age,
@@ -195,7 +195,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         CV: $scope.student.CV,
         Twitter: $scope.student.Twitter,
         StackOverFlow: $scope.student.StackOverFlow,
-        Mail: $scope.student.Mail,
+        Mail: $scope.member.email,
         Contrat: $scope.student.contrats,
         DatePromo: $scope.student.DatePromo,
         Domaine: $scope.student.Domaine,
