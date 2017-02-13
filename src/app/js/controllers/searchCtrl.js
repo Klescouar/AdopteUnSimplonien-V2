@@ -25,7 +25,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
             if (nbLangage > 0) {
                 let maitrise = 0;
                 angular.forEach(nameSpecialite, (val) => {
-                    console.log(value.SpecialiteUn);
                     if (value[val] === langages[0] || value[val] === langages[1] || value[val] === langages[2]) {
                         ++maitrise;
                     }
@@ -61,12 +60,15 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
         angular.forEach($scope.cardFull, (value, key) => {
           if (Ville === '' || Ville === value.ville) {
             if (Contrat.length > 0) {
-              angular.forEach(Contrat, (val) => {
-                if (val === value.Contrat) {
-                  firstFilter.push(value);
-                  return
-                }
+              let contratOk = 0;
+              angular.forEach(value.Contrat, (dataVal) => {
+                angular.forEach(Contrat, (val) => {
+                  if (val === dataVal) {
+                    ++contratOk;
+                  }
+                })
               })
+              if (contratOk > 0) firstFilter.push(value);
             } else {
               firstFilter.push(value);
             }
