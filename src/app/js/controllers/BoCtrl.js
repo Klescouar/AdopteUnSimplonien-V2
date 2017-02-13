@@ -28,8 +28,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           password: ''
       };
 
-
-      //////////////////////////ADMIN STUDENT CONTROL//////////////////////////
+        //////////////////////////ADMIN STUDENT CONTROL//////////////////////////
 
       $scope.refreshInfoStudents = () => {
           serviceStudent.getAllStudent().then((res) => {

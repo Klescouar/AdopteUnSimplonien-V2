@@ -105,13 +105,14 @@
                     <option ng-repeat="school in schools">{{school.name}}</option>
                   </select>
                 </div>
-                <div class="cont-BO-input">
+                <div class="cont-BO-input ">
                   <p>Contrat recherché</p>
-                  <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.Contrat"
-                   required>
-                   <option class="labelOption" disabled selected value>Contrat</option>
-                    <option ng-repeat="contract in contracts">{{contract.name}}</option>
-                  </select>
+                  <div class="input-checkbox-container input-BO-style">
+                    <label ng-repeat="contract in contracts">
+                      <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" checklist-before-change="student.Contrat.length > 1 || checked"> {{contract.name}}
+                    </label>
+                  </div>
+                  <span class="error-msg" ng-show='student.contrats.$error.required'>Vous devez choisir au moins un type de contrat</span>
                 </div>
                 <div class="cont-BO-input">
                     <p for="boCreateDatePromoSimploniens">Date de  Promo Simplon</p>

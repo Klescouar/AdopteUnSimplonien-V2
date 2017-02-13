@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/photo-1429051883746-afd9d56fbdaf.jpeg") no-repeat center / cover;
+    background-attachment: fixed;
     transition: background linear 3.5s;
     overflow: hidden;
 
@@ -100,6 +101,7 @@
             border-right: 1px solid #6c94b4;
             padding-left: 30px;
             padding-right: 30px;
+            padding-top: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -243,7 +245,7 @@
         background:url("../../assets/images/warningWhite.png") no-repeat center / cover!important;
 
     }
-    
+
     p{
       margin: 0px;
       margin-top: 2px;
@@ -285,7 +287,7 @@
   width: 220px;
   padding-left: 0px;
   padding-right: 0px;
-  
+
   .long{
     text-align: center;
     width: 80%;
@@ -325,7 +327,7 @@
     .loginSignup {
         .cont-form {
             width: 80%;
-            
+
             .match{
               text-align: center;
             }

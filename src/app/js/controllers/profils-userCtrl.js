@@ -5,11 +5,15 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
-  $scope.student.contrats = ['CDD'];
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
   }
+
+  if (!$scope.student.Contrat){
+    $scope.student.Contrat = ['CDD'];
+  };
+)
 
   $scope.newPassword = {
     oldpass: '',
@@ -17,8 +21,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     confirmNewpass: ''
   };
 
+  console.log($scope.student.Contrat);
+
   $scope.showContracts = () => {
-    console.log($scope.student.contrats);
+    console.log($scope.student.Contrat);
   };
   // UPDATE COMPTES
   $scope.member = AuthService.user();
@@ -78,7 +84,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.getAllSkill = () => {
     serviceFilter.getAllSkill().then(function(response) {
       $scope.skills = response.data;
-      console.log($scope.skills)
     }).catch(function(errMsg) {
       console.log('show skill failed!');
     });
@@ -94,7 +99,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         console.log(response.data);
         $scope.cardExist = true;
         $scope.student = response.data;
-        $scope.student.Ville = $scope.student.Ville;
         const path = '/assets/images/' + $scope.student.photo;
         let html = '';
         html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -105,6 +109,9 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     });
   }
   $scope.getMemberInfo($scope.member._id);
+
+  console.log($scope.student.Contrat);
+
 
   $scope.deleteCard = (id) => {
     const response = confirm("Voulez vous vraiment supprimer votre fiche?");
@@ -154,7 +161,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     Twitter: $scope.student.Twitter,
     StackOverFlow: $scope.student.StackOverFlow,
     Mail: $scope.member.email,
-    Contrat: $scope.student.contrats,
+    Contrat: $scope.student.Contrat,
     DatePromo: $scope.student.DatePromo,
     Domaine: $scope.student.Domaine,
     ProjetUn: $scope.student.ProjetUn,
@@ -177,8 +184,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
     if (response === true) {
       const newInfos = {
-        nom: $scope.student.nom,
-        prenom: $scope.student.prenom,
+        nom: $scope.member.lastName,
+        prenom: $scope.member.firstName,
         age: $scope.student.age,
         ville: $scope.student.ville,
         age: $scope.student.age,
@@ -195,8 +202,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         CV: $scope.student.CV,
         Twitter: $scope.student.Twitter,
         StackOverFlow: $scope.student.StackOverFlow,
-        Mail: $scope.student.Mail,
-        Contrat: $scope.student.contrats,
+        Mail: $scope.member.email,
+        Contrat: $scope.student.Contrat,
         DatePromo: $scope.student.DatePromo,
         Domaine: $scope.student.Domaine,
         ProjetUn: $scope.student.ProjetUn,
@@ -207,18 +214,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       serviceStudent.updateStudent(id, newInfos).then((response) => {})
       alert("Apprenant modifié!")
     };
-  };
-
-  $scope.submitFiche = function(){
-    console.log($scope.cardExist);
-    if (!$scope.cardExist){
-      $scope.updateStudent()
-          console.log("j'update");
-    } else {
-        $scope.createSimplonien()
-            console.log('je submit New');
-
-    }
   };
 
   // Photo Upload
