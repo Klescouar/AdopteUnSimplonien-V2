@@ -13,7 +13,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   if (!$scope.student.Contrat){
     $scope.student.Contrat = ['CDD'];
   };
-)
+
 
   $scope.newPassword = {
     oldpass: '',

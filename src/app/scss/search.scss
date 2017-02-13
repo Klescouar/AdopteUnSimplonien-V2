@@ -172,6 +172,8 @@
 .studentPic {
     height: 150px;
     width: 150px;
+    background: no-repeat  center;
+    background-size: cover;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
@@ -180,10 +182,12 @@
     align-items: center;
     border: 2px solid #5c769c;
 
-    img {
-        height: 100%;
-        width: auto;
-    }
+    // img {
+
+    //     background: center /cover;
+    //     background-size: 100% 100%;
+
+    // }
 }
 
 .filterMain {
@@ -198,7 +202,7 @@
 }
 
 .filterChoice {
-    display: flex;
+    //display: flex;
     height: 100%;
 
     .filterTheme {

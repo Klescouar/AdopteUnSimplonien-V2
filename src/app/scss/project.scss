@@ -2,12 +2,13 @@
 	overflow: hidden;
 
  	.cont-img-description {
+ 		z-index: 1;
  		position: relative;
  		display: flex;
  		justify-content:space-around;
  		align-items:center;
 		background: linear-gradient(rgba(115,159,190,0.30), rgba(115,159,190,0.30)), url("../../assets/images/simplonien.png") no-repeat center / cover;
-		min-height: calc(100vh - 60px);
+		height: calc(100vh - 60px);
 		padding: 20px;
 
 		.title-project{
@@ -151,7 +152,7 @@
 
  .mask {
  	background-color: #DE5B49;
- 	transition: all 1s;
+ 	transition: height 0.5s;
  	display: flex;
  	justify-content: flex-end;
  	align-items: center;
@@ -162,24 +163,14 @@
 
  .mask-is-open {
  	background-color: #DE5B49;
-	transition: all 1s;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	visibility: visible;
-	width: 100%;
-	height: 2vh;
+	transition: height 0.5s;
+	height: 10px;
 }
 
  .mask-is-open-blue {
  	background-color: #87adc7;
-	transition: all 1s;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	visibility: visible;
-	width: 100%;
-	height: 2vh;
+	transition: height 0.5s;
+	height: 10px;
 }
 
 @media screen and (max-width: 1370px){

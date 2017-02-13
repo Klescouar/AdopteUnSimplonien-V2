@@ -60,7 +60,7 @@
                 <a ui-sref="project">Qui sommes-nous?</a>
                 <a ui-sref="contact">Contact</a>
             </div>
-            <a class="user-icon" ui-sref="home" ng-click="logout()" ng-if="showLogout">
+            <a class="user-none" ui-sref="home" ng-click="logout()" ng-class="{'user-icon': showLogout}" ng-if="showLogout">
                 <p>Déconnexion</p>
             </a>
             <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Simplonien'}"  ui-sref="profilUserStudent">Espace Perso</a>
