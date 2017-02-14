@@ -26,7 +26,6 @@
 <body>
   <!-- Desktop navbar -->
   <div class="nav-container" ng-controller="appUserCtrl">
-
     <!-- Menu Burger -->
     <div class="burgerMenu" ng-class="{'menu-open': burger}">
       <div id="menu-button" ng-click='burger === true ? burger = false : burger = true' role="button" title="sweet hamburger">
@@ -96,6 +95,7 @@
 
   <!-- DIRECTIVES -->
   <script src='../../../node_modules/checklist-model/checklist-model.js'></script>
+  <script src='app/js/directives/pwCheckDirective.js'></script>
 
   <!-- CONTROLLERS -->
   <script src="app/js/controllers/registerCtrl.js"></script>
@@ -110,5 +110,6 @@
   <script src="app/js/controllers/searchCtrl.js"></script>
   <script src="app/js/controllers/BoCtrl.js"></script>
   <script src="app/js/controllers/profilUserEntreprise.js"></script>
+
 </body>
 </html>

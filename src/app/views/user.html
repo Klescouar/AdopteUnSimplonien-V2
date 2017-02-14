@@ -71,7 +71,7 @@
               <label class='input-label' for="boCreateMailSimploniens">Confirmer Nouveau Mot de Passe</label>
               <input id="boCreateMailSimploniens" name='passwordNewConfirm' class="input-style" ng-model="newPassword.confirmNewpass" placeholder="Confirmer Nouveau Mot de Passe" type="password" pw-check="newPassword.newpass" required>
               <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNewConfirm.$error.required'>Veuillez confirmer votre nouveau Mot de Passe</span>
-              <span class="error-msg" ng-show='passwordForm.$submitted && passwordNewConfirm.$validators.pwCheck.$invalid'>Vos nouveaux Mot de Passe doivent être identiques</span>
+              <span class="error-msg" ng-show='passwordForm.$submitted && passwordNewConfirm.pwCheck.$invalid'>Vos nouveaux Mot de Passe doivent être identiques</span>
             </div>
           </div>
           <div class="button-container">
@@ -128,7 +128,7 @@
                 <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)*</p>
               <div class="input-checkbox-container">
                 <label ng-repeat="contract in contracts">
-                  <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked"> {{contract.name}}
+                  <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{contract.name}}
                 </label>
               </div>
               <span class="error-msg" ng-show='student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>

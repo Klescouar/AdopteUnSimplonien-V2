@@ -11,7 +11,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   if (!$scope.student.Contrat){
-    $scope.student.Contrat = ['CDD'];
+    $scope.student.Contrat = [''];
   };
 
 
@@ -146,7 +146,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   $scope.createSimplonien = () => {
-    
+
     const dataStudent = {
     memberId: $scope.member._id,
     verified: false,
