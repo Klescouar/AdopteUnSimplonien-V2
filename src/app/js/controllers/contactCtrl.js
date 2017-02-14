@@ -41,7 +41,6 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
       serviceFilter.getAllSchool().then((res) => {
         $scope.schools = res.data;
         $scope.schools.map(getInfo);
-        console.log(htmlInfos);
         initialize();
       })
     }

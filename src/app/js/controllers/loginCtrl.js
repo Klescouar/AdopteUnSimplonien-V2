@@ -1,6 +1,7 @@
 app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams',
  function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams) {
     $scope.acountState = true;
+    $scope.emailVerified = false;
     $scope.user = {
         email: '',
         password: '',
@@ -11,7 +12,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
             if (res.data.msg === 'Erreur') {
                 alert('error')
             } else {
-                alert('compte validé')
+              $scope.emailVerified = true;
             }
         })
     }
@@ -41,7 +42,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
             $scope.acountState = false;
           }else{
             $scope.verifLogin = false;
-          } 
+          }
 
         }).catch(function(error) {
             $scope.verifLogin = false;

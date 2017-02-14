@@ -14,18 +14,20 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.student = {};
       $scope.contract = {};
       $scope.studentAccount = {
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: ''
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        role: 'Simplonien'
       };
       $scope.recruiterAccount = {
-          technology:'',
-          company : '',
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: ''
+        technology:'',
+        company: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        role: 'Recruteur'
       };
 
         //////////////////////////ADMIN STUDENT CONTROL//////////////////////////
@@ -61,7 +63,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             nom: $scope.student.nom,
             prenom: $scope.student.prenom,
             age: $scope.student.age,
-            ville: $scope.student.ville,
+            region: $scope.student.region,
             photo: $scope.photo,
             tags: $scope.student.tags,
             description: $scope.student.description,
@@ -84,7 +86,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             ProjetTrois: $scope.student.ProjetTrois
           };
 
-          serviceStudent.addStudent(dataStudent).then((res) => {
+          serviceStudent.addStudentFromAdmin(dataStudent).then((res) => {
             if (res.statusText === 'OK') {
               alert('Simplonien créé!')
             } else {
@@ -110,7 +112,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
                 nom: $scope.student.nom,
                 prenom: $scope.student.prenom,
                 age: $scope.student.age,
-                ville: $scope.student.ville,
+                region: $scope.student.region,
                 age: $scope.student.age,
                 photo: $scope.photo ? $scope.photo : $scope.student.photo,
                 tags: $scope.student.tags,
@@ -168,8 +170,12 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
 
       $scope.addStudentUser = () => {
           AuthService.register($scope.studentAccount).then(function(response) {
+            if (response.data.success === false) {
+              alert(response.data.msg)
+            } else {
               $scope.getAllUser();
               $scope.show = 2;
+            }
           }).catch(function(errMsg) {
               const alertPopup = $window.alert('Register failed!');
           });
@@ -304,6 +310,34 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           });
       }
       $scope.getAllPromo();
+
+
+      //////////////////////////ADMIN REGION CONTROL//////////////////////////
+
+      $scope.getAllRegion = () => {
+          serviceFilter.getAllRegion().then(function(response) {
+              $scope.regions = response.data;
+          }).catch(function(errMsg) {
+              console.log('show region failed!');
+          });
+      }
+
+      $scope.addRegion = () => {
+          serviceFilter.addRegion($scope.region).then(function(response) {
+            $scope.getAllRegion();
+          }).catch(function(errMsg) {
+              const alertPopup = $window.alert('Add region failed!');
+          });
+      };
+
+      $scope.removeRegion = (id) => {
+          serviceFilter.removeRegion(id).then(function(response) {
+            $scope.getAllRegion();
+          }).catch(function(errMsg) {
+              console.log('remove region failed!');
+          });
+      }
+      $scope.getAllRegion();
 
 
 

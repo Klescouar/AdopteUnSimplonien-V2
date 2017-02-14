@@ -6,7 +6,7 @@ app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthSe
 		$scope.passwordChecked='';
 		$scope.anime = true;
 		$scope.validate = true;
-            		$scope.oldPassVerif = true;
+  	$scope.oldPassVerif = true;
 		$scope.member = AuthService.user();
     console.log($scope.member);
 	// ANIMATION CHANGING VIEW

@@ -11,7 +11,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   if (!$scope.student.Contrat){
-    $scope.student.Contrat = [];
+    $scope.student.Contrat = ['CDD'];
   };
 
 
@@ -29,8 +29,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.member = AuthService.user();
   // INFOS PERSOs
   $scope.updateUser = (id) => {
-    const response = confirm("Voulez vous vraiment modifier vos informations ?");
-    if (response === true) {
       $scope.validate = false;
       const newInfos = {
         firstName: $scope.member.firstName,
@@ -38,9 +36,9 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         email: $scope.member.email
       }
       AuthService.updateUser(id, newInfos).then((res) => {
-        alert("Vos informations on bien été mises à jour !");
+        $scope.member = AuthService.user();
+        $state.reload();
       })
-    }
   }
   // PASSWORD
   $scope.updateUserPass = (id) => {
@@ -71,14 +69,14 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.getAllContract();
 
   // Schools
-  $scope.getAllSchool = () => {
-    serviceFilter.getAllSchool().then(function(response) {
-      $scope.schools = response.data;
+  $scope.getAllRegion = () => {
+    serviceFilter.getAllRegion().then(function(response) {
+      $scope.regions = response.data;
     }).catch(function(errMsg) {
       console.log('show school failed!');
     });
   }
-  $scope.getAllSchool();
+  $scope.getAllRegion();
 
   // Skills
   $scope.getAllSkill = () => {
@@ -148,13 +146,14 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   $scope.createSimplonien = () => {
+    
     const dataStudent = {
     memberId: $scope.member._id,
     verified: false,
     nom: $scope.member.lastName,
     prenom: $scope.member.firstName,
     age: $scope.student.age,
-    ville: $scope.student.ville,
+    region: $scope.student.region,
     photo: $scope.photo,
     tags: $scope.student.tags,
     description: $scope.student.description,
@@ -177,10 +176,11 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     ProjetTrois: $scope.student.ProjetTrois
     };
 
-    serviceStudent.addStudent(dataStudent).then((response) => {
-      if (response.data === 'error') {
+    serviceStudent.addStudent(dataStudent).then((res) => {
+      if (res.data === 'error') {
         alert('Déja inscrit!')
       } else {
+        $scope.updateUser($scope.member._id);
         alert('Simplonien créé!');
       }
       $state.reload();
@@ -195,7 +195,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         nom: $scope.member.lastName,
         prenom: $scope.member.firstName,
         age: $scope.student.age,
-        ville: $scope.student.ville,
+        region: $scope.student.region,
         age: $scope.student.age,
         photo: $scope.photo ? $scope.photo : $scope.student.photo,
         tags: $scope.student.tags,
@@ -219,8 +219,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         ProjetTrois: $scope.student.ProjetTrois
       };
 
-      serviceStudent.updateStudent(id, newInfos).then((response) => {})
-      alert("Apprenant modifié!")
+      serviceStudent.updateStudent(id, newInfos).then((res) => {
+        $scope.updateUser($scope.member._id);
+        alert("Apprenant modifié!");
+      })
     };
   };
 

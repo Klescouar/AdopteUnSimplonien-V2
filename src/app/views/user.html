@@ -1,5 +1,9 @@
- <div class="ProfilUser">
+ <div class="view-container ProfilUser">
+   <!-- ////////////////////////////////// GLobal Form container ////////////////////////////////// -->
+
   <div class="global-profile-container">
+    <!-- ////////////////////////////////// Photo Upload ////////////////////////////////// -->
+
     <div class="choose-pic">
       <div id="upload-pic"></div>
       <form class="form-photo" id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
@@ -9,6 +13,8 @@
         <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
       </form>
     </div>
+<!-- ////////////////////////////////// TABS ////////////////////////////////// -->
+
     <div class="tab-container">
       <div class="tab" ng-click="tab = 'fiche'" ng-class="{'border-focus':tab ==='fiche'}">
         <h3 class="tab-name">Ma Fiche</h3>
@@ -17,6 +23,9 @@
         <h3 class="tab-name">Mes Infos Personnelles</h3>
       </div>
     </div>
+
+    <!-- ////////////////////////////////// INFOS PERSO Form ////////////////////////////////// -->
+
     <div class="container-info_perso" ng-if="tab === 'infos'">
       <div class="container-create">
         <form class="section form-info_perso" name="infoPersoForm" ng-submit="infoPersoForm.$valid && updateUser(member._id)" novalidate>
@@ -42,6 +51,9 @@
           <p class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.$invalid'>Veuillez remplir les champs obligatoires</p>
           <input class="input-style edit-button" value="Modifier mes infos" type="submit">
         </form>
+
+        <!-- ////////////////////////////////// MODIFS PASSWORD Form ////////////////////////////////// -->
+
         <form class="section form_password" name='passwordForm'>
           <h3 class="info-title">Modifier mot de passe</h3>
           <div class="info-group">
@@ -70,8 +82,11 @@
       </div>
     </div>
 
+    <!-- ////////////////////////////////// FICHE Form ////////////////////////////////// -->
+
     <div class="container-fiche" ng-if="tab === 'fiche'">
       <form class="container-create form-fiche" name="ficheForm">
+
         <!-- User Info Section -->
         <div class="section">
           <h1 class="info-title">Informations</h1>
@@ -104,16 +119,16 @@
               </select>
             </div> -->
             <div class="cont-input">
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.ville" placeholder="Ville*" required>
-                <option class="labelOption" disabled selected value>Ville*</option>
-                <option ng-repeat="school in schools">{{school.name}}</option>
+              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.region" placeholder="Region*" required>
+                <option class="labelOption" disabled selected value>Region*</option>
+                <option ng-repeat="region in regions">{{region.name}}</option>
               </select>
             </div>
             <div class="cont-input full-width">
                 <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)*</p>
               <div class="input-checkbox-container">
                 <label ng-repeat="contract in contracts">
-                  <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" checklist-before-change="student.Contrat.length > 1 || checked"> {{contract.name}}
+                  <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked"> {{contract.name}}
                 </label>
               </div>
               <span class="error-msg" ng-show='student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
@@ -214,7 +229,6 @@
               <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
             </ul>
           </div>
-          <span class="error-msg" ng-show='ficheForm.age.$invalid && ficheForm.age.$dirty'>Vous devez selectionner votre domaine et vos spécialités</span>
           <span class="error-msg" ng-show='student.SpecialiteUn === student.SpecialiteDeux || student.SpecialiteUn === student.SpecialiteTrois || student.SpecialiteDeux === student.SpecialiteTrois'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
           <h3 class="info-title-sm">Projets</h3>
           <div class="info-group">
@@ -239,15 +253,11 @@
           <div>this form is valid : {{ficheForm.$valid}}</div>
           <!-- Submit Buttons -->
           <div class="button-container">
-            <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='ficheForm.$valid && createSimplonien()'>
-            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click='ficheForm.$valid && updateStudent(student._id)'>
+            <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='!student.Contrat.length && ficheForm.$valid && createSimplonien()'>
+            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click='!student.Contrat.length && ficheForm.$valid && updateStudent(student._id)'>
             <input class="input-style delete-button" value="Supprimer sa fiche" ng-if="cardExist" type="button" ng-click="deleteCard(student._id)">
           </div>
         </form>
-<!-- ng-click='ficheForm.$valid && updateStudent(student._id)' -->
-<!-- ng-click='ficheForm.$valid && createSimplonien()' -->
-<!-- ng-submit='ficheForm.$valid && submitFiche()' -->
-
       </div>
     </div>
   </div>

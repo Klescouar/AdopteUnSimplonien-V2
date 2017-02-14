@@ -20,7 +20,7 @@
             <a href="" ng-click="show = 6" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les filtres</a>
         </h1>
         <h1>
-            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les promotions</a>
+            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les promotions et regions</a>
         </h1>
     </div>
     <div class="container-interface">
@@ -42,6 +42,14 @@
               <input type="text" id="company" class="input-BO-style" value="" ng-model="recruiterAccount.company" required placeholder="Entreprise"></input>
               <input type="text" id="nom" class="input-BO-style" value="" ng-model="recruiterAccount.lastName" required placeholder="Nom"></input>
               <input type="text" id="prenom" class="input-BO-style" value="" ng-model="recruiterAccount.firstName" required placeholder="Prenom"></input>
+              <div class="cont-TECHNO-input">
+                  <p>Maitrise principale recherchée :</p>
+                  <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="recruiterAccount.technology"
+                      placeholder="technology" >
+                      <option class="labelOption" disabled selected value>Technologie</option>
+                      <option ng-repeat="skill in skills">{{skill.name}}</option>
+                  </select>
+              </div>
               <input type="password" id="mdp" class="input-BO-style" ng-model="recruiterAccount.password" required placeholder="Mot de passe"></input>
               <input class="create-user-button" value="Créer" type="submit">
           </form>
@@ -173,18 +181,21 @@
                         <input id="boCreateCVSimploniens" type="url" class="input-BO-style" name="cv" placeholder="Lien vers votre CV" ng-model="student.CV" required>
                     </div>
                     <div class="cont-BO-input">
+                      <p>Première spécialité:</p>
                       <select id="boCreateSpeOneSimploniens" class="input-BO-style" ng-model="student.SpecialiteUn" placeholder="1ère Spécialité*" required>
                         <option class="labelOption" disabled selected value>1ère Spécialité*</option>
                         <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
                       </select>
                     </div>
                     <div class="cont-BO-input">
+                      <p>Deuxième spécialité:</p>
                       <select id="boCreateSpeTwoSimploniens" class="input-BO-style" ng-model="student.SpecialiteDeux" placeholder="Spécialité*" required>
                         <option class="labelOption" disabled selected value>2e Spécialité*</option>
                         <option ng-repeat="skill in skills">{{skill.name}}</option>
                       </select>
                     </div>
                     <div class="cont-BO-input">
+                      <p>Troisième spécialité:</p>
                       <select id="boCreateSpeThreeSimploniens" class="input-BO-style" ng-model="student.SpecialiteTrois" placeholder="Spécialité*" required>
                         <option class="labelOption" disabled selected value>3e Spécialité*</option>
                         <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
@@ -314,6 +325,19 @@
                 <div ng-repeat="promo in promos" class="filter-name">
                     <p>{{promo.name}}</p>
                     <div class="delete-user" ng-click="removePromo(promo._id)"></div>
+                </div>
+            </div>
+            <div class="promo-card">
+                <h1>Regions</h1>
+                <div class="input-add">
+                <input type="text" id="input" value="" ng-model="region.name" placeholder="Region..." class="input-FILTER-style"></input>
+                <button type="button" class="delete-filter-button" ng-click="addRegion()">
+                    <h4>Ajouter</h4>
+                </button>
+              </div>
+                <div ng-repeat="region in regions" class="filter-name">
+                    <p>{{region.name}}</p>
+                    <div class="delete-user" ng-click="removeRegion(region._id)"></div>
                 </div>
             </div>
         </div>
