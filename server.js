@@ -21,6 +21,7 @@ const contract = require(__dirname + '/app/controllers/controllers.contracts');
 const school = require(__dirname + '/app/controllers/controllers.schools');
 const promo = require(__dirname + '/app/controllers/controllers.promo');
 const email = require(__dirname + '/app/controllers/controllers.emails');
+const region = require(__dirname + '/app/controllers/controllers.region');
 const apiRoutes = express.Router();
 const nodemailer = require("nodemailer");
 
@@ -81,6 +82,11 @@ apiRoutes.delete('/removeContract/:id', passport.authenticate('jwt', {session: f
 apiRoutes.post('/addSchool', school.addSchool);
 apiRoutes.get('/getAllSchool', school.getAllSchool);
 apiRoutes.delete('/removeSchool/:id', passport.authenticate('jwt', {session: false}), school.removeSchool);
+
+/////////////////////////REGION CONTROLLER/////////////////////////
+apiRoutes.post('/addRegion', region.addRegion);
+apiRoutes.get('/getAllRegion', region.getAllRegion);
+apiRoutes.delete('/removeRegion/:id', passport.authenticate('jwt', {session: false}), region.removeRegion);
 
 /////////////////////////SCHOOLS CONTROLLER/////////////////////////
 apiRoutes.post('/addPromo', promo.addPromo);

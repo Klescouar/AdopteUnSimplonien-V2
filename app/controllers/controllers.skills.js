@@ -34,7 +34,7 @@ exports.addSkill =  function(req, res) {
        if (err) {
          return res.json({success: false, msg: 'Skill already exists.'});
        }
-       res.json({success: true, msg: 'Successful Add Song.'});
+       res.json({success: true, msg: 'Successful Add Skill.'});
      });
    }
  };

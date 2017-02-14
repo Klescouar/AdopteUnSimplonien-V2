@@ -8,7 +8,7 @@ const StudentSchema = new Schema({
     prenom: String,
     nom: String,
     age: Number,
-    ville: String,
+    region: String,
     photo: String,
     tags: Array,
     description: String,

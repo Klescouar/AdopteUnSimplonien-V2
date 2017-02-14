@@ -4,7 +4,7 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
         maxLangage: 3,
         maxContrat: 5,
         Langage: [],
-        Ville: "",
+        Region: "",
         Contrat: [],
     };
 
@@ -120,6 +120,33 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
 
     this.removePromo = function(id) {
         return $http.delete(API_ENDPOINT.url + '/removePromo/' + id).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+
+    //////////////////////REGION REQUESTS/////////////////////////:
+
+    this.addRegion = function(region) {
+        return $http.post(API_ENDPOINT.url + '/addRegion', region).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.getAllRegion = function() {
+        return $http.get(API_ENDPOINT.url + '/getAllRegion').then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.removeRegion = function(id) {
+        return $http.delete(API_ENDPOINT.url + '/removeRegion/' + id).then((response) => {
             return response;
         }, function(error) {
             return error;

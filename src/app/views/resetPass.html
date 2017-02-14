@@ -1,7 +1,12 @@
 <div class="reset-pass-page">
     <div class="form-reset">
-        <input type="password" ng-model="password" class="input-BO-style" placeholder="Tapez votre nouveau mot de passe...">
-        <input type="password" class="input-BO-style" placeholder="Confirmez votre nouveau mot de passe">
+      <h4>Choisissez votre nouveau mot de passe:</h4>
+        <input type="password" ng-model="password" class="input-BO-style" placeholder="Nouveau mot de passe...">
+        <input type="password" class="input-BO-style" placeholder="Confirmez votre mot de passe">
         <button type="button" ng-click="updatePassword(password)" class="confirm-button" name="button">Envoyer</button>
+    </div>
+    <div class="required-cont-gen required-cont-hide long" ng-class="{'required-cont': resetPassOK}">
+        <div class="img-required-validate"></div>
+        <p class="required long" >Votre mot de passe a été modifié!</p>
     </div>
 </div>

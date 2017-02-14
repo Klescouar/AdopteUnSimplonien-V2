@@ -19,7 +19,8 @@
                 <div class="filterRight">
                     <div class="filter filter-place" ng-if="themes[0].active === true">
 
-                        <input ng-click="changeFilterSchool()" ng-model="schoolData" type="button" value="{{school.name}}" name="button" ng-repeat="school in schools" ng-class="{'buttonFilterOff': !school.active, 'buttonFilterOn' : school.active}">
+                        <input ng-click="changeFilterRegion()" ng-model="schoolData" type="button" value="{{region.name}}" name="button" ng-repeat="region in regions" ng-class="{'buttonFilterOff': !region.active, 'buttonFilterOn' : region.active}">
+                        <p>Bientôt d'autres regions disponibles</p>
 
                     </div>
 
@@ -56,11 +57,11 @@
 
             <!-- TABLEAU DE BORD (AFFICHAGE DES TAGS) -->
             <div class="tagSearch">
-                <p ng-if="searchResult.Ville.length === 0 && searchResult.Langage.length === 0 && searchResult.Contrat.length === 0">
+                <p ng-if="searchResult.Region.length === 0 && searchResult.Langage.length === 0 && searchResult.Contrat.length === 0">
                     Aucun filtre sélectionné...
                 </p>
-                <div class="tagViewVille" ng-if="searchResult.Ville.length > 0">
-                    {{searchResult.Ville}}
+                <div class="tagViewVille" ng-if="searchResult.Region.length > 0">
+                    {{searchResult.Region}}
                     <div class="closeButton" ng-click="deleteSchoolTag()"></div>
                 </div>
                 <div class="tagViewLang" ng-repeat="lang in searchResult.Langage">

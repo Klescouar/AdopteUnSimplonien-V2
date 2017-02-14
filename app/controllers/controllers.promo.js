@@ -34,7 +34,7 @@ exports.addPromo =  function(req, res) {
        if (err) {
          return res.json({success: false, msg: 'Promo already exists.'});
        }
-       res.json({success: true, msg: 'Successful Add Song.'});
+       res.json({success: true, msg: 'Successful Add Promo.'});
      });
    }
  };
