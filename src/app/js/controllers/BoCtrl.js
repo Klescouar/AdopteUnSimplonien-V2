@@ -14,18 +14,20 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
       $scope.student = {};
       $scope.contract = {};
       $scope.studentAccount = {
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: ''
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        role: 'Simplonien'
       };
       $scope.recruiterAccount = {
-          technology:'',
-          company : '',
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: ''
+        technology:'',
+        company: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        role: 'Recruteur'
       };
 
         //////////////////////////ADMIN STUDENT CONTROL//////////////////////////
@@ -84,7 +86,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             ProjetTrois: $scope.student.ProjetTrois
           };
 
-          serviceStudent.addStudent(dataStudent).then((res) => {
+          serviceStudent.addStudentFromAdmin(dataStudent).then((res) => {
             if (res.statusText === 'OK') {
               alert('Simplonien créé!')
             } else {
@@ -168,8 +170,12 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
 
       $scope.addStudentUser = () => {
           AuthService.register($scope.studentAccount).then(function(response) {
+            if (response.data.success === false) {
+              alert(response.data.msg)
+            } else {
               $scope.getAllUser();
               $scope.show = 2;
+            }
           }).catch(function(errMsg) {
               const alertPopup = $window.alert('Register failed!');
           });

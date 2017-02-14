@@ -11,7 +11,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   if (!$scope.student.Contrat){
-    $scope.student.Contrat = [];
+    $scope.student.Contrat = ['CDD'];
   };
 
 
@@ -29,8 +29,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.member = AuthService.user();
   // INFOS PERSOs
   $scope.updateUser = (id) => {
-    const response = confirm("Voulez vous vraiment modifier vos informations ?");
-    if (response === true) {
       $scope.validate = false;
       const newInfos = {
         firstName: $scope.member.firstName,
@@ -38,9 +36,9 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         email: $scope.member.email
       }
       AuthService.updateUser(id, newInfos).then((res) => {
-        alert("Vos informations on bien été mises à jour !");
+        $scope.member = AuthService.user();
+        $state.reload();
       })
-    }
   }
   // PASSWORD
   $scope.updateUserPass = (id) => {
@@ -178,10 +176,11 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     ProjetTrois: $scope.student.ProjetTrois
     };
 
-    serviceStudent.addStudent(dataStudent).then((response) => {
-      if (response.data === 'error') {
+    serviceStudent.addStudent(dataStudent).then((res) => {
+      if (res.data === 'error') {
         alert('Déja inscrit!')
       } else {
+        $scope.updateUser($scope.member._id);
         alert('Simplonien créé!');
       }
       $state.reload();
@@ -220,8 +219,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         ProjetTrois: $scope.student.ProjetTrois
       };
 
-      serviceStudent.updateStudent(id, newInfos).then((response) => {})
-      alert("Apprenant modifié!")
+      serviceStudent.updateStudent(id, newInfos).then((res) => {
+        $scope.updateUser($scope.member._id);
+        alert("Apprenant modifié!");
+      })
     };
   };
 
