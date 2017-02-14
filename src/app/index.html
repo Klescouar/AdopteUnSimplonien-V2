@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr" ng-app="app">
-<<<<<<< HEAD
 <head>
   <!-- TITLE -->
   <title>Adopte un Simplonien</title>
@@ -24,7 +23,6 @@
   <link rel="stylesheet" href="app/css/style.css">
   <title>Adopte Un Simplonien</title>
 </head>
-
 <body>
   <!-- Desktop navbar -->
   <div class="nav-container" ng-controller="appUserCtrl">
@@ -68,7 +66,6 @@
     <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Recruteur'}" ui-sref="profilUserRecruiter">Espace Perso</a>
     <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Admin'}" ui-sref="admin">Back Office</a>
     <a class="user-none" ui-sref="login" ng-class="{'user-icon': !showLogout}">Connexion</a>
-
   </div>
 
   <main ui-view="home"></main>
@@ -113,6 +110,5 @@
   <script src="app/js/controllers/searchCtrl.js"></script>
   <script src="app/js/controllers/BoCtrl.js"></script>
   <script src="app/js/controllers/profilUserEntreprise.js"></script>
-
 </body>
 </html>
