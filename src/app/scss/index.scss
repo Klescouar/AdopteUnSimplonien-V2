@@ -1,461 +1,469 @@
 // Mise a disposition de la police dans ses différents formats
 @font-face {
-    font-family: "Quicksand";
-    src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book.otf");
+  font-family: "Quicksand";
+  src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book.otf");
 }
 @font-face {
-    font-family: "Quicksand";
-    src: url("../../assets/lib/fonts/Quicksand/Quicksand_Bold.otf");
-    font-weight: bold;
+  font-family: "Quicksand";
+  src: url("../../assets/lib/fonts/Quicksand/Quicksand_Bold.otf");
+  font-weight: bold;
 }
 @font-face {
-    font-family: "Quicksand";
-    src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book_Oblique.otf");
-    font-style: oblique;
+  font-family: "Quicksand";
+  src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book_Oblique.otf");
+  font-style: oblique;
 }
 
 *, body {
-    font-family: "Quicksand";
+  font-family: "Quicksand";
+}
+
+.view-container{
+  min-height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+
 }
 
 .open {
-    left: 0;
+  left: 0;
 }
 
 .closed {
-    left: -73%;
+  left: -73%;
 }
 
 .confirmBox {
-    height: 200px;
-    width: 200px;
-    background-color: black;
+  height: 200px;
+  width: 200px;
+  background-color: black;
 }
 
 .modal {
-    margin: auto;
+  margin: auto;
 }
 
 .confirm {
-    color: white;
-    font-size: 1.6em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  color: white;
+  font-size: 1.6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
-    p {
-        margin: 20px;
-    }
+  p {
+    margin: 20px;
+  }
 }
 
 button.close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 2.5em;
-    color: black;
-    font-weight: normal;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2.5em;
+  color: black;
+  font-weight: normal;
 }
 
 body {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 0;
+  // NAVBAR
+  .nav-container {
+    background-color: $navbar-color;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    a {
+      padding: 15px 0;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .page-container-left a {
+      padding: 10px 20px;
+    }
+
+    .user-none{
+      display: none;
+    }
+
+    .user-icon {
+      display: flex;
+      align-items:center;
+      justify-content:center;
+      border: 1px solid white;
+      height: 40px;
+      margin: 10px;
+      min-width: 140px;
+      cursor: pointer;
+      padding: 15px 5px;
+    }
+
+    .user-icon:hover {
+      background-color: rgb(64, 62, 62);
+    }
+    // DESKTOP NAV ITEMS
+    .page-container-left {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-right: auto;
+    }
+    // HOVER BUTTON NAVBAR
+    div.borderXwidth a:after,
+    div.borderXwidth a:before {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 1px;
+      content: '';
+      background: #FFF;
+      transition: all 0.2s;
+    }
+
+    div.borderXwidth a:before {
+      left: 0;
+      top: 0;
+    }
+
+    div.borderXwidth a:after {
+      right: 0;
+      bottom: 0;
+    }
+
+    div.borderXwidth a:hover:after,
+    div.borderXwidth a:hover:before {
+      opacity: 1;
+      width: 100%;
+    }
+
+    div.containerNav a {
+      color: #FFF;
+      text-decoration: none;
+      margin: 0 10px;
+      position: relative;
+      z-index: 0;
+      cursor: pointer;
+    }
+  }
+  // BURGER MENU
+  .burgerMenu {
+    display: none;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 0;
+  }
+  // BUTTON OPEN/CLOSE
+  #menu-button {
+    background: transparent;
+    padding: 14px;
+    margin-top: 3px;
+    margin-left: 3px;
+    transition: background 50ms ease-in-out;
+    user-select: none;
+  }
+
+  .hamburger {
+    position: relative;
+    width: 25px;
+    height: 20px;
+    transition: transform 750ms ease-in-out;
+  }
+
+  #menu-button:active .hamburger {
+    transition: transform 50ms;
+    transform: scale(.95);
+  }
+
+  .hamburger .inner,
+  .hamburger::after,
+  .hamburger::before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: rgb(108, 108, 108);
+    transform-origin: 100% 50%;
+    transition: all 750ms ease-in-out;
+  }
+
+  .hamburger::before {
+    top: -1px;
+  }
+
+  .hamburger .inner {
+    top: 9px;
+    transform-origin: 50% 50%;
+  }
+
+  .hamburger::after {
+    top: 19px;
+  }
+
+  .menu-open .hamburger {
+    transform: rotateY(-180deg);
+  }
+
+  .menu-open #menu-button:active .hamburger {
+    transform: scale(.95) rotateY(-180deg);
+  }
+
+  .menu-open .hamburger .inner,
+  .menu-open .hamburger::after,
+  .menu-open .hamburger::before {
+    background: #ccc;
+  }
+
+  .menu-open .hamburger::before {
+    transform: translate3d(-4px, 1px, 0) rotateZ(-45deg);
+  }
+
+  .menu-open .hamburger .inner {
+    transform: rotateY(-90deg);
+    transition: transform 375ms, background-color 750ms ease-in-out;
+  }
+
+  .menu-open .hamburger::after {
+    transform: translate3d(-4px, -1px, 0) rotateZ(45deg);
+  }
+
+  nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .menu-open nav {
+    animation-name: wind;
+  }
+
+  nav::before {
+    content: '';
+    position: absolute;
+    border-right: 1px solid rgba(41, 37, 47, .05);
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.80)), url("../../assets/images/simplonBar.png");
+    background-color: white;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotateY(90deg);
+    transition: transform 450ms;
+    transform-origin: 0 0;
+    transition-delay: 200ms;
+  }
+
+  .menu-open nav::before {
+    transform: none;
+    transition-delay: 0;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 90px;
+    left: -10px;
+    height: 60%;
     display: flex;
     flex-direction: column;
-    color: white;
-    margin: 0;
-    // NAVBAR
-    .nav-container {
-        overflow: hidden;
-        background-color: $navbar-color;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+    justify-content: center;
+  }
 
-        a {
-            padding: 15px 0;
-            text-decoration: none;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  nav li {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    font-weight: 200;
+    font-size: 1.3em;
+    line-height: 36px;
+    opacity: 0;
+    padding: 6px 0;
+    width: 200px;
+    transform: rotateY(90deg) rotateZ(-15deg);
+    transition: transform 350ms, opacity 250ms;
+    transform-origin: 0 0;
+    pointer-events: all;
+  }
 
-        p {
-            margin: 0;
-        }
+  nav li a {
+    color: rgb(41, 37, 47);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-        .page-container-left a {
-            padding: 10px 20px;
-        }
-        
-        .user-none{
-            display: none;
-        }
+  nav li a::after {
+    content: '';
+    position: absolute;
+    background: white;
+    left: 50%;
+    bottom: 10px;
+    width: 0;
+    height: 1px;
+    transition: 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 
-        .user-icon {
-            display: flex;
-            align-items:center;
-            justify-content:center;
-            border: 1px solid white;
-            height: 40px;
-            margin: 10px;
-            min-width: 140px;
-            cursor: pointer;
-            padding: 15px 5px;
-        }
+  nav li a:hover::after {
+    width: 75%;
+    left: 25px;
+  }
 
-        .user-icon:hover {
-            background-color: rgb(64, 62, 62);
-        }
-        // DESKTOP NAV ITEMS
-        .page-container-left {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            margin-right: auto;
-        }
-        // HOVER BUTTON NAVBAR
-        div.borderXwidth a:after,
-        div.borderXwidth a:before {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 1px;
-            content: '';
-            background: #FFF;
-            transition: all 0.2s;
-        }
+  .menu-open nav li {
+    opacity: 1;
+    transform: none;
+  }
+  // Temps de disparition des différents <li>
+  nav li:nth-of-type(1) {
+    transition-delay: 100ms;
+  }
 
-        div.borderXwidth a:before {
-            left: 0;
-            top: 0;
-        }
+  nav li:nth-of-type(2) {
+    transition-delay: 150ms;
+  }
 
-        div.borderXwidth a:after {
-            right: 0;
-            bottom: 0;
-        }
+  nav li:nth-of-type(3) {
+    transition-delay: 100ms;
+  }
 
-        div.borderXwidth a:hover:after,
-        div.borderXwidth a:hover:before {
-            opacity: 1;
-            width: 100%;
-        }
+  nav li:nth-of-type(4) {
+    transition-delay: 200ms;
+  }
 
-        div.containerNav a {
-            color: #FFF;
-            text-decoration: none;
-            margin: 0 10px;
-            position: relative;
-            z-index: 0;
-            cursor: pointer;
-        }
-    }
-    // BURGER MENU
-    .burgerMenu {
-        display: none;
-        z-index: 9999;
-        position: fixed;
-        top: 0;
-        left: 0;
-        min-height: 100vh;
-        width: 0;
-    }
-    // BUTTON OPEN/CLOSE
-    #menu-button {
-        background: transparent;
-        padding: 14px;
-        margin-top: 3px;
-        margin-left: 3px;
-        transition: background 50ms ease-in-out;
-        user-select: none;
+  nav li:nth-of-type(5) {
+    transition-delay: 0;
+  }
+  // Temps de d'apparition des différents <li>
+  .menu-open nav li:nth-of-type(1) {
+    transition-delay: 200ms;
+  }
+
+  .menu-open nav li:nth-of-type(2) {
+    transition-delay: 150ms;
+  }
+
+  .menu-open nav li:nth-of-type(3) {
+    transition-delay: 250ms;
+  }
+
+  .menu-open nav li:nth-of-type(4) {
+    transition-delay: 250ms;
+  }
+
+  .menu-open nav li:nth-of-type(5) {
+    transition-delay: 100ms;
+  }
+  // Animation for OPEN/CLOSE button
+  @keyframes wind {
+    0%,
+    100% {
+      transform: none;
     }
 
-    .hamburger {
-        position: relative;
-        width: 25px;
-        height: 20px;
-        transition: transform 750ms ease-in-out;
+    20% {
+      transform: rotateX(5deg) rotateY(8deg);
     }
 
-    #menu-button:active .hamburger {
-        transition: transform 50ms;
-        transform: scale(.95);
+    40% {
+      transform: rotateX(-2deg);
     }
 
-    .hamburger .inner,
-    .hamburger::after,
-    .hamburger::before {
-        content: '';
-        position: absolute;
-        width: 25px;
-        height: 2px;
-        background: rgb(108, 108, 108);
-        transform-origin: 100% 50%;
-        transition: all 750ms ease-in-out;
+    60% {
+      transform: rotateY(-3deg) rotateX(7deg);
     }
 
-    .hamburger::before {
-        top: -1px;
+    80% {
+      transform: rotateY(-4deg) rotateX(2deg);
+    }
+  }
+  // FOOTER
+  .footer-container {
+    background-color: $footer-color;
+    width: $full;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+
+    .footer_item-container {
+      width: 350px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      a {
+        margin: 15px;
+      }
     }
 
-    .hamburger .inner {
-        top: 9px;
-        transform-origin: 50% 50%;
+    .facebook-icon,
+    .google-icon,
+    .logo,
+    .twiter-icon {
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      background-size: contain;
+      z-index: 5;
+      width: 15px;
+      height: 15px;
     }
 
-    .hamburger::after {
-        top: 19px;
+    .logo {
+      background-image: url("../../assets/images/logoSimplon.png");
+      width: 25px;
+      height: 20px;
     }
 
-    .menu-open .hamburger {
-        transform: rotateY(-180deg);
+    .facebook-icon {
+      background-image: url("../../assets/images/facebook-logo-button.png");
     }
 
-    .menu-open #menu-button:active .hamburger {
-        transform: scale(.95) rotateY(-180deg);
+    .twiter-icon {
+      background-image: url("../../assets/images/twitter.png");
     }
 
-    .menu-open .hamburger .inner,
-    .menu-open .hamburger::after,
-    .menu-open .hamburger::before {
-        background: #ccc;
+    .google-icon {
+      background-image: url("../../assets/images/google-plus.png");
     }
-
-    .menu-open .hamburger::before {
-        transform: translate3d(-4px, 1px, 0) rotateZ(-45deg);
-    }
-
-    .menu-open .hamburger .inner {
-        transform: rotateY(-90deg);
-        transition: transform 375ms, background-color 750ms ease-in-out;
-    }
-
-    .menu-open .hamburger::after {
-        transform: translate3d(-4px, -1px, 0) rotateZ(45deg);
-    }
-
-    nav {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 260px;
-        z-index: -1;
-        pointer-events: none;
-    }
-
-    .menu-open nav {
-        animation-name: wind;
-    }
-
-    nav::before {
-        content: '';
-        position: absolute;
-        border-right: 1px solid rgba(41, 37, 47, .05);
-        top: -10px;
-        bottom: -10px;
-        left: -10px;
-        right: 0;
-        background: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.80)), url("../../assets/images/simplonBar.png");
-        background-color: white;
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        transform: rotateY(90deg);
-        transition: transform 450ms;
-        transform-origin: 0 0;
-        transition-delay: 200ms;
-    }
-
-    .menu-open nav::before {
-        transform: none;
-        transition-delay: 0;
-    }
-
-    nav ul {
-        position: absolute;
-        top: 90px;
-        left: -10px;
-        height: 60%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    nav li {
-        display: block;
-        overflow: hidden;
-        text-align: center;
-        font-weight: 200;
-        font-size: 1.3em;
-        line-height: 36px;
-        opacity: 0;
-        padding: 6px 0;
-        width: 200px;
-        transform: rotateY(90deg) rotateZ(-15deg);
-        transition: transform 350ms, opacity 250ms;
-        transform-origin: 0 0;
-        pointer-events: all;
-    }
-
-    nav li a {
-        color: rgb(41, 37, 47);
-        display: inline-block;
-        overflow: hidden;
-        position: relative;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    nav li a::after {
-        content: '';
-        position: absolute;
-        background: white;
-        left: 50%;
-        bottom: 10px;
-        width: 0;
-        height: 1px;
-        transition: 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    nav li a:hover::after {
-        width: 75%;
-        left: 25px;
-    }
-
-    .menu-open nav li {
-        opacity: 1;
-        transform: none;
-    }
-    // Temps de disparition des différents <li>
-    nav li:nth-of-type(1) {
-        transition-delay: 100ms;
-    }
-
-    nav li:nth-of-type(2) {
-        transition-delay: 150ms;
-    }
-
-    nav li:nth-of-type(3) {
-        transition-delay: 100ms;
-    }
-
-    nav li:nth-of-type(4) {
-        transition-delay: 200ms;
-    }
-
-    nav li:nth-of-type(5) {
-        transition-delay: 0;
-    }
-    // Temps de d'apparition des différents <li>
-    .menu-open nav li:nth-of-type(1) {
-        transition-delay: 200ms;
-    }
-
-    .menu-open nav li:nth-of-type(2) {
-        transition-delay: 150ms;
-    }
-
-    .menu-open nav li:nth-of-type(3) {
-        transition-delay: 250ms;
-    }
-
-    .menu-open nav li:nth-of-type(4) {
-        transition-delay: 250ms;
-    }
-
-    .menu-open nav li:nth-of-type(5) {
-        transition-delay: 100ms;
-    }
-    // Animation for OPEN/CLOSE button
-    @keyframes wind {
-        0%,
-        100% {
-            transform: none;
-        }
-
-        20% {
-            transform: rotateX(5deg) rotateY(8deg);
-        }
-
-        40% {
-            transform: rotateX(-2deg);
-        }
-
-        60% {
-            transform: rotateY(-3deg) rotateX(7deg);
-        }
-
-        80% {
-            transform: rotateY(-4deg) rotateX(2deg);
-        }
-    }
-    // FOOTER
-    .footer-container {
-        background-color: $footer-color;
-        width: $full;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        z-index: 3;
-
-        .footer_item-container {
-            width: 350px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-
-            a {
-                margin: 15px;
-            }
-        }
-
-        .facebook-icon,
-        .google-icon,
-        .logo,
-        .twiter-icon {
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            background-size: contain;
-            z-index: 5;
-            width: 15px;
-            height: 15px;
-        }
-
-        .logo {
-            background-image: url("../../assets/images/logoSimplon.png");
-            width: 25px;
-            height: 20px;
-        }
-
-        .facebook-icon {
-            background-image: url("../../assets/images/facebook-logo-button.png");
-        }
-
-        .twiter-icon {
-            background-image: url("../../assets/images/twitter.png");
-        }
-
-        .google-icon {
-            background-image: url("../../assets/images/google-plus.png");
-        }
-    }
+  }
 }
 @media screen and (max-width: 933px) {
-    body {
-        .nav-container {
-            .page-container-left {
-                display: none;
-            }
-        }
-
-        .burgerMenu {
-            display: block;
-        }
+  body {
+    .nav-container {
+      .page-container-left {
+        display: none;
+      }
     }
+
+    .burgerMenu {
+      display: block;
+    }
+  }
 }
