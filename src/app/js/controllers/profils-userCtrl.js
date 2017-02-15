@@ -5,13 +5,15 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
+  $scope.submitted = false;
+  $scope.specialiteOK = true;
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
   }
 
   if (!$scope.student.Contrat){
-    $scope.student.Contrat = [''];
+    $scope.student.Contrat = [];
   };
 
 
@@ -20,6 +22,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     newpass: '',
     confirmNewpass: ''
   };
+
+  $scope.checkSpecialite = () => {
+    $scope
+  }
 
 
   $scope.showContracts = () => {
@@ -146,7 +152,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   $scope.createSimplonien = () => {
-
     const dataStudent = {
     memberId: $scope.member._id,
     verified: false,
