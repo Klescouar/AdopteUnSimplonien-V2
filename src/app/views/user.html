@@ -209,22 +209,22 @@
             <div class="cont-input">
               <select id="boCreateSpeOneSimploniens" class="input-style" ng-model="student.SpecialiteUn" placeholder="1ère Spécialité*" required>
                 <option class="labelOption" disabled selected value>1ère Spécialité*</option>
-                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteDeux:student.SpecialiteTrois track by $index" value="{{skill.name}}">{{skill.name}}</option> -->
-                <option ng-repeat="skill in skills" value="{{skill.name}}" ng-click='showSkill()'>{{skill.name}}</option>
+                <option ng-repeat="skill.name in skill in skills.name | selectFilter:student.SpecialiteDeux:student.SpecialiteTrois track by $index" value="{{skill.name}}">{{skill.name}}</option>
+                <!-- <option ng-repeat="skill in skills" value="{{skill.name}}" ng-click='showSkill()'>{{skill.name}}</option> -->
               </select>
             </div>
             <div class="cont-input">
               <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" placeholder="2e Spécialité*" required>
                 <option class="labelOption" disabled selected value>2e Spécialité*</option>
-                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index">{{skill.name}}</option> -->
-                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+                <option ng-repeat="skill.name in skill in skills.name | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index">{{skill.name}}</option>
+                <!-- <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option> -->
               </select>
             </div>
             <div class="cont-input">
               <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" placeholder="3e Spécialité*" required>
                 <option class="labelOption" disabled selected value>3e Spécialité*</option>
-                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index" value="{{skill.name}}">{{skill.name}}</option> -->
-                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+                <option ng-repeat="skill.name in skill in skills.name | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index" value="{{skill.name}}">{{skill.name}}</option>
+                <!-- <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option> -->
               </select>
             </div>
             <div class="cont-input">
