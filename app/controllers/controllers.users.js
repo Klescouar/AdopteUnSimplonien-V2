@@ -1,4 +1,5 @@
 const User        = require('../models/user');
+const Student = require('../models/student');
 const jwt         = require('jwt-simple');
 const email       = require('./controllers.emails');
 const config      = require('../../config/database');
