@@ -16,7 +16,9 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
     };
 
     $scope.sendMail = () => {
-        serviceMailer.sendMail($scope.mail);
+        serviceMailer.sendMail($scope.mail).then((res) => {
+          console.log('send');
+        });
     }
 
 
