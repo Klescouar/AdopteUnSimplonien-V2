@@ -191,12 +191,20 @@
 
 /* entire container, keeps perspective */
 .flip-cont-description {
+            -webkit-transform: perspective(1000px);
+            -moz-transform: perspective(1000px);
+            -ms-transform: perspective(1000px);
+            -o-transform: perspective(1000px);
+            transform: perspective(1000px);
 	perspective: 1000px;
 }
 	/* flip the pane when hovered */
 	.flip-cont-description.hover .flip-description {
-
-		transform: rotateY(180deg);
+            		-webkit-transform: perspective(1000px) rotateY(180deg);
+            		-moz-transform: perspective(1000px) rotateY(180deg);
+            		-ms-transform: perspective(1000px) rotateY(180deg);
+            		-o-transform: perspective(1000px) rotateY(180deg);
+            		transform: perspective(1000px) rotateY(180deg);
 	}
 
 .flip-cont-description, .description-simlpon, .flip-description-simlpon-back {
@@ -218,7 +226,11 @@
 
 /* hide back of pane during swap */
 .flip-description-simlpon, .flip-description-simlpon-back {
-	backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -252,14 +264,21 @@
 /* front pane, placed above back */
 .flip-description-simlpon {
 	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
+            	-webkit-transform: perspective(1000px) rotateY(0deg);
+            	-moz-transform: perspective(1000px) rotateY(0deg);
+            	-ms-transform: perspective(1000px) rotateY(0deg);
+            	-o-transform: perspective(1000px) rotateY(0deg);
+            	transform: perspective(1000px) rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .flip-description-simlpon-back {
+            	-webkit-transform: perspective(1000px) rotateY(180deg);
+            	-moz-transform: perspective(1000px) rotateY(180deg);
+            	-ms-transform: perspective(1000px) rotateY(180deg);
+            	-o-transform: perspective(1000px) rotateY(180deg);
+            	transform: perspective(1000px) rotateY(180deg);
 
-	transform: rotateY(180deg);
 
 		.corpus-description{
 		display: none;

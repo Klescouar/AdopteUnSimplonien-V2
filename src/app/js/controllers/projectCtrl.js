@@ -1,6 +1,8 @@
 app.controller('projectCtrl', ['$scope', '$http', 'serviceFilter', '$timeout', '$window', function($scope, $http, serviceFilter, $timeout, $window){
     $scope.showTitle = true;
     $scope.showSimplon = true;
+    $scope.descriptionFour = true;
+    $scope.descriptionFive = true;
 
      angular.element($window).bind("scroll", (e) => {
         if(window.pageYOffset > 450){
@@ -14,6 +16,19 @@ app.controller('projectCtrl', ['$scope', '$http', 'serviceFilter', '$timeout', '
          else if (window.pageYOffset < 1000) {
            $scope.showSimplon = true;
          }
+         if (window.pageYOffset > 2000) {
+             $scope.descriptionFour = false;
+         }
+         else if (window.pageYOffset < 2000) {
+           $scope.descriptionFour = true;
+         }
+         if (window.pageYOffset > 2800) {
+             $scope.descriptionFive = false;
+         }
+         else if (window.pageYOffset < 2800) {
+           $scope.descriptionFive = true;
+         }
+
          $scope.$apply(() => {});
      });
 

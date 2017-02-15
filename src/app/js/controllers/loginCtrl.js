@@ -2,6 +2,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
  function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams) {
     $scope.acountState = true;
     $scope.emailVerified = false;
+    $scope.input = true;
     $scope.user = {
         email: '',
         password: '',
@@ -13,6 +14,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 alert('error')
             } else {
               $scope.emailVerified = true;
+              $scope.acountState = true;
             }
         })
     }
@@ -20,7 +22,9 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
     $scope.verifLogin = true;
 
     $scope.login = () => {
-        AuthService.login($scope.user).then(function(response) {
+        $scope.input = true;
+        if ($scope.user.email != ''&& $scope.user.password != '' ) {
+            AuthService.login($scope.user).then(function(response) {
             $scope.acountState = true;
             $scope.verifLogin = true;
           if (response.data.success === true) {
@@ -53,5 +57,11 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
             const alertPopup = $window.alert('Login failed!');
             $state.go('login');
         });
-    };
+      }else{
+            if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                $scope.input=false;
+            }
+    }
+}
+
  }]);

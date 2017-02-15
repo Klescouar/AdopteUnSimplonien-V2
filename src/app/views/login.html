@@ -7,25 +7,28 @@
       </div>
       <div class="left-co-login"></div>
     </div>
-    <form>
+    <form novalidate name="loginForm" ng-submit="loginForm.$valid && login()" >
       <div class="cont-input-login">
-        <input class="input-mail" type="email" placeholder="Email" ng-model="user.email" required></input>
+        <input class="input-mail" type="email" placeholder="Email" ng-model="user.email" name="loginEmail" required>
       </div>
       <div class="cont-input-login">
-        <input class="input-password" type="password" placeholder="Mot de passe" ng-model="user.password" required></input>
+        <input class="input-password" type="password" placeholder="Mot de passe" ng-model="user.password" name="loginPassword" required>
       </div>
-      <p class="dont-match" ng-class="{'match':!verifLogin}">Email ou mot de passe non valide.</p>
-      <input class="sendLogin" ng-click="login()" type="submit" value="Connexion" >
+      <span class="match" ng-show="!verifLogin">Email ou mot de passe non valide.</span>
+      <span class="match" ng-show=' loginForm.$submitted && loginForm.$invalid'>
+        Tous les champs sont requis
+      </span>
+      <input class="sendLogin"  type="submit" value="Connexion" >
       <div class="redirect-login">
         <a ui-sref="signup">Pas encore inscris ?</a>
         <a ui-sref="sendPass">Mot de passe oublié ?</a>
       </div>
     </form>
   </div>
-        <!-- <div class="required-cont-hide long acount-state" ng-class="{'required-cont':!acountState}">
+        <div class="required-cont-hide long acount-state" ng-class="{'required-cont':!acountState}">
                     <div class="img-required"></div>
             <p class="required long" >Merci de valider votre compte en cliquant sur le lien envoyé par mail.</p>
-        </div> -->
+        </div>
         <div class="required-cont-gen required-cont-hide long" ng-class="{'required-cont': emailVerified}">
             <div class="img-required-validate"></div>
             <p class="required long" >Votre compte a été validé!</p>

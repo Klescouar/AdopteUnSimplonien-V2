@@ -103,6 +103,7 @@
 
       .input-password{
         background: url("../../assets/images/password2.png") no-repeat scroll 7px 7px;
+        margin-bottom: 20px;
       }
 
       input:hover {
@@ -120,13 +121,16 @@
       justify-content: center;
       align-items: center;
       width: 150px;
-      margin-top: 40px;
+      margin-top: 20px;
       background-color: #de5b49;
       height: 50px;
       text-decoration: none;
       cursor: pointer;
       color: white;
       border: none;
+      padding-left: 12%;
+      padding-right: 12%;
+      margin-bottom: 20px;
 
     }
     .sendLogin:hover{
