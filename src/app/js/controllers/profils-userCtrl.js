@@ -23,14 +23,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     confirmNewpass: ''
   };
 
-  $scope.checkSpecialite = () => {
-    $scope
-  }
-
-
-  $scope.showContracts = () => {
-    console.log($scope.student.Contrat);
-  };
   // UPDATE COMPTES
   $scope.member = AuthService.user();
   // INFOS PERSOs
@@ -88,12 +80,16 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.getAllSkill = () => {
     serviceFilter.getAllSkill().then(function(response) {
       $scope.skills = response.data;
+      console.log($scope.skills);
     }).catch(function(errMsg) {
       console.log('show skill failed!');
     });
   }
   $scope.getAllSkill();
 
+  $scope.showSkill = () => {
+    console.log($scope.student.SpecialiteUn);
+  }
 
   // PROMO
   $scope.getAllPromo = () => {

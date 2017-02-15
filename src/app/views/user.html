@@ -135,7 +135,7 @@
                 <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)*</p>
               <div class="input-checkbox-container">
                 <label ng-repeat="contract in contracts">
-                  <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{contract.name}}
+                  <input type="checkbox" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{contract.name}}
                 </label>
               </div>
               <span class="error-msg" ng-show='ficheForm.$submitted && student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
@@ -209,18 +209,21 @@
             <div class="cont-input">
               <select id="boCreateSpeOneSimploniens" class="input-style" ng-model="student.SpecialiteUn" placeholder="1ère Spécialité*" required>
                 <option class="labelOption" disabled selected value>1ère Spécialité*</option>
-                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteDeux:student.SpecialiteTrois track by $index" value="{{skill.name}}">{{skill.name}}</option> -->
+                <option ng-repeat="skill in skills" value="{{skill.name}}" ng-click='showSkill()'>{{skill.name}}</option>
               </select>
             </div>
             <div class="cont-input">
               <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" placeholder="2e Spécialité*" required>
                 <option class="labelOption" disabled selected value>2e Spécialité*</option>
-                <option ng-repeat="skill in skills">{{skill.name}}</option>
+                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index">{{skill.name}}</option> -->
+                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
               </select>
             </div>
             <div class="cont-input">
               <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" placeholder="3e Spécialité*" required>
                 <option class="labelOption" disabled selected value>3e Spécialité*</option>
+                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index" value="{{skill.name}}">{{skill.name}}</option> -->
                 <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
               </select>
             </div>
@@ -235,7 +238,7 @@
               <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
             </ul>
           </div>
-          <span class="error-msg" ng-show='student.SpecialiteUn === student.SpecialiteDeux || student.SpecialiteUn === student.SpecialiteTrois || student.SpecialiteDeux === student.SpecialiteTrois'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
+          <!-- <span class="error-msg" ng-show='student.SpecialiteUn === student.SpecialiteDeux || student.SpecialiteUn === student.SpecialiteTrois || student.SpecialiteDeux === student.SpecialiteTrois'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span> -->
           <h3 class="info-title-sm">Projets</h3>
           <div class="info-group">
             <div class="cont-input">
