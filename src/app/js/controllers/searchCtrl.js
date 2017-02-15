@@ -54,7 +54,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
         $scope.data = [];
 
         const {Langage, Region, Contrat} = $scope.searchResult;
-        let firstFilter = [];
+        let contrat5=[], contrat4=[], contrat3=[], contrat2=[], contrat1=[];
 
         angular.forEach($scope.cardFull, (value, key) => {
           if (Region === '' || Region === value.region) {
@@ -67,12 +67,29 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
                   }
                 })
               })
-              if (contratOk > 0) firstFilter.push(value);
+              switch (contratOk) {
+                case 1:
+                  contrat1.push(value);
+                  break;
+                case 2:
+                  contrat2.push(value);
+                  break;
+                case 3:
+                  contrat3.push(value);
+                  break;
+                case 4:
+                  contrat4.push(value);
+                  break;
+                case 5:
+                  contrat5.push(value);
+                  break;
+              }
             } else {
-              firstFilter.push(value);
+              contrat1.push(value);
             }
           }
         });
+        let firstFilter = [...contrat5,...contrat4,...contrat3,...contrat2,...contrat1];
         $scope.data = filterLangage(firstFilter, Langage);
     };
 
