@@ -75,14 +75,14 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.getAllContract();
 
   // Schools
-  $scope.getAllSchool = () => {
-    serviceFilter.getAllSchool().then(function(response) {
-      $scope.schools = response.data;
+  $scope.getAllRegion = () => {
+    serviceFilter.getAllRegion().then(function(response) {
+      $scope.regions = response.data;
     }).catch(function(errMsg) {
       console.log('show school failed!');
     });
   }
-  $scope.getAllSchool();
+  $scope.getAllRegion();
 
   // Skills
   $scope.getAllSkill = () => {
@@ -158,7 +158,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     nom: $scope.member.lastName,
     prenom: $scope.member.firstName,
     age: $scope.student.age,
-    ville: $scope.student.ville,
+    region: $scope.student.region,
     photo: $scope.photo,
     tags: $scope.student.tags,
     description: $scope.student.description,
@@ -200,7 +200,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         nom: $scope.member.lastName,
         prenom: $scope.member.firstName,
         age: $scope.student.age,
-        ville: $scope.student.ville,
+        region: $scope.student.region,
         age: $scope.student.age,
         photo: $scope.photo ? $scope.photo : $scope.student.photo,
         tags: $scope.student.tags,

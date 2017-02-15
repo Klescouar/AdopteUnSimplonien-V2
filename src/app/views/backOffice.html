@@ -20,7 +20,7 @@
             <a href="" ng-click="show = 6" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les filtres</a>
         </h1>
         <h1>
-            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les promotions</a>
+            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les promotions et regions</a>
         </h1>
     </div>
     <div class="container-interface">
@@ -325,6 +325,19 @@
                 <div ng-repeat="promo in promos" class="filter-name">
                     <p>{{promo.name}}</p>
                     <div class="delete-user" ng-click="removePromo(promo._id)"></div>
+                </div>
+            </div>
+            <div class="promo-card">
+                <h1>Regions</h1>
+                <div class="input-add">
+                <input type="text" id="input" value="" ng-model="region.name" placeholder="Region..." class="input-FILTER-style"></input>
+                <button type="button" class="delete-filter-button" ng-click="addRegion()">
+                    <h4>Ajouter</h4>
+                </button>
+              </div>
+                <div ng-repeat="region in regions" class="filter-name">
+                    <p>{{region.name}}</p>
+                    <div class="delete-user" ng-click="removeRegion(region._id)"></div>
                 </div>
             </div>
         </div>

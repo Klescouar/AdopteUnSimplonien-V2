@@ -29,7 +29,6 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
 
         $scope.registerRecruteur = () => {
           $scope.validForm=true;
-            console.log($scope.userRecruteur.technology)
         if ($scope.userRecruteur.company != ''&& $scope.userRecruteur.firstName != '' && $scope.userRecruteur.lastName!= '' && $scope.userRecruteur.email!='' && $scope.userRecruteur.technology!=null && $scope.userRecruteur.password!='' && $scope.passwordCheckedRecruteur!='' ) {
                 $scope.inputR=true;
             if ($scope.userRecruteur.password.trim().length >= 8) {

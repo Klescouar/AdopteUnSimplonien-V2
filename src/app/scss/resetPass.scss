@@ -1,51 +1,50 @@
-.reset-pass-page{
-  min-height: calc(100vh - 110px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(64,71,90);
-  .form-reset{
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-right: 50px;
-    padding-left: 50px;
-    height: 150px;
+.reset-pass-page {
+  position: relative;
+    min-height: calc(100vh - 110px);
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    background-color: #2e3e53;
-    
-    h4{
-      margin-bottom: 20px;
+    background-color: rgb(64,71,90);
+    overflow: hidden;
+
+    .form-reset {
+        padding: 10px 10px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgb(64,71,90);
+
+        h4 {
+            margin-bottom: 20px;
+        }
+
+        .cont-mail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .img-mail {
+                height: 20px;
+                width: 20px;
+                background: url("../../assets/images/envelope.png") no-repeat center / cover;
+                margin-right: 10px;
+            }
+        }
     }
 
-    .cont-mail{
-      display: flex;
-      justify-content:center;
-      align-items:center;
-
-    .img-mail{
-      height: 30px;
-      width: 30px;
-      background: url("../../assets/images/envelope.png") no-repeat center / cover;
-      margin-right: 10px;
-
+    .confirm-button {
+        margin-top: 30px;
+        padding: 6px 15px;
+        border: none;
+        border: 1px solid rgb(181, 181, 181);
+        background-color: transparent;
+        transition: 0.2s ease;
     }
 
+    .confirm-button:hover {
+        background-color: rgb(79, 87, 111);
+        transition: 0.2s ease;
     }
-
-  }
-  .confirm-button{
-    margin-top: 30px;
-    padding: 8px;
-    border: none;
-    border: 1px solid rgb(181, 181, 181);
-    background-color: transparent;
-    transition: 0.2s ease;
-  }
-  .confirm-button:hover{
-    background-color: rgb(79, 87, 111);
-    transition: 0.2s ease;
-  }
 }

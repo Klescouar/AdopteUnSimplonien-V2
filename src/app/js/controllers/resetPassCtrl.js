@@ -1,5 +1,5 @@
 app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthService', '$stateParams', function($scope, serviceMailer, $window, AuthService, $stateParams){
-
+  $scope.resetPassOK = false;
   const infoUser = AuthService.user();
 
   $scope.updatePassword = (password) => {
@@ -7,7 +7,7 @@ app.controller('resetPassCtrl', ['$scope', 'serviceMailer', '$window', 'AuthServ
           if (res.data.success === 'Erreur') {
               alert('error')
           } else {
-              alert(res.data.msg)
+            $scope.resetPassOK = true;
           }
       })
   }

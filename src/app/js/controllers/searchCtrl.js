@@ -1,5 +1,4 @@
 app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStudent', function($scope, $http, serviceFilter, serviceStudent){
-    $scope.schools = serviceFilter.schools;
     $scope.contrats = serviceFilter.contrats;
     $scope.langages = serviceFilter.langages;
     $scope.themes = serviceFilter.themes;
@@ -54,11 +53,11 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     const searchFilter = () => {
         $scope.data = [];
 
-        const {Langage, Ville, Contrat} = $scope.searchResult;
+        const {Langage, Region, Contrat} = $scope.searchResult;
         let firstFilter = [];
 
         angular.forEach($scope.cardFull, (value, key) => {
-          if (Ville === '' || Ville === value.ville) {
+          if (Region === '' || Region === value.region) {
             if (Contrat.length > 0) {
               let contratOk = 0;
               angular.forEach(value.Contrat, (dataVal) => {
@@ -104,19 +103,40 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
         }
     };
 
-    $scope.changeFilterSchool = function(){
-        if (this.school.active === true) {
-            this.school.active = false;
-            $scope.searchResult.Ville = "";
+    $scope.filterInput = () => {
+      let data = [];
+      const searchInput = $scope.searchStudent.split(' ');
+      let regex = '^';
+      angular.forEach(searchInput, (val) => {
+        regex += `(?=.*${val.toLowerCase()})`;
+      })
+      regex += '.*$';
+      regex = new RegExp(regex);
+
+      angular.forEach($scope.cardFull, (studentVal) => {
+        const search = `${studentVal.nom} ${studentVal.prenom} ${studentVal.ville} ${studentVal.SpecialiteUn} ${studentVal.SpecialiteDeux} ${studentVal.SpecialiteTrois}`;
+        if (regex.test(search.toLowerCase())) {
+          data.push(studentVal);
+        }
+      });
+
+        $scope.data = data;
+    }
+
+
+    $scope.changeFilterRegion = function(){
+        if (this.region.active === true) {
+            this.region.active = false;
+            $scope.searchResult.Region = "";
         } else {
-            if ($scope.searchResult.Ville.length === 0) {
-                this.school.active = true;
-                $scope.searchResult.Ville = this.school.name;
-            } else if ($scope.searchResult.Ville.length > 0) {
-                for (let i = 0; i < $scope.schools.length; i++) {
-                    $scope.schools[i].active = false;
-                    this.school.active = true;
-                    $scope.searchResult.Ville = this.school.name;
+            if ($scope.searchResult.Region.length === 0) {
+                this.region.active = true;
+                $scope.searchResult.Region = this.region.name;
+            } else if ($scope.searchResult.Region.length > 0) {
+                for (let i = 0; i < $scope.regions.length; i++) {
+                    $scope.regions[i].active = false;
+                    this.region.active = true;
+                    $scope.searchResult.Region = this.region.name;
                 }
             }
         }
@@ -141,12 +161,12 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     //////////////////////HANDLE TAGS/////////////////////
 
     $scope.deleteSchoolTag = function(){
-        for (let i = 0; i < $scope.schools.length; i++) {
-            if ($scope.schools[i].name === $scope.searchResult.Ville) {
-                $scope.schools[i].active = false;
+        for (let i = 0; i < $scope.regions.length; i++) {
+            if ($scope.regions[i].name === $scope.searchResult.Region) {
+                $scope.regions[i].active = false;
             }
         }
-        $scope.searchResult.Ville = "";
+        $scope.searchResult.Region = "";
         searchFilter();
     };
 
@@ -166,15 +186,15 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
 
     //////////////////////GET FILTER/////////////////////
 
-    $scope.getAllSchool = () => {
-        serviceFilter.getAllSchool().then(function(response) {
-            $scope.schools = response.data;
-            $scope.schools.map(putActiveParameter);
+    $scope.getAllRegion = () => {
+        serviceFilter.getAllRegion().then(function(response) {
+            $scope.regions = response.data;
+            $scope.regions.map(putActiveParameter);
         }).catch(function(errMsg) {
-            console.log('get schools failed!');
+            console.log('get regions failed!');
         });
     }
-    $scope.getAllSchool();
+    $scope.getAllRegion();
 
     $scope.getAllSkill = () => {
         serviceFilter.getAllSkill().then(function(response) {

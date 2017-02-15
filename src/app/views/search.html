@@ -5,7 +5,7 @@
         <div class="filterMain">
             <form class="inputForm">
                 <div class="searchImage"></div>
-                <input ng-model="searchStudent" placeholder="Nom, langage, ville...">
+                <input ng-keyup="filterInput()" ng-model="searchStudent" placeholder="Nom, langage, ville...">
             </form>
             <div class="flex">
                 <div class="filterChoice">
@@ -19,7 +19,8 @@
                 <div class="filterRight">
                     <div class="filter filter-place" ng-if="themes[0].active === true">
 
-                        <input ng-click="changeFilterSchool()" ng-model="schoolData" type="button" value="{{school.name}}" name="button" ng-repeat="school in schools" ng-class="{'buttonFilterOff': !school.active, 'buttonFilterOn' : school.active}">
+                        <input ng-click="changeFilterRegion()" ng-model="schoolData" type="button" value="{{region.name}}" name="button" ng-repeat="region in regions" ng-class="{'buttonFilterOff': !region.active, 'buttonFilterOn' : region.active}">
+                        <p>Bientôt d'autres regions disponibles</p>
 
                     </div>
 
@@ -56,11 +57,11 @@
 
             <!-- TABLEAU DE BORD (AFFICHAGE DES TAGS) -->
             <div class="tagSearch">
-                <p ng-if="searchResult.Ville.length === 0 && searchResult.Langage.length === 0 && searchResult.Contrat.length === 0">
+                <p ng-if="searchResult.Region.length === 0 && searchResult.Langage.length === 0 && searchResult.Contrat.length === 0">
                     Aucun filtre sélectionné...
                 </p>
-                <div class="tagViewVille" ng-if="searchResult.Ville.length > 0">
-                    {{searchResult.Ville}}
+                <div class="tagViewVille" ng-if="searchResult.Region.length > 0">
+                    {{searchResult.Region}}
                     <div class="closeButton" ng-click="deleteSchoolTag()"></div>
                 </div>
                 <div class="tagViewLang" ng-repeat="lang in searchResult.Langage">
@@ -82,7 +83,7 @@
             </div>
 
             <!-- CARD -->
-            <a class="card" ui-sref="profil({student: student._id})" ng-repeat="student in data | filter:searchStudent:q track by $index" ng-if="student.verified === true">
+            <a class="card" ui-sref="profil({student: student._id})" ng-repeat="student in data" ng-if="student.verified === true">
                 <div class="topCard">
                     <div class="studentPic" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}"><!-- <img src="assets/images/{{student.photo}}"/> --></div>
                     <h3>{{student.prenom}} {{student.nom}}</h3>

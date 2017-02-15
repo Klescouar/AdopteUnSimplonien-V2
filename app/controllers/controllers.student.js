@@ -118,7 +118,7 @@ exports.updateStudent = (req, res) => {
             doc.nom = req.body.nom,
             doc.prenom = req.body.prenom,
             doc.age = req.body.age,
-            doc.ville = req.body.ville,
+            doc.region = req.body.region,
             doc.photo = req.body.photo,
             doc.tags = req.body.tags,
             doc.description = req.body.description,
