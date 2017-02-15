@@ -5,7 +5,7 @@
         <div class="filterMain">
             <form class="inputForm">
                 <div class="searchImage"></div>
-                <input ng-model="searchStudent" placeholder="Nom, langage, ville...">
+                <input ng-keyup="filterInput()" ng-model="searchStudent" placeholder="Nom, langage, ville...">
             </form>
             <div class="flex">
                 <div class="filterChoice">
@@ -83,7 +83,7 @@
             </div>
 
             <!-- CARD -->
-            <a class="card" ui-sref="profil({student: student._id})" ng-repeat="student in data | filter:searchStudent:q track by $index" ng-if="student.verified === true">
+            <a class="card" ui-sref="profil({student: student._id})" ng-repeat="student in data" ng-if="student.verified === true">
                 <div class="topCard">
                     <div class="studentPic" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}"><!-- <img src="assets/images/{{student.photo}}"/> --></div>
                     <h3>{{student.prenom}} {{student.nom}}</h3>

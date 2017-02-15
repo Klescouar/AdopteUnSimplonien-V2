@@ -103,6 +103,27 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
         }
     };
 
+    $scope.filterInput = () => {
+      let data = [];
+      const searchInput = $scope.searchStudent.split(' ');
+      let regex = '^';
+      angular.forEach(searchInput, (val) => {
+        regex += `(?=.*${val.toLowerCase()})`;
+      })
+      regex += '.*$';
+      regex = new RegExp(regex);
+
+      angular.forEach($scope.cardFull, (studentVal) => {
+        const search = `${studentVal.nom} ${studentVal.prenom} ${studentVal.ville} ${studentVal.SpecialiteUn} ${studentVal.SpecialiteDeux} ${studentVal.SpecialiteTrois}`;
+        if (regex.test(search.toLowerCase())) {
+          data.push(studentVal);
+        }
+      });
+
+        $scope.data = data;
+    }
+
+
     $scope.changeFilterRegion = function(){
         if (this.region.active === true) {
             this.region.active = false;
