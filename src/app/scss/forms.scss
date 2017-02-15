@@ -115,6 +115,7 @@
 .input-checkbox-container{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 
   label{
     margin-right: 15px;
