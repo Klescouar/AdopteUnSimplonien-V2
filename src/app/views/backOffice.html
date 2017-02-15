@@ -20,7 +20,7 @@
             <a href="" ng-click="show = 6" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les filtres</a>
         </h1>
         <h1>
-            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les promotions et regions</a>
+            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 8}">Gerer les promotions et fabriques</a>
         </h1>
     </div>
     <div class="container-interface">
@@ -266,24 +266,19 @@
             </div>
         </div>
         <div class="handle-filter" ng-show="show==6">
-            <div class="filter-card">
-                <h1>Fabriques</h1>
-                <div class="input-add-school">
-                  <input type="text" id="input" value="" ng-model="school.name" placeholder="Ville..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <input type="text" id="input" value="" ng-model="school.adress" placeholder="Adresse..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <input type="text" id="input" value="" ng-model="school.latitude" placeholder="Latitude..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <input type="text" id="input" value="" ng-model="school.longitude" placeholder="Longitude..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <a target="_blank" href="http://www.coordonnees-gps.fr/">Pour les coordonnées GPS</a>
-                  <input type="text" id="input" value="" ng-model="school.website" placeholder="Site..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <button type="button" class="delete-filter-button" ng-click="addSchool()">
-                      <h4>Ajouter</h4>
-                  </button>
-                </div>
-                <div ng-repeat="school in schools" class="filter-name">
-                    <p>{{school.name}}</p>
-                    <div class="delete-user" ng-click="removeSchool(school._id)"></div>
-                </div>
+          <div class="filter-card">
+              <h1>Regions</h1>
+              <div class="input-add">
+              <input type="text" id="input" value="" ng-model="region.name" placeholder="Region..." class="input-FILTER-style"></input>
+              <button type="button" class="delete-filter-button" ng-click="addRegion()">
+                  <h4>Ajouter</h4>
+              </button>
             </div>
+              <div ng-repeat="region in regions" class="filter-name">
+                  <p>{{region.name}}</p>
+                  <div class="delete-user" ng-click="removeRegion(region._id)"></div>
+              </div>
+          </div>
 
             <div class="filter-card">
                 <h1>Skills</h1>
@@ -328,16 +323,21 @@
                 </div>
             </div>
             <div class="promo-card">
-                <h1>Regions</h1>
-                <div class="input-add">
-                <input type="text" id="input" value="" ng-model="region.name" placeholder="Region..." class="input-FILTER-style"></input>
-                <button type="button" class="delete-filter-button" ng-click="addRegion()">
-                    <h4>Ajouter</h4>
-                </button>
-              </div>
-                <div ng-repeat="region in regions" class="filter-name">
-                    <p>{{region.name}}</p>
-                    <div class="delete-user" ng-click="removeRegion(region._id)"></div>
+                <h1>Fabriques</h1>
+                <div class="input-add-school">
+                  <input type="text" id="input" value="" ng-model="school.name" placeholder="Ville..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <input type="text" id="input" value="" ng-model="school.adress" placeholder="Adresse..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <input type="text" id="input" value="" ng-model="school.latitude" placeholder="Latitude..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <input type="text" id="input" value="" ng-model="school.longitude" placeholder="Longitude..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <a target="_blank" href="http://www.coordonnees-gps.fr/">Pour les coordonnées GPS</a>
+                  <input type="text" id="input" value="" ng-model="school.website" placeholder="Site..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <button type="button" class="delete-filter-button" ng-click="addSchool()">
+                      <h4>Ajouter</h4>
+                  </button>
+                </div>
+                <div ng-repeat="school in schools" class="filter-name">
+                    <p>{{school.name}}</p>
+                    <div class="delete-user" ng-click="removeSchool(school._id)"></div>
                 </div>
             </div>
         </div>

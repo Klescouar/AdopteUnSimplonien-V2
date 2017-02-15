@@ -88,7 +88,7 @@
                     <div class="studentPic" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}"><!-- <img src="assets/images/{{student.photo}}"/> --></div>
                     <h3>{{student.prenom}} {{student.nom}}</h3>
                     <p>
-                        {{student.ville}}</p>
+                        {{student.region}}</p>
                     <strong>Recherche:</strong>
                       <div class="contract-box">
                         <div class="contract-box" ng-repeat="cont in student.Contrat track by $index"> <p class="pad-style" ng-if="$index > 0">/</p><p>{{cont}}</p></div>
