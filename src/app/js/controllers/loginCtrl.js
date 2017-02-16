@@ -1,7 +1,8 @@
-app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams',
- function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams) {
+app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams','$timeout', 
+ function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams,$timeout) {
     $scope.acountState = true;
     $scope.emailVerified = false;
+    $scope.verifLogin = true;
     $scope.input = true;
     $scope.user = {
         email: '',
@@ -14,12 +15,13 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 alert('error')
             } else {
               $scope.emailVerified = true;
+            $timeout(function () {
+              $scope.emailVerified = false;
+                }, 6000);
               $scope.acountState = true;
             }
         })
     }
-
-    $scope.verifLogin = true;
 
     $scope.login = () => {
         $scope.input = true;
@@ -38,12 +40,14 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 } else if (response.data.user.role === 'Admin') {
                   $state.go('admin');
                 }
-
                 return response;
             }
             $state.go('profilUserStudent');
           }else if (response.data.msg === 'Authentication failed. Inactive account.') {
             $scope.acountState = false;
+              $timeout(function () {
+              $scope.acountState = true;
+                }, 6000);
           }else{
             $scope.verifLogin = false;
           }

@@ -1,9 +1,10 @@
 
 <div class="contactPage">
     <div class="contactContainer">
-        <form>
+        <form name="contactForm" ng-submit="contactForm.$valid && sendMail()">
             <h1>Une question, une suggestion, un doute ?</h1>
             <h1>C’est par ici !</h1>
+<<<<<<< HEAD
             <div class="cont-input">
               <input type="text" name="nom" ng-model="mail.name" class="Name" placeholder="Nom/Prenom *" required/>
             </div>
@@ -27,12 +28,13 @@
             </div>
 
             <input type="submit" name="submit" value="ENVOYER" class="submit-button" ng-click="sendMail()"/>
-            <span class="match" ng-show='!showRequired'>
+
+            <span class="match" ng-show=' contactForm.$submitted && contactForm.$invalid'>
             Tous les champs sont requis.
             </span>
-            <div class="required-cont-gen required-cont long" ng-show="!showForm">
+            <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':!sendForm}">
                 <div class="img-required-validate"></div>
-                <p class="required long" >Message envoyé !</p>
+                <p class="required" >Message envoyé !</p>
             </div>
         </form>
         <div class="mapContact">
