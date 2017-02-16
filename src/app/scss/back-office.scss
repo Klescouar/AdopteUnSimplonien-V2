@@ -1,6 +1,6 @@
 .container-bo {
 	display: flex;
-	min-height: 90vh;
+	min-height: calc(100vh - 110px);
 	background-color: rgb(227,230,236);
 	.create-user-button{
 		margin-top: 10px;
@@ -81,6 +81,7 @@
 		justify-content: center;
 		width: 74vw;
 		color: white;
+		min-height: calc(100vh - 110px);
 
 		h1 {
 			text-align: center;
@@ -148,6 +149,7 @@
 				margin-top: 30px;
 				width: 100%;
 				height: 100%;
+
 
 				.cont-info {
 					display: flex;
