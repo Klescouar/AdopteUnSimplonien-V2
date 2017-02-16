@@ -78,7 +78,7 @@ body {
   .nav-container {
     background-color: $navbar-color;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
 
     a {
@@ -457,6 +457,7 @@ body {
 @media screen and (max-width: 933px) {
   body {
     .nav-container {
+      justify-content: flex-end;
       .page-container-left {
         display: none;
       }
