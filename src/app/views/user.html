@@ -207,29 +207,28 @@
               <span class="error-msg" ng-show='ficheForm.$submitted && ficheForm.cv.$error.required'>Veuillez renseigner un compte Github</span>
             </div>
             <div class="cont-input">
-              <select id="boCreateSpeOneSimploniens" class="input-style" ng-model="student.SpecialiteUn" ng-options="skill as skill.name for skill in skills | selectFilter:student.SpecialiteDeux:student.SpecialiteTrois" placeholder="1ère Spécialité*" required>
+              <select id="boCreateSpeOneSimploniens" class="input-style" ng-model="student.SpecialiteUn" placeholder="1ère Spécialité*" required>
                 <option class="labelOption" disabled selected value>1ère Spécialité*</option>
-                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteDeux:student.SpecialiteTrois track by $index" value="{{skill}}">{{skill.name}}</option> -->
-                <!-- <option ng-repeat="skill in skills" value="{{skill.name}}" ng-click='showSkill()'>{{skill.name}}</option> -->
+                <option ng-repeat="skill in skills" value="{{skill.name}}" ng-click='showSkill()'>{{skill.name}}</option>
+                <!-- | filter:student.SpecialiteDeux:student.SpecialiteTrois -->
               </select>
               {{student.SpecialiteUn}}
             </div>
             <div class="cont-input">
-              <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" ng-options="skill as skill.name for skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois" placeholder="2e Spécialité*" required>
+              <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" placeholder="2e Spécialité*" required>
                 <option class="labelOption" disabled selected value>2e Spécialité*</option>
-                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index" value="{{skill}}">{{skill.name}}</option> -->
-                <!-- <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option> -->
+                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+                <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
               </select>
               {{student.SpecialiteDeux}}
             </div>
             <div class="cont-input">
-              <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" ng-options="skill as skill.name for skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois" placeholder="3e Spécialité*" required>
+              <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" placeholder="3e Spécialité*" required>
                 <option class="labelOption" disabled selected value>3e Spécialité*</option>
-                <!-- <option ng-repeat="skill in skills | selectFilter:student.SpecialiteUn:student.SpecialiteTrois track by $index" value="{{skill}}">{{skill.name}}</option> -->
-                <!-- <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option> -->
+                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+                <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
               </select>
               {{student.SpecialiteTrois}}
-
             </div>
             <div class="cont-input">
               <div class="input-button-container">
@@ -242,7 +241,7 @@
               <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
             </ul>
           </div>
-          <!-- <span class="error-msg" ng-show='student.SpecialiteUn === student.SpecialiteDeux || student.SpecialiteUn === student.SpecialiteTrois || student.SpecialiteDeux === student.SpecialiteTrois'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span> -->
+          <span class="error-msg" ng-if='ficheForm.$submitted && checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
           <h3 class="info-title-sm">Projets</h3>
           <div class="info-group">
             <div class="cont-input">
@@ -262,7 +261,7 @@
             </div>
           </div>
         </div>
-        <span class="error-msg" ng-show='ficheForm.$invalid && ficheForm.$submitted'>Veuillez remplir les champs obligatoires marqués d'une *</span>
+        <span class="error-msg" ng-if='ficheForm.$invalid && ficheForm.$submitted'>Veuillez remplir les champs obligatoires marqués d'une *</span>
           <div>this form is valid : {{ficheForm.$valid}}</div>
           <!-- Submit Buttons -->
           <div class="button-container">
