@@ -23,19 +23,24 @@
         height: calc(100vh - 110px);
     }
 
-    input,
-    textarea {
-        padding: 5px;
-        font-size: 0.9em;
-        color: white;
-        width:80%;
-        background-color: transparent;
-        border-top: 1px solid transparent;
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
-        border-bottom: 1px solid rgb(179, 179, 179);
-        margin-bottom: 15px;
+    .cont-input{
+      width: 80%;
+      color: white;
+      font-size: 0.9em;
     }
+
+    // input,
+    // textarea {
+    //     padding: 5px;
+    //     color: white;
+    //     width:80%;
+    //     background-color: transparent;
+    //     border-top: 1px solid transparent;
+    //     border-left: 1px solid transparent;
+    //     border-right: 1px solid transparent;
+    //     border-bottom: 1px solid rgb(179, 179, 179);
+    //     margin-bottom: 15px;
+    // }
 
     ::-webkit-input-placeholder {
         color: white;

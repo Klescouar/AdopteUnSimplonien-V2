@@ -22,10 +22,9 @@
     height: 30px;
     width: 100%;
     border: none;
+    background: transparent;
     border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-    color: black;
     outline: none;
-    background: white;
     border-radius: 0;
     // -webkit-appearance: none;
   }
@@ -43,14 +42,14 @@
   }
 
   input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-dirty{
-    border-bottom: 1px solid red;
-    color: red;
+    border-bottom: 1px solid #de5b49;
+    color: #de5b49;
   }
 
   .ng-submitted {
     input.ng-invalid{
-      border-bottom: 1px solid red;
-      color: red;
+      border-bottom: 1px solid #de5b49;
+      color: #de5b49;
     }
   }
 

@@ -80,7 +80,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.getAllSkill = () => {
     serviceFilter.getAllSkill().then(function(response) {
       $scope.skills = response.data;
-      console.log($scope.skills);
     }).catch(function(errMsg) {
       console.log('show skill failed!');
     });
@@ -188,6 +187,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     }, (err) => {
       console.log("Error");
       });
+
+      console.log(dataStudent);
   }
   $scope.updateStudent = (id) => {
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
@@ -225,6 +226,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         alert("Apprenant modifié!");
       })
     };
+    console.log(newInfos);
+
   };
 
   // Photo Upload
