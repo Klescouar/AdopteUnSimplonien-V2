@@ -1,5 +1,6 @@
 .ProfilUser-ent{
-  min-height: calc(100vh - 110px);
+  position: relative;
+  height: calc(100vh - 110px);
   background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
   background-attachment: fixed;
   display: flex;
@@ -29,7 +30,6 @@
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
 
 
     .section-entreprise{

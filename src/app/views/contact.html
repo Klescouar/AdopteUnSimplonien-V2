@@ -1,15 +1,22 @@
 <div class="contactPage">
     <div class="contactContainer">
-        <form ng-submit="sendMail()">
+        <form>
             <h1>Une question, une suggestion, un doute ?</h1>
             <h1>C’est par ici !</h1>
             <input type="text" name="nom" ng-model="mail.name" class="Name" placeholder="Nom/Prenom *" required/>
             <input type="text" name="entreprise" ng-model="mail.entreprise" class="Name" placeholder="Entreprise *" required/>
             <input type="text" name="vile" ng-model="mail.city" class="City" placeholder="Ville *" required/>
             <input type="email" name="email" ng-model="mail.sender" class="Email" placeholder="Email *" required/>
-            <input type="text" name="phone" ng-model="mail.phone" class="Phone" placeholder="Telephone"/>
+            <input type="text" name="phone" ng-model="mail.phone" class="Phone" placeholder="Telephone*" required/>
             <textarea name="message" rows="20" ng-model="mail.content" cols="20" class="Message" placeholder="Message *" required></textarea>
-            <input type="submit" name="submit" value="ENVOYER" class="submit-button"/>
+            <input type="submit" name="submit" value="ENVOYER" class="submit-button" ng-click="sendMail()"/>
+            <span class="match" ng-show='!showRequired'>
+            Tous les champs sont requis.
+            </span>
+            <div class="required-cont-gen required-cont long" ng-show="!showForm">
+                <div class="img-required-validate"></div>
+                <p class="required long" >Message envoyé !</p>
+            </div>
         </form>
         <div class="mapContact">
             <div id="googleMap"></div>

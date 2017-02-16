@@ -4,9 +4,9 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         $scope.passwordCheckedSimplonien='';
         $scope.passwordCheckedRecruteur='';
         $scope.validForm=true;
-        $scope.email=true;
-        $scope.inputS=true;
-        $scope.inputR=true;
+        $scope.emailR=true;
+        $scope.emailS=true;
+
         $scope.user= {
             role: 'Recruteur'
         };
@@ -30,15 +30,14 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         $scope.registerRecruteur = () => {
           $scope.validForm=true;
         if ($scope.userRecruteur.company != ''&& $scope.userRecruteur.firstName != '' && $scope.userRecruteur.lastName!= '' && $scope.userRecruteur.email!='' && $scope.userRecruteur.technology!=null && $scope.userRecruteur.password!='' && $scope.passwordCheckedRecruteur!='' ) {
-                $scope.inputR=true;
             if ($scope.userRecruteur.password.trim().length >= 8) {
                 if ($scope.userRecruteur.password === $scope.passwordCheckedRecruteur) {
                   AuthService.register($scope.userRecruteur).then(function(response) {
                     if (response.data.msg === "Email already used") {
-                        $scope.email=false;
+                        $scope.emailR=false;
                         const alertPopup = $window.alert(response.data.msg);
                     }else {
-                            $scope.email=true;
+                            $scope.emailR=true;
                             $scope.validForm=false;
                             //$state.go('login');
                     }
@@ -47,9 +46,6 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                     });
                 }
             }
-        }
-        else{
-            $scope.inputR=false;
         }
     };
 
@@ -66,15 +62,14 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
           // });
 
             if ($scope.userSimplonien.firstName != '' && $scope.userSimplonien.lastName!= '' && $scope.userSimplonien.email!='' && $scope.userSimplonien.password!='' && $scope.passwordCheckedSimplonien!='' ) {
-                $scope.inputS=true;
                 if ($scope.userSimplonien.password.trim().length >= 8) {
                     if ($scope.user.password === $scope.passwordChecked) {
                         AuthService.register($scope.userSimplonien).then(function(response) {
                         if (response.data.msg === "Email already used") {
-                            $scope.email=false;
+                            $scope.emailS=false;
                             const alertPopup = $window.alert(response.data.msg);
                         }else {
-                                $scope.email=true;
+                                $scope.emailS=true;
                                 $scope.validForm=false;
                                 //$state.go('login');
                         }
@@ -83,9 +78,6 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                         });
                     }
                 }
-            }
-            else{
-                $scope.inputS=false;
             }
         };
 
