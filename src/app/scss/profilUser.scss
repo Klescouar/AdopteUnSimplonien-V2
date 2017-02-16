@@ -11,14 +11,21 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    p{
+      font-style: italic;
+      font-size: 0.9em;
+      margin: 0;
+      padding: 2px;
+    }
     #upload-photos{
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-bottom: 10px;
     }
     #photos-input{
-      max-width: 200px;
+      max-width: 400px;
     }
     #upload-pic {
       height: 150px;

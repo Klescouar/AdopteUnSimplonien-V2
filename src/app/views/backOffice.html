@@ -20,7 +20,7 @@
             <a href="" ng-click="show = 6" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les filtres</a>
         </h1>
         <h1>
-            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les promotions et regions</a>
+            <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 8}">Gerer les promotions et fabriques</a>
         </h1>
     </div>
     <div class="container-interface">
@@ -81,6 +81,9 @@
                     </div>
                     <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
                 </form>
+                <p>Formats acceptés: jpg, png, jpeg</p>
+                <p>Taille maximum: 1Mo</p>
+                <p>Taille minimum: 200Ko</p>
             </div>
             <div class="section-BO">
                 <h1 class="info-title">Informations</h1>
@@ -106,11 +109,11 @@
                     </select>
                 </div>
                 <div class="cont-BO-input">
-                  <p>Lieu de la formation</p>
-                  <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.ville"
+                  <p>Region</p>
+                  <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.region"
                    placeholder="Ville" required>
-                    <option class="labelOption" disabled selected value>Ville</option>
-                    <option ng-repeat="school in schools">{{school.name}}</option>
+                    <option class="labelOption" disabled selected value>Region</option>
+                    <option ng-repeat="region in regions">{{region.name}}</option>
                   </select>
                 </div>
                 <div class="cont-CONTRAT-input">
@@ -243,7 +246,7 @@
                 <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === false">
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.ville}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.promo}}</p>
                     <button ng-if="simplonien.nom !== '' " class="modify" ng-click="acceptSimplonien(simplonien._id)">Accepter</button>
                     <button ng-if="simplonien.nom !== '' " class="modify" ng-click="deleteStudent(simplonien._id)">Refuser</button>
                 </div>
@@ -257,7 +260,7 @@
                 <div class="cont-info" ng-repeat="simplonien in simploniens | filter: removeFilter" ng-if="simplonien.verified === true">
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.ville}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.promo}}</p>
                     <div class="student-actions">
                       <button ng-if="simplonien.nom !== '' " class="modify" ng-click="showOneStudent(simplonien._id)">Modifier</button>
                       <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id)" confirm="Are you sure ?"></div>
@@ -266,24 +269,19 @@
             </div>
         </div>
         <div class="handle-filter" ng-show="show==6">
-            <div class="filter-card">
-                <h1>Fabriques</h1>
-                <div class="input-add-school">
-                  <input type="text" id="input" value="" ng-model="school.name" placeholder="Ville..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <input type="text" id="input" value="" ng-model="school.adress" placeholder="Adresse..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <input type="text" id="input" value="" ng-model="school.latitude" placeholder="Latitude..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <input type="text" id="input" value="" ng-model="school.longitude" placeholder="Longitude..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <a target="_blank" href="http://www.coordonnees-gps.fr/">Pour les coordonnées GPS</a>
-                  <input type="text" id="input" value="" ng-model="school.website" placeholder="Site..." class="input-FILTER-style input-FILTER-style-school"></input>
-                  <button type="button" class="delete-filter-button" ng-click="addSchool()">
-                      <h4>Ajouter</h4>
-                  </button>
-                </div>
-                <div ng-repeat="school in schools" class="filter-name">
-                    <p>{{school.name}}</p>
-                    <div class="delete-user" ng-click="removeSchool(school._id)"></div>
-                </div>
+          <div class="filter-card">
+              <h1>Regions</h1>
+              <div class="input-add">
+              <input type="text" id="input" value="" ng-model="region.name" placeholder="Region..." class="input-FILTER-style"></input>
+              <button type="button" class="delete-filter-button" ng-click="addRegion()">
+                  <h4>Ajouter</h4>
+              </button>
             </div>
+              <div ng-repeat="region in regions" class="filter-name">
+                  <p>{{region.name}}</p>
+                  <div class="delete-user" ng-click="removeRegion(region._id)"></div>
+              </div>
+          </div>
 
             <div class="filter-card">
                 <h1>Skills</h1>
@@ -328,16 +326,21 @@
                 </div>
             </div>
             <div class="promo-card">
-                <h1>Regions</h1>
-                <div class="input-add">
-                <input type="text" id="input" value="" ng-model="region.name" placeholder="Region..." class="input-FILTER-style"></input>
-                <button type="button" class="delete-filter-button" ng-click="addRegion()">
-                    <h4>Ajouter</h4>
-                </button>
-              </div>
-                <div ng-repeat="region in regions" class="filter-name">
-                    <p>{{region.name}}</p>
-                    <div class="delete-user" ng-click="removeRegion(region._id)"></div>
+                <h1>Fabriques</h1>
+                <div class="input-add-school">
+                  <input type="text" id="input" value="" ng-model="school.name" placeholder="Ville..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <input type="text" id="input" value="" ng-model="school.adress" placeholder="Adresse..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <input type="text" id="input" value="" ng-model="school.latitude" placeholder="Latitude..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <input type="text" id="input" value="" ng-model="school.longitude" placeholder="Longitude..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <a target="_blank" href="http://www.coordonnees-gps.fr/">Pour les coordonnées GPS</a>
+                  <input type="text" id="input" value="" ng-model="school.website" placeholder="Site..." class="input-FILTER-style input-FILTER-style-school"></input>
+                  <button type="button" class="delete-filter-button" ng-click="addSchool()">
+                      <h4>Ajouter</h4>
+                  </button>
+                </div>
+                <div ng-repeat="school in schools" class="filter-name">
+                    <p>{{school.name}}</p>
+                    <div class="delete-user" ng-click="removeSchool(school._id)"></div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state','$timeout', 'serviceStudent', function($scope, AuthService, $http, serviceFilter, $state, $timeout, serviceStudent) {
+app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state','$timeout', 'serviceStudent', '$window', function($scope, AuthService, $http, serviceFilter, $state, $timeout, serviceStudent, $window) {
 
       $scope.show = 0;
       $scope.resetStudent = () => {

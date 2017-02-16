@@ -17,13 +17,19 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
     };
 
         $scope.sendMail = () => {
-    if ($scope.mail.name != '' && $scope.mail.entreprise != '' && $scope.mail.content != '' && $scope.mail.city != '' && $scope.mail.sender != '' && $scope.mail.phone != '') {
-          $scope.showForm = false;
-            serviceMailer.sendMail($scope.mail);
+            if ($scope.mail.name != '' && $scope.mail.entreprise != '' && $scope.mail.content != '' && $scope.mail.city != '' && $scope.mail.sender != '' && $scope.mail.phone != '') {
+              console.log($scope.showForm)
+              $scope.showForm = false;
+              $scope.showRequired = true;
+            serviceMailer.sendMail($scope.mail).then((res) => {
+              console.log('send');
+            });
           }else{
+            $scope.showForm = true;
             $scope.showRequired = false;
           }
-    }
+      }
+
 
 
     //////////////////////GOOGLE MAP API/////////////////////
