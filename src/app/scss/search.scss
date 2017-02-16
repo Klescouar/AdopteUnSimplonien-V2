@@ -424,11 +424,11 @@
     }
 
     .filter {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        height: auto;
+        display: block;
+        // flex-direction: row;
+        // justify-content: center;
+        // align-items: center;
+
         width: 100%;
         flex-wrap: wrap;
         background-color: rgba(115,159,190,0.85);
@@ -436,9 +436,10 @@
         padding-bottom: 15px;
         font-size: 0.8em;
         color: black;
+        min-height: 0px;
 
         .buttonFilterOff {
-            width: 150px;
+            width: 33%;
             height: 25px;
             border: none;
             cursor: pointer;
@@ -457,7 +458,13 @@
     }
 
     .filterRight {
-        height: auto;
+            height: 100%;
+
+            .filter-place{
+              p{
+              margin-top: 30px;
+              }
+            }
     }
 
     .null {
