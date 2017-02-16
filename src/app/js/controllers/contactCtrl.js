@@ -17,12 +17,15 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
     };
 
         $scope.sendMail = () => {
-            if ($scope.mail.name != '' && $scope.mail.entreprise != '' && $scope.mail.content != '' && $scope.mail.city != '' && $scope.mail.sender != '' && $scope.mail.phone != '') {
-              console.log($scope.showForm)
-              $scope.showForm = false;
-              $scope.showRequired = true;
+            if ($scope.mail.name !== '' && $scope.mail.entreprise !== '' && $scope.mail.content !== '' && $scope.mail.city !== '' && $scope.mail.sender !== '' && $scope.mail.phone !== '') {
             serviceMailer.sendMail($scope.mail).then((res) => {
-              console.log('send');
+              if (res.status === 200) {
+                $scope.showForm = false;
+                $scope.showRequired = true;
+              } else {
+                $scope.showForm = true;
+                $scope.showRequired = false;
+              }
             });
           }else{
             $scope.showForm = true;
