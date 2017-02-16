@@ -10,7 +10,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
       return item.active = false;
     };
 
-
+console.log($scope.noFilter)
     //////////////////////HANDLE FILTER/////////////////////
 
     const filterLangage = (firstFilter, langages) => {

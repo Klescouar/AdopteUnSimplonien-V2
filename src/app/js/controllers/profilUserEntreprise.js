@@ -1,4 +1,4 @@
-app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent) {
+app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', '$timeout', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent,$timeout) {
 		$scope.newPassword = {
 		    newpass: '',
 		    oldpass: ''
@@ -16,7 +16,7 @@ app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthSe
   		$scope.required = true;
 		$scope.member = AuthService.user();
 
-	// ANIMATION CHANGING VIEW
+// ANIMATION CHANGING VIEW
 
 $scope.changeView = () => {
                 $scope.oldPassVerif = true;
@@ -30,7 +30,7 @@ $scope.changeView = () => {
 		   }
 }
 
-	// UPDATE INFORMATIONS USER
+// UPDATE INFORMATIONS USER
 
 $scope.updateUser = (id) => {
 	console.log($scope.member.company)
@@ -39,6 +39,9 @@ $scope.updateUser = (id) => {
 		 const response = confirm("Voulez vous vraiment modifier vos informations ?");
 		 if (response === true) {
 		     $scope.validate = false;
+             	$timeout(function () {
+              		$scope.validate = true;
+                	}, 6000);
 		     const newInfos = {
 		         company: $scope.member.company,
 		         firstName: $scope.member.firstName,
@@ -46,9 +49,6 @@ $scope.updateUser = (id) => {
 		         email: $scope.member.email
 		     }
 		     AuthService.updateUser(id, newInfos).then((res) => {
-
-		         alert("Vos informations on bien été mises à jour !");
-
 		      })
 		 }
 	}
@@ -66,6 +66,9 @@ $scope.updateUserPass = (id, newPassword) => {
                     }else{
                     	$scope.oldPassVerif = true;
                       	$scope.validate = false;
+             	$timeout(function () {
+              		$scope.validate = true;
+                	}, 6000);
                       	$scope.required = true;
                       	$scope.newPassword = {
                         		newpass: '',
