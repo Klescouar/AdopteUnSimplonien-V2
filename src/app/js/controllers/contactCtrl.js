@@ -16,13 +16,14 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
     };
 
         $scope.sendMail = () => {
-            if ($scope.mail.name != '' && $scope.mail.entreprise != '' && $scope.mail.content != '' && $scope.mail.city != '' && $scope.mail.sender != '' && $scope.mail.phone != '') {
+            if ($scope.mail.name !== '' && $scope.mail.entreprise !== '' && $scope.mail.content !== '' && $scope.mail.city !== '' && $scope.mail.sender !== '' && $scope.mail.phone !== '') {
+            serviceMailer.sendMail($scope.mail).then((res) => {
+              if (res.status === 200) {
               $scope.sendForm = false;
               $timeout(function () {
               $scope.sendForm = true;
                 }, 6000);
-            serviceMailer.sendMail($scope.mail).then((res) => {
-              console.log('send');
+              } 
             });
           }
       }
