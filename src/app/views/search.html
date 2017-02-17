@@ -10,7 +10,7 @@
             <div class="flex">
                 <div class="filterChoice">
                     <div class="filterTheme">
-                        <div ng-repeat="theme in themes track by $index" ng-click="changeState(theme)" ng-class="{'promo': ($index === 0), 'langage': ($index === 1), 'contrat': ($index === 2)}">
+                        <div ng-repeat="theme in themes track by $index" ng-click="changeState(theme)" ng-class="{'promo': ($index === 0), 'langage': ($index === 1), 'contrat': ($index === 3), 'dispo': ($index === 2)}">
                             <div ng-show="theme.active" class="triangle"></div>
                         </div>
                         <div class="gradient"></div>
@@ -35,8 +35,17 @@
                             ng-class="{'buttonFilterOff': !skill.active, 'buttonFilterOn' : skill.active}">
 
                     </div>
+                    <div class="filter filter-dev" ng-if="themes[2].active === true">
 
-                    <div class="filter filter-contract" ng-if="themes[2].active === true">
+                      <input type="button" value="Dès maintenant" name="button" ng-class="{'buttonFilterOff': !nowActive, 'buttonFilterOn' : nowActive}" ng-click="nowActive = !nowActive">
+                      <input type="button" value="< 1 mois" name="button" ng-class="{'buttonFilterOff': !oneActive, 'buttonFilterOn' : oneActive}" ng-click="oneActive = !oneActive">
+                      <input type="button" value="< 2 mois" name="button" ng-class="{'buttonFilterOff': !twoActive, 'buttonFilterOn' : twoActive}" ng-click="twoActive = !twoActive">
+                      <input type="button" value="3 mois et plus" name="button" ng-class="{'buttonFilterOff': !threeActive, 'buttonFilterOn' : threeActive}" ng-click="threeActive = !threeActive">
+
+                    </div>
+
+
+                    <div class="filter filter-contract" ng-if="themes[3].active === true">
 
                         <input
                             type="button"
@@ -89,7 +98,7 @@
                     <h3>{{student.prenom}} {{student.nom}}</h3>
                     <p>
                         {{student.region}}</p>
-                        <p>disponible à partir de: {{student.dispo}}</p>
+                        <p>Disponible à partir de: {{student.dispo}}</p>
                     <strong>Recherche:</strong>
                       <div class="contract-box">
                         <div class="contract-box" ng-repeat="cont in student.Contrat track by $index"> <p class="pad-style" ng-if="$index > 0">/</p><p>{{cont}}</p></div>

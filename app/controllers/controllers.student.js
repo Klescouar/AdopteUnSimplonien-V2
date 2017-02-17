@@ -54,6 +54,7 @@ exports.removeStudent = (req, res) => {
 };
 
 exports.addStudent = (req, res) => {
+  console.log(req.body);
     const memberId = req.body.memberId;
     console.log('I received a GET request');
     Student.findOne({

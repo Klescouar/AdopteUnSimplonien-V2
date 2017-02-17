@@ -1,4 +1,4 @@
-app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStudent', function($scope, $http, serviceFilter, serviceStudent){
+app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStudent', 'moment', function($scope, $http, serviceFilter, serviceStudent, moment){
     $scope.contrats = serviceFilter.contrats;
     $scope.langages = serviceFilter.langages;
     $scope.themes = serviceFilter.themes;
@@ -9,8 +9,11 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     const putActiveParameter = (item) => {
       return item.active = false;
     };
+    const convertToDate = (item) => {
+      console.log(item.dispo);
+      return item.dispo = moment(item.dispo, "YYYY-MM-DD").format("DD/MM/YYYY");
+    }
 
-console.log($scope.noFilter)
     //////////////////////HANDLE FILTER/////////////////////
 
     const filterLangage = (firstFilter, langages) => {
@@ -99,6 +102,7 @@ console.log($scope.noFilter)
     serviceStudent.getAllStudent().then((res) => {
       $scope.loading = false;
       $scope.data = res.data;
+      res.data.map(convertToDate);
       $scope.cardFull = res.data;
       searchFilter();
     })

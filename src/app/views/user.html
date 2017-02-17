@@ -109,9 +109,9 @@
                 <option value="Autre">Autre</option>
               </select>
             </div>
-            <div class="cont-input">
+            <div class="cont-calendar">
               <label class='input-label' for="boCreateNameSimploniens">Date de diponibilité*</label>
-              <input id="boCreateNameSimploniens" class="input-style" ng-model="student.dispo" placeholder="ex: 12/04/2017*" required name='dispo'>
+              <md-datepicker placeholder="Choisir date" ng-model="student.dispo"></md-datepicker>
             </div>
             <div class="cont-input">
               <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.region" placeholder="Region*" required>

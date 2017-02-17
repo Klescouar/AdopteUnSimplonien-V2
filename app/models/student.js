@@ -14,7 +14,7 @@ const StudentSchema = new Schema({
     description: String,
     Sexe: String,
     Domaine: String,
-    dispo: Object,
+    dispo: String,
     SpecialiteUn: String,
     SpecialiteDeux: String,
     SpecialiteTrois: String,

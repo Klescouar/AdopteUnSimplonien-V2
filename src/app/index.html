@@ -1,121 +1,129 @@
 <!DOCTYPE html>
 <html lang="fr" ng-app="app">
-    <head>
-        <!-- TITLE -->
-        <title>talents.simplon.co</title>
-        <!-- META -->
-        <meta name="description" content="Le site talents.simplon.co permet aux entreprises d'avoir un lien direct avec les élèves de l'école Simplon en recherchent de contrat (CDD/CDI/Contrat Pro/Stage)"/>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <!-- FRAMEWORK ET LIBRARY -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="assets/lib/js/lodash.js"></script>
-        <!-- ASSETS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Add to homescreen for Safari on iOS -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-        <!-- LOGO -->
-        <link rel="icon" type="image/png" href="assets/images/logoSimplon.png"/>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2HIhxJzwOMeqTQyzgzRQP3RAMlAD0By0" async defer></script>
-        <link rel="stylesheet" href="app/css/style.css">
-    </head>
+
+<head>
+    <!-- TITLE -->
+    <title>talents.simplon.co</title>
+    <!-- META -->
+    <meta name="description" content="Le site talents.simplon.co permet aux entreprises d'avoir un lien direct avec les élèves de l'école Simplon en recherchent de contrat (CDD/CDI/Contrat Pro/Stage)" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- FRAMEWORK ET LIBRARY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/lib/js/lodash.js"></script>
+    <script src="assets/lib/js/angular.min.js"></script>
+    <script src="assets/lib/js/angular-ui-router.min.js"></script>
+    <script src="assets/lib/js/angular-aria.min.js"></script>
+    <script src="assets/lib/js/angular-material.min.js"></script>
+    <script src="assets/lib/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src='assets/lib/js/moment.js'></script>
+    <script type="text/javascript" src='assets/lib/js/fr.js'></script>
+    <script type="text/javascript" src='assets/lib/js/angular-moment.js'></script>
+    <!-- ASSETS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/lib/css/angular-material.min.css">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <!-- LOGO -->
+    <link rel="icon" type="image/png" href="assets/images/logoSimplon.png" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2HIhxJzwOMeqTQyzgzRQP3RAMlAD0By0" async defer></script>
+    <link rel="stylesheet" href="app/css/style.css">
+</head>
+
 <body>
-  <!-- Desktop navbar -->
-  <div class="nav-container" ng-controller="appUserCtrl">
-    <!-- Menu Burger -->
-    <div class="burgerMenu" ng-class="{'menu-open': burger}">
-      <div id="menu-button" ng-click='burger === true ? burger = false : burger = true' role="button" title="sweet hamburger">
-        <div class="hamburger">
-          <div class="inner"></div>
+    <!-- Desktop navbar -->
+    <div class="nav-container" ng-controller="appUserCtrl">
+        <!-- Menu Burger -->
+        <div class="burgerMenu" ng-class="{'menu-open': burger}">
+            <div id="menu-button" ng-click='burger === true ? burger = false : burger = true' role="button" title="sweet hamburger">
+                <div class="hamburger">
+                    <div class="inner"></div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a ng-click='burger === true ? burger = false : burger = true' ui-sref="home">Home</a>
+                    </li>
+                    <li>
+                        <a ng-click='burger === true ? burger = false : burger = true' ui-sref="search">Nos simploniens</a>
+                    </li>
+                    <li>
+                        <a ng-click='burger === true ? burger = false : burger = true' ui-sref="project">Qui sommes-nous?</a>
+                    </li>
+                    <li>
+                        <a ng-click='burger === true ? burger = false : burger = true' ui-sref="contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <a ng-click='burger === true ? burger = false : burger = true' ui-sref="home">Home</a>
-          </li>
-          <li>
-            <a ng-click='burger === true ? burger = false : burger = true' ui-sref="search">Nos simploniens</a>
-          </li>
-          <li>
-            <a ng-click='burger === true ? burger = false : burger = true' ui-sref="project">Qui sommes-nous?</a>
-          </li>
-          <li>
-            <a ng-click='burger === true ? burger = false : burger = true' ui-sref="contact">Contact</a>
-          </li>
-        </ul>
-      </nav>
+
+        <!-- NavBar classique -->
+        <div class="page-container-left containerNav borderXwidth">
+            <a ui-sref="home">Home</a>
+            <a ui-sref="search">Nos simploniens</a>
+            <a ui-sref="project">Qui sommes-nous?</a>
+            <a ui-sref="contact">Contact</a>
+        </div>
+        <a class="user-none" ui-sref="home" ng-click="logout()" ng-class="{'user-icon': showLogout}" ng-if="showLogout">
+            <p>Déconnexion</p>
+        </a>
+        <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Simplonien'}" ui-sref="profilUserStudent">Espace Perso</a>
+        <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Recruteur'}" ui-sref="profilUserRecruiter">Espace Perso</a>
+        <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Admin'}" ui-sref="admin">Back Office</a>
+        <a class="user-none" ui-sref="login" ng-class="{'user-icon': !showLogout}">Connexion</a>
     </div>
 
-    <!-- NavBar classique -->
-    <div class="page-container-left containerNav borderXwidth">
-      <a ui-sref="home">Home</a>
-      <a ui-sref="search">Nos simploniens</a>
-      <a ui-sref="project">Qui sommes-nous?</a>
-      <a ui-sref="contact">Contact</a>
+    <main ui-view="home"></main>
+
+    <div class="footer-container">
+        <div class="footer_item-container">
+            <a target="_blank" href="http://simplon.co/" class="logo"></a>
+            <a target="_blank" href="https://www.facebook.com/Simplon.co/?fref=nf" class="facebook-icon"></a>
+            <a target="_blank" href="https://twitter.com/simplonco" class="twiter-icon"></a>
+            <a target="_blank" href="https://plus.google.com/+Simplon-co-youtube/about" class="google-icon"></a>
+        </div>
     </div>
-    <a class="user-none" ui-sref="home" ng-click="logout()" ng-class="{'user-icon': showLogout}" ng-if="showLogout">
-      <p>Déconnexion</p>
-    </a>
-    <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Simplonien'}"  ui-sref="profilUserStudent">Espace Perso</a>
-    <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Recruteur'}" ui-sref="profilUserRecruiter">Espace Perso</a>
-    <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Admin'}" ui-sref="admin">Back Office</a>
-    <a class="user-none" ui-sref="login" ng-class="{'user-icon': !showLogout}">Connexion</a>
-  </div>
 
-  <main ui-view="home"></main>
+    <!-- REQUIREMENT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/appRoute.js"></script>
+    <script src="app/constant.js"></script>
 
-  <div class="footer-container">
-    <div class="footer_item-container">
-      <a target="_blank" href="http://simplon.co/" class="logo"></a>
-      <a target="_blank" href="https://www.facebook.com/Simplon.co/?fref=nf" class="facebook-icon"></a>
-      <a target="_blank" href="https://twitter.com/simplonco" class="twiter-icon"></a>
-      <a target="_blank" href="https://plus.google.com/+Simplon-co-youtube/about" class="google-icon"></a>
-    </div>
-  </div>
+    <!-- SERVICES -->
+    <script src="app/js/services/interceptor.js"></script>
+    <script src="app/js/services/userService.js"></script>
+    <script src="app/js/services/serviceFilter.js"></script>
+    <script src="app/js/services/serviceStudent.js"></script>
+    <script src="app/js/services/serviceMailer.js"></script>
 
-  <!-- REQUIREMENT -->
-  <script src="../../../node_modules/angular/angular.min.js"></script>
-  <script src="../../../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script type="text/javascript" src='assets/lib/js/moment.js'></script>
-  <script type="text/javascript" src='assets/lib/js/fr.js'></script>
-  <script type="text/javascript" src='assets/lib/js/angular-moment.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
-  <script src="app/app.js"></script>
-  <script src="app/appRoute.js"></script>
-  <script src="app/constant.js"></script>
+    <!-- DIRECTIVES -->
+    <script src='../../../node_modules/checklist-model/checklist-model.js'></script>
+    <script src='app/js/directives/pwCheckDirective.js'></script>
 
-  <!-- SERVICES -->
-  <script src="app/js/services/interceptor.js"></script>
-  <script src="app/js/services/userService.js"></script>
-  <script src="app/js/services/serviceFilter.js"></script>
-  <script src="app/js/services/serviceStudent.js"></script>
-  <script src="app/js/services/serviceMailer.js"></script>
+    <!-- FILTERS -->
+    <script src='app/js/filters/selectFilter.js'></script>
 
-  <!-- DIRECTIVES -->
-  <script src='../../../node_modules/checklist-model/checklist-model.js'></script>
-  <script src='app/js/directives/pwCheckDirective.js'></script>
-
-  <!-- FILTERS -->
-  <script src='app/js/filters/selectFilter.js'></script>
-
-  <!-- CONTROLLERS -->
-  <script src="app/js/controllers/registerCtrl.js"></script>
-  <script src="app/js/controllers/sendPassForResetCtrl.js"></script>
-  <script src="app/js/controllers/resetPassCtrl.js"></script>
-  <script src="app/js/controllers/app-userCtrl.js"></script>
-  <script src="app/js/controllers/loginCtrl.js"></script>
-  <script src="app/js/controllers/profils-userCtrl.js"></script>
-  <script src="app/js/controllers/contactCtrl.js"></script>
-  <script src="app/js/controllers/profilCtrl.js"></script>
-  <script src="app/js/controllers/projectCtrl.js"></script>
-  <script src="app/js/controllers/searchCtrl.js"></script>
-  <script src="app/js/controllers/BoCtrl.js"></script>
-  <script src="app/js/controllers/profilUserEntreprise.js"></script>
+    <!-- CONTROLLERS -->
+    <script src="app/js/controllers/registerCtrl.js"></script>
+    <script src="app/js/controllers/sendPassForResetCtrl.js"></script>
+    <script src="app/js/controllers/resetPassCtrl.js"></script>
+    <script src="app/js/controllers/app-userCtrl.js"></script>
+    <script src="app/js/controllers/loginCtrl.js"></script>
+    <script src="app/js/controllers/profils-userCtrl.js"></script>
+    <script src="app/js/controllers/contactCtrl.js"></script>
+    <script src="app/js/controllers/profilCtrl.js"></script>
+    <script src="app/js/controllers/projectCtrl.js"></script>
+    <script src="app/js/controllers/searchCtrl.js"></script>
+    <script src="app/js/controllers/BoCtrl.js"></script>
+    <script src="app/js/controllers/profilUserEntreprise.js"></script>
 
 </body>
+
 </html>

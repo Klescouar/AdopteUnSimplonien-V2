@@ -104,8 +104,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       } else {
         $scope.cardExist = true;
         $scope.student = response.data;
-        console.log($scope.student.dispo);
-        // console.log(moment($scope.student.dispo, "DD/MM/YYYY").format("DD/MM/YYYY"));
+        $scope.student.dispo = new Date($scope.student.dispo)
         const path = '/assets/images/' + $scope.student.photo;
         let html = '';
         html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -158,6 +157,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   $scope.createSimplonien = () => {
+    console.log($scope.student.dispo);
     const dataStudent = {
     memberId: $scope.member._id,
     verified: false,
@@ -200,7 +200,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       console.log("Error");
       });
 
-      console.log(dataStudent);
   }
   $scope.updateStudent = (id) => {
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
@@ -239,7 +238,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         alert("Apprenant modifié!");
       })
     };
-    console.log(newInfos);
 
   };
 

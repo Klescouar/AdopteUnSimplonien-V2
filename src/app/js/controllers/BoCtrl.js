@@ -151,7 +151,9 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           $scope.show = 5;
           serviceStudent.getStudentById(index).then((res) => {
               $scope.student = res.data;
-              console.log($scope.student);
+              if (  $scope.student.dispo) {
+                 $scope.student.dispo = new Date($scope.student.dispo);
+              }
               const path = '/assets/images/' + $scope.student.photo;
               let html = '';
                   html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
