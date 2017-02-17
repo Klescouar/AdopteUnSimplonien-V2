@@ -97,12 +97,17 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
 
       };
 
-      $scope.deleteStudent = (id) => {
+      $scope.deleteStudent = (id, photo) => {
           const response = confirm("Voulez vous vraiment supprimer cet apprenant?");
           if (response === true) {
               serviceStudent.removeStudent(id).then((res) => {
                 $scope.refreshInfoStudents();
               });
+              if (photo !== '') {
+                  serviceStudent.removeStudentPhoto(photo).then((res) => {
+                    $scope.refreshInfoStudents();
+                  });
+              }
           }
       };
 
@@ -194,7 +199,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           });
       };
 
-      $scope.removeUser = (id) => {
+      $scope.removeUser = (id, role) => {
           const response = confirm("Voulez vous vraiment supprimer cet utilisateur?");
           if (response === true) {
               AuthService.removeFromAdmin(id).then(function(response) {
@@ -203,6 +208,21 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
               }).catch(function(errMsg) {
                   const alertPopup = $window.alert('Remove failed!');
               });
+              if (role === 'Simplonien') {
+                  angular.forEach($scope.simploniens, (val) => {
+                      if (val.memberId === id) {
+                          serviceStudent.removeStudentFromUser(id).then((res) => {
+                            $scope.refreshInfoStudents();
+                          });
+
+                          if (val.photo !== '') {
+                              serviceStudent.removeStudentPhoto(val.photo).then((res) => {
+                                $scope.refreshInfoStudents();
+                              });
+                          }
+                      }
+                  })
+              }
           }
       };
 

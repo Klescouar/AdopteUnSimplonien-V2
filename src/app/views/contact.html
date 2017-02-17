@@ -16,12 +16,12 @@
 
       <div class="cont-input">
         <input type="email" name="email" ng-model="mail.sender" class="Email" placeholder="Email *" required/>
-        <span class="error-msg" ng-show='infoPersoForm.$submitted && contactForm.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
+        <span class="error-msg" ng-show='contactForm.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
       </div>
 
       <div class="cont-input">
         <input type="number" maxlength="14" name="phone" ng-model="mail.phone" class="Phone" placeholder="Telephone*" required/>
-        <span class="error-msg" ng-show='infoPersoForm.$submitted && contactForm.phone.$invalid'>Ce numéro de téléphone n'est pas valide</span>
+        <span class="error-msg" ng-show='contactForm.phone.$error.number'>Ce numéro de téléphone n'est pas valide</span>
       </div>
 
       <div class="cont-input">
