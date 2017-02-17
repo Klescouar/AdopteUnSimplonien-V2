@@ -5,5 +5,5 @@ app.filter('selectFilter', function(){
     };
     return items.filter(checkItem);
   };
-  return filter();
+  return filter;
 });

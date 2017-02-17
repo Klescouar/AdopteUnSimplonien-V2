@@ -55,16 +55,15 @@
                             <div class="profilPicMail" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}"></div>
                             <h1>Ecrire à
                                 {{student.prenom}}
-                                {{student.nom}}</h1>
-                            <p ng-if="verifChamps === true">Veuillez remplir tous les champs...</p>
-                            <textarea name="name" ng-model="dataMail.content" class="textAreaMail" rows="8" cols="40" placeholder="Ecrivez votre message ici..."></textarea>
+                                {{student.nom}}
+                            </h1>
+                            <textarea name="name" ng-model="dataMail.content" class="textAreaMail" rows="8" cols="40" placeholder="Ecrivez votre message ici..." required></textarea>
                             <input type="submit" name="name" value="Envoyer!">
+                            <div class="required-cont-gen" ng-show="!sendMess">
+                                <div class="img-required-validate"></div>
+                                <p class="required" >Message envoyé !</p>
+                            </div>
                         </form>
-                    </div>
-                    <div class="logbox confirmContact" ng-if="contactStud === 2">
-                        <p>
-                            Message envoyé!
-                        </p>
                     </div>
                 </div>
             </div>

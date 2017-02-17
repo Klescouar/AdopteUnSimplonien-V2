@@ -2,6 +2,8 @@
 .contactContainer {
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
+    position: relative;
     h1 {
         font-size: 1.4em;
         font-weight: bold;
@@ -23,18 +25,14 @@
         height: calc(100vh - 110px);
     }
 
-    input,
-    textarea {
-        padding: 5px;
-        font-size: 0.9em;
-        color: white;
-        width:80%;
-        background-color: transparent;
-        border-top: 1px solid transparent;
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
-        border-bottom: 1px solid rgb(179, 179, 179);
-        margin-bottom: 15px;
+    .cont-input{
+      color: white;
+      font-size: 0.9em;
+      margin: 0;
+      textarea {
+          height: 130px;
+          max-width: 100%;
+      }
     }
 
     ::-webkit-input-placeholder {
@@ -55,14 +53,8 @@
 
     input:focus,
     textarea:focus {
-        background-color: 0.333;
         border-bottom: 1px solid white;
         outline: none;
-    }
-
-    textarea {
-        height: 130px;
-        max-width: 100%;
     }
 
     .submit-button {

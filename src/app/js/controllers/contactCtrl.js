@@ -1,7 +1,6 @@
-app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMailer', '$window', function($scope, $http, serviceFilter, serviceMailer, $window){
+app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMailer', '$window', '$timeout', function($scope, $http, serviceFilter, serviceMailer, $window,$timeout){
     let htmlInfos = [];
-    $scope.showForm = true;
-    $scope.showRequired = true;
+    $scope.sendForm = true;
 
     //////////////////////SEND MAIL FROM CONTACT FORM/////////////////////
 
@@ -20,16 +19,12 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
             if ($scope.mail.name !== '' && $scope.mail.entreprise !== '' && $scope.mail.content !== '' && $scope.mail.city !== '' && $scope.mail.sender !== '' && $scope.mail.phone !== '') {
             serviceMailer.sendMail($scope.mail).then((res) => {
               if (res.status === 200) {
-                $scope.showForm = false;
-                $scope.showRequired = true;
-              } else {
-                $scope.showForm = true;
-                $scope.showRequired = false;
-              }
+              $scope.sendForm = false;
+              $timeout(function () {
+              $scope.sendForm = true;
+                }, 6000);
+              } 
             });
-          }else{
-            $scope.showForm = true;
-            $scope.showRequired = false;
           }
       }
 

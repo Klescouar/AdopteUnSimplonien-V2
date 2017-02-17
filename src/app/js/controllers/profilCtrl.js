@@ -1,6 +1,7 @@
-app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$stateParams', 'AuthService', function($scope, serviceStudent, serviceMailer, $stateParams, AuthService){
+app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$stateParams', 'AuthService', '$timeout',function($scope, serviceStudent, serviceMailer, $stateParams, AuthService,$timeout){
     $scope.contactStud = 1;
     $scope.verifChamps = false;
+    $scope.sendMess = true;
     const id = $stateParams.student;
 
     $scope.dataMail = {
@@ -16,14 +17,19 @@ app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$sta
     })
 
     $scope.sendMail = () => {
+        if ($scope.dataMail.content != '') {
+            $scope.sendMess = false;
+              $timeout(function () {
+              $scope.sendMess = true;
+                }, 6000);
         let dataMail = {
             layout: 'profil',
             to: $scope.student.Mail,
             sender: $scope.memberInfo.email,
             content: $scope.dataMail.content
         }
-
-        serviceMailer.sendMail(dataMail);
+            serviceMailer.sendMail(dataMail);
+        }
     }
 
 }]);

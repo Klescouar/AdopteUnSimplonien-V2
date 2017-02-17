@@ -64,7 +64,7 @@
                     {{searchResult.Region}}
                     <div class="closeButton" ng-click="deleteSchoolTag()"></div>
                 </div>
-                <div class="tagViewLang" ng-repeat="lang in searchResult.Langage">
+                <div class="tagViewLang" ng-class="{'no-filter':!noFilter}" ng-repeat="lang in searchResult.Langage">
                     {{lang}}
                     <div class="closeButton" ng-click="deleteTag(searchResult.Langage, lang, skills)"></div>
                 </div>

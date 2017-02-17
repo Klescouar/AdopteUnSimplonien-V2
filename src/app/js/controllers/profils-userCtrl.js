@@ -23,14 +23,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     confirmNewpass: ''
   };
 
-  $scope.checkSpecialite = () => {
-    $scope
-  }
-
-
-  $scope.showContracts = () => {
-    console.log($scope.student.Contrat);
-  };
   // UPDATE COMPTES
   $scope.member = AuthService.user();
   // INFOS PERSOs
@@ -94,7 +86,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
   $scope.getAllSkill();
 
-
   // PROMO
   $scope.getAllPromo = () => {
     serviceFilter.getAllPromo().then(function(response) {
@@ -135,6 +126,19 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.getMemberInfo($scope.member._id);
         $state.reload();
       });
+    }
+  }
+
+  // Check list Specialité
+  $scope.checkSpe = () => {
+    if ($scope.student.SpecialiteUn === $scope.student.SpecialiteDeux || $scope.student.SpecialiteUn === $scope.student.SpecialiteTrois) {
+      return false;
+    } else if ($scope.student.SpecialiteDeux === $scope.student.SpecialiteUn || $scope.student.SpecialiteDeux === $scope.student.SpecialiteTrois) {
+      return false;
+    } else if (($scope.student.SpecialiteTrois === $scope.student.SpecialiteUn || $scope.student.SpecialiteDeux === $scope.student.SpecialiteTrois)){
+      return false;
+    } else {
+      return true;
     }
   }
 
@@ -195,6 +199,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     }, (err) => {
       console.log("Error");
       });
+
+      console.log(dataStudent);
   }
   $scope.updateStudent = (id) => {
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
@@ -233,6 +239,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         alert("Apprenant modifié!");
       })
     };
+    console.log(newInfos);
+
   };
 
   // Photo Upload
