@@ -1,6 +1,6 @@
 .container-bo {
 	display: flex;
-	min-height: calc(100vh - 110px);
+	min-height: 90vh;
 	background-color: rgb(227,230,236);
 	.create-user-button{
 		margin-top: 10px;
@@ -81,7 +81,6 @@
 		justify-content: center;
 		width: 74vw;
 		color: white;
-		min-height: calc(100vh - 110px);
 
 		h1 {
 			text-align: center;
@@ -148,15 +147,15 @@
 				align-items: center;
 				margin-top: 30px;
 				width: 100%;
-				// height: 100%;
-
+				min-height: 50vh;
+				height: 100%;
 
 				.cont-info {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
 					width: 100%;
-					// height: 45px;
+					height: 45px;
 					border-bottom: 1px solid rgb(111, 111, 111);
 					.student-actions{
 						display: flex;

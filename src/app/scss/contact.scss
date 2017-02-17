@@ -26,23 +26,14 @@
     }
 
     .cont-input{
-      width: 80%;
       color: white;
       font-size: 0.9em;
+      margin: 0;
+      textarea {
+          height: 130px;
+          max-width: 100%;
+      }
     }
-
-    // input,
-    // textarea {
-    //     padding: 5px;
-    //     color: white;
-    //     width:80%;
-    //     background-color: transparent;
-    //     border-top: 1px solid transparent;
-    //     border-left: 1px solid transparent;
-    //     border-right: 1px solid transparent;
-    //     border-bottom: 1px solid rgb(179, 179, 179);
-    //     margin-bottom: 15px;
-    // }
 
     ::-webkit-input-placeholder {
         color: white;
@@ -62,14 +53,8 @@
 
     input:focus,
     textarea:focus {
-        background-color: 0.333;
         border-bottom: 1px solid white;
         outline: none;
-    }
-
-    textarea {
-        height: 130px;
-        max-width: 100%;
     }
 
     .submit-button {
