@@ -5,89 +5,123 @@ body{
 .ProfilUser{
   background: linear-gradient( rgba(115,159,190,0.60), rgba(115,159,190,0.60)), url("../../assets/images/web-developer-salary-nyc.jpg") no-repeat center / cover;
   background-attachment: fixed;
-  }
-
-  .choose-pic{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    #upload-photos{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    #photos-input{
-      max-width: 400px;
-    }
-    #upload-pic {
-      height: 150px;
-      width: 150px;
-      border: solid 2px #90c7dc;
-      border-radius: 50%;
-      margin: 30px;
-      background-position: center;
-      background-size: cover;
-      background-color: white;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        height: 100%;
-        width: 100%;
-        width: auto;
-      }
-    }
 }
-  .global-profile-container{
-    width: $full;
-    max-width: 700px;
-    min-height: calc(100vh - 110px);
-    background-color: rgba(115, 159, 190, 0.85);
+
+.choose-pic{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p{
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 2px;
+  }
+  #upload-photos{
     display: flex;
     flex-direction: column;
-  }
-
-  .tab-container{
-    display: flex;
-    margin-top: 40px;
-    .tab{
-      min-height: 50px;
-      width: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      cursor: pointer;
-      padding: 0 10px;
-      text-align: center;
-      .tab-name{
-        font-size: 1.2em;
-        font-weight: bold;
-        word-wrap: break-word;
-      }
-    }
-    .border-focus{
-      border: 1px solid rgba(115, 159, 190, 0.85);
-      border-bottom: none;
-      border-top-left-radius: 6px;
-      border-top-right-radius: 6px;
-      background-color: white;
-      color: black;
-    }
-  }
-
-  .container-create{
-    color: black;
-    padding: 40px;
-    background-color: white;
-    width: $full;
-    display: flex;
-    flex-flow: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
   }
+  #photos-input{
+    max-width: 400px;
+  }
+  #upload-pic {
+    height: 150px;
+    width: 150px;
+    border: solid 2px #90c7dc;
+    border-radius: 50%;
+    margin: 30px;
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 100%;
+      width: 100%;
+      width: auto;
+    }
+  }
+}
+.global-profile-container{
+  width: $full;
+  max-width: 700px;
+  min-height: calc(100vh - 110px);
+  background-color: rgba(115, 159, 190, 0.85);
+  display: flex;
+  flex-direction: column;
+
+  .cont-input{
+    width: 50%;
+    color: black;
+    button.tagViewVille{
+      padding: 5px 3px 3px 3px;
+      margin: 0;
+      margin-left: 10px;
+      font-size: 1em;
+    }
+
+    input:hover {
+      outline: none;
+    }
+
+    input:focus {
+      border-bottom: 1px solid #2F3E52;
+      outline: none;
+    }
+
+    &.full-width{
+      width: 100%;
+      input{
+        min-width: 50px;
+      }
+    }
+  }
+}
+
+.tab-container{
+  display: flex;
+  margin-top: 40px;
+  .tab{
+    min-height: 50px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    padding: 0 10px;
+    text-align: center;
+    .tab-name{
+      font-size: 1.2em;
+      font-weight: bold;
+      word-wrap: break-word;
+    }
+  }
+  .border-focus{
+    border: 1px solid rgba(115, 159, 190, 0.85);
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: white;
+    color: black;
+  }
+}
+
+.container-create{
+  color: black;
+  padding: 40px;
+  background-color: white;
+  width: $full;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 // List des tags/Competences
@@ -101,14 +135,6 @@ body{
   }
 }
 
-.cont-input{
-  button.tagViewVille{
-    padding: 5px 3px 3px 3px;
-    margin: 0;
-    margin-left: 10px;
-    font-size: 1em;
-  }
-}
 
 .labelOption{
   color: rgb(126, 126, 126);

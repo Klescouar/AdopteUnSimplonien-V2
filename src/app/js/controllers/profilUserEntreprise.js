@@ -1,18 +1,26 @@
-app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent) {
+app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', '$timeout', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent,$timeout) {
 		$scope.newPassword = {
 		    newpass: '',
 		    oldpass: ''
 		};
+        		// $scope.member = {
+          //   			company:'',
+          //   			firstName: '',
+          //   			lastName: '',
+          //   			email:''
+        		// };
 		$scope.passwordChecked='';
 		$scope.anime = true;
 		$scope.validate = true;
-  	$scope.oldPassVerif = true;
+  		$scope.oldPassVerif = true;
+  		$scope.required = true;
 		$scope.member = AuthService.user();
-    console.log($scope.member);
-	// ANIMATION CHANGING VIEW
 
-	$scope.changeView = () => {
+// ANIMATION CHANGING VIEW
+
+$scope.changeView = () => {
                 $scope.oldPassVerif = true;
+                	$scope.required = false;
                	$scope.validate = true;
 		   $scope.anime = !$scope.anime;
 		   if ($scope.anime === false) {
@@ -20,15 +28,20 @@ app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthSe
 		   } else if ($scope.anime === true) {
 		       $('.button-change-view').val("Gérer mon mot de passe");
 		   }
-	}
+}
 
-	// UPDATE INFORMATIONS USER
+// UPDATE INFORMATIONS USER
 
-	$scope.updateUser = (id) => {
+$scope.updateUser = (id) => {
+	console.log($scope.member.company)
 	$scope.validate = true;
+        	if ($scope.member.company != '' && $scope.member.firstName != '' && $scope.member.lastName != '' && $scope.member.email !='' ) {
 		 const response = confirm("Voulez vous vraiment modifier vos informations ?");
 		 if (response === true) {
 		     $scope.validate = false;
+             	$timeout(function () {
+              		$scope.validate = true;
+                	}, 6000);
 		     const newInfos = {
 		         company: $scope.member.company,
 		         firstName: $scope.member.firstName,
@@ -36,28 +49,27 @@ app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthSe
 		         email: $scope.member.email
 		     }
 		     AuthService.updateUser(id, newInfos).then((res) => {
-
-		         alert("Vos informations on bien été mises à jour !");
-
 		      })
 		 }
 	}
+};
 
 	// UPDATE PASSWORD USER
-
-	$scope.updateUserPass = (id, newPassword) => {
+$scope.updateUserPass = (id, newPassword) => {
 	$scope.validate = true;
+          if ($scope.newPassword.oldpass != '' && $scope.newPassword.newpass != '' ) {
              if (newPassword.newpass.trim().length >= 8) {
                 if (newPassword.newpass === $scope.passwordChecked) {
 		AuthService.updateUserPassFromProfil(id, newPassword).then((res) => {
-		console.log("validé1")
                     if (res.data.msg === 'Wrong password') {
-                    	console.log("NONvalidé1")
 		$scope.oldPassVerif = false;
                     }else{
-                    	console.log("validé2")
                     	$scope.oldPassVerif = true;
                       	$scope.validate = false;
+             	$timeout(function () {
+              		$scope.validate = true;
+                	}, 6000);
+                      	$scope.required = true;
                       	$scope.newPassword = {
                         		newpass: '',
                         		oldpass: ''
@@ -65,6 +77,7 @@ app.controller('profilUserEntreprise', ['$http', '$scope', '$rootScope', 'AuthSe
                       	$scope.passwordChecked = '';
                     	}
 		});
+	     }
               }
           }
       }

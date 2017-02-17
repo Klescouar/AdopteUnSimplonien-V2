@@ -1,6 +1,6 @@
-app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMailer', '$window', function($scope, $http, serviceFilter, serviceMailer, $window){
+app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMailer', '$window', '$timeout', function($scope, $http, serviceFilter, serviceMailer, $window,$timeout){
     let htmlInfos = [];
-    $scope.showForm = false;
+    $scope.sendForm = true;
 
     //////////////////////SEND MAIL FROM CONTACT FORM/////////////////////
 
@@ -15,9 +15,19 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
         content: ''
     };
 
-    $scope.sendMail = () => {
-        serviceMailer.sendMail($scope.mail);
-    }
+        $scope.sendMail = () => {
+            if ($scope.mail.name !== '' && $scope.mail.entreprise !== '' && $scope.mail.content !== '' && $scope.mail.city !== '' && $scope.mail.sender !== '' && $scope.mail.phone !== '') {
+            serviceMailer.sendMail($scope.mail).then((res) => {
+              if (res.status === 200) {
+              $scope.sendForm = false;
+              $timeout(function () {
+              $scope.sendForm = true;
+                }, 6000);
+              } 
+            });
+          }
+      }
+
 
 
     //////////////////////GOOGLE MAP API/////////////////////

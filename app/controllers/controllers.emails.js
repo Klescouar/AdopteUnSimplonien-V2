@@ -23,6 +23,9 @@ exports.contactMail = (req, res) => {
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             return console.log(error);
+        } else {
+          console.log(info);
+            return res.send(info);
         }
     });
 };
@@ -40,6 +43,8 @@ exports.sendMailForPass = (req, res) => {
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             return console.log(error);
+        } else {
+            return res.send(info);
         }
     });
 };
@@ -57,6 +62,8 @@ exports.mailConfirm = (req, res) => {
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             return console.log(error);
+        } else {
+            return res.send(info);
         }
     });
 };

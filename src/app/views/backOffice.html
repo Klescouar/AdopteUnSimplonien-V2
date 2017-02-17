@@ -81,6 +81,9 @@
                     </div>
                     <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
                 </form>
+                <p>Formats acceptés: jpg, png, jpeg</p>
+                <p>Taille maximum: 1Mo</p>
+                <p>Taille minimum: 200Ko</p>
             </div>
             <div class="section-BO">
                 <h1 class="info-title">Informations</h1>
@@ -106,11 +109,11 @@
                     </select>
                 </div>
                 <div class="cont-BO-input">
-                  <p>Lieu de la formation</p>
-                  <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.ville"
+                  <p>Region</p>
+                  <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.region"
                    placeholder="Ville" required>
-                    <option class="labelOption" disabled selected value>Ville</option>
-                    <option ng-repeat="school in schools">{{school.name}}</option>
+                    <option class="labelOption" disabled selected value>Region</option>
+                    <option ng-repeat="region in regions">{{region.name}}</option>
                   </select>
                 </div>
                 <div class="cont-CONTRAT-input">
@@ -243,7 +246,7 @@
                 <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === false">
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.ville}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.promo}}</p>
                     <button ng-if="simplonien.nom !== '' " class="modify" ng-click="acceptSimplonien(simplonien._id)">Accepter</button>
                     <button ng-if="simplonien.nom !== '' " class="modify" ng-click="deleteStudent(simplonien._id)">Refuser</button>
                 </div>
@@ -257,7 +260,7 @@
                 <div class="cont-info" ng-repeat="simplonien in simploniens | filter: removeFilter" ng-if="simplonien.verified === true">
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
-                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.ville}}</p>
+                    <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.promo}}</p>
                     <div class="student-actions">
                       <button ng-if="simplonien.nom !== '' " class="modify" ng-click="showOneStudent(simplonien._id)">Modifier</button>
                       <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id, simplonien.photo)" confirm="Are you sure ?"></div>

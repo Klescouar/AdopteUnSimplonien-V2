@@ -4,9 +4,9 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         $scope.passwordCheckedSimplonien='';
         $scope.passwordCheckedRecruteur='';
         $scope.validForm=true;
-        $scope.email=true;
-        $scope.inputS=true;
-        $scope.inputR=true;
+        $scope.emailR=true;
+        $scope.emailS=true;
+
         $scope.user= {
             role: 'Recruteur'
         };
@@ -28,19 +28,19 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
         };
 
         $scope.registerRecruteur = () => {
-          $scope.validForm=true;
         if ($scope.userRecruteur.company != ''&& $scope.userRecruteur.firstName != '' && $scope.userRecruteur.lastName!= '' && $scope.userRecruteur.email!='' && $scope.userRecruteur.technology!=null && $scope.userRecruteur.password!='' && $scope.passwordCheckedRecruteur!='' ) {
-                $scope.inputR=true;
             if ($scope.userRecruteur.password.trim().length >= 8) {
                 if ($scope.userRecruteur.password === $scope.passwordCheckedRecruteur) {
                   AuthService.register($scope.userRecruteur).then(function(response) {
                     if (response.data.msg === "Email already used") {
-                        $scope.email=false;
+                        $scope.emailR=false;
                         const alertPopup = $window.alert(response.data.msg);
                     }else {
-                            $scope.email=true;
+                            $scope.emailR=true;
                             $scope.validForm=false;
-                            //$state.go('login');
+                              $timeout(function () {
+                              $scope.validForm = true;
+                                }, 6000);
                     }
                     }).catch(function(errMsg) {
                         const alertPopup = $window.alert('Fail!!');
@@ -48,64 +48,30 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
                 }
             }
         }
-        else{
-            $scope.inputR=false;
-        }
     };
 
         $scope.registerSimplonien = () => {
           $scope.validForm=true;
-            console.log($scope.userSimplonien.firstName)
-          // $scope.checkInput = true;
-          // $scope.invalidInput = [];
-          // Object.keys($scope.userSimplonien).map(function(key, index) {
-          //     if ($scope.userSimplonien[key] === '') {
-          //       $scope.invalidInput.push(key);
-          //       $scope.checkInput = false;
-          //     };
-          // });
-
             if ($scope.userSimplonien.firstName != '' && $scope.userSimplonien.lastName!= '' && $scope.userSimplonien.email!='' && $scope.userSimplonien.password!='' && $scope.passwordCheckedSimplonien!='' ) {
-                $scope.inputS=true;
                 if ($scope.userSimplonien.password.trim().length >= 8) {
                     if ($scope.user.password === $scope.passwordChecked) {
                         AuthService.register($scope.userSimplonien).then(function(response) {
                         if (response.data.msg === "Email already used") {
-                            $scope.email=false;
+                            $scope.emailS=false;
                             const alertPopup = $window.alert(response.data.msg);
                         }else {
-                                $scope.email=true;
+                                $scope.emailS=true;
                                 $scope.validForm=false;
-                                //$state.go('login');
+                                $timeout(function () {
+                                  $scope.validForm = true;
+                                }, 6000);
                         }
                         }).catch(function(errMsg) {
-                            const alertPopup = $window.alert("Fail!");
                         });
                     }
                 }
             }
-            else{
-                $scope.inputS=false;
-            }
         };
-
-  // $scope.registerSimplonien = () => {
-  //   if ($scope.userSimplonien.password.trim().length >= 8) {
-  //     if ($scope.user.password === $scope.passwordChecked) {
-  //       AuthService.register($scope.userSimplonien).then(function(response) {
-  //         if (response.data.msg === "Email already used") {
-  //           $scope.email=false;
-  //           const alertPopup = $window.alert(response.data.msg);
-  //         }else {
-  //           $scope.email=true;
-  //           $state.go('login');
-  //         }
-  //       }).catch(function(errMsg) {
-  //         const alertPopup = $window.alert("Fail!");
-  //       });
-  //     }
-  //   }
-  // };
 
   $scope.SetStyle = function(role) {
     $scope.validForm=true;
@@ -122,9 +88,7 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
   $scope.getAllSkill = () => {
     serviceFilter.getAllSkill().then(function(response) {
       $scope.skills = response.data;
-      console.log($scope.skills)
     }).catch(function(errMsg) {
-      console.log('show skill failed!');
     });
   }
   $scope.getAllSkill();

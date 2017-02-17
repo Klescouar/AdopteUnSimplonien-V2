@@ -1,7 +1,9 @@
-app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams',
- function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams) {
+app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams','$timeout', 
+ function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams,$timeout) {
     $scope.acountState = true;
     $scope.emailVerified = false;
+    $scope.verifLogin = true;
+    $scope.input = true;
     $scope.user = {
         email: '',
         password: '',
@@ -13,14 +15,18 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 alert('error')
             } else {
               $scope.emailVerified = true;
+            $timeout(function () {
+              $scope.emailVerified = false;
+                }, 6000);
+              $scope.acountState = true;
             }
         })
     }
 
-    $scope.verifLogin = true;
-
     $scope.login = () => {
-        AuthService.login($scope.user).then(function(response) {
+        $scope.input = true;
+        if ($scope.user.email != ''&& $scope.user.password != '' ) {
+            AuthService.login($scope.user).then(function(response) {
             $scope.acountState = true;
             $scope.verifLogin = true;
           if (response.data.success === true) {
@@ -34,12 +40,14 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 } else if (response.data.user.role === 'Admin') {
                   $state.go('admin');
                 }
-
                 return response;
             }
             $state.go('profilUserStudent');
           }else if (response.data.msg === 'Authentication failed. Inactive account.') {
             $scope.acountState = false;
+              $timeout(function () {
+              $scope.acountState = true;
+                }, 6000);
           }else{
             $scope.verifLogin = false;
           }
@@ -53,5 +61,11 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
             const alertPopup = $window.alert('Login failed!');
             $state.go('login');
         });
-    };
+      }else{
+            if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                $scope.input=false;
+            }
+    }
+}
+
  }]);
