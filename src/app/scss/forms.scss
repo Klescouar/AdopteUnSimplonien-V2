@@ -33,11 +33,19 @@
     margin: 0;
   }
 
+  input[type=number] {
+    -moz-appearance:textfield;
+}
+
   textarea{
     height: 40px;
     resize: vertical;
     word-wrap: break-word;
     overflow: visible;
+  }
+
+  select{
+    box-shadow: none;
   }
 
   input:hover {
@@ -88,6 +96,12 @@
   .ng-invalid.ng-dirty{
     color: #de5b49;
   }
+}
+
+.error-msg{
+  font-size: 0.9em;
+  color: #de5b49;
+  margin: 5px 0;
 }
 
 .form-instruction{
