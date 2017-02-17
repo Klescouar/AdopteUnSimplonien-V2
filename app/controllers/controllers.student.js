@@ -1,5 +1,6 @@
 const config  = require('../../config/database');
 const Student = require('../models/student');
+const fs = require('fs');
 
 exports.infoStudent = (req, res) => {
     console.log('I received a GET request');
@@ -52,6 +53,23 @@ exports.removeStudent = (req, res) => {
       }
     });
 };
+
+exports.removeStudentFromUser = (req, res) => {
+    console.log('I received a GET request');
+    const id = req.params.id_profil;
+    Student.findOneAndRemove({ memberId: id}, function(err, student) {
+      if (err) {
+        res.send(err)
+        console.log('erreur');
+      } else {
+        res.json({ message: 'Student removed!' });
+      }
+    });
+};
+
+exports.removeStudentPhoto = (req, res) => {
+    fs.unlinkSync('dist/assets/images/'+req.params.photo)
+}
 
 exports.addStudent = (req, res) => {
     const memberId = req.body.memberId;

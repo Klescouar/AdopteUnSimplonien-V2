@@ -66,7 +66,7 @@
                     <p class="cont-pseudo user-mail">{{user.email}}</p>
                     <p class="cont-pseudo">{{user.role}}</p>
                     <p class="cont-pseudo">{{user.technology}}</p>
-                    <div class="delete-user" ng-click="removeUser(user._id)"></div>
+                    <div class="delete-user" ng-click="removeUser(user._id, user.role)"></div>
                 </div>
 
             </div>
@@ -260,7 +260,7 @@
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.ville}}</p>
                     <div class="student-actions">
                       <button ng-if="simplonien.nom !== '' " class="modify" ng-click="showOneStudent(simplonien._id)">Modifier</button>
-                      <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id)" confirm="Are you sure ?"></div>
+                      <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id, simplonien.photo)" confirm="Are you sure ?"></div>
                     </div>
                 </div>
             </div>

@@ -151,7 +151,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   }
 
   const removeFromAdmin = (id) => {
-    return $http.delete(API_ENDPOINT.url + '/memberinfo/delete/' + id).then(
+    return $http.delete(API_ENDPOINT.url + '/memberinfo/delete/'+ id).then(
       function(response){
        return response;
       }, function(error){

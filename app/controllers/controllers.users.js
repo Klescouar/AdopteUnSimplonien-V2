@@ -3,6 +3,7 @@ const Student = require('../models/student');
 const jwt         = require('jwt-simple');
 const email       = require('./controllers.emails');
 const config      = require('../../config/database');
+const student     = require('./controllers.student');
 
 
 exports.updateUser = function(req, res) {
@@ -233,14 +234,13 @@ exports.validMail = function(req, res) {
  };
 
  exports.remove = function(req, res) {
-  const token = getToken(req.headers);
-  if (token) {
-   const decoded = jwt.decode(token, config.secret);
-   User.findOneAndRemove({ _id: req.params.id}, function(err) {
-     if (err)
-       res.send(err);
+   const token = getToken(req.headers);
+   if (token) {
+    const decoded = jwt.decode(token, config.secret);
+    User.findOneAndRemove({ _id: req.params.id}, function(err) {
+      if (err) res.send(err);
 
-     res.json({ message: 'User removed!' });
-   });
-  }
- };
+      res.json({ message: 'User removed!' });
+    });
+   }
+  };
