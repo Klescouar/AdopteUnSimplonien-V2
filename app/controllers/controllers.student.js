@@ -123,6 +123,7 @@ exports.updateStudent = (req, res) => {
             doc.tags = req.body.tags,
             doc.description = req.body.description,
             doc.Sexe = req.body.Sexe,
+            doc.dispo = req.body.dispo,
             doc.SpecialiteUn = req.body.SpecialiteUn,
             doc.SpecialiteDeux = req.body.SpecialiteDeux,
             doc.SpecialiteTrois = req.body.SpecialiteTrois,

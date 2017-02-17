@@ -118,6 +118,10 @@
               </select>
             </div>
             <div class="cont-input">
+              <label class='input-label' for="boCreateNameSimploniens">Date de diponibilité*</label>
+              <input id="boCreateNameSimploniens" class="input-style" ng-model="student.dispo" placeholder="ex: 12/04/2017*" required name='dispo'>
+            </div>
+            <div class="cont-input">
               <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.region" placeholder="Region*" required>
                 <option class="labelOption" disabled selected value>Region*</option>
                 <option ng-repeat="region in regions">{{region.name}}</option>
@@ -260,7 +264,7 @@
           <!-- Submit Buttons -->
           <div class="button-container">
             <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='createSimplonien()'>
-            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click='!student.Contrat.length && ficheForm.$valid && updateStudent(student._id)'>
+            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click=' updateStudent(student._id)'>
             <input class="input-style delete-button" value="Supprimer sa fiche" ng-if="cardExist" type="button" ng-click="deleteCard(student._id)">
           </div>
         </form>

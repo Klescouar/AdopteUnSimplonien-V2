@@ -1,4 +1,4 @@
-app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter) {
+app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', 'moment', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter, moment) {
   $scope.member = AuthService.user();
   $scope.showEditProfilUser = false;
   $scope.photo = '';
@@ -113,6 +113,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       } else {
         $scope.cardExist = true;
         $scope.student = response.data;
+        console.log($scope.student.dispo);
+        // console.log(moment($scope.student.dispo, "DD/MM/YYYY").format("DD/MM/YYYY"));
         const path = '/assets/images/' + $scope.student.photo;
         let html = '';
         html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -163,6 +165,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     tags: $scope.student.tags,
     description: $scope.student.description,
     Sexe: $scope.student.Sexe,
+    dispo: $scope.student.dispo,
     SpecialiteUn: $scope.student.SpecialiteUn,
     SpecialiteDeux: $scope.student.SpecialiteDeux,
     SpecialiteTrois: $scope.student.SpecialiteTrois,
@@ -206,6 +209,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         tags: $scope.student.tags,
         description: $scope.student.description,
         Sexe: $scope.student.Sexe,
+        dispo: moment($scope.student.dispo, "DD/MM/YYYY"),
         SpecialiteUn: $scope.student.SpecialiteUn,
         SpecialiteDeux: $scope.student.SpecialiteDeux,
         SpecialiteTrois: $scope.student.SpecialiteTrois,
