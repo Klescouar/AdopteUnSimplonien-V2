@@ -22,6 +22,7 @@ const school = require(__dirname + '/app/controllers/controllers.schools');
 const promo = require(__dirname + '/app/controllers/controllers.promo');
 const email = require(__dirname + '/app/controllers/controllers.emails');
 const region = require(__dirname + '/app/controllers/controllers.region');
+const csv = require(__dirname + '/app/controllers/controllers.csv');
 const apiRoutes = express.Router();
 const nodemailer = require("nodemailer");
 
@@ -67,6 +68,9 @@ apiRoutes.put('/update/pass/profil/:id', user.updateUserPassFromProfil);
 apiRoutes.put('/update/pass/reset', user.resetPass);
 apiRoutes.get('/memberinfo', user.memberinfo);
 apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), user.remove);
+apiRoutes.get('/csv/recruiter', csv.getCsvRecruiter);
+apiRoutes.get('/csv/student', csv.getCsvStudent);
+apiRoutes.get('/csv/studentProfil', csv.getCsvStudentProfil);
 
 /////////////////////////SKILLS CONTROLLER/////////////////////////
 apiRoutes.post('/addSkill', skill.addSkill);

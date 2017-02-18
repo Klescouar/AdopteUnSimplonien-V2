@@ -22,6 +22,9 @@
         <h1>
             <a href="" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 8}">Gerer les promotions et fabriques</a>
         </h1>
+        <h1>
+            <a href="" ng-click="show = 9" class="effect-underline" ng-class="{'menu-active' : show === 9}">Télécharger CSV</a>
+        </h1>
     </div>
     <div class="container-interface">
         <h1 ng-if="show === 0">
@@ -55,6 +58,32 @@
           </form>
         </div>
 
+        <div class="handle-CSV" ng-show="show === 9">
+          <div class="csv-card">
+            <button type="button" class="delete-filter-button" ng-click="getCsvRecruiter()">
+              <h1>Mettre à jour le fichier CSV Recruteurs</h1>
+            </button>
+            <a class="delete-filter-button" href="assets/csv/recruteur.csv" download>
+              <h1>Télécharger le CSV Recruteurs</h1>
+            </a>
+          </div>
+          <div class="csv-card">
+            <button type="button" class="delete-filter-button" ng-click="getCsvStudent()">
+              <h1>Mettre à jour le fichier CSV Simplonien</h1>
+            </button>
+            <a class="delete-filter-button" href="assets/csv/simplonien.csv" download>
+              <h1>Télécharger le CSV Simplonien</h1>
+            </a>
+          </div>
+          <div class="csv-card">
+            <button type="button" class="delete-filter-button" ng-click="getCsvStudentProfil()">
+              <h1>Mettre à jour le fichier CSV des fiches Simploniens</h1>
+            </button>
+            <a class="delete-filter-button" href="assets/csv/simplonienProfil.csv" download>
+              <h1>Télécharger le CSV des fiches Simploniens</h1>
+            </a>
+          </div>
+        </div>
 
         <div class="container-delete-user" ng-show="show==2">
             <h2>Suppression d'un compte</h2>
@@ -70,7 +99,7 @@
                 </div>
 
             </div>
-        </div>
+          </div>
 
         <div class="container-create-student" ng-show="show == 3 || show == 5">
             <div class="choose-pic">

@@ -8,7 +8,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
         $scope.show = 3;
 
       }
-
+      $scope.url = './contact.html'
       $scope.school = {};
       $scope.skill = {};
       $scope.student = {};
@@ -44,6 +44,24 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             $scope.refreshInfoStudents();
           });
       };
+
+      $scope.getCsvRecruiter = () => {
+        AuthService.getCsvRecruiter().then((res) => {
+          console.log(res);
+        });
+      }
+
+      $scope.getCsvStudent = () => {
+        AuthService.getCsvStudent().then((res) => {
+          console.log(res);
+        });
+      }
+
+      $scope.getCsvStudentProfil = () => {
+        AuthService.getCsvStudentProfil().then((res) => {
+          console.log(res);
+        });
+      }
 
       $scope.addTag = function(tag) {
         if (tag.length !== 0) {

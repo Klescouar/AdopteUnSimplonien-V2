@@ -2,6 +2,22 @@
 	display: flex;
 	min-height: 90vh;
 	background-color: rgb(227,230,236);
+	.handle-CSV{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+		.csv-card{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: 150px;
+			margin:20px;
+			width: 25%;
+			min-width: 200px;
+		}
+	}
 	.create-user-button{
 		margin-top: 10px;
 		padding: 8px;
@@ -120,6 +136,9 @@
 			align-items: center;
 			width: 85%;
 			height: 100%;
+			.delete-filter-button{
+				margin: 20px;
+			}
 			h2{
 				margin: 30px;
 			}
@@ -212,6 +231,28 @@
 	margin: 20px;
 }
 
+.delete-filter-button{
+	margin-left: 10px;
+	border: none;
+	border: 1px solid rgb(181, 181, 181);
+	background-color: transparent;
+	transition: 0.2s ease;
+	text-decoration: none;
+	h1{
+		font-size: 1em;
+		margin: 5px;
+		color: white;
+		padding: 10px;
+		outline: none;
+	}
+}
+.delete-filter-button:hover{
+	background-color: rgb(61, 59, 59);
+	transition: 0.2s ease;
+	color: white;
+	text-decoration: none;
+}
+
 .handle-filter {
 	display: flex;
 	justify-content: space-between;
@@ -256,22 +297,6 @@
 			font-size: 0.8em;
 			width: 150px;
 		}
-	}
-	.delete-filter-button{
-		width: 80px;
-		margin-left: 10px;
-		border: none;
-		border: 1px solid rgb(181, 181, 181);
-		background-color: transparent;
-		transition: 0.2s ease;
-		h4{
-			font-size: 1em;
-			margin: 5px;
-		}
-	}
-	.delete-filter-button:hover{
-		background-color: rgb(61, 59, 59);
-		transition: 0.2s ease;
 	}
 
 	.filter-card {
@@ -406,7 +431,6 @@ width: 100%;
 @media screen and (max-width: 1100px) {
 .container-bo .container-interface{
 
-	justify-content:flex-start;
 	padding-top: 10%;
 
 	.cont-BO-input{
