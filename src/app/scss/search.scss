@@ -423,6 +423,16 @@
                 }
             }
 
+            .dispo {
+                min-height: 80px;
+                width: 100%;
+                background-size: 30%;
+
+                .triangle {
+                    display: none;
+                }
+            }
+
             .contrat {
                 min-height: 80px;
                 width: 100%;
