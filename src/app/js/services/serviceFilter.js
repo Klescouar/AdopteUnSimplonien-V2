@@ -5,7 +5,8 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
         maxContrat: 5,
         Langage: [],
         Region: "",
-        Contrat: []
+        Contrat: [],
+        Dispo: ""
     };
 
     this.themes = [

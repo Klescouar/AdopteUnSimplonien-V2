@@ -43,10 +43,10 @@
                         <div class="cont-filter-title dispo">
                             <p class="title">Disponibilité</p>
                         </div>
-                      <input type="button" value="Immédiate" name="button" ng-class="{'buttonFilterOff': !nowActive, 'buttonFilterOn' : nowActive}" ng-click="nowActive = !nowActive">
-                      <input type="button" value="Dans moins d'1 mois" name="button" ng-class="{'buttonFilterOff': !oneActive, 'buttonFilterOn' : oneActive}" ng-click="oneActive = !oneActive">
-                      <input type="button" value="Dans moins de 2 mois" name="button" ng-class="{'buttonFilterOff': !twoActive, 'buttonFilterOn' : twoActive}" ng-click="twoActive = !twoActive">
-                      <input type="button" value="Dans 3 mois et plus" name="button" ng-class="{'buttonFilterOff': !threeActive, 'buttonFilterOn' : threeActive}" ng-click="threeActive = !threeActive">
+                      <input type="button" value="Immédiate" name="button" ng-class="{'buttonFilterOff': active !== 'now', 'buttonFilterOn' : active === 'now'}" ng-click="filterDate('now')">
+                      <input type="button" value="Dans moins d'1 mois" name="button" ng-class="{'buttonFilterOff': active !== 'one', 'buttonFilterOn' : active === 'one'}" ng-click="filterDate('one')">
+                      <input type="button" value="Dans moins de 2 mois" name="button" ng-class="{'buttonFilterOff': active !== 'two', 'buttonFilterOn' : active === 'two'}" ng-click="filterDate('two')">
+                      <input type="button" value="Dans 3 mois et plus" name="button" ng-class="{'buttonFilterOff': active !== 'three', 'buttonFilterOn' : active === 'three'}" ng-click="filterDate('three')">
 
                     </div>
 
