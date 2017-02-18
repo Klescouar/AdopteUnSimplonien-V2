@@ -18,14 +18,18 @@
                 </div>
                 <div class="filterRight">
                     <div class="filter filter-place" ng-if="themes[0].active === true">
-
+                        <div class="cont-filter-title place">
+                            <p class="title">Localisation</p>
+                        </div>
                         <input ng-click="changeFilterRegion()" ng-model="schoolData" type="button" value="{{region.name}}" name="button" ng-repeat="region in regions" ng-class="{'buttonFilterOff': !region.active, 'buttonFilterOn' : region.active}">
-                        <p>D'autres regions seront bientôt disponibles</p>
+                        <p class="gen-mess">D'autres regions seront bientôt disponibles</p>
 
                     </div>
 
                     <div class="filter filter-dev" ng-if="themes[1].active === true">
-
+                        <div class="cont-filter-title lang">
+                            <p class="title">Langages</p>
+                        </div>
                         <input
                             type="button"
                             value="{{skill.name}}"
@@ -36,17 +40,21 @@
 
                     </div>
                     <div class="filter filter-dev" ng-if="themes[2].active === true">
-
-                      <input type="button" value="Dès maintenant" name="button" ng-class="{'buttonFilterOff': !nowActive, 'buttonFilterOn' : nowActive}" ng-click="nowActive = !nowActive">
-                      <input type="button" value="< 1 mois" name="button" ng-class="{'buttonFilterOff': !oneActive, 'buttonFilterOn' : oneActive}" ng-click="oneActive = !oneActive">
-                      <input type="button" value="< 2 mois" name="button" ng-class="{'buttonFilterOff': !twoActive, 'buttonFilterOn' : twoActive}" ng-click="twoActive = !twoActive">
-                      <input type="button" value="3 mois et plus" name="button" ng-class="{'buttonFilterOff': !threeActive, 'buttonFilterOn' : threeActive}" ng-click="threeActive = !threeActive">
+                        <div class="cont-filter-title dispo">
+                            <p class="title">Disponibilité</p>
+                        </div>
+                      <input type="button" value="Immédiate" name="button" ng-class="{'buttonFilterOff': !nowActive, 'buttonFilterOn' : nowActive}" ng-click="nowActive = !nowActive">
+                      <input type="button" value="Dans moins d'1 mois" name="button" ng-class="{'buttonFilterOff': !oneActive, 'buttonFilterOn' : oneActive}" ng-click="oneActive = !oneActive">
+                      <input type="button" value="Dans moins de 2 mois" name="button" ng-class="{'buttonFilterOff': !twoActive, 'buttonFilterOn' : twoActive}" ng-click="twoActive = !twoActive">
+                      <input type="button" value="Dans 3 mois et plus" name="button" ng-class="{'buttonFilterOff': !threeActive, 'buttonFilterOn' : threeActive}" ng-click="threeActive = !threeActive">
 
                     </div>
 
 
                     <div class="filter filter-contract" ng-if="themes[3].active === true">
-
+                        <div class="cont-filter-title contact">
+                            <p class="title">Contrats</p>
+                        </div>
                         <input
                             type="button"
                             value="{{contract.name}}"
