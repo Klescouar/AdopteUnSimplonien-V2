@@ -5,27 +5,27 @@ app.controller('projectCtrl', ['$scope', '$http', 'serviceFilter', '$timeout', '
     $scope.descriptionFive = true;
 
      angular.element($window).bind("scroll", (e) => {
-        if(window.pageYOffset > 450){
+        if(window.pageYOffset > window.innerHeight - (window.innerHeight/2)){
             $scope.showTitle = false;
-        }else if(window.pageYOffset < 450){
+        }else if(window.pageYOffset < window.innerHeight - (window.innerHeight/2)){
             $scope.showTitle = true;
         }
-        if (window.pageYOffset > 1000) {
+        if (window.pageYOffset > window.innerHeight * 2 - (window.innerHeight/2)) {
              $scope.showSimplon = false;
          }
-         else if (window.pageYOffset < 1000) {
+         else if (window.pageYOffset < window.innerHeight * 2 - (window.innerHeight/2)) {
            $scope.showSimplon = true;
          }
-         if (window.pageYOffset > 2000) {
+         if (window.pageYOffset > window.innerHeight * 3 - (window.innerHeight/2)) {
              $scope.descriptionFour = false;
          }
-         else if (window.pageYOffset < 2000) {
+         else if (window.pageYOffset < window.innerHeight * 3 - (window.innerHeight/2)) {
            $scope.descriptionFour = true;
          }
-         if (window.pageYOffset > 2800) {
+         if (window.pageYOffset > window.innerHeight * 4 - (window.innerHeight/2)) {
              $scope.descriptionFive = false;
          }
-         else if (window.pageYOffset < 2800) {
+         else if (window.pageYOffset < window.innerHeight * 4 - (window.innerHeight/2)) {
            $scope.descriptionFive = true;
          }
 
