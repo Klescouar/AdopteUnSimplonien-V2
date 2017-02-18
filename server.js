@@ -98,6 +98,8 @@ apiRoutes.get('/backOffice/infoStudent', student.infoStudent);
 apiRoutes.get('/backOffice/infoStudent/:id_profil', student.findStudent);
 apiRoutes.get('/backOffice/infoStudent/fromMember/:memberId', student.findStudentByMemberId);
 apiRoutes.delete('/backOffice/removeStudent/:id_profil', passport.authenticate('jwt', {session: false}), student.removeStudent);
+apiRoutes.delete('/backOffice/removeStudentFromUser/:id_profil', passport.authenticate('jwt', {session: false}), student.removeStudentFromUser);
+apiRoutes.delete('/backOffice/removeStudentPhoto/:photo', passport.authenticate('jwt', {session: false}), student.removeStudentPhoto);
 apiRoutes.post('/backOffice/addStudent', passport.authenticate('jwt', {session: false}), student.addStudent);
 apiRoutes.post('/backOffice/addStudentFromAdmin', passport.authenticate('jwt', {session: false}), student.addStudentFromAdmin);
 apiRoutes.put('/backOffice/update/:id', passport.authenticate('jwt', {session: false}), student.updateStudent);

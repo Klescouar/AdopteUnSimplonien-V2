@@ -5,20 +5,24 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
         maxContrat: 5,
         Langage: [],
         Region: "",
-        Contrat: [],
+        Contrat: []
     };
 
-    this.themes = [{
-        name: 'Promo',
-        active: true,
-    }, {
-        name: 'Langage',
-        active: false,
-    }, {
-        name: 'Contrat',
-        active: false,
-    }];
-
+    this.themes = [
+        {
+            name: 'Promo',
+            active: true
+        }, {
+            name: 'Langage',
+            active: false
+        }, {
+            name: 'Dispo',
+            active: false
+        }, {
+            name: 'Contrat',
+            active: false
+        }
+    ];
 
     //////////////////////SKILL REQUESTS/////////////////////////:
 
@@ -46,7 +50,6 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
         });
     };
 
-
     //////////////////////SCHOOL REQUESTS/////////////////////////:
 
     this.addSchool = function(schools) {
@@ -72,7 +75,6 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
             return error;
         });
     };
-
 
     //////////////////////CONTRACT REQUESTS/////////////////////////:
 
@@ -125,7 +127,6 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
             return error;
         });
     };
-
 
     //////////////////////REGION REQUESTS/////////////////////////:
 

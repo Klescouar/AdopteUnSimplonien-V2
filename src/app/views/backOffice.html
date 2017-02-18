@@ -66,7 +66,7 @@
                     <p class="cont-pseudo user-mail">{{user.email}}</p>
                     <p class="cont-pseudo">{{user.role}}</p>
                     <p class="cont-pseudo">{{user.technology}}</p>
-                    <div class="delete-user" ng-click="removeUser(user._id)"></div>
+                    <div class="delete-user" ng-click="removeUser(user._id, user.role)"></div>
                 </div>
 
             </div>
@@ -107,6 +107,10 @@
                         <option value="Femme">Femme</option>
                         <option value="Autre">Autre</option>
                     </select>
+                </div>
+                <div class="cont-BO-calendar">
+                  <label class='input-label' for="boCreateNameSimploniens">Date de diponibilité</label>
+                  <md-datepicker md-placeholder="Choisir date" ng-model="student.dispo"></md-datepicker>
                 </div>
                 <div class="cont-BO-input">
                   <p>Region</p>
@@ -263,7 +267,7 @@
                     <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.promo}}</p>
                     <div class="student-actions">
                       <button ng-if="simplonien.nom !== '' " class="modify" ng-click="showOneStudent(simplonien._id)">Modifier</button>
-                      <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id)" confirm="Are you sure ?"></div>
+                      <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id, simplonien.photo)" confirm="Are you sure ?"></div>
                     </div>
                 </div>
             </div>

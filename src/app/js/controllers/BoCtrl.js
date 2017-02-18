@@ -68,6 +68,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
             tags: $scope.student.tags,
             description: $scope.student.description,
             Sexe: $scope.student.Sexe,
+            dispo: $scope.student.dispo,
             SpecialiteUn: $scope.student.SpecialiteUn,
             SpecialiteDeux: $scope.student.SpecialiteDeux,
             SpecialiteTrois: $scope.student.SpecialiteTrois,
@@ -96,12 +97,17 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
 
       };
 
-      $scope.deleteStudent = (id) => {
+      $scope.deleteStudent = (id, photo) => {
           const response = confirm("Voulez vous vraiment supprimer cet apprenant?");
           if (response === true) {
               serviceStudent.removeStudent(id).then((res) => {
                 $scope.refreshInfoStudents();
               });
+              if (photo !== '') {
+                  serviceStudent.removeStudentPhoto(photo).then((res) => {
+                    $scope.refreshInfoStudents();
+                  });
+              }
           }
       };
 
@@ -118,6 +124,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
                 tags: $scope.student.tags,
                 description: $scope.student.description,
                 Sexe: $scope.student.Sexe,
+                dispo: $scope.student.dispo,
                 SpecialiteUn: $scope.student.SpecialiteUn,
                 SpecialiteDeux: $scope.student.SpecialiteDeux,
                 SpecialiteTrois: $scope.student.SpecialiteTrois,
@@ -149,7 +156,9 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           $scope.show = 5;
           serviceStudent.getStudentById(index).then((res) => {
               $scope.student = res.data;
-              console.log($scope.student);
+              if (  $scope.student.dispo) {
+                 $scope.student.dispo = new Date($scope.student.dispo);
+              }
               const path = '/assets/images/' + $scope.student.photo;
               let html = '';
                   html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -190,7 +199,7 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
           });
       };
 
-      $scope.removeUser = (id) => {
+      $scope.removeUser = (id, role) => {
           const response = confirm("Voulez vous vraiment supprimer cet utilisateur?");
           if (response === true) {
               AuthService.removeFromAdmin(id).then(function(response) {
@@ -199,6 +208,21 @@ app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state
               }).catch(function(errMsg) {
                   const alertPopup = $window.alert('Remove failed!');
               });
+              if (role === 'Simplonien') {
+                  angular.forEach($scope.simploniens, (val) => {
+                      if (val.memberId === id) {
+                          serviceStudent.removeStudentFromUser(id).then((res) => {
+                            $scope.refreshInfoStudents();
+                          });
+
+                          if (val.photo !== '') {
+                              serviceStudent.removeStudentPhoto(val.photo).then((res) => {
+                                $scope.refreshInfoStudents();
+                              });
+                          }
+                      }
+                  })
+              }
           }
       };
 

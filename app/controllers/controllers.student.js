@@ -1,5 +1,6 @@
 const config  = require('../../config/database');
 const Student = require('../models/student');
+const fs = require('fs');
 
 exports.infoStudent = (req, res) => {
     console.log('I received a GET request');
@@ -53,7 +54,25 @@ exports.removeStudent = (req, res) => {
     });
 };
 
+exports.removeStudentFromUser = (req, res) => {
+    console.log('I received a GET request');
+    const id = req.params.id_profil;
+    Student.findOneAndRemove({ memberId: id}, function(err, student) {
+      if (err) {
+        res.send(err)
+        console.log('erreur');
+      } else {
+        res.json({ message: 'Student removed!' });
+      }
+    });
+};
+
+exports.removeStudentPhoto = (req, res) => {
+    fs.unlinkSync('dist/assets/images/'+req.params.photo)
+}
+
 exports.addStudent = (req, res) => {
+  console.log(req.body);
     const memberId = req.body.memberId;
     console.log('I received a GET request');
     Student.findOne({
@@ -123,6 +142,7 @@ exports.updateStudent = (req, res) => {
             doc.tags = req.body.tags,
             doc.description = req.body.description,
             doc.Sexe = req.body.Sexe,
+            doc.dispo = req.body.dispo,
             doc.SpecialiteUn = req.body.SpecialiteUn,
             doc.SpecialiteDeux = req.body.SpecialiteDeux,
             doc.SpecialiteTrois = req.body.SpecialiteTrois,

@@ -1,4 +1,4 @@
-app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter) {
+app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', 'moment', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter, moment) {
   $scope.member = AuthService.user();
   $scope.showEditProfilUser = false;
   $scope.photo = '';
@@ -104,6 +104,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       } else {
         $scope.cardExist = true;
         $scope.student = response.data;
+        $scope.student.dispo = new Date($scope.student.dispo)
         const path = '/assets/images/' + $scope.student.photo;
         let html = '';
         html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -156,6 +157,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
 
   $scope.createSimplonien = () => {
+    console.log($scope.student.dispo);
     const dataStudent = {
     memberId: $scope.member._id,
     verified: false,
@@ -167,6 +169,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     tags: $scope.student.tags,
     description: $scope.student.description,
     Sexe: $scope.student.Sexe,
+    dispo: $scope.student.dispo,
     SpecialiteUn: $scope.student.SpecialiteUn,
     SpecialiteDeux: $scope.student.SpecialiteDeux,
     SpecialiteTrois: $scope.student.SpecialiteTrois,
@@ -197,7 +200,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       console.log("Error");
       });
 
-      console.log(dataStudent);
   }
   $scope.updateStudent = (id) => {
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
@@ -212,6 +214,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         tags: $scope.student.tags,
         description: $scope.student.description,
         Sexe: $scope.student.Sexe,
+        dispo: moment($scope.student.dispo, "DD/MM/YYYY"),
         SpecialiteUn: $scope.student.SpecialiteUn,
         SpecialiteDeux: $scope.student.SpecialiteDeux,
         SpecialiteTrois: $scope.student.SpecialiteTrois,
@@ -235,7 +238,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         alert("Apprenant modifié!");
       })
     };
-    console.log(newInfos);
 
   };
 

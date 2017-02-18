@@ -23,7 +23,7 @@ exports.upload = function(req, res) {
         console.log(file.size);
         // Check the file type, must be either png,jpg or jpeg
         if (type !== null && (type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg')) {
-            if (file.size < 20000 || file.size > 100000) {
+            if (file.size < 20000) {
                 form.on('error', function(err) {
                     console.log('Problem size');
                 });

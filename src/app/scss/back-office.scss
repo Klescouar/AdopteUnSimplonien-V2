@@ -306,6 +306,41 @@
 	}
 }
 
+.cont-BO-calendar{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin: 20px 0;
+	width: 100%;
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    white;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    white;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    white;
+}
+	.md-datepicker-input{
+		color: white;
+	}
+	md-icon{
+		color: white;
+	}
+	.md-datepicker-expand-triangle{
+		border-top-color: white;
+	}
+	md-datepicker{
+		background-color: transparent;
+
+	}
+}
+
 .cont-BO-input{
 display: flex;
 justify-content: space-between;
