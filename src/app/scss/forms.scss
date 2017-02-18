@@ -35,7 +35,7 @@
 
   input[type=number] {
     -moz-appearance:textfield;
-}
+  }
 
   textarea{
     height: 40px;
@@ -44,7 +44,7 @@
     overflow: visible;
   }
 
-  select{
+  textarea,select,input[type=checkbox]{
     box-shadow: none;
   }
 
