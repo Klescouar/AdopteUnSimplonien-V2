@@ -8,6 +8,8 @@
       <div id="upload-pic"></div>
       <form class="form-photo" id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
         <div class="form-group">
+          <h3 class="tab-name">Modifier votre photo</h3>
+          <p class="form-instruction"> formats JPG, PNG  <br>min 200ko max 1mo</p>
           <input id="photos-input" type="file" name="photos[]" multiple="multiple">
         </div>
         <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
@@ -29,7 +31,7 @@
     <div class="container-info_perso" ng-if="tab === 'infos'">
       <div class="container-create">
         <form class="section form-info_perso" name="infoPersoForm" ng-submit="infoPersoForm.$valid && updateUser(member._id)" novalidate>
-          <h3 class="info-title">Modifier les infos personnelles de votre compte</h3>
+          <h1 class="info-title">Modifiez votre compte</h1>
           <div class="info-group">
             <div class="cont-input">
               <label class='input-label' for="boCreateLastNameSimploniens">Nom*</label>
@@ -52,7 +54,7 @@
         <!-- ////////////////////////////////// MODIFS PASSWORD Form ////////////////////////////////// -->
 
         <form class="section form_password" name='passwordForm'>
-          <h3 class="info-title">Modifier mot de passe</h3>
+          <h1 class="info-title">Modifier votre mot de passe</h1>
           <div class="info-group">
             <div class="cont-input">
               <label class='input-label' for="boCreateMailSimploniens">Ancien Mot de Passe</label>
@@ -95,11 +97,10 @@
               <input id="boCreateNameSimploniens" class="input-style" ng-model="member.firstName" placeholder="Prénom*" required name='prenom'>
 
             </div>
-            <div class="cont-input">
+            <div class="cont-input age">
               <label class='input-label' for="boCreateOldSimploniens">Age*</label>
               <input id="boCreateOldSimploniens" type="number" name="age" class="input-style" ng-model="student.age" maxlength='2' placeholder="Age*" required>
               <span class="error-msg" ng-show='ficheForm.age.$invalid && ficheForm.age.$dirty'>Votre âge est incorrect</span>
-
             </div>
             <div class="cont-input">
               <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe">
@@ -108,10 +109,6 @@
                 <option value="Femme">Femme</option>
                 <option value="Autre">Autre</option>
               </select>
-            </div>
-            <div class="cont-calendar">
-              <label class='input-label' for="boCreateNameSimploniens">Date de diponibilité*</label>
-              <md-datepicker placeholder="Choisir date" ng-model="student.dispo"></md-datepicker>
             </div>
             <div class="cont-input">
               <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.region" placeholder="Region*" required>
@@ -133,6 +130,10 @@
                 </label>
               </div>
               <span class="error-msg" ng-show='ficheForm.$submitted && student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
+            </div>
+            <div class="cont-input calendar">
+              <label class='form-instruction' for="boCreateNameSimploniens">Date de diponibilité*</label>
+              <md-datepicker placeholder="Choisir date" ng-model="student.dispo" required></md-datepicker>
             </div>
             <div class="cont-input">
               <label class='input-label' for="boCreateMailSimploniens">E-mail*</label>
