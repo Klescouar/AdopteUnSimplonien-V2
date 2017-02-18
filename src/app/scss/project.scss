@@ -1,6 +1,7 @@
 .main-cont-project{
 	overflow: hidden;
 
+
  	.cont-img-description {
  		z-index: 1;
  		position: relative;
@@ -86,6 +87,12 @@
  			background-color: #87adc7;
  		}
  	}
+	.cont-middle-size{
+		height: 100vh;
+	}
+	.cont-last-size{
+		height: calc(100vh - 50px);
+	}
 
  	 .cont-img-description-simplonien{
  		background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), url("../../assets/images/codecamp_2015_-9.jpg") no-repeat center;

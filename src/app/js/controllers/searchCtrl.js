@@ -3,6 +3,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     $scope.langages = serviceFilter.langages;
     $scope.themes = serviceFilter.themes;
     $scope.searchResult = serviceFilter.searchResult;
+    $scope.active = "";
     $scope.$emit('LOAD');
     $scope.$emit('UNLOAD');
     $scope.loading = true;
@@ -10,7 +11,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
       return item.active = false;
     };
     const convertToDate = (item) => {
-      console.log(item.dispo);
       return item.dispo = moment(item.dispo, "YYYY-MM-DD").format("DD/MM/YYYY");
     }
 
@@ -105,7 +105,32 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
       res.data.map(convertToDate);
       $scope.cardFull = res.data;
       searchFilter();
-    })
+    });
+
+    $scope.filterDate = (time) => {
+      if ($scope.active !== time) {
+        $scope.active = time;
+        switch (time) {
+          case "now":
+            $scope.searchResult.Dispo = moment();
+            break;
+          case "one":
+            $scope.searchResult.Dispo = moment().add(1, 'month');
+            break;
+          case "two":
+            $scope.searchResult.Dispo = moment().add(2, 'month');
+            break;
+          case "three":
+            $scope.searchResult.Dispo = moment().add(3, 'month');
+            break;
+        }
+
+      } else if ($scope.active === time) {
+        $scope.active = '';
+        $scope.searchResult.Dispo = "";
+      }
+      console.log(moment().diff(moment().add(1, 'month')));
+    };
 
     $scope.changeState = (item) => {
         if (window.innerWidth > 640) {
