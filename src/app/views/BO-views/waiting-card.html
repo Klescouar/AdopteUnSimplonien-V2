@@ -1,0 +1,12 @@
+<div class="container-delete-user">
+    <h2>Fiche simplonien en attente de validation</h2>
+    <div class="container-users">
+        <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === false">
+            <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
+            <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
+            <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.promo}}</p>
+            <button ng-if="simplonien.nom !== '' " class="modify" ng-click="acceptSimplonien(simplonien._id)">Accepter</button>
+            <button ng-if="simplonien.nom !== '' " class="modify" ng-click="deleteStudent(simplonien._id)">Refuser</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container-create-user">
+  <form class="create-user"  ng-submit="addStudentUser()" >
+      <h2>Créer un compte étudiant</h2>
+      <input type="email" id="email" class="input-BO-style" ng-model="studentAccount.email" required placeholder="Email"></input>
+      <input type="text" id="nom" class="input-BO-style" value="" ng-model="studentAccount.lastName" required placeholder="Nom"></input>
+      <input type="text" id="prenom" class="input-BO-style" value="" ng-model="studentAccount.firstName" required placeholder="Prenom"></input>
+      <input type="password" id="mdp" class="input-BO-style" ng-model="studentAccount.password" required placeholder="Mot de passe"></input>
+      <input class="create-user-button" value="Créer" type="submit">
+  </form>
+  <form class="create-user"  ng-submit="addRecruiterUser()" >
+      <h2>Créer un compte recruteur</h2>
+      <input type="email" id="email" class="input-BO-style" ng-model="recruiterAccount.email" required placeholder="Email"></input>
+      <input type="text" id="company" class="input-BO-style" value="" ng-model="recruiterAccount.company" required placeholder="Entreprise"></input>
+      <input type="text" id="nom" class="input-BO-style" value="" ng-model="recruiterAccount.lastName" required placeholder="Nom"></input>
+      <input type="text" id="prenom" class="input-BO-style" value="" ng-model="recruiterAccount.firstName" required placeholder="Prenom"></input>
+      <div class="cont-TECHNO-input">
+          <p>Maitrise principale recherchée :</p>
+          <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="recruiterAccount.technology"
+              placeholder="technology" >
+              <option class="labelOption" disabled selected value>Technologie</option>
+              <option ng-repeat="skill in skills">{{skill.name}}</option>
+          </select>
+      </div>
+      <input type="password" id="mdp" class="input-BO-style" ng-model="recruiterAccount.password" required placeholder="Mot de passe"></input>
+      <input class="create-user-button" value="Créer" type="submit">
+  </form>
+</div>

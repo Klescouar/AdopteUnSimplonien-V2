@@ -1,0 +1,15 @@
+<div class="container-delete-user">
+    <h2>Suppression d'un compte</h2>
+    <input type="text" class="input-BO-style" ng-model="deleteUser" placeholder="Rechercher...">
+    <div class="container-users">
+        <div class="cont-info" ng-repeat="user in allUser | filter : deleteUser track by $index" ng-if="user.role !== 'Admin'">
+            <p class="cont-pseudo">{{user.firstName}}</p>
+            <p class="cont-pseudo">{{user.lastName}}</p>
+            <p class="cont-pseudo user-mail">{{user.email}}</p>
+            <p class="cont-pseudo">{{user.role}}</p>
+            <p class="cont-pseudo">{{user.technology}}</p>
+            <div class="delete-user" ng-click="removeUser(user._id, user.role)"></div>
+        </div>
+
+    </div>
+</div>

@@ -44,12 +44,13 @@ exports.sendMailForPass = (req, res) => {
         if (error) {
             return console.log(error);
         } else {
-            return res.send(info);
+            return console.log(info);
         }
     });
 };
 
 exports.mailConfirm = (req, res) => {
+  console.log(req);
     let html = layout.confirm(req);
 
     let mailOptions = {
@@ -63,7 +64,7 @@ exports.mailConfirm = (req, res) => {
         if (error) {
             return console.log(error);
         } else {
-            return res.send(info);
+            return console.log(info);
         }
     });
 };

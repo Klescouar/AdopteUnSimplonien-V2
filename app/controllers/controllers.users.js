@@ -104,6 +104,7 @@ exports.authenticate = function(req, res) {
  };
 
 exports.signup =  function(req, res) {
+  console.log(req.body);
   let data = req.body;
   data.token = jwt.encode(data.email, config.secret);
   User.findOne({
