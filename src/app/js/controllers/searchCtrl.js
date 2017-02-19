@@ -16,14 +16,14 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
 
     //////////////////////HANDLE FILTER/////////////////////
 
-    const filterLangage = (firstFilter, langages) => {
+    const filterLangage = (secondFilter, langages) => {
         const nameSpecialite = ['SpecialiteUn', 'SpecialiteDeux', 'SpecialiteTrois'];
         const nbLangage = langages.length;
         let langage3 = [];
         let langage2 = [];
         let langage1 = [];
 
-        angular.forEach(firstFilter, (value) => {
+        angular.forEach(secondFilter, (value) => {
             if (nbLangage > 0) {
                 let maitrise = 0;
                 angular.forEach(nameSpecialite, (val) => {
@@ -53,47 +53,62 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
         return [...langage3, ...langage2, ...langage1];
     }
 
+    const filterContrats = (firstFilter, Contrat) => {
+        let contrat5=[], contrat4=[], contrat3=[], contrat2=[], contrat1=[];
+        if (Contrat.length > 0) {
+            angular.forEach(firstFilter, (value) => {
+                let contratOk = 0;
+
+                angular.forEach(value.Contrat, (dataVal) => {
+                    angular.forEach(Contrat, (val) => {
+                        if (val === dataVal) {
+                            ++contratOk;
+                            console.log(contratOk, value.prenom);
+                        }
+                    })
+                })
+                switch (contratOk) {
+                    case 1:
+                    contrat1.push(value);
+                    break;
+                    case 2:
+                    contrat2.push(value);
+                    break;
+                    case 3:
+                    contrat3.push(value);
+                    break;
+                    case 4:
+                    contrat4.push(value);
+                    break;
+                    case 5:
+                    contrat5.push(value);
+                    break;
+                }
+            })
+            return [...contrat5, ...contrat4, ...contrat3, ...contrat2, ...contrat1]
+        } else {
+            return firstFilter;
+        }
+    }
+
     const searchFilter = () => {
         $scope.data = [];
 
-        const {Langage, Region, Contrat} = $scope.searchResult;
-        let contrat5=[], contrat4=[], contrat3=[], contrat2=[], contrat1=[];
+        const {Langage, Region, Contrat, Dispo} = $scope.searchResult;
+        let firstFilter = [];
 
         angular.forEach($scope.cardFull, (value, key) => {
-          if (Region === '' || Region === value.region) {
-            if (Contrat.length > 0) {
-              let contratOk = 0;
-              angular.forEach(value.Contrat, (dataVal) => {
-                angular.forEach(Contrat, (val) => {
-                  if (val === dataVal) {
-                    ++contratOk;
-                  }
-                })
-              })
-              switch (contratOk) {
-                case 1:
-                  contrat1.push(value);
-                  break;
-                case 2:
-                  contrat2.push(value);
-                  break;
-                case 3:
-                  contrat3.push(value);
-                  break;
-                case 4:
-                  contrat4.push(value);
-                  break;
-                case 5:
-                  contrat5.push(value);
-                  break;
-              }
-            } else {
-              contrat1.push(value);
+            let studentDate = value.dispo.split('/');
+            let studentDateTab = [parseInt(studentDate[2]), parseInt(studentDate[1]) - 1, parseInt(studentDate[0])]
+
+            if (Dispo === '' || Dispo.diff(moment(studentDateTab), 'days') > 0) {
+                if (Region === '' || Region === value.region) {
+                    firstFilter.push(value);
+                }
             }
-          }
         });
-        let firstFilter = [...contrat5,...contrat4,...contrat3,...contrat2,...contrat1];
-        $scope.data = filterLangage(firstFilter, Langage);
+        let secondFilter = filterContrats(firstFilter, Contrat);
+        $scope.data = filterLangage(secondFilter, Langage);
     };
 
     searchFilter();
@@ -108,28 +123,28 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     });
 
     $scope.filterDate = (time) => {
-      if ($scope.active !== time) {
-        $scope.active = time;
-        switch (time) {
-          case "now":
-            $scope.searchResult.Dispo = moment();
-            break;
-          case "one":
-            $scope.searchResult.Dispo = moment().add(1, 'month');
-            break;
-          case "two":
-            $scope.searchResult.Dispo = moment().add(2, 'month');
-            break;
-          case "three":
-            $scope.searchResult.Dispo = moment().add(3, 'month');
-            break;
-        }
+        if ($scope.active !== time) {
+            $scope.active = time;
+            switch (time) {
+                case "now":
+                $scope.searchResult.Dispo = moment();
+                break;
+                case "one":
+                $scope.searchResult.Dispo = moment().add(1, 'month');
+                break;
+                case "two":
+                $scope.searchResult.Dispo = moment().add(2, 'month');
+                break;
+                case "three":
+                $scope.searchResult.Dispo = moment().add(3, 'month');
+                break;
+            }
 
-      } else if ($scope.active === time) {
-        $scope.active = '';
-        $scope.searchResult.Dispo = "";
-      }
-      console.log(moment().diff(moment().add(1, 'month')));
+        } else if ($scope.active === time) {
+            $scope.active = '';
+            $scope.searchResult.Dispo = "";
+        }
+        searchFilter();
     };
 
     $scope.changeState = (item) => {
