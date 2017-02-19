@@ -236,7 +236,7 @@
             position: relative;
 
             .triangle {
-                outline: none;     
+                outline: none;
                 position: absolute;
                 left: 97px;
                 top: 20px;
@@ -249,7 +249,7 @@
         }
 
         .langage {
-            outline: none;    
+            outline: none;
             cursor: pointer;
             background-color: #425877;
             min-height: 100px;
@@ -273,7 +273,7 @@
         }
 
         .contrat {
-            outline: none;   
+            outline: none;
             cursor: pointer;
             background-color: #BBC1C6;
             min-height: 100px;
@@ -297,7 +297,7 @@
         }
 
         .dispo {
-            outline: none;   
+            outline: none;
             cursor: pointer;
             background-color: rgb(97,114,139);
             min-height: 100px;
@@ -340,6 +340,7 @@
     font-style: italic;
     font-size: 0.9em;
     color: rgb(42, 47, 60);
+    word-wrap: break-word;
   }
 }
 

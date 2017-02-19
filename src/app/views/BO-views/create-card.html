@@ -133,8 +133,10 @@
             </div>
             <div class="cont-BO-input">
                 <p for="boCreateTagsSimploniens">Compétences</p>
-                <input id="boCreateTagsSimploniens" class="input-BO-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
-                <button type="button" ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
+                <div class="input-competence">
+                  <input id="boCreateTagsSimploniens" class="input-BO-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
+                  <button type="button" ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
+                </div>
             </div>
             <ul class="tags-list">
                 <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}

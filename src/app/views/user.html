@@ -230,7 +230,7 @@
               <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
             </ul>
           </div>
-          <span class="error-msg" ng-if='ficheForm.$submitted && checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
+          <span class="error-msg" ng-if='ficheforme.$submitted && checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
           <h3 class="info-title-sm">Projets</h3>
           <div class="info-group">
             <div class="cont-input">
@@ -254,8 +254,8 @@
           <div>this form is valid : {{ficheForm.$valid}}</div>
           <!-- Submit Buttons -->
           <div class="button-container">
-            <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='createSimplonien()'>
-            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click=' updateStudent(student._id)'>
+            <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='ficheForm.$valid && createSimplonien()'>
+            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click='ficheForm.$valid && updateStudent(student._id)'>
             <input class="input-style delete-button" value="Supprimer sa fiche" ng-if="cardExist" type="button" ng-click="deleteCard(student._id)">
           </div>
         </form>

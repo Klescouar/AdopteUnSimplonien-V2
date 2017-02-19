@@ -12,6 +12,20 @@
           <div class="delete-user" ng-click="removeRegion(region._id)"></div>
       </div>
   </div>
+  
+  <div class="filter-card">
+      <h1>Contrats</h1>
+      <div class="input-add">
+      <input type="text" id="input" value="" ng-model="contract.name" placeholder="Contract..." class="input-FILTER-style"></input>
+      <button type="button" class="delete-filter-button" ng-click="addContract()">
+          <h4>Ajouter</h4>
+      </button>
+    </div>
+      <div ng-repeat="contract in contracts" class="filter-name">
+          <p>{{contract.name}}</p>
+          <div class="delete-user" ng-click="removeContract(contract._id)"></div>
+      </div>
+  </div>
 
     <div class="filter-card">
         <h1>Skills</h1>
@@ -24,20 +38,6 @@
         <div ng-repeat="skill in skills" class="filter-name">
             <p>{{skill.name}}</p>
             <div class="delete-user" ng-click="removeSkill(skill._id)"></div>
-        </div>
-    </div>
-
-    <div class="filter-card">
-        <h1>Contrats</h1>
-        <div class="input-add">
-        <input type="text" id="input" value="" ng-model="contract.name" placeholder="Contract..." class="input-FILTER-style"></input>
-        <button type="button" class="delete-filter-button" ng-click="addContract()">
-            <h4>Ajouter</h4>
-        </button>
-      </div>
-        <div ng-repeat="contract in contracts" class="filter-name">
-            <p>{{contract.name}}</p>
-            <div class="delete-user" ng-click="removeContract(contract._id)"></div>
         </div>
     </div>
 </div>

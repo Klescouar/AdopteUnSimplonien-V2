@@ -35,7 +35,6 @@ body{
   }
   .form-instruction, #photos-input{
     max-width: 220px;
-    text-align: center;
     margin: 5px 0;
   }
   #upload-pic {
@@ -67,9 +66,11 @@ body{
   color: rgb(115, 159, 190);
 
   .cont-input{
-    width: 50%;
-    min-width: 270px;
+    min-width: 50%;
+    width: 310px;
     color: black;
+    flex-wrap: wrap;
+
     button.tagViewVille{
       padding: 5px 3px 3px 3px;
       margin: 0;
@@ -87,6 +88,7 @@ body{
       align-items: center;
       justify-content: center;
     }
+
     &.calendar{
       flex-direction: row;
     }
@@ -94,6 +96,7 @@ body{
 
   .form-instruction{
     color: rgb(115, 159, 190);
+    text-align: center;
   }
 }
 
