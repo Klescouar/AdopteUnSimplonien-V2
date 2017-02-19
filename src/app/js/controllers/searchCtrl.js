@@ -63,7 +63,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
                     angular.forEach(Contrat, (val) => {
                         if (val === dataVal) {
                             ++contratOk;
-                            console.log(contratOk, value.prenom);
                         }
                     })
                 })
@@ -100,9 +99,12 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
         angular.forEach($scope.cardFull, (value, key) => {
             let studentDate = value.dispo.split('/');
             let studentDateTab = [parseInt(studentDate[2]), parseInt(studentDate[1]) - 1, parseInt(studentDate[0])]
-
-            if (Dispo === '' || Dispo.diff(moment(studentDateTab), 'days') > 0) {
-                if (Region === '' || Region === value.region) {
+            if (Region === '' || Region === value.region) {
+                if (Dispo === '') {
+                    firstFilter.push(value);
+                } else if (Dispo[1] < 3 && Dispo[0].diff(moment(studentDateTab), 'days') > 0) {
+                    firstFilter.push(value);
+                } else if (Dispo[1] === 3 && Dispo[0].diff(moment(studentDateTab), 'days') <= 0) {
                     firstFilter.push(value);
                 }
             }
@@ -130,13 +132,13 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
                 $scope.searchResult.Dispo = moment();
                 break;
                 case "one":
-                $scope.searchResult.Dispo = moment().add(1, 'month');
+                $scope.searchResult.Dispo = [moment().add(1, 'month'), 1];
                 break;
                 case "two":
-                $scope.searchResult.Dispo = moment().add(2, 'month');
+                $scope.searchResult.Dispo = [moment().add(2, 'month'), 2];
                 break;
                 case "three":
-                $scope.searchResult.Dispo = moment().add(3, 'month');
+                $scope.searchResult.Dispo = [moment().add(2, 'month'), 3];
                 break;
             }
 
