@@ -9,6 +9,7 @@ app.controller('modifyCardCtrl', ['$scope', '$stateParams', 'serviceStudent', 's
           if ($scope.student.dispo) {
              $scope.student.dispo = new Date($scope.student.dispo);
           }
+          console.log($scope.student.dispo);
           const path = '/assets/images/' + $scope.student.photo;
           let html = '';
               html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';

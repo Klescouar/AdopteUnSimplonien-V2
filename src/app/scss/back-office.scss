@@ -95,7 +95,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 75vw;
+		width: 74.46vw;
 		color: white;
 
 		h1 {
@@ -141,6 +141,7 @@
 			}
 			h2{
 				margin: 30px;
+				text-align: center;
 			}
 
 			.container-title {
@@ -238,11 +239,15 @@
 	background-color: transparent;
 	transition: 0.2s ease;
 	text-decoration: none;
+	h4{
+		margin: 5px;
+		font-size: 1.2em;
+	}
 	h1{
 		font-size: 1em;
 		margin: 5px;
 		color: white;
-		padding: 10px;
+		padding: 5px;
 		outline: none;
 	}
 }
@@ -412,8 +417,8 @@ width: 100%;
 	width: 100%;
 }
 
-.select-BO{
-
+.errorUpload{
+	color: red;
 }
 
 .input-BO-style {

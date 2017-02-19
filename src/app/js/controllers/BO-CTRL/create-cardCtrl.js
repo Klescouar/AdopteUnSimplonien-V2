@@ -1,6 +1,7 @@
 app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', function($scope, serviceFilter, serviceStudent){
   $scope.student = {};
   $scope.student.tags = [];
+  $scope.verifPic = true;
 
 
   $scope.createSimplonien = () => {
@@ -44,6 +45,7 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
   };
 
   $scope.addTag = function(tag) {
+    $scope.verifPic = false;
     if (tag.length !== 0) {
       $scope.student.tags.push(tag);
     } else {
@@ -94,6 +96,7 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
           alert(status);
       });
   }
+
   $scope.handleSuccess = (data) => {
       if (data.length > 0) {
           let html = '';
@@ -105,9 +108,10 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
           } else {
               html += '<a href="#" class="thumbnail">Invalid file type - ' + img.filename + '</a>';
           }
+          $('.errorUpload').html('')
           $('#upload-pic').html(html);
       } else {
-          alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+          $('.errorUpload').html('Format non conforme')
       }
   }
   // On form submit, handle the file uploads.

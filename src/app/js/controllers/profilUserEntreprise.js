@@ -36,8 +36,6 @@ $scope.updateUser = (id) => {
 	console.log($scope.member.company)
 	$scope.validate = true;
         	if ($scope.member.company != '' && $scope.member.firstName != '' && $scope.member.lastName != '' && $scope.member.email !='' ) {
-		 const response = confirm("Voulez vous vraiment modifier vos informations ?");
-		 if (response === true) {
 		     $scope.validate = false;
              	$timeout(function () {
               		$scope.validate = true;
@@ -50,7 +48,6 @@ $scope.updateUser = (id) => {
 		     }
 		     AuthService.updateUser(id, newInfos).then((res) => {
 		      })
-		 }
 	}
 };
 
