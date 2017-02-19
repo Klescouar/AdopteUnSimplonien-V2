@@ -3,6 +3,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     $scope.langages = serviceFilter.langages;
     $scope.themes = serviceFilter.themes;
     $scope.searchResult = serviceFilter.searchResult;
+    $scope.dispoTag = '';
     $scope.active = "";
     $scope.$emit('LOAD');
     $scope.$emit('UNLOAD');
@@ -128,19 +129,24 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
             switch (time) {
                 case "now":
                 $scope.searchResult.Dispo = moment();
+                $scope.dispoTag = 'Dès maintenant'
                 break;
                 case "one":
                 $scope.searchResult.Dispo = moment().add(1, 'month');
+                $scope.dispoTag = "Moins d'un mois"
                 break;
                 case "two":
                 $scope.searchResult.Dispo = moment().add(2, 'month');
+                $scope.dispoTag = "Moins de deux mois"
                 break;
                 case "three":
                 $scope.searchResult.Dispo = moment().add(3, 'month');
+                $scope.dispoTag = 'Plus de trois mois'
                 break;
             }
 
         } else if ($scope.active === time) {
+            $scope.dispoTag = '';
             $scope.active = '';
             $scope.searchResult.Dispo = "";
         }
@@ -229,6 +235,13 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
         }
         $scope.searchResult.Region = "";
         searchFilter();
+    };
+
+    $scope.deleteDispoTag = () => {
+      $scope.dispoTag = "";
+      $scope.searchResult.Dispo = "";
+      $scope.active = "";
+      searchFilter();
     };
 
     $scope.deleteTag = function(array, item, list){
