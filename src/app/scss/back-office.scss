@@ -95,7 +95,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 74vw;
+		width: 75vw;
 		color: white;
 
 		h1 {
@@ -364,6 +364,22 @@
 		background-color: transparent;
 
 	}
+}
+
+.BO-home{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		h1{
+			font-size: 4.5em;
+			padding: 40px;
+		}
+		p{
+			font-size: 1.7em;
+		}
 }
 
 .cont-BO-input{

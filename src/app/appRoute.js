@@ -125,6 +125,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('admin.home', {
+    url: '/home',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/BO-home.html',
+      }
+    }
+  })
   .state('admin.waitingCard', {
     url: '/waitingCard',
     views:{
