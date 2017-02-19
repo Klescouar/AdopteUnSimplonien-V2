@@ -1,34 +1,32 @@
 <div class="container-bo">
-    <div class="container-nav-bo">
-        <h1>
-            <a ui-sref="admin.waitingCard" ng-click="show = 7" class="effect-underline" ng-class="{'menu-active' : show === 7}">Fiches simplonien en attente</a>
-        </h1>
-        <h1>
-            <a ui-sref="admin.createAccount" ng-click="show = 1" class="effect-underline" ng-class="{'menu-active' : show === 1}">Créer un compte</a>
-        </h1>
-        <h1>
-            <a ui-sref="admin.deleteUser" ng-click="show = 2" class="effect-underline" ng-class="{'menu-active' : show === 2}">Supprimer un utilisateur</a>
-        </h1>
-        <h1>
-            <a ui-sref="admin.createCard" ng-click="show = 3" class="effect-underline" ng-class="{'menu-active' : show === 3}">Créer une fiche Simplonien</a>
-        </h1>
-        <h1>
-            <a ui-sref="admin.deleteCard" ng-click="show = 4" class="effect-underline" ng-class="{'menu-active' : show === 4}">
-                Modifier/supprimer une fiche Simplonien</a>
-        </h1>
-        <h1>
-            <a ui-sref="admin.handleFilter" ng-click="show = 6" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les filtres</a>
-        </h1>
-        <h1>
-            <a ui-sref="admin.handlePromo" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 8}">Gerer les promotions et fabriques</a>
-        </h1>
-        <h1>
-            <a ui-sref="admin.csv" ng-click="show = 9" class="effect-underline" ng-class="{'menu-active' : show === 9}">Télécharger CSV</a>
-        </h1>
+  <div class="container-nav-bo">
+    <h1>
+      <a ui-sref="admin.waitingCard" ng-click="show = 7" class="effect-underline" ng-class="{'menu-active' : show === 7}">Fiches simplonien en attente</a>
+    </h1>
+    <h1>
+      <a ui-sref="admin.createAccount" ng-click="show = 1" class="effect-underline" ng-class="{'menu-active' : show === 1}">Créer un compte</a>
+    </h1>
+    <h1>
+      <a ui-sref="admin.deleteUser" ng-click="show = 2" class="effect-underline" ng-class="{'menu-active' : show === 2}">Supprimer un utilisateur</a>
+    </h1>
+    <h1>
+      <a ui-sref="admin.createCard" ng-click="show = 3" class="effect-underline" ng-class="{'menu-active' : show === 3}">Créer une fiche Simplonien</a>
+    </h1>
+    <h1>
+      <a ui-sref="admin.deleteCard" ng-click="show = 4" class="effect-underline" ng-class="{'menu-active' : show === 4}">
+        Modifier/supprimer une fiche Simplonien</a>
+      </h1>
+      <h1>
+        <a ui-sref="admin.handleFilter" ng-click="show = 6" class="effect-underline" ng-class="{'menu-active' : show === 6}">Gerer les filtres</a>
+      </h1>
+      <h1>
+        <a ui-sref="admin.handlePromo" ng-click="show = 8" class="effect-underline" ng-class="{'menu-active' : show === 8}">Gerer les promotions et fabriques</a>
+      </h1>
+      <h1>
+        <a ui-sref="admin.csv" ng-click="show = 9" class="effect-underline" ng-class="{'menu-active' : show === 9}">Télécharger CSV</a>
+      </h1>
     </div>
 
-        <div class="container-interface" ui-view="admin_dashboard">
-            <h1 ng-if="show === 0">Welcome to your BackOffice Norbert!</h1>
-        </div>
+    <div class="container-interface" ui-view="admin_dashboard"></div>
 
-</div>
+  </div>

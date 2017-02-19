@@ -22,7 +22,7 @@
                             <p class="title">Localisation</p>
                         </div>
                         <input ng-click="changeFilterRegion()" ng-model="schoolData" type="button" value="{{region.name}}" name="button" ng-repeat="region in regions" ng-class="{'buttonFilterOff': !region.active, 'buttonFilterOn' : region.active}">
-                        <p class="gen-mess">D'autres regions seront bientôt disponibles</p>
+                        <p class="gen-mess">Bientôt d'autres régions disponibles!</p>
 
                     </div>
 
@@ -74,7 +74,7 @@
 
             <!-- TABLEAU DE BORD (AFFICHAGE DES TAGS) -->
             <div class="tagSearch">
-                <p ng-if="searchResult.Region.length === 0 && searchResult.Langage.length === 0 && searchResult.Contrat.length === 0">
+                <p ng-if="searchResult.Region.length === 0 && searchResult.Langage.length === 0 && searchResult.Contrat.length === 0 && searchResult.Dispo.length === 0">
                     Aucun filtre sélectionné...
                 </p>
                 <div class="tagViewVille" ng-if="searchResult.Region.length > 0">
@@ -88,6 +88,10 @@
                 <div class="tagViewCont" ng-repeat="cont in searchResult.Contrat">
                     {{cont}}
                     <div class="closeButton" ng-click="deleteTag(searchResult.Contrat, cont, contracts)"></div>
+                </div>
+                <div class="tagViewVille" ng-if="dispoTag.length > 0">
+                    {{dispoTag}}
+                    <div class="closeButton" ng-click="deleteDispoTag()"></div>
                 </div>
             </div>
             <div class="cont-loading" ng-show="loading">

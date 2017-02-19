@@ -1,42 +1,42 @@
 .searchPage {
-    display: flex;
-    min-height: calc(100vh - 110px);
+  display: flex;
+  min-height: calc(100vh - 110px);
 }
 
 .tagSearch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    font-size: 2em;
-    color: #686e7e;
-    min-height: 70px;
-    max-height: 100px;
-    width: 100%;
-    background-color: rgb(64,71,90);
-    margin: 0 7px;
-    border: 1px dashed #3B8BED;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 2em;
+  color: #686e7e;
+  min-height: 70px;
+  max-height: 100px;
+  width: 100%;
+  background-color: rgb(64,71,90);
+  margin: 0 7px;
+  border: 1px dashed #3B8BED;
 
-    p {
-        margin: 0;
-        padding: 10px;
-        text-align: center;
-    }
+  p {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+  }
 }
 
 .position-error-mess {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 97%;
 
-    .null {
-        position: relative;
-        // left: -75%;
-        color: #686e7e;
-        font-size: 2em;
-        text-align: center;
-    }
+  .null {
+    position: relative;
+    // left: -75%;
+    color: #686e7e;
+    font-size: 2em;
+    text-align: center;
+  }
 }
 
 .tagViewLang, .tagViewVille, .tagViewCont{
@@ -52,14 +52,14 @@
 }
 
 .tagViewLang {
-    background-color: #2c3d4e;
+  background-color: #2c3d4e;
 }
 
 .tagViewVille {
-    background-color: #678eb5;
+  background-color: #678eb5;
 }
 .tagViewCont {
-    background-color: #47637F;
+  background-color: #47637F;
 }
 
 // .no-filter{
@@ -67,132 +67,132 @@
 // }
 
 .closeButton {
-    width: 9px;
-    height: 9px;
-    margin-left: 10px;
-    margin-right: 4px;
-    background-image: url("../../assets/images/multiply.png");
-    background-position: center;
-    background-size: cover;
-    cursor: pointer;
+  width: 9px;
+  height: 9px;
+  margin-left: 10px;
+  margin-right: 4px;
+  background-image: url("../../assets/images/multiply.png");
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
 }
 
 .cardPage {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #40475A;
+  padding: 7px;
+  width: 100%;
+  // height: 100%;
+
+  .card {
+    overflow: hidden;
+    margin: 7px;
+    height: 400px;
+    background-color: white;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    background-color: #40475A;
-    padding: 7px;
-    width: 100%;
-    // height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    flex-basis: 300px;
+    width: 19%;
+    max-width: 450px;
+    text-align: center;
+    color: #40475A;
+    cursor: pointer;
+    transition: 0.1s all;
 
-    .card {
-      overflow: hidden;
-        margin: 7px;
-        height: 400px;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        flex-grow: 1;
-        flex-basis: 300px;
-        width: 19%;
-        max-width: 450px;
-        text-align: center;
-        color: #40475A;
-        cursor: pointer;
-        transition: 0.1s all;
-
-        .topCard {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .botCard {
-            background-color: rgba(115,159,190,0.85);
-            color: white;
-            border-top: 1px solid #40475A;
-            width: 100%;
-            height: 75px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            p {
-                padding: 4px;
-                margin: 0;
-            }
-        }
+    .topCard {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-    .card:hover {
-        background-color: rgb(240, 240, 240 );
-        text-decoration: none;
-        transition: 0.1s all;
+    .botCard {
+      background-color: rgba(115,159,190,0.85);
+      color: white;
+      border-top: 1px solid #40475A;
+      width: 100%;
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        padding: 4px;
+        margin: 0;
+      }
     }
+  }
+
+  .card:hover {
+    background-color: rgb(240, 240, 240 );
+    text-decoration: none;
+    transition: 0.1s all;
+  }
 }
 
 .searchBar {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .flex {
-    display: flex;
-    height: 97%;
+  display: flex;
+  height: 97%;
 }
 
 .inputForm {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    width: 284px;
-    height: 59px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 284px;
+  height: 59px;
 
-    input {
-        width: 100%;
-        height: 57px;
-        border-radius: 0;
-        border: none;
-        color: black;
-    }
+  input {
+    width: 100%;
+    height: 57px;
+    border-radius: 0;
+    border: none;
+    color: black;
+  }
 
-    .searchImage {
-        background-image: url('../../assets/images/magnifying-glass.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 40px;
-        width: 30%;
-        margin: auto;
-        border-color: rgb(158, 158, 158);
-    }
+  .searchImage {
+    background-image: url('../../assets/images/magnifying-glass.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 30%;
+    margin: auto;
+    border-color: rgb(158, 158, 158);
+  }
 }
 
 .studentPic {
-    height: 150px;
-    width: 150px;
-    background: no-repeat  center;
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #5c769c;
+  height: 150px;
+  width: 150px;
+  background: no-repeat  center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #5c769c;
 
-    // img {
+  // img {
 
-    //     background: center /cover;
-    //     background-size: 100% 100%;
+  //     background: center /cover;
+  //     background-size: 100% 100%;
 
-    // }
+  // }
 }
 
 .contract-box{
@@ -203,134 +203,134 @@
 }
 
 .filterMain {
-    height: 99%;
-    width: 315px;
+  height: 99%;
+  width: 315px;
 }
 
 .filterRight {
-    height: 98%;
-    display: block;
-    background-color: rgb(118,161,192);
+  height: 98%;
+  display: block;
+  background-color: rgb(118,161,192);
 }
 
 .filterChoice {
-    //display: flex;
+  //display: flex;
+  height: 100%;
+
+  .filterTheme {
+    width: 40%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 
-    .filterTheme {
-        width: 40%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+    .promo {
+      outline: none;
+      cursor: pointer;
+      background-color: #2E3E53;
+      min-height: 100px;
+      width: 100px;
+      background-image: url('../../assets/images/placeholder.png');
+      background-size: 40%;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
 
-        .promo {
-            outline: none;
-            cursor: pointer;
-            background-color: #2E3E53;
-            min-height: 100px;
-            width: 100px;
-            background-image: url('../../assets/images/placeholder.png');
-            background-size: 40%;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-
-            .triangle {
-                outline: none;
-                position: absolute;
-                left: 97px;
-                top: 20px;
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 30px 0 30px 30px;
-                border-color: transparent transparent transparent #2E3E53;
-            }
-        }
-
-        .langage {
-            outline: none;
-            cursor: pointer;
-            background-color: #425877;
-            min-height: 100px;
-            width: 100px;
-            background-image: url('../../assets/images/code.png');
-            background-position: center;
-            background-size: 40%;
-            background-repeat: no-repeat;
-            position: relative;
-
-            .triangle {
-                position: absolute;
-                left: 97px;
-                top: 20px;
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 30px 0 30px 30px;
-                border-color: transparent transparent transparent #425877;
-            }
-        }
-
-        .contrat {
-            outline: none;
-            cursor: pointer;
-            background-color: #BBC1C6;
-            min-height: 100px;
-            width: 100px;
-            background-image: url('../../assets/images/contract.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 40%;
-            position: relative;
-
-            .triangle {
-                position: absolute;
-                left: 97px;
-                top: 20px;
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 30px 0 30px 30px;
-                border-color: transparent transparent transparent #BBC1C6;
-            }
-        }
-
-        .dispo {
-            outline: none;
-            cursor: pointer;
-            background-color: rgb(97,114,139);
-            min-height: 100px;
-            width: 100px;
-            background-image: url('../../assets/images/clock.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 40%;
-            position: relative;
-
-            .triangle {
-                position: absolute;
-                left: 97px;
-                top: 20px;
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 30px 0 30px 30px;
-                border-color: transparent transparent transparent rgb(97,114,139);
-            }
-        }
-
-        .gradient {
-            height: 100%;
-            width: 100px;
-            background: rgb(187, 193, 198);
-            background: -moz-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
-            background: -webkit-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
-            background: -o-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
-            background: -ms-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
-            background: linear-gradient(180deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
-        }
+      .triangle {
+        outline: none;
+        position: absolute;
+        left: 97px;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 30px 0 30px 30px;
+        border-color: transparent transparent transparent #2E3E53;
+      }
     }
+
+    .langage {
+      outline: none;
+      cursor: pointer;
+      background-color: #425877;
+      min-height: 100px;
+      width: 100px;
+      background-image: url('../../assets/images/code.png');
+      background-position: center;
+      background-size: 40%;
+      background-repeat: no-repeat;
+      position: relative;
+
+      .triangle {
+        position: absolute;
+        left: 97px;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 30px 0 30px 30px;
+        border-color: transparent transparent transparent #425877;
+      }
+    }
+
+    .contrat {
+      outline: none;
+      cursor: pointer;
+      background-color: #BBC1C6;
+      min-height: 100px;
+      width: 100px;
+      background-image: url('../../assets/images/contract.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      position: relative;
+
+      .triangle {
+        position: absolute;
+        left: 97px;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 30px 0 30px 30px;
+        border-color: transparent transparent transparent #BBC1C6;
+      }
+    }
+
+    .dispo {
+      outline: none;
+      cursor: pointer;
+      background-color: rgb(97,114,139);
+      min-height: 100px;
+      width: 100px;
+      background-image: url('../../assets/images/clock.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      position: relative;
+
+      .triangle {
+        position: absolute;
+        left: 97px;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 30px 0 30px 30px;
+        border-color: transparent transparent transparent rgb(97,114,139);
+      }
+    }
+
+    .gradient {
+      height: 100%;
+      width: 100px;
+      background: rgb(187, 193, 198);
+      background: -moz-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
+      background: -webkit-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
+      background: -o-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
+      background: -ms-linear-gradient(90deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
+      background: linear-gradient(180deg, rgb(187, 193, 198) 0%, rgb(247, 247, 247) 28%);
+    }
+  }
 }
 
 .filter-place{
@@ -345,271 +345,271 @@
 }
 
 .filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 170px);
+  width: 184px;
+  background-color: rgba(115,159,190,0.85);
+
+  .cont-filter-title{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: calc(100vh - 170px);
-    width: 184px;
-    background-color: rgba(115,159,190,0.85);
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: 23px;
+    margin-bottom: 20px;
 
-    .cont-filter-title{
-        display: flex;
-        justify-content:center;
-        align-items:center;
-        width: 100%;
-        height: 23px;
-        margin-bottom: 20px;
-
-            .title{
-                font-size: 14px;
-                text-align: center;
-                margin-bottom: 0px;
-                font-weight: bold;
-            }
+    .title{
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 0px;
+      font-weight: bold;
     }
+  }
 
-    .place{
-        background-color: #2E3E53;
-    }
+  .place{
+    background-color: #2E3E53;
+  }
 
-    .lang{
-        background-color: #425877;
-    }
+  .lang{
+    background-color: #425877;
+  }
 
-    .dispo{
-        background-color: #61728b;
-    }
+  .dispo{
+    background-color: #61728b;
+  }
 
-    .contact{
-        background-color: #BBC1C6;
-    }
+  .contact{
+    background-color: #BBC1C6;
+  }
 
 
 
-    input{
-        margin-top: 5px;
-    }
+  input{
+    margin-top: 5px;
+  }
 
-    .buttonFilterOff {
-        width: 100%;
-        height: 25px;
-        border: none;
-        cursor: pointer;
-        background-color: transparent;
-        color: white;
-    }
+  .buttonFilterOff {
+    width: 100%;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+  }
 
-    .buttonFilterOff:hover {
-        background-color: rgba(156, 189, 212, 0.85);
-    }
+  .buttonFilterOff:hover {
+    background-color: rgba(156, 189, 212, 0.85);
+  }
 
-    .buttonFilterOn {
-        width: 100%;
-        height: 25px;
-        border: none;
-        cursor: pointer;
-        background-color: rgb(236, 234, 234);
-        color: black;
-    }
+  .buttonFilterOn {
+    width: 100%;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(236, 234, 234);
+    color: black;
+  }
 }
 
 
 // MEDIA QUERIES
 @media screen and (max-width: 870px) {
-    .tagSearch {
-        min-height: 70px;
-        max-height: 150px;
-    }
+  .tagSearch {
+    min-height: 70px;
+    max-height: 150px;
+  }
 }
 @media screen and (max-width: 640px) {
-    .searchPage {
+  .searchPage {
+    width: 100%;
+
+    .searchBar {
+      width: 100%;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .filterChoice {
+    width: 100%;
+    height: auto;
+
+    .filterTheme {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      height: 80px;
+
+      .promo {
+        outline: 0;
+        min-height: 80px;
         width: 100%;
+        background-size: 30%;
 
-        .searchBar {
-            width: 100%;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
+        .triangle {
+          display: none;
         }
-    }
+      }
 
-    .filterChoice {
+      .langage {
+        min-height: 80px;
         width: 100%;
-        height: auto;
+        background-size: 30%;
 
-        .filterTheme {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            height: 80px;
-
-            .promo {
-                outline: 0;
-                min-height: 80px;
-                width: 100%;
-                background-size: 30%;
-
-                .triangle {
-                    display: none;
-                }
-            }
-
-            .langage {
-                min-height: 80px;
-                width: 100%;
-                background-size: 30%;
-
-                .triangle {
-                    display: none;
-                }
-            }
-
-            .dispo {
-                min-height: 80px;
-                width: 100%;
-                background-size: 30%;
-
-                .triangle {
-                    display: none;
-                }
-            }
-
-            .contrat {
-                min-height: 80px;
-                width: 100%;
-                background-size: 30%;
-
-                .triangle {
-                    display: none;
-                }
-            }
-
-            .gradient {
-                display: none;
-            }
+        .triangle {
+          display: none;
         }
-    }
+      }
 
-    .filterMain {
+      .dispo {
+        min-height: 80px;
         width: 100%;
-        height: auto;
-        min-height: auto;
-    }
+        background-size: 30%;
 
-    .flex {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-    }
+        .triangle {
+          display: none;
+        }
+      }
 
-    .filter {
-
-        display: block;
-        // flex-direction: row;
-        // justify-content: center;
-        // align-items: center;
-
+      .contrat {
+        min-height: 80px;
         width: 100%;
-        flex-wrap: wrap;
-        background-color: rgba(115,159,190,0.85);
-        padding-top: 0px;
-        padding-bottom: 15px;
-        font-size: 0.8em;
-        color: black;
-        min-height: 0px;
+        background-size: 30%;
 
-        .buttonFilterOff {
-            width: 33%;
-            height: 25px;
-            border: none;
-            cursor: pointer;
+        .triangle {
+          display: none;
         }
+      }
 
-        .buttonFilterOn {
-            width: 150px;
-            height: 25px;
-            cursor: pointer;
-            color: black;
-        }
+      .gradient {
+        display: none;
+      }
+    }
+  }
 
-        .buttonFilterOn:hover {
-            background-color: white;
-        }
+  .filterMain {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .filter {
+
+    display: block;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: rgba(115,159,190,0.85);
+    padding-top: 0px;
+    padding-bottom: 15px;
+    font-size: 0.8em;
+    color: black;
+    min-height: 0px;
+
+    .buttonFilterOff {
+      width: 33%;
+      height: 25px;
+      border: none;
+      cursor: pointer;
     }
 
-    .filterRight {
-            height: 100%;
-
-            .filter-place{
-              p{
-              margin-top: 0px;
-              }
-            }
+    .buttonFilterOn {
+      width: 150px;
+      height: 25px;
+      cursor: pointer;
+      color: black;
     }
 
-    .null {
-        // left: -45%;
-        // top: 200px;
-        font-size: 1em;
+    .buttonFilterOn:hover {
+      background-color: white;
     }
+  }
+
+  .filterRight {
+    height: 100%;
+
+    .filter-place{
+      p{
+        margin-top: 0px;
+      }
+    }
+  }
+
+  .null {
+    // left: -45%;
+    // top: 200px;
+    font-size: 1em;
+  }
 }
 
 .cardPage {
-    .cont-loading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
+  .cont-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 
-        .loading {
-            box-sizing: border-box;
-            margin-bottom: 50px;
-            width: 80px;
-            height: 80px;
-            border-radius: 100%;
-            border: 7px solid rgba(255, 255, 255, 0.2);
-            border-top-color: #FFF;
-            animation: spin 1s infinite linear;
-        }
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+    .loading {
+      box-sizing: border-box;
+      margin-bottom: 50px;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      border: 7px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #FFF;
+      animation: spin 1s infinite linear;
     }
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
 }
 
 .sticktotop {
-    position: fixed;
-    top: 0;
+  position: fixed;
+  top: 0;
 }
 
 .marginToFix {
-    margin-left: 284px;
+  margin-left: 284px;
 }
 
 .marginToFix2 {
-    margin-left: 25vw;
-    background-color: black;
+  margin-left: 25vw;
+  background-color: black;
 }
 
 .delay {
-    -moz-animation: delay 0.4s;
-    -webkit-animation: delay 0.4s;
-    animation: delay 0.4s;
+  -moz-animation: delay 0.4s;
+  -webkit-animation: delay 0.4s;
+  animation: delay 0.4s;
 }
 // ANIMATION
 @keyframes delay {
-    0% {
-        color: transparent;
-    }
+  0% {
+    color: transparent;
+  }
 
-    60% {
-        color: transparent;
-    }
+  60% {
+    color: transparent;
+  }
 
-    100% {
-        color: #686e7e;
-    }
+  100% {
+    color: #686e7e;
+  }
 }

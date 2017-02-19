@@ -1,4 +1,4 @@
-app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams','$timeout', 
+app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$window', 'serviceMailer', '$stateParams','$timeout',
  function($scope, $rootScope, AuthService, $state, $window, serviceMailer, $stateParams,$timeout) {
     $scope.acountState = true;
     $scope.emailVerified = false;
@@ -38,7 +38,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                 } else if(response.data.user.role === 'Recruteur') {
                     $state.go('profilUserRecruiter');
                 } else if (response.data.user.role === 'Admin') {
-                  $state.go('admin');
+                  $state.go('admin.home');
                 }
                 return response;
             }

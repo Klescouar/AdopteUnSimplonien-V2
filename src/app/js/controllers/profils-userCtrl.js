@@ -104,7 +104,9 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       } else {
         $scope.cardExist = true;
         $scope.student = response.data;
-        $scope.student.dispo = new Date($scope.student.dispo)
+        if ($scope.student.dispo) {
+           $scope.student.dispo = new Date($scope.student.dispo);
+        }
         const path = '/assets/images/' + $scope.student.photo;
         let html = '';
         html += '<img src="' + path + '" alt="' + $scope.student.photo + '">';
@@ -214,7 +216,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         tags: $scope.student.tags,
         description: $scope.student.description,
         Sexe: $scope.student.Sexe,
-        dispo: moment($scope.student.dispo, "DD/MM/YYYY"),
+        dispo: $scope.student.dispo,
         SpecialiteUn: $scope.student.SpecialiteUn,
         SpecialiteDeux: $scope.student.SpecialiteDeux,
         SpecialiteTrois: $scope.student.SpecialiteTrois,
