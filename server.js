@@ -63,44 +63,44 @@ apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.post('/valid/mail', user.validMail);
 apiRoutes.post('/forget/pass/:mail' , user.forgetPassword);
 apiRoutes.get('/users', user.RecruiterUsers);
-apiRoutes.put('/update/user/:id', user.updateUser);
-apiRoutes.put('/update/pass/profil/:id', user.updateUserPassFromProfil);
+apiRoutes.put('/update/user/:id', passport.authenticate('jwt', {session: false}), user.updateUser);
+apiRoutes.put('/update/pass/profil/:id', passport.authenticate('jwt', {session: false}), user.updateUserPassFromProfil);
 apiRoutes.put('/update/pass/reset', user.resetPass);
 apiRoutes.get('/memberinfo', user.memberinfo);
-apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}), user.remove);
-apiRoutes.get('/csv/recruiter', csv.getCsvRecruiter);
-apiRoutes.get('/csv/student', csv.getCsvStudent);
-apiRoutes.get('/csv/studentProfil', csv.getCsvStudentProfil);
+apiRoutes.delete('/memberinfo/delete/:id', passport.authenticate('jwt', {session: false}),  passport.authenticate('jwt', {session: false}), user.remove);
+apiRoutes.get('/csv/recruiter', passport.authenticate('jwt', {session: false}), csv.getCsvRecruiter);
+apiRoutes.get('/csv/student', passport.authenticate('jwt', {session: false}), csv.getCsvStudent);
+apiRoutes.get('/csv/studentProfil', passport.authenticate('jwt', {session: false}), csv.getCsvStudentProfil);
 
 /////////////////////////SKILLS CONTROLLER/////////////////////////
-apiRoutes.post('/addSkill', skill.addSkill);
+apiRoutes.post('/addSkill', passport.authenticate('jwt', {session: false}), skill.addSkill);
 apiRoutes.get('/getAllSkill', skill.getAllSkill);
 apiRoutes.delete('/removeSkill/:id', passport.authenticate('jwt', {session: false}), skill.removeSkill);
 
 /////////////////////////CONTRACTS CONTROLLER/////////////////////////
-apiRoutes.post('/addContract', contract.addContract);
+apiRoutes.post('/addContract', passport.authenticate('jwt', {session: false}), contract.addContract);
 apiRoutes.get('/getAllContract', contract.getAllContract);
 apiRoutes.delete('/removeContract/:id', passport.authenticate('jwt', {session: false}), contract.removeContract);
 
 /////////////////////////SCHOOLS CONTROLLER/////////////////////////
-apiRoutes.post('/addSchool', school.addSchool);
+apiRoutes.post('/addSchool', passport.authenticate('jwt', {session: false}), school.addSchool);
 apiRoutes.get('/getAllSchool', school.getAllSchool);
 apiRoutes.delete('/removeSchool/:id', passport.authenticate('jwt', {session: false}), school.removeSchool);
 
 /////////////////////////REGION CONTROLLER/////////////////////////
-apiRoutes.post('/addRegion', region.addRegion);
+apiRoutes.post('/addRegion', passport.authenticate('jwt', {session: false}), region.addRegion);
 apiRoutes.get('/getAllRegion', region.getAllRegion);
 apiRoutes.delete('/removeRegion/:id', passport.authenticate('jwt', {session: false}), region.removeRegion);
 
 /////////////////////////SCHOOLS CONTROLLER/////////////////////////
-apiRoutes.post('/addPromo', promo.addPromo);
+apiRoutes.post('/addPromo', passport.authenticate('jwt', {session: false}), promo.addPromo);
 apiRoutes.get('/getAllPromo', promo.getAllPromo);
 apiRoutes.delete('/removePromo/:id', passport.authenticate('jwt', {session: false}), promo.removePromo);
 
 /////////////////////////STUDENT CONTROLLER/////////////////////////
 apiRoutes.get('/backOffice/infoStudent', student.infoStudent);
-apiRoutes.get('/backOffice/infoStudent/:id_profil', student.findStudent);
-apiRoutes.get('/backOffice/infoStudent/fromMember/:memberId', student.findStudentByMemberId);
+apiRoutes.get('/backOffice/infoStudent/:id_profil', passport.authenticate('jwt', {session: false}), student.findStudent);
+apiRoutes.get('/backOffice/infoStudent/fromMember/:memberId', passport.authenticate('jwt', {session: false}), student.findStudentByMemberId);
 apiRoutes.delete('/backOffice/removeStudent/:id_profil', passport.authenticate('jwt', {session: false}), student.removeStudent);
 apiRoutes.delete('/backOffice/removeStudentFromUser/:id_profil', passport.authenticate('jwt', {session: false}), student.removeStudentFromUser);
 apiRoutes.delete('/backOffice/removeStudentPhoto/:photo', passport.authenticate('jwt', {session: false}), student.removeStudentPhoto);
