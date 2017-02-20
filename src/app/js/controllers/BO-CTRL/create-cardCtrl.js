@@ -108,10 +108,10 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
           } else {
               html += '<a href="#" class="thumbnail">Invalid file type - ' + img.filename + '</a>';
           }
-          $('.errorUpload').html('')
+          $('.errorUpload').html('');
           $('#upload-pic').html(html);
       } else {
-          $('.errorUpload').html('Format non conforme')
+          $('.errorUpload').html('Format non conforme');
       }
   }
   // On form submit, handle the file uploads.

@@ -89,7 +89,7 @@
   .card {
     overflow: hidden;
     margin: 7px;
-    height: 422px;
+    height: 430px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -204,7 +204,7 @@
 
 .filterMain {
   height: 99%;
-  width: 315px;
+  //width: 315px;
 }
 
 .filterRight {
@@ -340,6 +340,7 @@
     font-style: italic;
     font-size: 0.9em;
     color: rgb(42, 47, 60);
+    width: 100%;
     word-wrap: break-word;
   }
 }
