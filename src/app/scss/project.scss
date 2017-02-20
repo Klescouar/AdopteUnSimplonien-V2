@@ -193,11 +193,11 @@
 }
 /* flip the pane when hovered */
 .flip-cont-description.hover .flip-description {
-	-webkit-transform: perspective(1000px) rotateY(180deg);
-	-moz-transform: perspective(1000px) rotateY(180deg);
-	-ms-transform: perspective(1000px) rotateY(180deg);
-	-o-transform: perspective(1000px) rotateY(180deg);
-	transform: perspective(1000px) rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
@@ -268,20 +268,20 @@
 /* front pane, placed above back */
 .flip-description-simplon {
 	z-index: 2;
-	-webkit-transform: perspective(1000px) rotateY(0deg);
-	-moz-transform: perspective(1000px) rotateY(0deg);
-	-ms-transform: perspective(1000px) rotateY(0deg);
-	-o-transform: perspective(1000px) rotateY(0deg);
-	transform: perspective(1000px) rotateY(0deg);
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+	-o-transform: rotateY(0deg);
+	transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .flip-description-simplon-back {
-	-webkit-transform: perspective(1000px) rotateY(180deg);
-	-moz-transform: perspective(1000px) rotateY(180deg);
-	-ms-transform: perspective(1000px) rotateY(180deg);
-	-o-transform: perspective(1000px) rotateY(180deg);
-	transform: perspective(1000px) rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 
 
 	.corpus-description{
@@ -379,6 +379,11 @@
 			}
 		}
 	}
+
+		.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{			
+			width: 480px;
+			height: 480px;
+		}
 }
 
 @media screen and (max-width: 800px){
