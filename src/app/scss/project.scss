@@ -6,6 +6,7 @@
 		display: flex;
 		justify-content:space-around;
 		align-items:center;
+		flex-wrap: wrap;
 		background: linear-gradient(rgba(115,159,190,0.30), rgba(115,159,190,0.30)), url("../../assets/images/simplonien.png") no-repeat center / cover;
 		min-height: calc(100vh - 60px);
 		padding: 20px;
@@ -73,6 +74,7 @@
 			background-color: #87adc7;
 		}
 	}
+
 	.cont-middle-size{
 		height: 100vh;
 	}
@@ -223,9 +225,6 @@
 .description-simplon, .flip-description-simplon{
 	padding: 50px;
 }
-
-
-
 
 /* flip speed goes here */
 .flip-description {
