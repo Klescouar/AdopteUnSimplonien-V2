@@ -4,6 +4,7 @@
     justify-content: space-between;
     overflow: hidden;
     position: relative;
+    min-height: calc(100vh - 110px);
     h1 {
         font-size: 1.4em;
         font-weight: bold;
@@ -21,8 +22,7 @@
         width: 40%;
         padding: 20px 30px;
         background-color: #40475A;
-        height: 100%;
-        height: calc(100vh - 110px);
+        
     }
 
     .cont-input{
@@ -63,6 +63,7 @@
         background-color: transparent;
         border: 1px solid #fff;
         transition: all 0.1s ease-in-out;
+        margin-top: 20px;
     }
 
     .submit-button:hover {
@@ -75,7 +76,6 @@
     position: relative;
     z-index: 999;
     width: 70%;
-    height: calc(100vh - 110px);
     background-color: #829be0;
     overflow: hidden;
     display: block;
