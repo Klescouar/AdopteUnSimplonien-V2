@@ -135,7 +135,7 @@
 	opacity: 0.9;
 }
 
-.description-show-rigth{
+.description-show-right{
 	transition: all 1s;
 	left: 65%;
 	margin-top: -250px;
@@ -301,7 +301,7 @@
 		right: 60%;
 	}
 
-	.description-show-rigth{
+	.description-show-right{
 		left: 60%;
 	}
 }
@@ -310,7 +310,7 @@
 	.description-show-left{
 		right: 55%;
 	}
-	.description-show-rigth{
+	.description-show-right{
 		left: 55%;
 	}
 	.title-right{
@@ -325,11 +325,6 @@
 @media screen and (max-width: 1200px){
 	.main-cont-project{
 		.cont-img-description {
-			display: flex;
-			flex-direction:column;
-			align-items:center;
-			justify-content: center;
-
 			.title-project{
 				width:700px;
 			}
@@ -374,7 +369,7 @@
 		.cont-img-description-simplon{
 			justify-content:center;
 
-			.description-show-rigth{
+			.description-show-right{
 				margin-left: auto;
 				margin-right: auto;
 				left:0;
@@ -393,6 +388,10 @@
 @media screen and (max-width: 1000px){
 
 	.main-cont-project{
+
+		.cont-img-description{
+			flex-direction:column;
+		}
 		.cont-img-description-simplonien{
 			.title-right{
 				margin-bottom: 90%;
@@ -413,10 +412,7 @@
 			padding: 30px;
 		}
 		.cont-img-description-simplonien{
-			display: flex;
 			flex-direction:column-reverse;
-			justify-content:center;
-			align-items:center;
 
 			.title-right{
 				margin-bottom: 20px;
@@ -424,32 +420,10 @@
 		}
 
 		.cont-img-description-simplon{
-			display: flex;
 			flex-direction:column;
-			justify-content:center;
-			align-items:center;
-
 			.title-left{
 				margin-bottom: 20px;
 			}
-		}
-	}
-
-	@media (max-width: 800px) and (orientation: landscape){
-		.main-cont-project{
-			.cont-middle-size{
-				height: 600px;
-			}
-			.cont-top-size, .cont-last-size{
-				height: 700px;
-			}
-		}
-		.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{
-			height: 400px;
-			width: 400px;
-		}
-		.description-simplon, .flip-description-simplon{
-			padding: 30px;
 		}
 	}
 
@@ -468,8 +442,25 @@
 	}
 }
 
-@media screen and (max-width: 600px){
+@media (max-width: 800px) and (orientation: landscape){
+	.main-cont-project{
+		.cont-middle-size{
+			height: 600px;
+		}
+		.cont-top-size, .cont-last-size{
+			height: 700px;
+		}
+	}
+	.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{
+		height: 400px;
+		width: 400px;
+	}
+	.description-simplon, .flip-description-simplon{
+		padding: 30px;
+	}
+}
 
+@media screen and (max-width: 600px){
 	.main-cont-project{
 		.cont-img-description{
 			padding: 0px;
