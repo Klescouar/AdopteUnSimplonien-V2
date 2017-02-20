@@ -1,14 +1,5 @@
 app.service("serviceFilter", function($http, API_ENDPOINT) {
 
-    this.searchResult = {
-        maxLangage: 3,
-        maxContrat: 5,
-        Langage: [],
-        Region: "",
-        Contrat: [],
-        Dispo: ""
-    };
-
     this.themes = [
         {
             name: 'Promo',
