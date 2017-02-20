@@ -10,13 +10,22 @@ body{
 .choose-pic{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  p{
-    font-style: italic;
-    font-size: 0.9em;
-    margin: 0;
-    padding: 2px;
+  color: white;
+
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9;
   }
+
+  .tab-name{
+    margin: 0;
+  }
+
   #upload-photos{
     display: flex;
     flex-direction: column;
@@ -24,8 +33,9 @@ body{
     align-items: center;
     margin-bottom: 10px;
   }
-  #photos-input{
-    max-width: 400px;
+  .form-instruction, #photos-input{
+    max-width: 220px;
+    margin: 5px 0;
   }
   #upload-pic {
     height: 150px;
@@ -50,18 +60,17 @@ body{
 .global-profile-container{
   width: $full;
   max-width: 700px;
-  background-color: rgba(115, 159, 190, 0.85);
+  background-color: rgba(115, 159, 190, 1);
   display: flex;
   flex-direction: column;
-
-  .cont-calendar{
-    width: 50%;
-    color: black;
-  }
+  color: rgb(115, 159, 190);
 
   .cont-input{
-    width: 50%;
+    min-width: 50%;
+    width: 310px;
     color: black;
+    flex-wrap: wrap;
+
     button.tagViewVille{
       padding: 5px 3px 3px 3px;
       margin: 0;
@@ -69,22 +78,30 @@ body{
       font-size: 1em;
     }
 
-    input:hover {
-      outline: none;
-    }
-
-    input:focus {
+    input:focus, textarea:focus {
       border-bottom: 1px solid #2F3E52;
       outline: none;
     }
 
-    &.full-width{
+    &.full-width, &.calendar{
       width: 100%;
-      input{
-        min-width: 50px;
-      }
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.calendar{
+      flex-direction: row;
     }
   }
+
+  .form-instruction{
+    color: rgb(115, 159, 190);
+    text-align: center;
+  }
+}
+
+.md-button{
+  padding: 0;
 }
 
 .tab-container{
@@ -100,6 +117,8 @@ body{
     cursor: pointer;
     padding: 0 10px;
     text-align: center;
+    border: none;
+    outline: none;
     .tab-name{
       font-size: 1.2em;
       font-weight: bold;
@@ -107,17 +126,16 @@ body{
     }
   }
   .border-focus{
-    border: 1px solid rgba(115, 159, 190, 0.85);
-    border-bottom: none;
+    // border: 1px solid rgba(115, 159, 190, 0.85);
+    border: none;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     background-color: white;
-    color: black;
+    color: rgb(115, 159, 190);
   }
 }
 
 .container-create{
-  color: black;
   padding: 40px;
   background-color: white;
   width: $full;
@@ -154,7 +172,7 @@ body{
     flex-grow: 1;
   }
   .container-create{
-    padding: 0;
+    padding: 40px 0 0 0;
   }
   .section{
     padding: 0 40px;

@@ -7,7 +7,7 @@
     <!-- META -->
     <meta name="description" content="Le site talents.simplon.co permet aux entreprises d'avoir un lien direct avec les élèves de l'école Simplon en recherchent de contrat (CDD/CDI/Contrat Pro/Stage)" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;maximum-scale=1.0; user-scalable=no">
     <!-- FRAMEWORK ET LIBRARY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -75,7 +75,7 @@
         </a>
         <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Simplonien'}" ui-sref="profilUserStudent">Espace Perso</a>
         <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Recruteur'}" ui-sref="profilUserRecruiter">Espace Perso</a>
-        <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Admin'}" ui-sref="admin">Back Office</a>
+        <a class="user-none" ng-class="{'user-icon': showLogout && userRole === 'Admin'}" ui-sref="admin.home">Back Office</a>
         <a class="user-none" ui-sref="login" ng-class="{'user-icon': !showLogout}">Connexion</a>
     </div>
 
@@ -111,6 +111,15 @@
     <script src='app/js/filters/selectFilter.js'></script>
 
     <!-- CONTROLLERS -->
+    <script src="app/js/controllers/BO-CTRL/create-accountCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/create-cardCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/csvCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/delete-cardCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/delete-userCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/handle-filterCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/handle-promoCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/modify-cardCtrl.js"></script>
+    <script src="app/js/controllers/BO-CTRL/waiting-cardCtrl.js"></script>
     <script src="app/js/controllers/registerCtrl.js"></script>
     <script src="app/js/controllers/sendPassForResetCtrl.js"></script>
     <script src="app/js/controllers/resetPassCtrl.js"></script>

@@ -10,10 +10,6 @@
 
   &.full-width{
     width: 100%;
-    input{
-      width: 30%;
-      min-width: 50px;
-    }
   }
 
   input, select, textarea{
@@ -38,7 +34,7 @@
   }
 
   textarea{
-    height: 40px;
+    height: 140px;
     resize: vertical;
     word-wrap: break-word;
     overflow: visible;
@@ -56,12 +52,6 @@
     border-bottom: 1px solid white;
     outline: none;
   }
-
-  // input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-dirty{
-  //   border-bottom: 1px solid #de5b49;
-  //   color: #de5b49;
-  // }
-
 
   .input-label{
     position:absolute;
@@ -120,6 +110,8 @@
   .info-title{
     margin-bottom: 0;
     margin-bottom: 20px;
+    max-width: 320px;
+    text-align: center;
   }
   .info-title-sm{
     align-self: flex-start;
@@ -130,7 +122,7 @@
 // Group of form-fields
 .info-group{
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: space-around;
   width: $full;
 }
@@ -144,7 +136,6 @@
 .input-checkbox-container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 
   label{
     margin-right: 15px;

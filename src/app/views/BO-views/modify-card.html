@@ -1,0 +1,165 @@
+<div class="container-create-student">
+    <div class="choose-pic">
+        <div id="upload-pic"></div>
+        <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
+            <div class="form-group">
+                <input id="photos-input" type="file" name="photos[]" multiple="multiple">
+            </div>
+            <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo" />
+        </form>
+        <p>Formats acceptés: jpg, png, jpeg entre 200Ko et 1Mo</p>
+    </div>
+    <div class="section-BO">
+        <h1 class="info-title">Informations</h1>
+        <div class="cont-BO-input">
+            <p for="boCreateLastNameSimploniens">Nom</p>
+            <input id="boCreateLastNameSimploniens" class="input-BO-style" ng-model="student.nom" placeholder="Nom" type="text" required>
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreateNameSimploniens">Prénom</p>
+            <input id="boCreateNameSimploniens" class="input-BO-style" ng-model="student.prenom" placeholder="Prénom">
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreateOldSimploniens">Age</p>
+            <input type="number" class="input-BO-style" ng-model="student.age" placeholder="Age" required>
+        </div>
+        <div class="cont-BO-input">
+            <p>Sexe</p>
+            <select id="boCreateSexeSimploniens" class="input-BO-style" ng-model="student.Sexe" placeholder="Sexe">
+                <option value="" disabled>Sexe</option>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+                <option value="Autre">Autre</option>
+            </select>
+        </div>
+        <div class="cont-BO-calendar">
+            <label class='input-label' for="boCreateNameSimploniens">Date de diponibilité</label>
+            <md-datepicker md-placeholder="Choisir date" ng-model="student.dispo"></md-datepicker>
+        </div>
+        <div class="cont-BO-input">
+            <p>Region</p>
+            <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.region" placeholder="Ville" required>
+            <option class="labelOption" disabled selected value>Region</option>
+            <option ng-repeat="region in regions">{{region.name}}</option>
+          </select>
+        </div>
+        <div class="cont-CONTRAT-input">
+            <p>Contrat(s) recherché(s)</p>
+            <div class="input-checkbox-container input-BO-style">
+                <label ng-repeat="contract in contracts">
+              <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" checklist-before-change="student.Contrat.length > 1 || checked"> {{contract.name}}
+            </label>
+            </div>
+            <span class="error-msg" ng-show='student.contrats.$error.required'>Vous devez choisir au moins un type de contrat</span>
+        </div>
+        <div class="cont-BO-input">
+            <p>Promo:</p>
+            <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.promo" placeholder="Promo*" required>
+            <option class="labelOption" disabled selected value>Promo*</option>
+            <option ng-repeat="promo in promos">{{promo.name}}</option>
+          </select>
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreateMailSimploniens">E-mail</p>
+            <input id="boCreateMailSimploniens" class="input-BO-style" ng-model="student.Mail" placeholder="E-mail" required>
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreateGithubSimploniens">Github</p>
+            <input id="boCreateGithubSimploniens" class="input-BO-style" ng-model="student.Github" placeholder="Github" required>
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreateLinkedinSimploniens">Linkedin</p>
+            <input id="boCreateLinkedinSimploniens" class="input-BO-style" ng-model="student.Linkedin" placeholder="Linkedin" required>
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreatePortfolioSimploniens">Portfolio</p>
+            <input id="boCreatePortfolioSimploniens" class="input-BO-style" ng-model="student.Portfolio" placeholder="Portfolio">
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreateTwitterSimploniens">Twitter</p>
+            <input id="boCreateTwitterSimploniens" class="input-BO-style" ng-model="student.Twitter" placeholder="Twitter">
+        </div>
+        <div class="cont-BO-input">
+            <p for="boCreateStackOverFlowSimploniens">StackOverFlow</p>
+            <input id="boCreateStackOverFlowSimploniens" class="input-BO-style" ng-model="student.StackOverFlow" placeholder="StackOverFlow">
+        </div>
+    </div>
+
+    <div class="section-BO">
+        <h1 class="info-title">Profil</h1>
+        <div class="cont-BO-input">
+            <p for="boCreateAboutSimploniens">Votre Description</p>
+            <textarea id="boCreateAboutSimploniens" class="input-BO-style" ng-model="student.description" placeholder="Votre Description" required>{{student.description}}</textarea>
+        </div>
+    </div>
+
+    <div class="section-BO">
+        <h1 class="info-title">Compétences</h1>
+
+        <div class="info-group">
+            <div class="cont-BO-input">
+                <p>Domaine</p>
+                <select id="boCreateDomaineSimploniens" class="input-BO-style" ng-model="student.Domaine">
+                    <option value="" disabled>Domaine</option>
+                    <option value="Front-End">Front-End</option>
+                    <option value="Back-End">Back-End</option>
+                    <option value="Full-Stack">Full-Stack</option>
+                </select>
+            </div>
+            <div class="cont-BO-input">
+                <p for="boCreateCVSimploniens">Lien vers le CV</p>
+                <input id="boCreateCVSimploniens" type="url" class="input-BO-style" name="cv" placeholder="Lien vers votre CV" ng-model="student.CV" required>
+            </div>
+            <div class="cont-BO-input">
+                <p>Première spécialité:</p>
+                <select id="boCreateSpeOneSimploniens" class="input-BO-style" ng-model="student.SpecialiteUn" placeholder="1ère Spécialité*" required>
+                <option class="labelOption" disabled selected value>1ère Spécialité*</option>
+                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+              </select>
+            </div>
+            <div class="cont-BO-input">
+                <p>Deuxième spécialité:</p>
+                <select id="boCreateSpeTwoSimploniens" class="input-BO-style" ng-model="student.SpecialiteDeux" placeholder="Spécialité*" required>
+                <option class="labelOption" disabled selected value>2e Spécialité*</option>
+                <option ng-repeat="skill in skills">{{skill.name}}</option>
+              </select>
+            </div>
+            <div class="cont-BO-input">
+                <p>Troisième spécialité:</p>
+                <select id="boCreateSpeThreeSimploniens" class="input-BO-style" ng-model="student.SpecialiteTrois" placeholder="Spécialité*" required>
+                <option class="labelOption" disabled selected value>3e Spécialité*</option>
+                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+              </select>
+            </div>
+            <div class="cont-BO-input">
+                <p for="boCreateTagsSimploniens">Compétences</p>
+                <input id="boCreateTagsSimploniens" class="input-BO-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
+                <button type="button" ng-click='addTag(tag)' name="button" class="tagViewVille">Ajouter</button>
+            </div>
+            <ul class="tags-list">
+                <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}
+                    <span class="closeButton" ng-click='removeTag(tag)'></span>
+                </li>
+            </ul>
+        </div>
+        <h3 class="info-title-sm">Projets</h3>
+        <div class="info-group">
+            <div class="cont-BO-input">
+                <p for="boCreateProjetOneSimploniens">Lien vers Projet 1</p>
+                <input id="boCreateProjetOneSimploniens" type="url" class="input-BO-style" ng-model="student.ProjetUn" name="projet1" placeholder="Lien vers Projet 1">
+            </div>
+            <div class="cont-BO-input">
+                <p for="boCreateProjetDeuxSimploniens">Lien vers Projet 2</p>
+                <input id="boCreateProjetDeuxSimploniens" type="url" class="input-BO-style" name="projet2" ng-model="student.ProjetDeux" placeholder="Lien vers Projet 2">
+            </div>
+            <div class="cont-BO-input">
+                <p for="boCreateProjetDeuxSimploniens">Lien vers Projet 3</p>
+                <input id="boCreateProjetTroisSimploniens" type="url" class="input-BO-style" name="projet3" ng-model="student.ProjetTrois" placeholder="Lien vers Projet 3">
+            </div>
+
+        </div>
+    </div>
+    <button type="button" class="create-user-button" ng-click="updateStudent(student._id)">
+        <h4>Modifier</h4>
+    </button>
+</div>

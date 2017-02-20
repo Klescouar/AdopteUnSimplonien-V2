@@ -156,9 +156,35 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
        return response;
       }, function(error){
        return error;
-      }
-   );
-};
+      });
+  };
+
+  const getCsvRecruiter = () => {
+    return $http.get(API_ENDPOINT.url + '/csv/recruiter').then(
+      function(response){
+       return response;
+      }, function(error){
+       return error;
+      });
+  };
+
+  const getCsvStudent = () => {
+    return $http.get(API_ENDPOINT.url + '/csv/student').then(
+      function(response){
+       return response;
+      }, function(error){
+       return error;
+      });
+  };
+
+  const getCsvStudentProfil = () => {
+    return $http.get(API_ENDPOINT.url + '/csv/studentProfil').then(
+      function(response){
+       return response;
+      }, function(error){
+       return error;
+      });
+  };
 
   const logout = () => {
     destroyUserCredentials();
@@ -167,6 +193,9 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
   loadUserCredentials();
 
   return {
+    getCsvStudentProfil : getCsvStudentProfil,
+    getCsvRecruiter : getCsvRecruiter,
+    getCsvStudent : getCsvStudent,
     updateUserPassFromProfil : updateUserPassFromProfil,
     resetUserPass : resetUserPass,
     createToken: createToken,

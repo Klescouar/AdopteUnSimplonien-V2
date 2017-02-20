@@ -2,26 +2,30 @@
 	display: flex;
 	min-height: 90vh;
 	background-color: rgb(227,230,236);
-	.create-user-button{
-		margin-top: 10px;
-		padding: 8px;
-		width: 50%;
-		border: none;
-		border: 1px solid rgb(181, 181, 181);
-		background-color: transparent;
-		transition: 0.2s ease;
+	.handle-CSV{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+
+		.delete-filter-button{
+			margin-left:0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 70px;
+			width: 260px;
+			margin: 20px;
+			background-color: white;
+			h1{
+				color: black;
+				font-weight: bold;
+			}
+		}
 	}
-	.create-user-button:hover{
-		background-color: rgb(61, 59, 59);
-		transition: 0.2s ease;
-	}
-	.delete-user {
-		background: url("../../assets/images/cross.png") no-repeat center;
-		background-size: cover;
-		height: 25px;
-		width: 25px;
-		cursor: pointer;
-	}
+
 	.container-nav-bo {
 		display: flex;
 		flex-direction: column;
@@ -31,6 +35,7 @@
 		align-items: center;
 		background-color: rgb(227,230,236);
 		width: 25vw;
+		padding: 20px;
 
 		h1{
 			height: 30px;
@@ -79,8 +84,9 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 74vw;
+		width: 74.46vw;
 		color: white;
+		padding: 0 40px 40px 40px;
 
 		h1 {
 			text-align: center;
@@ -113,15 +119,23 @@
 			}
 		}
 
+		.container-create-user, .container-delete-user, .handle-CSV, .handle-filter{
+			width:$full;
+		}
+
 		.container-delete-user {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			width: 85%;
-			height: 100%;
+			flex-wrap: wrap;
+			width: 100%;
+			.delete-filter-button{
+				margin: 20px;
+			}
 			h2{
 				margin: 30px;
+				text-align: center;
 			}
 
 			.container-title {
@@ -147,8 +161,7 @@
 				align-items: center;
 				margin-top: 30px;
 				width: 100%;
-				min-height: 50vh;
-				height: 100%;
+
 
 				.cont-info {
 					display: flex;
@@ -164,7 +177,7 @@
 						width: 130px;
 					}
 					p{
-						width: 20%;
+						width: 22%;
 						margin: 0;
 					}
 					.user-mail{
@@ -207,23 +220,71 @@
 .promo-card {
 	display: flex;
 	flex-direction: column;
-	width: 350px;
+	width: 260px;
 	align-items: center;
 	margin: 20px;
 }
+//  BUTTONS
+.delete-user {
+	background: url("../../assets/images/cross.png") no-repeat center;
+	background-size: cover;
+	height: 25px;
+	width: 25px;
+	cursor: pointer;
+}
+
+.create-user-button{
+	margin-top: 10px;
+	padding: 8px;
+	width: 50%;
+}
+
+.delete-filter-button{
+	margin-left: 10px;
+	text-decoration: none;
+	h4{
+		margin: 5px;
+		font-size: 1.2em;
+	}
+	h1{
+		font-size: 1em;
+		margin: 5px;
+		color: white;
+		padding: 5px;
+		outline: none;
+	}
+	h4{
+		font-size: 12px;
+	}
+}
+
+.create-user-button, .delete-filter-button{
+	border: 1px solid rgb(181, 181, 181);
+	transition: 0.2s ease;
+	background-color: transparent;
+}
+
+
+.create-user-button:hover, .delete-filter-button:hover{
+	background-color: rgb(61, 59, 59);
+	transition: 0.2s ease;
+}
+
+
 
 .handle-filter {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: flex-start;
+	flex-wrap: wrap;
 	.input-FILTER-style {
-			height: 35px;
-			width: 150px;
-			border: none;
-			border-bottom: 1px solid rgba(166, 166, 166, 0.85);
-			background-color: transparent;
-			color: white;
-			outline: none;
+		height: 35px;
+		width: 150px;
+		border: none;
+		border-bottom: 1px solid rgba(166, 166, 166, 0.85);
+		background-color: transparent;
+		color: white;
+		outline: none;
 	}
 
 	.input-FILTER-style-school{
@@ -232,17 +293,21 @@
 
 	.input-FILTER-style:hover {
 		border-bottom: 1px solid rgba(212, 212, 212, 0.85);
-			outline: none;
+		outline: none;
 	}
 
 	.input-FILTER-style:focus {
-			border-bottom: 1px solid white;
-			outline: none;
+		border-bottom: 1px solid white;
+		outline: none;
 	}
 	.input-add{
 		display: flex;
 		align-items: flex-end;
 		margin-bottom: 20px;
+		width: 100%;
+		input{
+			width: 200px;
+		}
 	}
 	.input-add-school{
 		display: flex;
@@ -257,27 +322,11 @@
 			width: 150px;
 		}
 	}
-	.delete-filter-button{
-		width: 80px;
-		margin-left: 10px;
-		border: none;
-		border: 1px solid rgb(181, 181, 181);
-		background-color: transparent;
-		transition: 0.2s ease;
-		h4{
-			font-size: 1em;
-			margin: 5px;
-		}
-	}
-	.delete-filter-button:hover{
-		background-color: rgb(61, 59, 59);
-		transition: 0.2s ease;
-	}
 
 	.filter-card {
 		display: flex;
 		flex-direction: column;
-		width: 250px;
+		min-width: 220px;
 		align-items: center;
 		margin: 20px;
 	}
@@ -289,10 +338,10 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		width: 90%;
+		width: 100%;
 		border: 1px solid rgb(64, 64, 64);
 		padding: 5px;
-		margin: 5px;
+		margin: 5px 0;
 
 		p {
 			margin: 0;
@@ -313,19 +362,19 @@
 	margin: 20px 0;
 	width: 100%;
 	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    white;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    white;
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    white;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    white;
-}
+		color:    white;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		color:    white;
+		opacity:  1;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+		color:    white;
+		opacity:  1;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		color:    white;
+	}
 	.md-datepicker-input{
 		color: white;
 	}
@@ -341,12 +390,28 @@
 	}
 }
 
+.BO-home{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	h1{
+		font-size: 4.5em;
+		padding: 40px;
+	}
+	p{
+		font-size: 1.7em;
+	}
+}
+
 .cont-BO-input{
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-margin: 20px 0;
-width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin: 20px 0;
+	width: 100%;
 }
 .cont-TECHNO-input{
 	display: flex;
@@ -356,33 +421,46 @@ width: 100%;
 	width: 100%;
 	p{
 		color: white!important;
+		font-size: 15px;
 	}
 }
 .cont-CONTRAT-input{
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin: 20px 0;
-height: 80px;
-width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20px 0;
+	height: 80px;
+	width: 100%;
+}
+
+.input-competence{
+	display: flex;
+	width: 250px;
+	.input-BO-style{
+		width: 75%
+	}
+	.tagViewVille{
+		font-size: 0.9em;
+		margin-right: 0;
+	}
 }
 
 .section-BO{
 	width: 100%;
 }
 
-.select-BO{
-
+.errorUpload{
+	color: red;
 }
 
 .input-BO-style {
-		width: 250px;
-		height: 35px;
-		border: none;
-		border-bottom: 1px solid rgba(166, 166, 166, 0.85);
-		background-color: transparent;
-		color: white;
-		outline: none;
+	width: 250px;
+	height: 35px;
+	border: none;
+	border-bottom: 1px solid rgba(166, 166, 166, 0.85);
+	background-color: transparent;
+	color: white;
+	outline: none;
 }
 
 .input-checkbox-container.input-BO-style{
@@ -394,50 +472,54 @@ width: 100%;
 
 .input-BO-style:hover {
 	border-bottom: 1px solid rgba(212, 212, 212, 0.85);
-		outline: none;
+	outline: none;
 }
 
 .input-BO-style:focus {
-		border-bottom: 1px solid white;
-		outline: none;
+	border-bottom: 1px solid white;
+	outline: none;
 }
 
 
 @media screen and (max-width: 1100px) {
-.container-bo .container-interface{
+	.container-bo .container-interface{
 
-	justify-content:flex-start;
-	padding-top: 10%;
-
-	.cont-BO-input{
-		p{
-			width: 30%;
-			font-size: 11px;
-			margin-right: 10px;
-		}
-	}
-
-	.cont-info {
-		word-wrap: break-word!important;
-
-		.cont-pseudo{
-			font-size: 10px;
-			margin-right: 10px!important;
+		.cont-BO-input{
+			p{
+				width: 30%;
+				font-size: 11px;
+				margin-right: 10px;
+			}
 		}
 
-		.delete-user{
-			height:14px;
-			width: 16px;
+		.cont-info {
+			word-wrap: break-word!important;
+
+			.cont-pseudo{
+				font-size: 10px;
+				margin-right: 10px!important;
+			}
+
+			.delete-user{
+				height:14px;
+				width: 16px;
+			}
 		}
-	}
 
-	.handle-filter{
-		flex-direction:column;
+		.handle-filter{
+			// flex-direction:column;
 
-		.filter-card{
-			margin-top: 5%;
+			.filter-card{
+				margin-top: 5%;
+			}
 		}
-
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.container-bo .container-interface{
+		.container-create-student{
+			width: 100%;
+		}
+	}
 }

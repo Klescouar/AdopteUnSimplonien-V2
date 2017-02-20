@@ -125,6 +125,95 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('admin.home', {
+    url: '/home',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/BO-home.html',
+      }
+    }
+  })
+  .state('admin.waitingCard', {
+    url: '/waitingCard',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/waiting-card.html',
+        controller: 'waitingCardCtrl'
+      }
+    }
+  })
+  .state('admin.createAccount', {
+    url: '/createAccount',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/create-account.html',
+        controller: 'createAccountCtrl'
+      }
+    }
+  })
+  .state('admin.csv', {
+    url: '/csv',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/csv.html',
+        controller: 'csvCtrl'
+      }
+    }
+  })
+  .state('admin.deleteUser', {
+    url: '/deleteUser',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/delete-user.html',
+        controller: 'deleteUserCtrl'
+      }
+    }
+  })
+  .state('admin.deleteCard', {
+    url: '/deleteCard',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/delete-card.html',
+        controller: 'deleteCardCtrl'
+      }
+    }
+  })
+  .state('admin.handleFilter', {
+    url: '/handleFilter',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/handle-filter.html',
+        controller: 'handleFilterCtrl'
+      }
+    }
+  })
+  .state('admin.handlePromo', {
+    url: '/handlePromo',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/handle-promo.html',
+        controller: 'handlePromoCtrl'
+      }
+    }
+  })
+  .state('admin.createCard', {
+    url: '/createCard',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/create-card.html',
+        controller: 'createCardCtrl'
+      }
+    }
+  })
+  .state('admin.modifyCard', {
+    url: '/modifyCard/:id',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/modify-card.html',
+        controller: 'modifyCardCtrl'
+      }
+    }
+  })
   .state('profilUserStudent', {
     url: '/dashboard/student',
     views:{

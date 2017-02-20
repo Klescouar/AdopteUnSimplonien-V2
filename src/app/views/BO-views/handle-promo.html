@@ -1,0 +1,33 @@
+<div class="handle-filter">
+    <div class="promo-card">
+        <h1>Promotions</h1>
+        <div class="input-add">
+            <input type="text" id="input" value="" ng-model="promo.name" placeholder="Promo..." class="input-FILTER-style"></input>
+            <button type="button" class="delete-filter-button" ng-click="addPromo()">
+            <h4>Ajouter</h4>
+        </button>
+        </div>
+        <div ng-repeat="promo in promos" class="filter-name">
+            <p>{{promo.name}}</p>
+            <div class="delete-user" ng-click="removePromo(promo._id)"></div>
+        </div>
+    </div>
+    <div class="promo-card">
+        <h1>Fabriques</h1>
+        <div class="input-add-school">
+            <input type="text" id="input" value="" ng-model="school.name" placeholder="Ville..." class="input-FILTER-style input-FILTER-style-school"></input>
+            <input type="text" id="input" value="" ng-model="school.adress" placeholder="Adresse..." class="input-FILTER-style input-FILTER-style-school"></input>
+            <input type="number" id="input" value="" ng-model="school.latitude" placeholder="Latitude..." class="input-FILTER-style input-FILTER-style-school"></input>
+            <input type="number" id="input" value="" ng-model="school.longitude" placeholder="Longitude..." class="input-FILTER-style input-FILTER-style-school"></input>
+            <a target="_blank" href="http://www.coordonnees-gps.fr/">Pour les coordonnées GPS</a>
+            <input type="text" id="input" value="" ng-model="school.website" placeholder="Site..." class="input-FILTER-style input-FILTER-style-school"></input>
+            <button type="button" class="delete-filter-button" ng-click="addSchool()">
+              <h4>Ajouter</h4>
+          </button>
+        </div>
+        <div ng-repeat="school in schools" class="filter-name">
+            <p>{{school.name}}</p>
+            <div class="delete-user" ng-click="removeSchool(school._id)"></div>
+        </div>
+    </div>
+</div>
