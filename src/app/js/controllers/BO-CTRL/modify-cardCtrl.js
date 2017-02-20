@@ -121,9 +121,10 @@ app.controller('modifyCardCtrl', ['$scope', '$stateParams', 'serviceStudent', 's
             } else {
                 html += '<a href="#" class="thumbnail">Invalid file type - ' + img.filename + '</a>';
             }
+            $('.errorUpload').html('');
             $('#upload-pic').html(html);
         } else {
-            alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+            $('.errorUpload').html('Format non conforme');
         }
     }
     // On form submit, handle the file uploads.

@@ -260,9 +260,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       } else {
         html += '<a href="#" class="thumbnail">Invalid file type - ' + img.filename + '</a>';
       }
+      $('.errorUploadStudent').html('');
       $('#upload-pic').html(html);
     } else {
-      alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+      $('.errorUploadStudent').html('Format non conforme');
     }
   }
   // On form submit, handle the file uploads.
