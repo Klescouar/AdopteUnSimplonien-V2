@@ -1,6 +1,6 @@
 .loginSignup {
   position: relative;
-  min-height: calc(100vh - 110px);
+  height: calc(100vh - 110px);
   background-color: rgb(83, 83, 83);
   display: flex;
   flex-direction: column;
@@ -19,72 +19,59 @@
     min-width: 27%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
     border-bottom: 1px solid #6c94b4;
-    
-
 
     .cont-button{
       justify-content:center;
       display: flex;
       background-color: #425877;
 
-
       h4{
         font-size: 17px;
         margin: 0px;
       }
 
-      .simplonien-button{
+      .simplonien-button, .recruteur-button{
         display: flex;
         align-items:center;
         justify-content:center;
         height: 50px;
-        background-color: #425877;
         color: white;
         border:none;
+      }
+
+
+      .simplonien-button{
+        background-color: #425877;
         border-bottom: 1px solid #6c94b4;
       }
 
-
-
       .recruteur-button{
-        display: flex;
-        align-items:center;
-        justify-content:center;
-        height: 50px;
         background-color: #425877;
-        color: white;
-        border:none;
       }
-
-
 
       button{
         width: 100%;
       }
 
-      .button-focus-right{
+      .button-focus-right, .button-focus-left{
         border-top: 1px solid #6c94b4;
-        outline: none;
-        border-top-right-radius: 7px;
         border-right: 1px solid #6c94b4;
         border-left: 1px solid #6c94b4;
+        outline: none;
+      }
+
+      .button-focus-right{
+        border-top-right-radius: 7px;
       }
 
       .button-focus-left{
-        border-bottom: none;
-        border-top: 1px solid #6c94b4;
-        outline: none;
         border-top-left-radius: 7px;
-        border-left: 1px solid #6c94b4;
-        border-right: 1px solid #6c94b4;
       }
 
       .border-bottom-focus{
         border-bottom: 1px solid #6c94b4;
         background-color: #2e3e53;
       }
-
-
     }
 
     .cont-title-inscription {
@@ -107,8 +94,6 @@
       align-items: center;
       justify-content:center;
 
-
-
       .main-cont-input{
         width: 100%;
         display: flex;
@@ -116,24 +101,19 @@
         align-items: center;
         justify-content: space-between;
 
-
         .cont-input{
           margin-top: 15px;
+          min-height: 50px;
           input, select{
-            height: 20px;
-            width: 100%;
             margin: 0 auto 10px;
             border: none;
-            border-bottom: 1px solid rgba(115,159,190,0.85);
             color: white;
-            background-color: #425877;
           }
 
           select{
             margin-bottom: 15px;
             height: 30px;
           }
-
 
           .input-register{
             padding-left: 0px;
@@ -143,12 +123,10 @@
             border: 1px solid #de5b49;
           }
 
-
           input:focus {
             border-bottom:1px solid white;
             outline: none;
           }
-
         }
         .match{
           display: block;
@@ -156,8 +134,6 @@
           font-size: 0.9em;
           width: 250px;
         }
-
-
       }
 
       .loginForm {
@@ -216,8 +192,6 @@
   }
 }
 
-
-
 .long{
   width: 85%;
   padding-left: 0px;
@@ -227,7 +201,6 @@
     text-align: center;
     width: 80%;
   }
-
 }
 
 .dont-match{
@@ -239,7 +212,6 @@
   display: block;
   color: #de5b49;
   font-size: 0.9em;
-
 }
 
 @media screen and (max-width: 1375px) {
@@ -266,7 +238,6 @@
       .match{
         text-align: center;
       }
-
     }
   }
 }
