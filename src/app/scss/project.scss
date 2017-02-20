@@ -7,7 +7,7 @@
 		justify-content:space-around;
 		align-items:center;
 		background: linear-gradient(rgba(115,159,190,0.30), rgba(115,159,190,0.30)), url("../../assets/images/simplonien.png") no-repeat center / cover;
-		height: calc(100vh - 60px);
+		min-height: calc(100vh - 60px);
 		padding: 20px;
 
 		.title-project{
@@ -56,7 +56,7 @@
 			font-variant: normal;
 			font-weight: 400;
 			font-stretch: normal;
-			line-height: 35px;
+			line-height: 28px;
 		}
 
 		.end-description {
@@ -66,7 +66,7 @@
 			font-variant: normal;
 			font-weight: 300;
 			font-stretch: normal;
-			line-height: 35px;
+			line-height: 28px;
 		}
 
 		.description-simplon-left{
@@ -201,10 +201,17 @@
 }
 
 .flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
-	background-color: #DE5B49;
 	height: 500px;
 	width: 510px;
 	font-size: 0.8em;
+}
+.description-simplon, .flip-description-simplon-back, .flip-description-simplon {
+	background-color: #DE5B49;
+}
+
+
+.flip-cont-description{
+	background-color: transparent;
 }
 
 .description-simplon, .flip-description-simplon, .flip-description-simplon-back {
@@ -326,6 +333,26 @@
 			.title-project{
 				width:700px;
 			}
+
+			.corpus-description{
+				line-height: 23px;
+			}
+
+			.description-simplon {
+				padding: 30px;
+			}
+		}
+
+		.cont-middle-size{
+			height: 600px;
+		}
+		.cont-top-size, .cont-last-size{
+			height: 700px;
+		}
+
+		.flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
+			height: 400px;
+			width: 400px;
 		}
 
 		.cont-img-description-simplonien{
@@ -363,7 +390,6 @@
 	}
 }
 
-
 @media screen and (max-width: 1000px){
 
 	.main-cont-project{
@@ -385,9 +411,6 @@
 	.main-cont-project{
 		.cont-img-description{
 			padding: 30px;
-			.corpus-description{
-				line-height: 28px;
-			}
 		}
 		.cont-img-description-simplonien{
 			display: flex;
@@ -414,12 +437,11 @@
 
 	@media (max-width: 800px) and (orientation: landscape){
 		.main-cont-project{
-			.cont-img-description{
+			.cont-middle-size{
 				height: 600px;
-
-				.corpus-description{
-					line-height: 23px;
-				}
+			}
+			.cont-top-size, .cont-last-size{
+				height: 700px;
 			}
 		}
 		.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{
@@ -460,25 +482,11 @@
 
 			.corpus-description{
 				font-size: 1.3em;
-				line-height: 23px;
-		}
-
-			.flip-cont-description{
-				min-height: 400px;
-				min-width: 400px;
-			}
-
-			.description-simplon {
-				min-height: 400px;
-				min-width: 400px;
-				padding: 30px;
 			}
 		}
 	}
 
 	.flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
-		height: 400px;
-		width: 400px;
 		font-size: 0.8em;
 	}
 }
