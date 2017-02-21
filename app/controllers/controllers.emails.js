@@ -28,7 +28,26 @@ exports.contactMail = (req, res) => {
             return res.send(info);
         }
     });
+
+    copieMail(req.body.sender, html);
 };
+
+copieMail = (to, html) => {
+    let mailOptions = {
+        from: 'Test.project.simplon@gmail.com',
+        to: to,
+        subject: 'Copie de votre mail',
+        html: html
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            return console.log(error);
+        } else {
+          console.log(info);
+        }
+    });
+}
 
 exports.sendMailForPass = (req, res) => {
     let html = sendPassLink(req);
