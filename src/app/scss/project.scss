@@ -6,9 +6,8 @@
 		display: flex;
 		justify-content:space-around;
 		align-items:center;
-		flex-wrap: wrap;
 		background: linear-gradient(rgba(115,159,190,0.30), rgba(115,159,190,0.30)), url("../../assets/images/simplonien.png") no-repeat center / cover;
-		min-height: calc(100vh - 60px);
+		height: calc(100vh - 60px);
 		padding: 20px;
 
 		.title-project{
@@ -57,7 +56,7 @@
 			font-variant: normal;
 			font-weight: 400;
 			font-stretch: normal;
-			line-height: 28px;
+			line-height: 35px;
 		}
 
 		.end-description {
@@ -67,14 +66,13 @@
 			font-variant: normal;
 			font-weight: 300;
 			font-stretch: normal;
-			line-height: 28px;
+			line-height: 35px;
 		}
 
 		.description-simplon-left{
 			background-color: #87adc7;
 		}
 	}
-
 	.cont-middle-size{
 		height: 100vh;
 	}
@@ -137,7 +135,7 @@
 	opacity: 0.9;
 }
 
-.description-show-right{
+.description-show-rigth{
 	transition: all 1s;
 	left: 65%;
 	margin-top: -250px;
@@ -203,17 +201,10 @@
 }
 
 .flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
+	background-color: #DE5B49;
 	height: 500px;
 	width: 510px;
 	font-size: 0.8em;
-}
-.description-simplon, .flip-description-simplon-back, .flip-description-simplon {
-	background-color: #DE5B49;
-}
-
-
-.flip-cont-description{
-	background-color: transparent;
 }
 
 .description-simplon, .flip-description-simplon, .flip-description-simplon-back {
@@ -225,6 +216,9 @@
 .description-simplon, .flip-description-simplon{
 	padding: 50px;
 }
+
+
+
 
 /* flip speed goes here */
 .flip-description {
@@ -300,7 +294,7 @@
 		right: 60%;
 	}
 
-	.description-show-right{
+	.description-show-rigth{
 		left: 60%;
 	}
 }
@@ -309,7 +303,7 @@
 	.description-show-left{
 		right: 55%;
 	}
-	.description-show-right{
+	.description-show-rigth{
 		left: 55%;
 	}
 	.title-right{
@@ -324,29 +318,14 @@
 @media screen and (max-width: 1200px){
 	.main-cont-project{
 		.cont-img-description {
+			display: flex;
+			flex-direction:column;
+			align-items:center;
+			justify-content: center;
+
 			.title-project{
 				width:700px;
 			}
-
-			.corpus-description{
-				line-height: 23px;
-			}
-
-			.description-simplon {
-				padding: 30px;
-			}
-		}
-
-		.cont-middle-size{
-			height: 600px;
-		}
-		.cont-top-size, .cont-last-size{
-			height: 700px;
-		}
-
-		.flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
-			height: 400px;
-			width: 400px;
 		}
 
 		.cont-img-description-simplonien{
@@ -368,7 +347,7 @@
 		.cont-img-description-simplon{
 			justify-content:center;
 
-			.description-show-right{
+			.description-show-rigth{
 				margin-left: auto;
 				margin-right: auto;
 				left:0;
@@ -384,13 +363,10 @@
 	}
 }
 
+
 @media screen and (max-width: 1000px){
 
 	.main-cont-project{
-
-		.cont-img-description{
-			flex-direction:column;
-		}
 		.cont-img-description-simplonien{
 			.title-right{
 				margin-bottom: 90%;
@@ -404,19 +380,25 @@
 		}
 	}
 
-		.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{
-			width: 480px;
-			height: 480px;
-		}
+	.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{
+		width: 480px;
+		height: 480px;
+	}
 }
 
 @media screen and (max-width: 800px){
 	.main-cont-project{
 		.cont-img-description{
 			padding: 30px;
+			.corpus-description{
+				line-height: 28px;
+			}
 		}
 		.cont-img-description-simplonien{
+			display: flex;
 			flex-direction:column-reverse;
+			justify-content:center;
+			align-items:center;
 
 			.title-right{
 				margin-bottom: 20px;
@@ -424,10 +406,33 @@
 		}
 
 		.cont-img-description-simplon{
+			display: flex;
 			flex-direction:column;
+			justify-content:center;
+			align-items:center;
+
 			.title-left{
 				margin-bottom: 20px;
 			}
+		}
+	}
+
+	@media (max-width: 800px) and (orientation: landscape){
+		.main-cont-project{
+			.cont-img-description{
+				height: 600px;
+
+				.corpus-description{
+					line-height: 23px;
+				}
+			}
+		}
+		.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{
+			height: 400px;
+			width: 400px;
+		}
+		.description-simplon, .flip-description-simplon{
+			padding: 30px;
 		}
 	}
 
@@ -446,25 +451,8 @@
 	}
 }
 
-@media (max-width: 800px) and (orientation: landscape){
-	.main-cont-project{
-		.cont-middle-size{
-			height: 600px;
-		}
-		.cont-top-size, .cont-last-size{
-			height: 700px;
-		}
-	}
-	.flip-cont-description, .description-simplon, .flip-description-simplon, .flip-description-simplon-back{
-		height: 400px;
-		width: 400px;
-	}
-	.description-simplon, .flip-description-simplon{
-		padding: 30px;
-	}
-}
-
 @media screen and (max-width: 600px){
+
 	.main-cont-project{
 		.cont-img-description{
 			padding: 0px;
@@ -477,11 +465,25 @@
 
 			.corpus-description{
 				font-size: 1.3em;
+				line-height: 23px;
+			}
+
+			.flip-cont-description{
+				min-height: 400px;
+				min-width: 400px;
+			}
+
+			.description-simplon {
+				min-height: 400px;
+				min-width: 400px;
+				padding: 30px;
 			}
 		}
 	}
 
 	.flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
+		height: 400px;
+		width: 400px;
 		font-size: 0.8em;
 	}
 }
@@ -500,7 +502,7 @@
 
 			.corpus-description{
 				font-size: 1.3em;
-		}
+			}
 
 			.flip-cont-description{
 				min-height: 400px;

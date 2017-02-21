@@ -18,6 +18,14 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     $scope.student.Contrat = [];
   };
 
+  $scope.myDate = new Date();
+
+$scope.minDate = new Date(
+  $scope.myDate.getFullYear(),
+  $scope.myDate.getMonth(),
+  $scope.myDate.getDate()
+);
+
 
   $scope.newPassword = {
     oldpass: '',

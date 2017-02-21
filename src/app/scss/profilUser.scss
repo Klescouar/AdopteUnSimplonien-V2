@@ -42,7 +42,7 @@ body{
     width: 150px;
     border: solid 2px #90c7dc;
     border-radius: 50%;
-    margin: 30px;
+    margin: 20px;
     background-position: center;
     background-size: cover;
     background-color: white;
@@ -91,11 +91,23 @@ body{
 
     &.calendar{
       flex-direction: row;
+      .ng-invalid{
+        border: none;
+      }
+    }
+
+    @media (max-width: 600px){
+      &.contrats{
+        margin: 10px 0;
+      }
+      &.calendar{
+        margin: 10px 0 20px 0;
+      }
     }
   }
 
   .form-instruction{
-    color: rgb(115, 159, 190);
+    color: white;
     text-align: center;
   }
 }
@@ -106,7 +118,7 @@ body{
 
 .tab-container{
   display: flex;
-  margin-top: 40px;
+  margin-top: 20px;
   .tab{
     min-height: 50px;
     width: 50%;
@@ -165,6 +177,9 @@ body{
 .container-info_perso{
   .button-container{
     justify-content: center;
+    .edit-button{
+      min-width: 250px;
+    }
   }
 }
 .container-fiche{

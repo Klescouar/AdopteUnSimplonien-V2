@@ -48,8 +48,10 @@
               <span class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.memberEmail.$error.email'>Cette adresse E-mail n'est pas valide</span>
             </div>
           </div>
-          <p class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.$invalid'>Veuillez remplir les champs obligatoires</p>
-          <input class="input-style edit-button" value="Modifier mes infos" type="submit">
+          <div class="button-container">
+            <p class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.$invalid'>Veuillez remplir les champs obligatoires</p>
+            <input class="input-style edit-button" value="Modifier mes infos" type="submit">
+          </div>
         </form>
 
         <!-- ////////////////////////////////// MODIFS PASSWORD Form ////////////////////////////////// -->
@@ -59,23 +61,22 @@
           <div class="info-group">
             <div class="cont-input">
               <label class='input-label' for="boCreateMailSimploniens">Ancien Mot de Passe</label>
-              <input id="boCreateMailSimploniens" name="passwordOld" class="input-style" placeholder="Ancien Mot de Passe" type="password" required ng-model="newPassword.oldpass">
+              <input id="boCreateMailSimploniens" name="passwordOld" class="input-style" placeholder="Ancien Mot de Passe" type="password" minlength='8' required ng-model="newPassword.oldpass">
             </div>
             <div class="cont-input">
               <label class='input-label' for="boCreateMailSimploniens">Nouveau Mot de Passe</label>
-              <input id="boCreateMailSimploniens" name='passwordNew' class="input-style" ng-model="newPassword.newpass" placeholder="Nouveau Mot de Passe" type="password" required>
+              <input id="boCreateMailSimploniens" name='passwordNew' class="input-style" ng-model="newPassword.newpass" placeholder="Nouveau Mot de Passe" type="password" minlength='8' required>
             </div>
             <div class="cont-input">
               <label class='input-label' for="boCreateMailSimploniens">Confirmer Nouveau Mot de Passe</label>
-              <input id="boCreateMailSimploniens" name='passwordNewConfirm' class="input-style" ng-model="newPassword.confirmNewpass" placeholder="Confirmer Nouveau Mot de Passe" type="password" pw-check="newPassword.newpass" required>
-             <span class="error-msg" ng-show='passwordForm.$submitted && Form.newPassword.confirmNewpass.$error.pwCheck'>Vos nouveaux Mot de Passe doivent être identiques</span>
+              <input id="boCreateMailSimploniens" name='passwordNewConfirm' class="input-style" ng-model="newPassword.confirmNewpass" placeholder="Confirmer Nouveau Mot de Passe" type="password" pw-check="newPassword.newpass" minlength='8' required>
+             <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.$error.pwCheck'>Vos nouveaux Mot de Passe doivent être identiques</span>
             </div>
           </div>
-          <p class="error-msg" ng-show='passwordForm.$submitted && passwordForm.$invalid'>Veuillez remplir les champs obligatoires</p>
           <div class="button-container">
+            <p class="error-msg" ng-show='passwordForm.$submitted && passwordForm.$invalid'>Veuillez remplir les champs obligatoires</p>
             <input class="input-style edit-button" value="Modifier mon mot de passe" ng-click="passwordForm.$valid && updateUserPass(member._id)" type="submit">
           </div>
-          <div>this form is valid : {{passwordForm.$valid}}</div>
         </form>
       </div>
     </div>
@@ -123,7 +124,7 @@
                 <option ng-repeat="promo in promos">{{promo.name}}</option>
               </select>
             </div>
-            <div class="cont-input full-width">
+            <div class="cont-input full-width contrats">
                 <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)*</p>
               <div class="input-checkbox-container">
                 <label ng-repeat="contract in contracts">
@@ -134,7 +135,7 @@
             </div>
             <div class="cont-input calendar">
               <label class='form-instruction' for="boCreateNameSimploniens">Date de diponibilité*</label>
-              <md-datepicker placeholder="Choisir date" ng-model="student.dispo"></md-datepicker>
+              <md-datepicker md-min-date='minDate' placeholder="Choisir date" ng-model="student.dispo" required></md-datepicker>
             </div>
             <div class="cont-input">
               <label class='input-label' for="boCreateMailSimploniens">E-mail*</label>
@@ -231,7 +232,7 @@
               <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
             </ul>
           </div>
-          <span class="error-msg" ng-if='!checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
+          <span class="error-msg" ng-if='ficheForme.$submitted && !checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
           <h3 class="info-title-sm">Projets</h3>
           <div class="info-group">
             <div class="cont-input">
@@ -251,12 +252,12 @@
             </div>
           </div>
         </div>
-        <span class="error-msg" ng-if='ficheForm.$invalid && ficheForm.$submitted'>Veuillez remplir les champs obligatoires marqués d'une *</span>
           <div>this form is valid : {{ficheForm.$valid}}</div>
           <!-- Submit Buttons -->
           <div class="button-container">
-            <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='ficheForm.$valid && createSimplonien()'>
-            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click='ficheForm.$valid && updateStudent(student._id)'>
+            <span class="error-msg" ng-if='ficheForm.$invalid && ficheForm.$submitted'>Veuillez verifier les champs obligatoires marqués en rouge</span>
+            <input class="input-style edit-button" ng-if="!cardExist" value="Enregistrer" type="submit" ng-click='checkSpe && ficheForm.$valid && createSimplonien()'>
+            <input class="input-style edit-button" value="Modifier sa fiche" ng-if="cardExist" type="submit" ng-click='checkSpe && ficheForm.$valid && updateStudent(student._id)'>
             <input class="input-style delete-button" value="Supprimer sa fiche" ng-if="cardExist" type="button" ng-click="deleteCard(student._id)">
           </div>
         </form>

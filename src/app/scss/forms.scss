@@ -1,4 +1,4 @@
-// Standart Form-field
+/////////// Standart Form-field  \\\\\\\\\\\\
 .cont-input{
   width: 90%;
   margin: 15px 0;
@@ -11,7 +11,6 @@
   &.full-width{
     width: 100%;
   }
-
   input, select, textarea{
     position: relative;
     bottom: 0;
@@ -22,37 +21,30 @@
     border-bottom: 1px solid rgba(115, 159, 190, 0.85);
     outline: none;
     border-radius: 0;
-    // -webkit-appearance: none;
   }
   input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-
   input[type=number] {
     -moz-appearance:textfield;
   }
-
   textarea{
     height: 140px;
     resize: vertical;
     word-wrap: break-word;
     overflow: visible;
   }
-
   textarea,select,input[type=checkbox]{
     box-shadow: none;
   }
-
   input:hover {
     outline: none;
   }
-
   input:focus {
     border-bottom: 1px solid white;
     outline: none;
   }
-
   .input-label{
     position:absolute;
     top:-13px;
@@ -61,10 +53,8 @@
     color:#aaa;
     transition: all 0.1s linear;
     opacity:0;
-    // font-weight:bold;
   }
   .input-label.on {
-    // color:#4481C4;
     color: rgba(115, 159, 190, 0.85)
   }
   .input-label.show {
@@ -73,32 +63,11 @@
   }
 }
 
-// Input validation -> Invalid style when submitted
-.ng-submitted {
-  .ng-invalid{
-    border-bottom: 1px solid #de5b49;
-    color: #de5b49;
-
-    &:focus{
-      border-bottom: 1px solid #de5b49;
-    }
-  }
-  .ng-invalid.ng-dirty{
-    color: #de5b49;
-  }
-}
-
-.error-msg{
-  font-size: 0.9em;
-  color: #de5b49;
-  margin: 5px 0;
-}
-
 .form-instruction{
   font-weight: bold;
 }
 
-// form sections
+///////////// SECTIONS \\\\\\\\\\\\\
 .section{
   display: flex;
   flex-flow: column;
@@ -119,7 +88,7 @@
     margin-bottom: 15px;
   }
 }
-// Group of form-fields
+///////Group of form-fields \\\\\\\\\\\\\\
 .info-group{
   display: flex;
   flex-wrap: wrap;
@@ -128,7 +97,7 @@
 }
 
 
-// Form Buttons
+////////////// BUTTONS \\\\\\\\\\\\\\\
 .input-button-container{
   display: flex;
 }
@@ -159,7 +128,11 @@
 
 .button-container{
   display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  text-align: center;
   width: $full;
+  min-height: 75px;
 }
 .delete-button{
   background-color: #de5b49;
@@ -176,6 +149,29 @@
   color: white
 }
 
+//////////////// Input validation when submitted \\\\\\\\\\\\\\\\\\\\\\\\
+
+.ng-submitted {
+  .ng-invalid{
+    border-bottom: 1px solid #de5b49;
+    color: #de5b49;
+
+    &:focus{
+      border-bottom: 1px solid #de5b49;
+    }
+  }
+  .ng-invalid.ng-dirty{
+    color: #de5b49;
+  }
+}
+
+.error-msg{
+  font-size: 0.9em;
+  color: #de5b49;
+  margin: 5px 0;
+  width: $full;
+  font-weight: bold;
+}
 
 //////VALIDATION POPIN\\\\\\\\
 
@@ -191,11 +187,11 @@
   border-radius: 5px;
 
   .img-required{
-      margin-top: 5px;
-      margin-right: 10px;
-        height: 25px;
-        width: 25px;
-      background:url("../../assets/images/warningWhite.png") no-repeat center / cover;
+    margin-top: 5px;
+    margin-right: 10px;
+    height: 25px;
+    width: 25px;
+    background:url("../../assets/images/warningWhite.png") no-repeat center / cover;
   }
 }
 
@@ -213,35 +209,41 @@
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 
-    .img-required-validate{
-      height: 20px;
-      width: 20px;
-      margin-right: 5px;
-      background:url("../../assets/images/validate.png") no-repeat center / cover;
-
-    }
-
-    p{
-      margin: 0px;
-      margin-top: 2px;
-    }
+  .img-required-validate{
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    background:url("../../assets/images/validate.png") no-repeat center / cover;
+  }
+  p{
+    margin: 0px;
+    margin-top: 2px;
+  }
 }
 
 .required-input{
-    background-color: #FFA500;
+  background-color: #FFA500;
 }
-
 
 .required-cont-hide{
   position: absolute;
   bottom: -500px;
   left: 0px;
   transition:0.6s;
-
 }
 
 .required-cont{
   bottom: 10px;
   left: 10px;
   transition:0.6s;
+}
+
+@media (max-width: 600px){
+  .cont-input{
+    margin: 5px 0;
+  }
+  .input-checkbox-container{
+    justify-content: center;
+  }
+
 }
