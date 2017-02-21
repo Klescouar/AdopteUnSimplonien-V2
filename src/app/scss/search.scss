@@ -1,6 +1,7 @@
 .searchPage {
   display: flex;
   min-height: calc(100vh - 110px);
+
 }
 
 .tagSearch {
@@ -82,6 +83,7 @@
   padding: 7px;
   width: 100%;
   // height: 100%;
+  padding-left: 284px;
 
   .card {
     overflow: hidden;
@@ -200,8 +202,10 @@
 }
 
 .filterMain {
+  position: fixed;
   height: 99%;
   //width: 315px;
+  top:9%;
 }
 
 .filterRight {
@@ -209,6 +213,7 @@
   display: block;
   background-color: rgb(118,161,192);
   overflow: scroll;
+  max-height: 100%;
 }
 
 .filterChoice {
@@ -415,12 +420,17 @@
 
 // MEDIA QUERIES
 @media screen and (max-width: 870px) {
+
   .tagSearch {
     min-height: 70px;
     max-height: 150px;
   }
 }
 @media screen and (max-width: 640px) {
+
+.cardPage{
+  padding-left: 0px;
+}
   .searchPage {
     width: 100%;
 
@@ -490,6 +500,7 @@
   }
 
   .filterMain {
+    position: initial;
     width: 100%;
     height: auto;
     min-height: auto;
@@ -580,18 +591,18 @@
 }
 
 .sticktotop {
-  position: fixed;
-  top: 0;
+  transition: all 0.2s;
+  top: 1%;
 }
 
-.marginToFix {
-  margin-left: 284px;
-}
-
-.marginToFix2 {
-  margin-left: 25vw;
-  background-color: black;
-}
+// .marginToFix {
+//   margin-left: 284px;
+// }
+//
+// .marginToFix2 {
+//   margin-left: 25vw;
+//   background-color: black;
+// }
 
 .delay {
   -moz-animation: delay 0.4s;
