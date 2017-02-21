@@ -62,9 +62,6 @@
   background-color: #47637F;
 }
 
-// .no-filter{
-//     border: 1px solid red;
-// }
 
 .closeButton {
   width: 9px;
@@ -89,7 +86,7 @@
   .card {
     overflow: hidden;
     margin: 7px;
-    height: 430px;
+    height: 450px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -211,6 +208,7 @@
   height: 98%;
   display: block;
   background-color: rgb(118,161,192);
+  overflow: scroll;
 }
 
 .filterChoice {

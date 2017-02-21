@@ -1,44 +1,43 @@
-
 <div class="contactPage">
-  <div class="contactContainer">
-    <form name="contactForm" ng-submit="contactForm.$valid && sendMail()">
-      <h1>Une question, une suggestion, un doute ?</h1>
-      <h1>C’est par ici !</h1>
-      <div class="cont-input">
-        <input type="text" name="nom" ng-model="mail.name" class="Name" placeholder="Nom/Prenom *" required/>
-      </div>
-      <div class="cont-input">
-        <input type="text" name="entreprise" ng-model="mail.entreprise" class="Name" placeholder="Entreprise *" required/>
-      </div>
-      <div class="cont-input">
-        <input type="text" name="ville" ng-model="mail.city" class="City" placeholder="Ville *" required/>
-      </div>
+    <div class="contactContainer">
+        <form name="contactForm" ng-submit="contactForm.$valid && sendMail()">
+            <h1>Une question, une suggestion, un doute ?</h1>
+            <h1>C’est par ici !</h1>
+            <div class="cont-input">
+                <input type="text" name="nom" ng-model="mail.name" class="Name" placeholder="Nom/Prenom *" required/>
+            </div>
+            <div class="cont-input">
+                <input type="text" name="entreprise" ng-model="mail.entreprise" class="Name" placeholder="Entreprise *" required/>
+            </div>
+            <div class="cont-input">
+                <input type="text" name="ville" ng-model="mail.city" class="City" placeholder="Ville *" required/>
+            </div>
 
-      <div class="cont-input">
-        <input type="email" name="email" ng-model="mail.sender" class="Email" placeholder="Email *" required/>
-        <span class="error-msg" ng-show='contactForm.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
-      </div>
+            <div class="cont-input">
+                <input type="email" name="email" ng-model="mail.sender" class="Email" placeholder="Email *" required/>
+                <span class="error-msg" ng-show='contactForm.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
+            </div>
 
-      <div class="cont-input">
-        <input type="number" maxlength="14" name="phone" ng-model="mail.phone" class="Phone" placeholder="Telephone*" required/>
-        <span class="error-msg" ng-show='contactForm.phone.$error.number'>Ce numéro de téléphone n'est pas valide</span>
-      </div>
+            <div class="cont-input">
+                <input type="number" maxlength="14" name="phone" ng-model="mail.phone" class="Phone" placeholder="Telephone*" required/>
+                <span class="error-msg" ng-show='contactForm.phone.$error.number'>Ce numéro de téléphone n'est pas valide</span>
+            </div>
 
-      <div class="cont-input">
-        <textarea name="message" rows="20" ng-model="mail.content" cols="20" class="Message" placeholder="Message *" required></textarea>
-      </div>
-      <span class="match" ng-show='contactForm.$submitted && contactForm.$invalid'>
+            <div class="cont-input">
+                <textarea name="message" rows="20" ng-model="mail.content" cols="20" class="Message" placeholder="Message *" required></textarea>
+            </div>
+            <span class="match" ng-show='contactForm.$submitted && contactForm.$invalid'>
         Tous les champs sont requis.
       </span>
-      <input type="submit" name="submit" value="ENVOYER" class="submit-button" ng-click="sendMail()"/>
+            <input type="submit" name="submit" value="ENVOYER" class="submit-button" />
 
-      <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':!sendForm}">
-        <div class="img-required-validate"></div>
-        <p class="required">Message envoyé !</p>
-      </div>
-    </form>
-    <div class="mapContact">
-      <div id="googleMap"></div>
+            <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':!sendForm}">
+                <div class="img-required-validate"></div>
+                <p class="required">Message envoyé !</p>
+            </div>
+        </form>
+        <div class="mapContact">
+            <div id="googleMap"></div>
+        </div>
     </div>
-  </div>
 </div>

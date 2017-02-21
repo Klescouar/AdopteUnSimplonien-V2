@@ -7,6 +7,8 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.tab = 'fiche';
   $scope.submitted = false;
   $scope.specialiteOK = true;
+  $scope.checkSpe = true;
+  const objectSkill = {};
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
@@ -130,18 +132,20 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     }
   }
 
-  // Check list Specialité
-  $scope.checkSpe = () => {
-    if ($scope.student.SpecialiteUn === $scope.student.SpecialiteDeux || $scope.student.SpecialiteUn === $scope.student.SpecialiteTrois) {
-      return false;
-    } else if ($scope.student.SpecialiteDeux === $scope.student.SpecialiteUn || $scope.student.SpecialiteDeux === $scope.student.SpecialiteTrois) {
-      return false;
-    } else if (($scope.student.SpecialiteTrois === $scope.student.SpecialiteUn || $scope.student.SpecialiteDeux === $scope.student.SpecialiteTrois)){
-      return false;
+  $scope.compareSkill = (key, value) => {
+    const arraySkill = [];
+    objectSkill[key] = value;
+    Object.keys(objectSkill).map(function(key, index) {
+      arraySkill.push(objectSkill[key]);
+    });
+    const unique = [...new Set(arraySkill)];
+    if (Object.keys(objectSkill).length > unique.length) {
+      $scope.checkSpe = false;
     } else {
-      return true;
+      $scope.checkSpe = true;
     }
-  }
+  };
+
 
   // TAGS
   // Ajout Tags
@@ -260,9 +264,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       } else {
         html += '<a href="#" class="thumbnail">Invalid file type - ' + img.filename + '</a>';
       }
+      $('.errorUploadStudent').html('');
       $('#upload-pic').html(html);
     } else {
-      alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+      $('.errorUploadStudent').html('Format ou taille non conforme.');
     }
   }
   // On form submit, handle the file uploads.
@@ -272,7 +277,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     const files = $('#photos-input').get(0).files,
     formData = new FormData();
     if (files.length === 0) {
-      alert('Aucune photo séléctionnée.');
+      $('.errorUploadStudent').html('Aucune photo selectionné.');
       return false;
     }
     // Append the files to the formData.

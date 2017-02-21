@@ -2,7 +2,14 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     $scope.contrats = serviceFilter.contrats;
     $scope.langages = serviceFilter.langages;
     $scope.themes = serviceFilter.themes;
-    $scope.searchResult = serviceFilter.searchResult;
+    $scope.searchResult = {
+        maxLangage: 3,
+        maxContrat: 5,
+        Langage: [],
+        Region: "",
+        Contrat: [],
+        Dispo: ""
+    };
     $scope.dispoTag = '';
     $scope.active = "";
     $scope.$emit('LOAD');

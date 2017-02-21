@@ -108,10 +108,10 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
           } else {
               html += '<a href="#" class="thumbnail">Invalid file type - ' + img.filename + '</a>';
           }
-          $('.errorUpload').html('')
+          $('.errorUpload').html('');
           $('#upload-pic').html(html);
       } else {
-          $('.errorUpload').html('Format non conforme')
+          $('.errorUpload').html('Format ou taille non conforme.');
       }
   }
   // On form submit, handle the file uploads.
@@ -121,7 +121,7 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
       const files = $('#photos-input').get(0).files,
           formData = new FormData();
       if (files.length === 0) {
-          alert('Aucune photo séléctionnée.');
+        $('.errorUploadStudent').html('Aucune photo selectionné.');
           return false;
       }
       // Append the files to the formData.
