@@ -319,7 +319,14 @@
 }
 
 @media screen and (max-width: 1200px){
+.flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon{
+	height: 450px;
+}
 
+.flip-cont-description{
+	position: absolute;
+	top: 20%;
+}
 	.main-cont-project{
 		.cont-img-description {
 			display: flex;
@@ -327,41 +334,63 @@
 			align-items:center;
 			justify-content: center;
 
-			.title-project{
-				width:700px;
+			.title-top{
+				width: 100%;
+    				font-size: 2em;
+				position: absolute;
+				margin:auto;
+				top: 0;
 			}
 		}
 
 		.cont-img-description-simplonien{
 			justify-content:center;
 
-			.description-show-left{
-				margin-left: auto;
-				margin-right: auto;
-				left:0;
+			.description-hide-left{
+				margin:auto;
+				left: -2000px;
 				right: 0;
+				top: 10%;
+				bottom: 0;
+			}
+
+			.description-show-left{
+				margin:auto;
+				left: 0;
+				right: 0;
+				top: 10%;
+				bottom: 0;
 			}
 
 			.title-right{
-				margin-left: 0px;
-				margin-right: 0px;
-				margin-bottom: 75%;
+				position: absolute;
+				margin:auto;
+				top: 0;
 			}
 		}
 		.cont-img-description-simplon{
 			justify-content:center;
 
-			.description-show-right{
-				margin-left: auto;
-				margin-right: auto;
-				left:0;
+			.description-hide-right{
+				margin: auto;
+				left: 2000px;
 				right: 0;
+				top: 10%;
+				bottom: 0;
+			}			
+
+			.description-show-right{
+				margin:auto;
+				left: 0;
+				right: 0;
+				top: 10%;
+				bottom: 0;
 			}
 
 			.title-left{
-				margin-left: 0px;
-				margin-right: 0px;
-				margin-bottom: 75%;
+				position: absolute;
+				margin:auto;
+				top: 0;
 			}
 		}
 	}
@@ -463,13 +492,15 @@
 			padding-bottom: 20px;
 
 			.title-project{
-				width: 400px;
-				font-size: 1.6em;
+				width: 385px;
+				font-size: 1.3em;
 			}
 
 			.corpus-description{
 				font-size: 1.3em;
 				line-height: 23px;
+				height: 300px;
+				width: 300px;
 			}
 
 			.flip-cont-description{
@@ -488,7 +519,6 @@
 	.flip-cont-description, .description-simplon, .flip-description-simplon-back, .flip-description-simplon {
 		height: 400px;
 		width: 400px;
-		font-size: 0.8em;
 	}
 }
 
