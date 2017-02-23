@@ -11,7 +11,6 @@
 		padding: 20px;
 
 		.title-project{
-			width:800px;
 			text-align: center;
 			font-weight: bold;
 			font-size: 2.6em;
@@ -309,9 +308,6 @@
 	.description-show-right{
 		left: 55%;
 	}
-	.title-right{
-		margin-left: 50%;
-	}
 
 	.title-left{
 		margin-right: 50%;
@@ -365,9 +361,7 @@
 			}
 
 			.title-right{
-				position: absolute;
-				margin:auto;
-				top: 0;
+				margin: 0 auto 80vh auto;
 			}
 		}
 		.cont-img-description-simplon{
@@ -390,9 +384,7 @@
 			}
 
 			.title-left{
-				position: absolute;
-				margin:auto;
-				top: 0;
+				margin: 0 auto 80vh auto;
 			}
 		}
 	}
@@ -404,13 +396,13 @@
 	.main-cont-project{
 		.cont-img-description-simplonien{
 			.title-right{
-				margin-bottom: 90%;
+				margin: 0 auto 80vh auto;
 			}
 		}
 
 		.cont-img-description-simplon{
 			.title-left{
-				margin-bottom: 90%;
+				margin: 0 auto 80vh auto;
 			}
 		}
 	}
@@ -492,8 +484,8 @@
 			padding-bottom: 20px;
 
 			.title-project{
-				width: 385px;
-				font-size: 1.3em;
+				margin-top: 50px;
+				font-size: 2em;
 			}
 
 			.corpus-description{

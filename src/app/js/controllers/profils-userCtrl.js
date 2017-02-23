@@ -42,8 +42,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       }
       AuthService.updateUser(id, newInfos).then((res) => {
         $scope.member = AuthService.user();
-        $state.reload();
-        $scope.tab = 'infos';
         $scope.updateUser = true;
       })
   }
@@ -201,7 +199,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.createCard = true;
         console.log(dataStudent);
       }
-      // $state.reload();
     }, (err) => {
       console.log("Error");
       });
