@@ -64,6 +64,8 @@ body{
   display: flex;
   flex-direction: column;
   color: rgb(115, 159, 190);
+  position: relative;
+  overflow: hidden;
 
   .cont-input{
     min-width: 50%;
@@ -87,6 +89,9 @@ body{
       width: 100%;
       align-items: center;
       justify-content: center;
+      .error-msg{
+        text-align: center;
+      }
     }
 
     &.calendar{
@@ -107,8 +112,8 @@ body{
   }
 
   .form-instruction{
-    color: white;
     text-align: center;
+    color: rgb(115, 159, 190);
   }
 }
 
@@ -185,11 +190,20 @@ body{
 .container-fiche{
   .edit-button, .delete-button{
     flex-grow: 1;
+    display: none;
   }
+  .show-input{
+    display: block;
+  }
+
   .container-create{
     padding: 40px 0 0 0;
   }
   .section{
     padding: 0 40px;
+  }
+  .required-cont{
+    bottom: 60px;
+    left: 45%;
   }
 }

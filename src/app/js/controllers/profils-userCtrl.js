@@ -9,6 +9,10 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   $scope.specialiteOK = true;
   $scope.checkSpe = true;
   const objectSkill = {};
+  $scope.updateUser = false;
+  $scope.updatePwd = false;
+  $scope.createCard = false;
+  $scope.updateCard = false;
 
   if (!$scope.student.tags) {
     $scope.student.tags = [];
@@ -18,20 +22,15 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     $scope.student.Contrat = [];
   };
 
+
   $scope.myDate = new Date();
 
-$scope.minDate = new Date(
-  $scope.myDate.getFullYear(),
-  $scope.myDate.getMonth(),
-  $scope.myDate.getDate()
-);
+  $scope.minDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth(),
+    $scope.myDate.getDate()
+  );
 
-
-  $scope.newPassword = {
-    oldpass: '',
-    newpass: '',
-    confirmNewpass: ''
-  };
 
   // UPDATE COMPTES
   $scope.member = AuthService.user();
@@ -46,9 +45,16 @@ $scope.minDate = new Date(
       AuthService.updateUser(id, newInfos).then((res) => {
         $scope.member = AuthService.user();
         $state.reload();
+        $scope.tab = 'infos';
+        $scope.updateUser = true;
       })
   }
   // PASSWORD
+  $scope.newPassword = {
+    oldpass: '',
+    newpass: '',
+    confirmNewpass: ''
+  };
   $scope.updateUserPass = (id) => {
     if ($scope.newPassword.newpass === $scope.newPassword.confirmNewpass){
       AuthService.updateUserPassFromProfil(id, $scope.newPassword).then((res) => {
@@ -62,8 +68,6 @@ $scope.minDate = new Date(
       alert('la confirmation du nouveau mot de passe ne correspond pas')
     }
   }
-
-  $scope.cardExist = false;
 
   // Get Data for Selects
   // Contracts
@@ -106,7 +110,7 @@ $scope.minDate = new Date(
   }
   $scope.getAllPromo();
 
-
+  $scope.cardExist = false;
   $scope.getMemberInfo = (id) => {
     serviceStudent.getStudentByMemberId(id).then((response) => {
       if (response.data.success === false) {
@@ -129,17 +133,6 @@ $scope.minDate = new Date(
   $scope.getMemberInfo($scope.member._id);
 
 
-  $scope.deleteCard = (id) => {
-    const response = confirm("Voulez vous vraiment supprimer votre fiche?");
-    if (response === true) {
-      serviceStudent.removeStudent(id).then(function(response) {
-        $scope.cardExist = false;
-        $scope.getMemberInfo($scope.member._id);
-        $state.reload();
-      });
-    }
-  }
-
   $scope.compareSkill = (key, value) => {
     const arraySkill = [];
     objectSkill[key] = value;
@@ -154,8 +147,7 @@ $scope.minDate = new Date(
     }
   };
 
-
-  // TAGS
+  //////////// TAGS \\\\\\\\\\\\\\
   // Ajout Tags
   $scope.addTag = function(tag) {
     if (!tag || tag.length === 0) {
@@ -170,6 +162,7 @@ $scope.minDate = new Date(
     $scope.student.tags.splice($scope.student.tags.indexOf(tag),1);
   }
 
+/////////////// CREATE CARD \\\\\\\\\\\\\\\\\\\\
   $scope.createSimplonien = () => {
     console.log($scope.student.dispo);
     const dataStudent = {
@@ -201,20 +194,24 @@ $scope.minDate = new Date(
     ProjetDeux: $scope.student.ProjetDeux,
     ProjetTrois: $scope.student.ProjetTrois
     };
-
     serviceStudent.addStudent(dataStudent).then((res) => {
       if (res.data === 'error') {
         alert('Déja inscrit!')
       } else {
         $scope.updateUser($scope.member._id);
-        alert('Simplonien créé!');
+        // alert('Simplonien créé!');
+        $scope.createCard = true;
+        $scope.cardExist = true;
+        console.log(dataStudent);
       }
-      $state.reload();
+      // $state.reload();
     }, (err) => {
       console.log("Error");
       });
-
   }
+
+///////////// UPDATE CARD \\\\\\\\\\\\\\\\\\\\\
+
   $scope.updateStudent = (id) => {
     const response = confirm("Voulez vous vraiment modifier les infos de cet apprenant?");
     if (response === true) {
@@ -248,12 +245,25 @@ $scope.minDate = new Date(
       };
 
       serviceStudent.updateStudent(id, newInfos).then((res) => {
+        $scope.updateCard = true;
         $scope.updateUser($scope.member._id);
         alert("Apprenant modifié!");
+        console.log(newInfos);
       })
     };
-
   };
+
+  /////////// DELETE CARD \\\\\\\\\\\
+  $scope.deleteCard = (id) => {
+    const response = confirm("Voulez vous vraiment supprimer votre fiche?");
+    if (response === true) {
+      serviceStudent.removeStudent(id).then(function(response) {
+        $scope.cardExist = false;
+        $scope.getMemberInfo($scope.member._id);
+        $state.reload();
+      });
+    }
+  }
 
   // Photo Upload
   $scope.uploadFiles = (formData) => {
