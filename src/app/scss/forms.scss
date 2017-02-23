@@ -246,14 +246,16 @@
 }
 
 .required-cont-hide{
-  position: absolute;
+  position: fixed;
   bottom: -500px;
   left: 0px;
   transition:0.6s;
 }
 
 .required-cont{
-  bottom: 10px;
+  z-index: 200;
+  position: fixed;
+  bottom: 60px;
   left: 10px;
   transition:0.6s;
 }

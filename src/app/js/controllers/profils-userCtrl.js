@@ -1,4 +1,4 @@
-app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', 'moment', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter, moment) {
+app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', 'moment', '$timeout', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter, moment,$timeout) {
   $scope.member = AuthService.user();
   $scope.photo = '';
   $scope.turnOff = false;
@@ -197,6 +197,9 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.updateUser($scope.member._id);
         // alert('Simplonien créé!');
         $scope.createCard = true;
+      $timeout(function () {
+        $scope.createCard = false;
+        }, 6000);
         console.log(dataStudent);
       }
     }, (err) => {
@@ -240,6 +243,9 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
 
       serviceStudent.updateStudent(id, newInfos).then((res) => {
         $scope.updateCard = true;
+        $timeout(function () {
+        $scope.updateCard = false;
+        }, 6000);
         $scope.updateUser($scope.member._id);
         alert("Apprenant modifié!");
         console.log(newInfos);

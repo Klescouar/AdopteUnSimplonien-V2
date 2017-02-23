@@ -5,6 +5,13 @@
         	<!-- <div class="img-mail"></div> -->
         	<input type="text" ng-model="email" class="input-BO-style" placeholder="Email...">
         </div>
+            <span class="error-msg" ng-show="!errorMail">
+              Email invalide.
+            </span>
         <button type="button" ng-click="startResetPass(email)" class="confirm-button" name="button">Envoyer</button>
+    </div>
+     <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont': resetPassOK}">
+        <div class="img-required-validate"></div>
+        <p class="required" >Un lien de réinitialisation a été envoyé</p>
     </div>
 </div>
