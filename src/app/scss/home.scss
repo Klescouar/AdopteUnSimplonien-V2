@@ -14,19 +14,25 @@
         align-items: center;
         height: 350px;
         width: 100%;
+        .home-button-box{
+          display: flex;
+          a{
+            margin: 0 10px;
+          }
+        }
     }
 
     .main-title {
         margin-top: 0;
         margin-bottom: 20px;
+        padding: 0 40px;
         text-align: center;
-        font-size: 5em;
+        font-size: 4.5em;
     }
 
     .main-text {
-        font-weight: 300;
         text-align: center;
-        margin: 0 20px 20px 0;
+        margin: 20px 20px;
     }
     // Positionnement du boutton avec transition sur sa couleur
     .red-button {
@@ -34,7 +40,7 @@
         justify-content: center;
         align-items: center;
         height: 50px;
-        width: 220px;
+        width: 250px;
         background: #de5b49;
         color: white;
         position: relative;
