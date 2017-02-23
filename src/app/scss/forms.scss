@@ -61,6 +61,16 @@
     top:-15px;
     opacity:1;
   }
+  .error-msg{
+    text-align: left;
+  }
+}
+
+.show-input{
+  display: block;
+}
+.hide-input{
+  display: none;
 }
 
 .form-instruction{
@@ -165,12 +175,22 @@
   }
 }
 
+.ng-valid{
+  .calendar{
+    .md-datepicker-input-container{
+      border: none;    
+    }
+  }
+}
+
+
 .error-msg{
   font-size: 0.9em;
   color: #de5b49;
   margin: 5px 0;
   width: $full;
   font-weight: bold;
+  text-align: center;
 }
 
 //////VALIDATION POPIN\\\\\\\\
@@ -245,5 +265,4 @@
   .input-checkbox-container{
     justify-content: center;
   }
-
 }
