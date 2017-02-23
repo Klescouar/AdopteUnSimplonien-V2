@@ -1,12 +1,10 @@
 app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService', '$state', '$window', 'serviceStudent', 'serviceFilter', 'moment', function($http, $scope, $rootScope, AuthService, $state, $window, serviceStudent, serviceFilter, moment) {
   $scope.member = AuthService.user();
-  $scope.showEditProfilUser = false;
   $scope.photo = '';
   $scope.turnOff = false;
   $scope.student = {};
   $scope.tab = 'fiche';
   $scope.submitted = false;
-  $scope.specialiteOK = true;
   $scope.checkSpe = true;
   const objectSkill = {};
   $scope.updateUser = false;
@@ -110,13 +108,13 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
   $scope.getAllPromo();
 
-  $scope.cardExist = false;
+  $scope.cardExist = '';
   $scope.getMemberInfo = (id) => {
     serviceStudent.getStudentByMemberId(id).then((response) => {
       if (response.data.success === false) {
-        $scope.cardExist = false;
+        $scope.cardExist = 'enregistrer';
       } else {
-        $scope.cardExist = true;
+        $scope.cardExist = 'modifier';
         $scope.student = response.data;
         if ($scope.student.dispo) {
            $scope.student.dispo = new Date($scope.student.dispo);
@@ -201,7 +199,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         $scope.updateUser($scope.member._id);
         // alert('Simplonien créé!');
         $scope.createCard = true;
-        $scope.cardExist = true;
         console.log(dataStudent);
       }
       // $state.reload();
@@ -258,7 +255,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
     const response = confirm("Voulez vous vraiment supprimer votre fiche?");
     if (response === true) {
       serviceStudent.removeStudent(id).then(function(response) {
-        $scope.cardExist = false;
+        $scope.cardExist = 'enregistrer';
         $scope.getMemberInfo($scope.member._id);
         $state.reload();
       });

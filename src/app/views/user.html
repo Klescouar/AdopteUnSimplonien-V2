@@ -265,9 +265,9 @@
           <!-- Submit Buttons -->
           <div class="button-container">
             <span class="error-msg" ng-if='ficheForm.$invalid && ficheForm.$submitted'>Veuillez verifier les champs obligatoires marqués en rouge</span>
-            <input class="input-style edit-button" ng-class='{"show-input":!cardExist}' value="Enregistrer" type="submit" ng-click='checkSpe && ficheForm.$valid && createSimplonien()'>
-            <input class="input-style edit-button" value="Modifier sa fiche" ng-class='{"show-input":cardExist}' type="submit" ng-click='checkSpe && ficheForm.$valid && updateStudent(student._id)'>
-            <input class="input-style delete-button" value="Supprimer sa fiche" ng-class='{"show-input":cardExist}' type="button" ng-click="deleteCard(student._id)">
+            <input class="input-style edit-button" ng-class='{"show-input":cardExist === "enregistrer"}' value="Enregistrer" type="submit" ng-click='checkSpe && ficheForm.$valid && createSimplonien()'>
+            <input class="input-style edit-button" value="Modifier sa fiche" ng-class='{"show-input":cardExist === "modifier"}' type="submit" ng-click='checkSpe && ficheForm.$valid && updateStudent(student._id)'>
+            <input class="input-style delete-button" value="Supprimer sa fiche" ng-class='{"show-input":cardExist === "modifier"}' type="button" ng-click="deleteCard(student._id)">
           </div>
         </form>
       </div>
