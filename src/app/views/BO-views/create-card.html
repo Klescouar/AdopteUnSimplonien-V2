@@ -49,7 +49,7 @@
       </div>
       <div class="cont-CONTRAT-input">
         <p>Contrat(s) recherché(s)</p>
-        <div class="input-checkbox-container input-BO-style">
+        <div class="input-checkbox-container">
           <label ng-repeat="contract in contracts">
             <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{contract.name}}
           </label>
@@ -99,7 +99,7 @@
       <h1 class="info-title">Profil</h1>
       <div class="cont-BO-input">
         <p for="boCreateAboutSimploniens">Votre Description</p>
-        <textarea id="boCreateAboutSimploniens" class="input-BO-style" ng-model="student.description" placeholder="Votre Description" required name="description">{{student.description}}</textarea>
+        <textarea id="boCreateAboutSimploniens" class="input-BO-style" ng-model="student.description" placeholder="Votre Description* (300 charactères max)" maxlength="300" required name="description">{{student.description}}</textarea>
       </div>
     </div>
 

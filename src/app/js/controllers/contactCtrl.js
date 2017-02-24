@@ -23,7 +23,7 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
               $timeout(function () {
               $scope.sendForm = true;
                 }, 6000);
-              } 
+              }
             });
           }
       }

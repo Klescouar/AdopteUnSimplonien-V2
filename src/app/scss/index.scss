@@ -427,6 +427,7 @@ body {
     .facebook-icon,
     .google-icon,
     .logo,
+    .mail-icon,
     .twiter-icon {
       background-repeat: no-repeat;
       background-position: center;
@@ -445,6 +446,10 @@ body {
 
     .facebook-icon {
       background-image: url("../../assets/images/facebook-logo-button.png");
+    }
+
+    .mail-icon {
+      background-image: url("../../assets/images/mail.png");
     }
 
     .twiter-icon {

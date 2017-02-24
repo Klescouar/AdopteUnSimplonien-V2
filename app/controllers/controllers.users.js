@@ -131,6 +131,7 @@ exports.signup =  function(req, res) {
  };
 
  exports.forgetPassword = function(req, res) {
+   console.log(req.params);
      let token = jwt.encode(req.params.mail, config.secret);
      User.findOne({
        email: req.params.mail

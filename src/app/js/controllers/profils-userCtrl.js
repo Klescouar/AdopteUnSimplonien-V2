@@ -195,7 +195,6 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
         alert('Déja inscrit!')
       } else {
         $scope.updateUser($scope.member._id);
-        // alert('Simplonien créé!');
         $scope.createCard = true;
       $timeout(function () {
         $scope.createCard = false;
