@@ -24,6 +24,12 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
   const getFirstLetterOfName = (item) => {
       return item.nom = item.nom.charAt(0).toUpperCase() + '.';
   }
+  const addPicToAnonymous = (item) => {
+    if (item.photo === '') {
+      return item.photo = 'anonymous.png';
+    }
+      // return item.nom = item.nom.charAt(0).toUpperCase() + '.';
+  }
 
   //////////////////////HANDLE FILTER/////////////////////
 
@@ -149,6 +155,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
       $scope.data = res.data;
       res.data.map(convertToDate);
       res.data.map(getFirstLetterOfName);
+      res.data.map(addPicToAnonymous);
       $scope.cardFull = res.data;
       searchFilter();
   });
