@@ -5,8 +5,8 @@
         <div class="cont-info" ng-repeat="user in allUser | filter : deleteUser track by $index" ng-if="user.role !== 'Admin'">
             <p class="cont-pseudo">{{user.firstName}}</p>
             <p class="cont-pseudo">{{user.lastName}}</p>
-            <p class="cont-pseudo user-mail">{{user.email}}</p>
-            <p class="cont-pseudo">{{user.role}}</p>
+            <p class="cont-pseudo lg">{{user.email}}</p>
+            <p class="cont-pseudo sm">{{user.role}}</p>
             <div class="delete-user" ng-click="removeUser(user._id, user.role)"></div>
         </div>
 

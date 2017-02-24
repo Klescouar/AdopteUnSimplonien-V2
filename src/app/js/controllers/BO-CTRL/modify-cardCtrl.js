@@ -1,6 +1,14 @@
 app.controller('modifyCardCtrl', ['$scope', '$stateParams', 'serviceStudent', 'serviceFilter', function($scope, $stateParams, serviceStudent, serviceFilter){
   $scope.student = {};
   $scope.student.tags = [];
+  $scope.myDate = new Date();
+
+  $scope.minDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth(),
+    $scope.myDate.getDate()
+  );
+
   const id = $stateParams.id;
 
   $scope.showOneStudent = (id) => {

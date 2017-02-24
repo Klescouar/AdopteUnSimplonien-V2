@@ -179,8 +179,8 @@
         <div class="section">
           <h1 class="info-title">Profil</h1>
           <div class="cont-input full-width">
-            <label class='input-label' for="boCreateAboutSimploniens">Votre Description*</label>
-            <textarea id="boCreateAboutSimploniens" class="input-style" ng-model="student.description" placeholder="Votre Description*" name="description" required>{{student.description}}</textarea>
+            <label class='input-label' for="boCreateAboutSimploniens">Votre Description* (300 charactères max)</label>
+            <textarea id="boCreateAboutSimploniens" class="input-style" ng-model="student.description" placeholder="Votre Description* (300 charactères max) " name="description" maxlength="300" required>{{student.description}}</textarea>
           </div>
         </div>
 
@@ -209,14 +209,14 @@
               </select>
             </div>
             <div class="cont-input">
-              <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' placeholder="2e Spécialité*" ng-required='checkSpe'>
+              <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" placeholder="2e Spécialité*" ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' ng-required='checkSpe'>
                 <option class="labelOption" disabled selected value>2e Spécialité*</option>
                 <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
                 <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
               </select>
             </div>
             <div class="cont-input">
-              <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" ng-change='compareSkill("SpecialiteTrois",student.SpecialiteTrois)' placeholder="3e Spécialité*" ng-required='checkSpe'>
+              <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" placeholder="3e Spécialité*" ng-change='compareSkill("SpecialiteTrois",student.SpecialiteTrois)'  ng-required='checkSpe'>
                 <option class="labelOption" disabled selected value>3e Spécialité*</option>
                 <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
                 <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
@@ -226,21 +226,21 @@
               <div class="input-button-container">
                 <label class='input-label' for="boCreateTagsSimploniens">Vos Compétences</label>
                 <input id="boCreateTagsSimploniens" class="input-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
-                <button type="button"ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
+                <button type="button" ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
               </div>
             </div>
             <ul class="tags-list">
-              <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span></li>
+              <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span>
+              </li>
             </ul>
           </div>
-          <span class="error-msg" ng-if='ficheForm.$submitted && !checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence</span>
+          <span class="error-msg" ng-if='ficheForm.$submitted && !checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence ou en avoir de vide</span>
           <h3 class="info-title-sm">Projets</h3>
           <div class="info-group">
             <div class="cont-input">
               <label class='input-label' for="boCreateProjetOneSimploniens">Lien vers Projet 1</label>
               <input id="boCreateProjetOneSimploniens" type="url" class="input-style" ng-model="student.ProjetUn" name="projet1" placeholder="Lien vers Projet 1">
-              <span class="error-msg" ng-show='ficheForm.projet1.$invalid && ficheForm.projet1.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-            </div>
+             </div>
             <div class="cont-input">
               <label class='input-label' for="boCreateProjetDeuxSimploniens">Lien vers Projet 2</label>
               <input id="boCreateProjetDeuxSimploniens" type="url" class="input-style" name="projet2" ng-model="student.ProjetDeux" placeholder="Lien vers Projet 2">

@@ -1,27 +1,31 @@
 <div class="container-create-user">
-  <form class="create-user"  ng-submit="addStudentUser()" >
+  <form class="create-user" name='createUserStudent'  ng-submit="createUserStudent.$valid && addStudentUser()" novalidate>
       <h2>Créer un compte étudiant</h2>
-      <input type="email" id="email" class="input-BO-style" ng-model="studentAccount.email" required placeholder="Email"></input>
-      <input type="text" id="nom" class="input-BO-style" value="" ng-model="studentAccount.lastName" required placeholder="Nom"></input>
-      <input type="text" id="prenom" class="input-BO-style" value="" ng-model="studentAccount.firstName" required placeholder="Prenom"></input>
-      <input type="password" id="mdp" class="input-BO-style" ng-model="studentAccount.password" required placeholder="Mot de passe"></input>
+      <input type="email" id="email" class="input-BO-style" ng-model="studentAccount.email" required placeholder="Email" name="emailStudent"></input>
+      <span class="error-msg" ng-show='createUserStudent.$submitted && createUserStudent.emailStudent.$error.email'>Cette adresse E-mail n'est pas valide</span>
+      <input type="text" id="nom" class="input-BO-style" value="" ng-model="studentAccount.lastName" required placeholder="Nom" name="lastNameStudent"></input>
+      <input type="text" id="prenom" class="input-BO-style" value="" ng-model="studentAccount.firstName" required placeholder="Prenom" name="firstNameStudent"></input>
+      <input type="password" id="mdp" class="input-BO-style" ng-model="studentAccount.password" required placeholder="Mot de passe" name="passwordStudent" minlength='8'></input>
+      <p class="error-msg" ng-show='createUserStudent.$submitted && createUserStudent.$invalid'>Veuillez remplir les champs obligatoires marqué en rouge</p>
       <input class="create-user-button" value="Créer" type="submit">
   </form>
-  <form class="create-user"  ng-submit="addRecruiterUser()" >
+  <form class="create-user" name='createUserRecruit' ng-submit="createUserRecruit.$valid && addRecruiterUser()" novalidate>
       <h2>Créer un compte recruteur</h2>
-      <input type="email" id="email" class="input-BO-style" ng-model="recruiterAccount.email" required placeholder="Email"></input>
-      <input type="text" id="company" class="input-BO-style" value="" ng-model="recruiterAccount.company" required placeholder="Entreprise"></input>
-      <input type="text" id="nom" class="input-BO-style" value="" ng-model="recruiterAccount.lastName" required placeholder="Nom"></input>
-      <input type="text" id="prenom" class="input-BO-style" value="" ng-model="recruiterAccount.firstName" required placeholder="Prenom"></input>
+      <input type="email" id="email" class="input-BO-style" ng-model="recruiterAccount.email" required placeholder="Email" name="emailRecruit"></input>
+      <span class="error-msg" ng-show='createUserRecruit.$submitted && createUserRecruit.emailRecruit.$error.email'>Cette adresse E-mail n'est pas valide</span>
+      <input type="text" id="company" class="input-BO-style" value="" ng-model="recruiterAccount.company" required placeholder="Entreprise" name="companyRecruit"></input>
+      <input type="text" id="nom" class="input-BO-style" value="" ng-model="recruiterAccount.lastName" required placeholder="Nom" name="lastNameRecruit"></input>
+      <input type="text" id="prenom" class="input-BO-style" value="" ng-model="recruiterAccount.firstName" required placeholder="Prenom" name="firstNameRecruit"></input>
       <div class="cont-TECHNO-input">
           <p>Maitrise principale recherchée :</p>
           <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="recruiterAccount.technology"
-              placeholder="technology" >
+              placeholder="technology" name="technoRecruit" required>
               <option class="labelOption" disabled selected value>Technologie</option>
               <option ng-repeat="skill in skills">{{skill.name}}</option>
           </select>
       </div>
-      <input type="password" id="mdp" class="input-BO-style" ng-model="recruiterAccount.password" required placeholder="Mot de passe"></input>
+      <input type="password" id="mdp" class="input-BO-style" ng-model="recruiterAccount.password" required placeholder="Mot de passe" minlength='8'></input>
+      <p class="error-msg" ng-show='createUserRecruit.$submitted && createUserRecruit.$invalid'>Veuillez remplir les champs obligatoires marqué en rouge</p>
       <input class="create-user-button" value="Créer" type="submit">
   </form>
 </div>

@@ -1,7 +1,16 @@
 app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', function($scope, serviceFilter, serviceStudent){
   $scope.student = {};
   $scope.student.tags = [];
+  $scope.student.Contrat = [];
   $scope.verifPic = true;
+  $scope.myDate = new Date();
+
+  $scope.minDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth(),
+    $scope.myDate.getDate()
+  );
+
 
 
   $scope.createSimplonien = () => {

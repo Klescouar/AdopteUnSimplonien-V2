@@ -3,9 +3,9 @@
     <input type="text" class="input-BO-style" ng-model="removeFilter" placeholder="Rechercher...">
     <div class="container-users">
         <div class="cont-info" ng-repeat="simplonien in simploniens | filter: removeFilter" ng-if="simplonien.verified === true">
-            <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.nom}}</p>
-            <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.prenom}}</p>
-            <p ng-if="simplonien.nom !== '' " class="cont-pseudo">{{simplonien.promo}}</p>
+            <p ng-if="simplonien.nom !== '' " class="cont-pseudo lg">{{simplonien.nom}}</p>
+            <p ng-if="simplonien.nom !== '' " class="cont-pseudo sm">{{simplonien.prenom}}</p>
+            <p ng-if="simplonien.nom !== '' " class="cont-pseudo lg">{{simplonien.promo}}</p>
             <div class="student-actions">
               <button ui-sref="admin.modifyCard({id: simplonien._id})" ng-if="simplonien.nom !== '' " class="modify">Modifier</button>
               <div ng-if="simplonien.nom !== '' " class="delete-user" ng-click="deleteStudent(simplonien._id, simplonien.photo)" confirm="Are you sure ?"></div>

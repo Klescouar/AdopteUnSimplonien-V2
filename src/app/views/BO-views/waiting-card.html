@@ -3,10 +3,10 @@
     <div class="container-users">
         <div class="cont-info" ng-repeat="simplonien in simploniens" ng-if="simplonien.verified === false">
             <p class="cont-pseudo">{{simplonien.nom}}</p>
-            <p  class="cont-pseudo">{{simplonien.prenom}}</p>
-            <p  class="cont-pseudo">{{simplonien.promo}}</p>
+            <p  class="cont-pseudo sm">{{simplonien.prenom}}</p>
+            <p  class="cont-pseudo lg">{{simplonien.promo}}</p>
             <button  class="modify" ng-click="acceptSimplonien(simplonien._id)">Accepter</button>
-            <button  class="modify" ng-click="deleteStudent(simplonien._id)">Refuser</button>
+            <button  class="delete" ng-click="deleteStudent(simplonien._id)">Refuser</button>
         </div>
     </div>
 </div>

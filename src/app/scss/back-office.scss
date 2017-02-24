@@ -84,7 +84,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 74.46vw;
+		width: 75vw;
 		color: white;
 		padding: 0 40px 40px 40px;
 
@@ -99,7 +99,7 @@
 			height: 70vh;
 			width: 80%;
 			.create-user{
-				width: 48%;
+				min-width: 400px;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
@@ -113,9 +113,14 @@
 					width: 70%;
 				}
 			}
-			p {
-				color: red;
-				text-align: center;
+			// p {
+			// 	color: red;
+			// 	text-align: center;
+			// }
+			.cont-BO-calendar{
+				.md-datepicker-input-container{
+					border-bottom: 1px solid rgba(166, 166, 166, 0.85);
+				}
 			}
 		}
 
@@ -176,12 +181,15 @@
 						align-items: center;
 						width: 130px;
 					}
-					p{
+					.cont-pseudo{
 						width: 22%;
 						margin: 0;
-					}
-					.user-mail{
-						width: 22%!important;
+						&.sm{
+							width: 15%;
+						}
+						&.lg{
+							width: 30%;
+						}
 					}
 					.cont-perm {
 						margin: 10px;
@@ -203,27 +211,55 @@
 			justify-content: center;
 			align-items: center;
 			width: 60%;
+			.container-create{
+				background-color: transparent;
+				padding:0;
+				.error-msg{
+					text-align: right;
+				}
+			}
 		}
 	}
 
-	.modify {
-		height: 30px;
-		width: 80px;
-		background-color: green;
+	.modify, .delete {
+		height: 25px;
+		width: 60px;
 		border: none;
 		margin-left: 10px;
 		margin-right: 10px;
 		color: white;
+		font-size: 11px;
+		padding: 4px 2px 2px 2px;
+	}
+	.modify{
+		background-color: green;
+	}
+	.delete{
+		background-color: #de5b49;
 	}
 }
 
-.promo-card {
+.filter-card, .promo-card{
 	display: flex;
 	flex-direction: column;
-	width: 260px;
 	align-items: center;
-	margin: 20px;
+	margin: 5px;
 }
+
+.promo-card {
+	width: 300px;
+}
+
+.filter-card {
+	min-width: 220px;
+}
+
+@media screen and (max-width: 1100px){
+	.filter-card {
+		width: 180px;
+	}
+}
+
 //  BUTTONS
 .delete-user {
 	background: url("../../assets/images/cross.png") no-repeat center;
@@ -279,16 +315,15 @@
 	flex-wrap: wrap;
 	.input-FILTER-style {
 		height: 35px;
-		width: 150px;
+		width: 100%;
 		border: none;
 		border-bottom: 1px solid rgba(166, 166, 166, 0.85);
 		background-color: transparent;
 		color: white;
 		outline: none;
-	}
-
-	.input-FILTER-style-school{
-		width: 200px!important;
+		&.input-FILTER-style-school{
+			width: 80%;
+		}
 	}
 
 	.input-FILTER-style:hover {
@@ -305,9 +340,6 @@
 		align-items: flex-end;
 		margin-bottom: 20px;
 		width: 100%;
-		input{
-			width: 200px;
-		}
 	}
 	.input-add-school{
 		display: flex;
@@ -315,20 +347,13 @@
 		justify-content: space-around;
 		align-items: center;
 		height: 300px;
+		width: 100%;
 		a{
 			text-decoration: none;
 			text-align: center;
 			font-size: 0.8em;
 			width: 150px;
 		}
-	}
-
-	.filter-card {
-		display: flex;
-		flex-direction: column;
-		min-width: 220px;
-		align-items: center;
-		margin: 20px;
 	}
 	.input-name {
 		margin: 10px;
@@ -394,7 +419,6 @@
 	justify-content: center;
 	h1{
 		font-size: 4.5em;
-		padding: 40px;
 	}
 	p{
 		font-size: 1.7em;
@@ -407,6 +431,7 @@
 	align-items: flex-end;
 	margin: 20px 0;
 	width: 100%;
+	flex-wrap: wrap;
 }
 .cont-TECHNO-input{
 	display: flex;
@@ -496,12 +521,15 @@
 			word-wrap: break-word!important;
 
 			.cont-pseudo{
-				font-size: 10px;
+				font-size: 12px;
 				margin-right: 10px!important;
+				&.sm{
+
+				}
 			}
 
 			.delete-user{
-				height:14px;
+				height:16px;
 				width: 16px;
 			}
 		}

@@ -162,10 +162,15 @@
 //////////////// Input validation when submitted \\\\\\\\\\\\\\\\\\\\\\\\
 
 .ng-submitted {
+  md-datepicker.ng-invalid{
+    border: none;
+  }
   .ng-invalid{
     border-bottom: 1px solid #de5b49;
     color: #de5b49;
-
+    .md-datepicker-input-container{
+      border-bottom: 1px solid #de5b49;
+    }
     &:focus{
       border-bottom: 1px solid #de5b49;
     }
@@ -178,10 +183,12 @@
 .ng-valid{
   .calendar{
     .md-datepicker-input-container{
-      border: none;    
+      border: none;
     }
   }
 }
+
+
 
 
 .error-msg{
