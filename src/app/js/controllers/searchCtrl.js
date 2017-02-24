@@ -21,6 +21,9 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
   const convertToDate = (item) => {
       return item.dispo = moment(item.dispo, "YYYY-MM-DD").format("DD/MM/YYYY");
   }
+  const getFirstLetterOfName = (item) => {
+      return item.nom = item.nom.charAt(0).toUpperCase() + '.';
+  }
 
   //////////////////////HANDLE FILTER/////////////////////
 
@@ -145,6 +148,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
       $scope.loading = false;
       $scope.data = res.data;
       res.data.map(convertToDate);
+      res.data.map(getFirstLetterOfName);
       $scope.cardFull = res.data;
       searchFilter();
   });
