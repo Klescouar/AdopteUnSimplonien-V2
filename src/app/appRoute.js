@@ -214,6 +214,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+  .state('admin.changeAdminPass', {
+    url: '/changeAdminPass',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/changeAdminPass.html',
+        controller: 'changeAdminPassCtrl'
+      }
+    }
+  })
   .state('profilUserStudent', {
     url: '/dashboard/student',
     views:{
