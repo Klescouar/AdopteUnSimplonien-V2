@@ -12,6 +12,9 @@ app.controller('profilCtrl', ['$scope', 'serviceStudent', 'serviceMailer', '$sta
 
     serviceStudent.getStudentById(id).then((res) => {
         $scope.student = res.data;
+        if ($scope.student.photo ==='') {
+          $scope.student.photo = 'anonymous.png'
+        }
     }, (err) => {
         console.log("Error");
     })
