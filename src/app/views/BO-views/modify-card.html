@@ -98,15 +98,13 @@
         <h1 class="info-title">Compétences</h1>
 
         <div class="info-group">
-            <div class="cont-BO-input">
-                <p>Domaine</p>
-                <select id="boCreateDomaineSimploniens" class="input-BO-style" ng-model="student.Domaine">
-                    <option value="" disabled>Domaine</option>
-                    <option value="Front-End">Front-End</option>
-                    <option value="Back-End">Back-End</option>
-                    <option value="Full-Stack">Full-Stack</option>
-                </select>
-            </div>
+          <div class="cont-BO-input">
+            <p>Domaine</p>
+            <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.Domaine" placeholder="Domaine" required name='Domaine'>
+              <option class="labelOption" disabled selected value>Domaine</option>
+              <option ng-repeat="field in fields">{{field.name}}</option>
+            </select>
+          </div>
             <div class="cont-BO-input">
                 <p for="boCreateCVSimploniens">Lien vers le CV</p>
                 <input id="boCreateCVSimploniens" type="url" class="input-BO-style" name="cv" placeholder="Lien vers votre CV" ng-model="student.CV" required>

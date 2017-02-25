@@ -13,7 +13,7 @@ app.controller('handleFilterCtrl', ['$scope', 'serviceFilter', function($scope, 
       serviceFilter.addSkill($scope.skill).then(function(response) {
         $scope.getAllSkill();
       }).catch(function(errMsg) {
-          const alertPopup = $window.alert('Add Skill failed!');
+          alert('Add Skill failed!');
       });
   };
 
@@ -40,7 +40,7 @@ app.controller('handleFilterCtrl', ['$scope', 'serviceFilter', function($scope, 
       serviceFilter.addRegion($scope.region).then(function(response) {
         $scope.getAllRegion();
       }).catch(function(errMsg) {
-          const alertPopup = $window.alert('Add region failed!');
+          alert('Add region failed!');
       });
   };
 
@@ -67,7 +67,7 @@ app.controller('handleFilterCtrl', ['$scope', 'serviceFilter', function($scope, 
       serviceFilter.addContract($scope.contract).then(function(response) {
         $scope.getAllContract();
       }).catch(function(errMsg) {
-          const alertPopup = $window.alert('Add contract failed!');
+          alert('Add contract failed!');
       });
   };
 
@@ -79,6 +79,34 @@ app.controller('handleFilterCtrl', ['$scope', 'serviceFilter', function($scope, 
       });
   }
   $scope.getAllContract();
+
+  //////////////////////////ADMIN FIELDS CONTROL//////////////////////////
+
+  $scope.getAllField = () => {
+      serviceFilter.getAllField().then(function(response) {
+          $scope.fields = response.data;
+      }).catch(function(errMsg) {
+          console.log('show school failed!');
+      });
+  }
+
+  $scope.addField = () => {
+    console.log($scope.field);
+      serviceFilter.addField($scope.field).then(function(response) {
+        $scope.getAllField();
+      }).catch(function(errMsg) {
+          alert('Add contract failed!');
+      });
+  };
+
+  $scope.removeField = (id) => {
+      serviceFilter.removeField(id).then(function(response) {
+        $scope.getAllField();
+      }).catch(function(errMsg) {
+          console.log('remove contract failed!');
+      });
+  }
+  $scope.getAllField();
 
 
 }]);

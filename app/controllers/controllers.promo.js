@@ -24,7 +24,6 @@ exports.removePromo = (req, res) => {
 
 
 exports.addPromo =  function(req, res) {
-  console.log(req.body);
    if (!req.body.name) {
      res.json({success: false, msg: 'Please pass all infos.'});
    } else {

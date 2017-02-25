@@ -84,7 +84,15 @@ app.controller('modifyCardCtrl', ['$scope', '$stateParams', 'serviceStudent', 's
     }
     $scope.getAllPromo();
 
-
+    $scope.getAllField = () => {
+        serviceFilter.getAllField().then(function(response) {
+            $scope.fields = response.data;
+        }).catch(function(errMsg) {
+            console.log('show field failed!');
+        });
+    }
+    $scope.getAllField();
+    
     $scope.getAllSkill = () => {
         serviceFilter.getAllSkill().then(function(response) {
             $scope.skills = response.data;

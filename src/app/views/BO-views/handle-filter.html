@@ -12,7 +12,7 @@
           <div class="delete-user" ng-click="removeRegion(region._id)"></div>
       </div>
   </div>
-  
+
   <div class="filter-card">
       <h1>Contrats</h1>
       <div class="input-add">
@@ -38,6 +38,19 @@
         <div ng-repeat="skill in skills" class="filter-name">
             <p>{{skill.name}}</p>
             <div class="delete-user" ng-click="removeSkill(skill._id)"></div>
+        </div>
+    </div>
+    <div class="filter-card">
+        <h1>Domaines d'expertise</h1>
+        <div class="input-add">
+        <input type="text" id="input" value="" ng-model="field.name" placeholder="Domaine..." class="input-FILTER-style"></input>
+        <button type="button" class="delete-filter-button" ng-click="addField()">
+            <h4>Ajouter</h4>
+        </button>
+      </div>
+        <div ng-repeat="field in fields" class="filter-name">
+            <p>{{field.name}}</p>
+            <div class="delete-user" ng-click="removeField(field._id)"></div>
         </div>
     </div>
 </div>

@@ -96,6 +96,16 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
   }
   $scope.getAllSkill();
 
+  // Fields
+  $scope.getAllField = () => {
+    serviceFilter.getAllField().then(function(response) {
+      $scope.fields = response.data;
+    }).catch(function(errMsg) {
+      console.log('show field failed!');
+    });
+  }
+  $scope.getAllField();
+
   // PROMO
   $scope.getAllPromo = () => {
     serviceFilter.getAllPromo().then(function(response) {
