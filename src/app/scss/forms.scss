@@ -165,7 +165,6 @@
   background-color: #425877;
   color:white;
   border-style:none;
-  z-index: 10;
   height: 35px;
   width:130px;
   position: absolute;
@@ -203,20 +202,20 @@
   width: 100%;
   height:100%;
   content:'';
-  position: absolute; 
+  position: absolute;
   top:0;
   left:0;
   box-sizing-top: border-box;
   -webkit-transform: scale(0);
   transition: 0.5s;
-  
+
 }
 
 .login::before {
   border-bottom: 3px solid #de5b49;
   border-left: 3px solid #de5b49;
   -webkit-transform-origin: 0 100%;
-  
+
 }
 
 .login::after {
@@ -229,7 +228,7 @@
 
 .content:hover::after, .content:hover::before {
   -webkit-transform: scale(1);
-  
+
 }
 
 

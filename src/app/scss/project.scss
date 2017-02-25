@@ -6,14 +6,13 @@
 		display: flex;
 		justify-content:space-around;
 		align-items:center;
-		background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../assets/images/simplonContact.jpg") no-repeat center / cover;
+		background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/images/simplonContact.jpg") no-repeat center / cover;
 		height: calc(100vh - 60px);
 		padding: 20px;
 
 		.title-project{
 			text-align: center;
-			font-weight: bold;
-			font-size: 2.6em;
+			font-size: 4em;
 			padding: 30px;
 			text-decoration: none;
 
@@ -82,20 +81,20 @@
 	}
 
 	.cont-img-description-simplon{
-		background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../assets/images/simplonContact2.jpg") no-repeat center;
+		background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/images/simplonContact2.jpg") no-repeat center;
 		background-size: cover;
 		position: relative;
 
 	}
 
 	.cont-img-simplonien{
-		background: linear-gradient(rgba(115,159,190,0.3), rgba(115,159,190,0.3)), url("../../assets/images/simplonien.png") no-repeat center;
+		background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/images/simplonien.png") no-repeat center;
 		background-size: cover;
 		position: relative;
 	}
 
 	.cont-img-project-team{
-		background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../assets/images/connexion.png") no-repeat center;
+		background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/images/connexion.png") no-repeat center;
 		background-size: cover;
 		position: relative;
 	}
@@ -181,19 +180,6 @@
 	background-color: #87adc7;
 	transition: height 0.5s;
 	height: 10px;
-}
-
-@media screen and (max-width: 1370px){
-	.main-cont-project{
-		overflow: hidden;
-
-		.cont-img-description {
-			padding: 60px;
-			.title-project{
-				font-size: 2.2em;
-			}
-		}
-	}
 }
 
 
@@ -306,6 +292,10 @@
 	}
 }
 
+.corpus-light{
+	line-height: 1.8em!important;
+}
+
 
 @media screen and (max-width: 1500px){
 	.description-show-left{
@@ -352,7 +342,7 @@
 
 			.title-top{
 				width: 100%;
-    		font-size: 2em;
+    		font-size: 4em;
 				margin:auto;
 			}
 		}
