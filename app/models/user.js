@@ -24,7 +24,7 @@ const UserSchema = new Schema({
     },
     role: {
           type: String,
-          enum: ['Recruteur', 'Simplonien', 'Admin'],
+          enum: ['Recruteur', 'Simplonien', 'Admin', 'adminMaster'],
           default: 'Recruteur'
     }
 });

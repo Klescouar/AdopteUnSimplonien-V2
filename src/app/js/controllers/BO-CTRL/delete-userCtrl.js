@@ -1,9 +1,15 @@
 app.controller('deleteUserCtrl', ['$scope', 'AuthService', 'serviceStudent', '$window', function($scope, AuthService, serviceStudent, $window){
-
+  $scope.allUser = [];
+  const getOnlyStudentAndRecruiter = (item) => {
+    if (item.role === 'Simplonien' || item.role === 'Recruteur') {
+      return $scope.allUser.push(item);
+    }
+  }
 
   $scope.getAllUser = () => {
-      AuthService.getAllUser($scope.user).then(function(response) {
-          $scope.allUser = response.data.user;
+    $scope.allUser = [];
+      AuthService.getAllUser().then(function(response) {
+          response.data.user.map(getOnlyStudentAndRecruiter);
       }).catch(function(errMsg) {
           const alertPopup = $window.alert('show profils members failed!');
       });

@@ -93,7 +93,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       resolve:{
         function(AuthService, $state){
           const role = AuthService.userRole();
-          if (role != 'Recruteur' && role != 'Simplonien' && role != 'Admin') {
+          if (role != 'Recruteur' && role != 'Simplonien' && role != 'Admin' && role != 'adminMaster') {
             $state.go('login');
             return false;
           }else{
@@ -113,12 +113,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       resolve:{
        function(AuthService, $state){
         const role = AuthService.userRole();
-        console.log(role);
-        if (role != 'Admin') {
-         $state.go('home');
-         return false;
+        if (role === 'adminMaster' || role === 'Admin') {
+          return true;
         }else{
-         return true;
+          $state.go('home');
+          return false;
         }
        }
       }
@@ -223,6 +222,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+  .state('admin.handleAdmins', {
+    url: '/handleAdmins',
+    views:{
+      'admin_dashboard':{
+        templateUrl: 'app/views/BO-views/handleAdmins.html',
+        controller: 'handleAdminsCtrl'
+      }
+    }
+  })
   .state('profilUserStudent', {
     url: '/dashboard/student',
     views:{
@@ -252,7 +260,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       resolve:{
        function(AuthService, $state){
         const role = AuthService.userRole();
-        console.log(role);
         if (role != 'Recruteur') {
          $state.go('home');
          return false;
@@ -276,7 +283,6 @@ app.run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, toState,fromState){
     if (!AuthService.isAuthenticated()) {
       AuthService.userRole();
-      console.log(next.name);
     }
   });
 });

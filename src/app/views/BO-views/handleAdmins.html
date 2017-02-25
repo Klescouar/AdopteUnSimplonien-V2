@@ -1,0 +1,23 @@
+<form class="create-admin"  ng-submit="addAdminUser()" novalidate>
+    <h2>Créer un compte ADMIN</h2>
+    <input type="email" class="input-BO-style" ng-model="adminAccount.email" required placeholder="Email"></input>
+    <input type="text" class="input-BO-style"  ng-model="adminAccount.lastName" required placeholder="Nom"></input>
+    <input type="text"class="input-BO-style" ng-model="adminAccount.firstName" required placeholder="Prenom"></input>
+    <input type="password" class="input-BO-style" ng-model="adminAccount.password" required placeholder="Mot de passe" minlength='8'></input>
+    <input class="create-user-button" value="Créer" type="submit">
+</form>
+
+<div class="container-delete-user">
+    <h2>Suppression d'un compte ADMIN</h2>
+    <input type="text" class="input-BO-style" ng-model="deleteUser" placeholder="Rechercher...">
+    <div class="container-users">
+        <div class="cont-info" ng-repeat="admin in admins | filter:deleteUser track by $index">
+            <p class="cont-pseudo">{{admin.firstName}}</p>
+            <p class="cont-pseudo">{{admin.lastName}}</p>
+            <p class="cont-pseudo lg">{{admin.email}}</p>
+            <p class="cont-pseudo sm">{{admin.role}}</p>
+            <div class="delete-user" ng-click="removeUser(admin._id)"></div>
+        </div>
+
+    </div>
+</div>

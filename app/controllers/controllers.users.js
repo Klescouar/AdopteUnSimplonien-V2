@@ -153,6 +153,7 @@ exports.signup =  function(req, res) {
 
 exports.RecruiterUsers = function(req, res) {
    const token = getToken(req.headers);
+   console.log(token);
    if (token) {
      const decoded = jwt.decode(token, config.secret);
      User.find( function(err, user) {
