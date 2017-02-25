@@ -159,6 +159,81 @@
   color: white
 }
 
+//////////////// Input animation Login/register \\\\\\\\\\\\\\\\\\\\\\\\
+
+.content input{
+  background-color: #425877;
+  color:white;
+  border-style:none;
+  z-index: 10;
+  height: 35px;
+  width:130px;
+  position: absolute;
+  top:4px;
+  left:3px;
+  padding: 0px;
+    font-weight: 100;
+  font-size: 16px;
+}
+
+.content {
+  position:relative;
+  vertical-align: middle;
+  color: white;
+  display: inline-block;
+  height: 50px;
+  width:140px;
+  line-height: 40px;
+  text-align: center;
+  transition: 0.5s;
+  cursor: pointer;
+  border: 2px solid white;
+  -webkit-transition:0.5s;
+}
+
+
+.content:hover {
+  border: 2px solid rgba(0,160,80,0);
+  color: #de5b49;
+
+}
+
+
+.content::before, .content::after {
+  width: 100%;
+  height:100%;
+  content:'';
+  position: absolute; 
+  top:0;
+  left:0;
+  box-sizing-top: border-box;
+  -webkit-transform: scale(0);
+  transition: 0.5s;
+  
+}
+
+.login::before {
+  border-bottom: 3px solid #de5b49;
+  border-left: 3px solid #de5b49;
+  -webkit-transform-origin: 0 100%;
+  
+}
+
+.login::after {
+  border-top: 3px solid #de5b49;
+  border-right: 3px solid #de5b49;
+  -webkit-transform-origin: 100% 0%;
+}
+
+
+
+.content:hover::after, .content:hover::before {
+  -webkit-transform: scale(1);
+  
+}
+
+
+
 //////////////// Input validation when submitted \\\\\\\\\\\\\\\\\\\\\\\\
 
 .ng-submitted {

@@ -12,7 +12,7 @@
     background-color: #425877;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
     width: 320px;
-    height: 410px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid #6c94b4;
@@ -92,25 +92,11 @@
       }
     }
 
-    .sendLogin {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 150px;
-      margin-top: 20px;
-      background-color: #de5b49;
-      height: 50px;
-      text-decoration: none;
-      cursor: pointer;
-      color: white;
-      border: none;
-      padding-left: 12%;
-      padding-right: 12%;
-      margin-bottom: 20px;
-      border-radius: 0;
-    }
-    .sendLogin:hover{
-      background-color: #da6555;
+  .cont-input-login{
+    margin-top: 20px;
+      .sendLogin {
+        background-color: #425877;
+      }
     }
   }
 }

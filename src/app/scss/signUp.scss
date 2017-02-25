@@ -97,6 +97,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 20px;
         // justify-content: space-between;
 
         .cont-input{
@@ -142,29 +143,10 @@
       }
 
       .cont-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0;
-        width: 40%;
-        background-color: #de5b49;
-        height: 50px;
+
         margin-top: 20px;
         margin-bottom: 30px;
-        text-decoration: none;
 
-        .send-button {
-          color: white;
-          background-color: #de5b49;
-          border-radius: 0;
-          border: none;
-          text-decoration: none;
-
-
-          .send-button:hover {
-            text-decoration: none;
-          }
-        }
 
         a:hover {
           text-decoration: none;
@@ -179,6 +161,7 @@
     justify-content: flex-end;
     padding: 0 20px;
     padding-bottom: 15px;
+    margin-top: 20px;
 
     a {
       color: white;

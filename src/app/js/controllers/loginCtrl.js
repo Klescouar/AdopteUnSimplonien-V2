@@ -24,6 +24,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
     }
 
     $scope.login = () => {
+        console.log("dsqqd")
         $scope.input = true;
         if ($scope.user.email != ''&& $scope.user.password != '' ) {
             AuthService.login($scope.user).then(function(response) {
