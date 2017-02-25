@@ -38,7 +38,7 @@ app.controller('loginCtrl', ['$scope', '$rootScope', 'AuthService', '$state','$w
                     $state.go('profilUserStudent');
                 } else if(response.data.user.role === 'Recruteur') {
                     $state.go('profilUserRecruiter');
-                } else if (response.data.user.role === 'Admin') {
+                } else if (response.data.user.role === 'Admin' || response.data.user.role === 'adminMaster') {
                   $state.go('admin.home');
                 }
                 return response;

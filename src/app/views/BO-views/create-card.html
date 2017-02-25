@@ -109,11 +109,9 @@
       <div class="info-group">
         <div class="cont-BO-input">
           <p>Domaine</p>
-          <select id="boCreateDomaineSimploniens" class="input-BO-style" ng-model="student.Domaine" name='domaine' required>
-            <option value="" disabled>Domaine</option>
-            <option value="Front-End">Front-End</option>
-            <option value="Back-End">Back-End</option>
-            <option value="Full-Stack">Full-Stack</option>
+          <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.Domaine" placeholder="Domaine" required name='Domaine'>
+            <option class="labelOption" disabled selected value>Domaine</option>
+            <option ng-repeat="field in fields">{{field.name}}</option>
           </select>
         </div>
         <div class="cont-BO-input">

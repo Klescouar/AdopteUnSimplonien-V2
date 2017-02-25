@@ -140,7 +140,7 @@ app.service('AuthService', function($q, $http, API_ENDPOINT) {
    );
   }
 
-  const getAllUser = (user) => {
+  const getAllUser = () => {
    return $http.get(API_ENDPOINT.url + '/users').then(
     function(response) {
     return response;

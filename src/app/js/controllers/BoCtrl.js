@@ -1,6 +1,7 @@
 app.controller('boCtrl', ['$scope','AuthService','$http','serviceFilter','$state','$timeout', 'serviceStudent', '$window', function($scope, AuthService, $http, serviceFilter, $state, $timeout, serviceStudent, $window) {
 
-
+      $scope.memberRole = AuthService.userRole();
+      
       // JQUERY
       $(document).ready(() => {
           $(() => {

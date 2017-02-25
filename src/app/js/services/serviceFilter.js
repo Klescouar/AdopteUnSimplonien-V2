@@ -145,4 +145,30 @@ app.service("serviceFilter", function($http, API_ENDPOINT) {
             return error;
         });
     };
+
+    //////////////////////FIELD REQUESTS/////////////////////////:
+
+    this.addField = function(field) {
+        return $http.post(API_ENDPOINT.url + '/addField', field).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.getAllField = function() {
+        return $http.get(API_ENDPOINT.url + '/getAllField').then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.removeField = function(id) {
+        return $http.delete(API_ENDPOINT.url + '/removeField/' + id).then((response) => {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
 });

@@ -38,7 +38,7 @@
             <a ng-if="student.ProjetDeux" ng-href="{{student.ProjetDeux}}" target="_blank"><div class="project"></div></a>
             <a ng-if="student.ProjetTrois" ng-href="{{student.ProjetTrois}}" target="_blank"><div class="project"></div></a>
         </div>
-        <button data-toggle="modal" data-target="#contactDirect" ng-if="memberInfo.role === 'Recruteur'">Contacter
+        <button data-toggle="modal" data-target="#contactDirect" ng-if="memberInfo.role !== 'Simplonien'">Contacter
             {{student.prenom}}</button>
     </div>
     <div class="container-right-profil" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}">

@@ -99,6 +99,15 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
   }
   $scope.getAllContract();
 
+  $scope.getAllField = () => {
+      serviceFilter.getAllField().then(function(response) {
+          $scope.fields = response.data;
+      }).catch(function(errMsg) {
+          console.log('show field failed!');
+      });
+  }
+  $scope.getAllField();
+
 
   $scope.uploadFiles = (formData) => {
       $.ajax({url: '/api/upload_photos', method: 'post', data: formData, processData: false, contentType: false}).done($scope.handleSuccess).fail(function(xhr, status) {

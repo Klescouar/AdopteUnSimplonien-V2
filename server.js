@@ -23,6 +23,7 @@ const promo = require(__dirname + '/app/controllers/controllers.promo');
 const email = require(__dirname + '/app/controllers/controllers.emails');
 const region = require(__dirname + '/app/controllers/controllers.region');
 const csv = require(__dirname + '/app/controllers/controllers.csv');
+const field = require(__dirname + '/app/controllers/controllers.field');
 const apiRoutes = express.Router();
 const nodemailer = require("nodemailer");
 
@@ -62,7 +63,7 @@ apiRoutes.post('/signup', user.signup);
 apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.post('/valid/mail', user.validMail);
 apiRoutes.post('/forget/pass/:mail' , user.forgetPassword);
-apiRoutes.get('/users', user.RecruiterUsers);
+apiRoutes.get('/users', passport.authenticate('jwt', {session: false}), user.getAllUser);
 apiRoutes.put('/update/user/:id', passport.authenticate('jwt', {session: false}), user.updateUser);
 apiRoutes.put('/update/pass/profil/:id', passport.authenticate('jwt', {session: false}), user.updateUserPassFromProfil);
 apiRoutes.put('/update/pass/reset', user.resetPass);
@@ -96,6 +97,11 @@ apiRoutes.delete('/removeRegion/:id', passport.authenticate('jwt', {session: fal
 apiRoutes.post('/addPromo', passport.authenticate('jwt', {session: false}), promo.addPromo);
 apiRoutes.get('/getAllPromo', promo.getAllPromo);
 apiRoutes.delete('/removePromo/:id', passport.authenticate('jwt', {session: false}), promo.removePromo);
+
+/////////////////////////FIELD CONTROLLER/////////////////////////
+apiRoutes.post('/addField', passport.authenticate('jwt', {session: false}), field.addField);
+apiRoutes.get('/getAllField', field.getAllField);
+apiRoutes.delete('/removeField/:id', passport.authenticate('jwt', {session: false}), field.removeField);
 
 /////////////////////////STUDENT CONTROLLER/////////////////////////
 apiRoutes.get('/backOffice/infoStudent', student.infoStudent);
