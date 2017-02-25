@@ -151,9 +151,8 @@ exports.signup =  function(req, res) {
      });
 };
 
-exports.RecruiterUsers = function(req, res) {
+exports.getAllUser = function(req, res) {
    const token = getToken(req.headers);
-   console.log(token);
    if (token) {
      const decoded = jwt.decode(token, config.secret);
      User.find( function(err, user) {
@@ -167,22 +166,6 @@ exports.RecruiterUsers = function(req, res) {
      return res.status(403).send({success: false, msg: 'No token provided.'});
    }
  };
-
- exports.SimplonienUsers = function(req, res) {
-    const token = getToken(req.headers);
-    if (token) {
-      const decoded = jwt.decode(token, config.secret);
-      User.find({role: 'Simplonien'}, function(err, user) {
-          if (err) throw err;
-
-          else {
-            res.json({success: true, msg: 'Welcome in the member area ' + user.email + '!', user: user});
-          }
-      });
-    } else {
-      return res.status(403).send({success: false, msg: 'No token provided.'});
-    }
-  };
 
 exports.memberinfo = function(req, res) {
    const token = getToken(req.headers);

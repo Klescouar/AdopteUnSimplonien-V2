@@ -62,7 +62,7 @@ apiRoutes.post('/signup', user.signup);
 apiRoutes.post('/authenticate', user.authenticate);
 apiRoutes.post('/valid/mail', user.validMail);
 apiRoutes.post('/forget/pass/:mail' , user.forgetPassword);
-apiRoutes.get('/users', user.RecruiterUsers);
+apiRoutes.get('/users', passport.authenticate('jwt', {session: false}), user.getAllUser);
 apiRoutes.put('/update/user/:id', passport.authenticate('jwt', {session: false}), user.updateUser);
 apiRoutes.put('/update/pass/profil/:id', passport.authenticate('jwt', {session: false}), user.updateUserPassFromProfil);
 apiRoutes.put('/update/pass/reset', user.resetPass);

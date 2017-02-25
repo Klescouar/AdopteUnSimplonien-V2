@@ -4,7 +4,6 @@ app.controller('appUserCtrl', ['$scope', '$rootScope', '$state', 'AuthService', 
     $scope.$on(AUTH_EVENTS.notAuthenticated, (event) => {
         AuthService.logout();
         $state.go('login');
-        const alertPopup = $window.alert('Sorry, You have to login again.');
     });
 
     if (AuthService.userRole()) {
