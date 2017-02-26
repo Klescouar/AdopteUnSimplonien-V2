@@ -54,6 +54,7 @@ gulp.task('ToES5', function () {
 gulp.task('copy', function() {
     gulp.src('src/app/index.html').pipe(gulp.dest('dist/app'));
     gulp.src('src/assets/images/*').pipe(gulp.dest('dist/assets/images'));
+    gulp.src('src/assets/images/student/*').pipe(gulp.dest('dist/assets/images/student'));
     gulp.src('src/app/views/**/*.html').pipe(gulp.dest('dist/app/views'));
     gulp.src('src/assets/lib/**/*').pipe(gulp.dest('dist/assets/lib'));
 });

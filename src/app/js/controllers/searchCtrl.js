@@ -2,6 +2,7 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
   $scope.contrats = serviceFilter.contrats;
   $scope.langages = serviceFilter.langages;
   $scope.themes = serviceFilter.themes;
+  $scope.cardFull = [];
   $scope.searchResult = {
       maxLangage: 3,
       maxContrat: 5,
@@ -23,6 +24,11 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
   }
   const getFirstLetterOfName = (item) => {
       return item.nom = item.nom.charAt(0).toUpperCase() + '.';
+  }
+  const getOnlyVerifiedCard = (item) => {
+    if (item.verified === true) {
+        $scope.cardFull.push(item);
+    }
   }
   const addPicToAnonymous = (item) => {
     if (item.photo === '') {
@@ -146,17 +152,17 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
       });
       let secondFilter = filterContrats(firstFilter, Contrat);
       $scope.data = filterLangage(secondFilter, Langage);
+      console.log($scope.data);
   };
 
   searchFilter();
 
   serviceStudent.getAllStudent().then((res) => {
       $scope.loading = false;
-      $scope.data = res.data;
       res.data.map(convertToDate);
       res.data.map(getFirstLetterOfName);
       res.data.map(addPicToAnonymous);
-      $scope.cardFull = res.data;
+      res.data.map(getOnlyVerifiedCard);
       searchFilter();
   });
 

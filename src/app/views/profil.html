@@ -1,7 +1,7 @@
 <div class="main-container-profil" ng-controller="profilCtrl">
     <div class="conatiner-left-profil"></div>
     <div class="container-middle-profil">
-        <div class="profil-pic"><img src="./assets/images/{{student.photo}}"></div>
+        <div class="profil-pic"><img src="./assets/images/student/{{student.photo}}"></div>
         <h2>{{student.prenom}}
             {{student.nom}}</h2>
         <p class="spe">{{student.Domaine}}</p>
@@ -41,7 +41,7 @@
         <button data-toggle="modal" data-target="#contactDirect" ng-if="memberInfo.role !== 'Simplonien'">Contacter
             {{student.prenom}}</button>
     </div>
-    <div class="container-right-profil" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}">
+    <div class="container-right-profil" ng-style="{'background-image':'url(./assets/images/student/'+student.photo+')'}">
         <div class="linear"></div>
     </div>
 
@@ -52,7 +52,7 @@
                 <div class="contactStudent">
                     <div class="logbox logBoxStyle" ng-if="contactStud === 1">
                         <form class="signup" ng-submit="sendMail()" name="form">
-                            <div class="profilPicMail" ng-style="{'background-image':'url(./assets/images/'+student.photo+')'}"></div>
+                            <div class="profilPicMail" ng-style="{'background-image':'url(./assets/images/student/'+student.photo+')'}"></div>
                             <h1>Ecrire à
                                 {{student.prenom}}
                                 {{student.nom}}

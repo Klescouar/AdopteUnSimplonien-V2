@@ -92,7 +92,7 @@ app.controller('modifyCardCtrl', ['$scope', '$stateParams', 'serviceStudent', 's
         });
     }
     $scope.getAllField();
-    
+
     $scope.getAllSkill = () => {
         serviceFilter.getAllSkill().then(function(response) {
             $scope.skills = response.data;
@@ -131,7 +131,7 @@ app.controller('modifyCardCtrl', ['$scope', '$stateParams', 'serviceStudent', 's
             let html = '';
             const img = data[0];
             $scope.photo = img.filename;
-            const path = '/assets/images/' + img.filename;
+            const path = '/assets/images/student/' + img.filename;
             if (img.status) {
                 html += '<img src="' + path + '" alt="' + img.filename + '">';
             } else {

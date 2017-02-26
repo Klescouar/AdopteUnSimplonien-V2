@@ -32,14 +32,14 @@ exports.upload = function(req, res) {
                 filename = Date.now() + '-' + file.name;
 
                 // Move the file with the new file name
-                fs.rename(file.path, path.join(__dirname, '../../dist/assets/images/' + filename));
+                fs.rename(file.path, path.join(__dirname, '../../dist/assets/images/student/' + filename));
 
                 // Add to the list of photos
                 photos.push({
                     status: true,
                     filename: filename,
                     type: type.ext,
-                    publicPath: '../../dist/assets/images/' + filename
+                    publicPath: '../../dist/assets/images/student/' + filename
                 });
             }
         } else {

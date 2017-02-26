@@ -285,7 +285,7 @@ app.controller('profilsUserCtrl',['$http', '$scope', '$rootScope', 'AuthService'
       let html = '';
       const img = data[0];
       $scope.photo = img.filename;
-      const path = '/assets/images/' + img.filename;
+      const path = '/assets/images/student/' + img.filename;
       if (img.status) {
         html += '<img src="' + path + '" alt="' + img.filename + '">';
       } else {
