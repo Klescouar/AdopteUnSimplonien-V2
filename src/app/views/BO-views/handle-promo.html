@@ -2,7 +2,10 @@
     <div class="promo-card">
         <h1>Promotions</h1>
         <div class="input-add">
-            <input type="text" id="input" value="" ng-model="promo.name" placeholder="Promo..." class="input-FILTER-style"></input>
+          <md-input-container>
+              <label>Promotion</label>
+              <input type="text" ng-model="promo.name">
+          </md-input-container>
             <button type="button" class="delete-filter-button" ng-click="addPromo()">
             <h4>Ajouter</h4>
         </button>
@@ -14,17 +17,32 @@
     </div>
     <div class="promo-card">
         <h1>Fabriques</h1>
-        <div class="input-add-school">
-            <input type="text" id="input" value="" ng-model="school.name" placeholder="Ville..." class="input-FILTER-style input-FILTER-style-school"></input>
-            <input type="text" id="input" value="" ng-model="school.adress" placeholder="Adresse..." class="input-FILTER-style input-FILTER-style-school"></input>
-            <input type="number" id="input" value="" ng-model="school.latitude" placeholder="Latitude..." class="input-FILTER-style input-FILTER-style-school"></input>
-            <input type="number" id="input" value="" ng-model="school.longitude" placeholder="Longitude..." class="input-FILTER-style input-FILTER-style-school"></input>
+        <form class="input-add-school" ng-submit="addSchool()" >
+          <md-input-container>
+              <label>Ville</label>
+              <input type="text" ng-model="school.name" required>
+          </md-input-container>
+          <md-input-container>
+              <label>Adresse</label>
+              <input type="text" ng-model="school.adress" required>
+          </md-input-container>
+          <md-input-container>
+              <label>Latitude</label>
+              <input type="text" ng-model="school.latitude" required>
+          </md-input-container>
+          <md-input-container>
+              <label>Longitude</label>
+              <input type="text" ng-model="school.longitude" required>
+          </md-input-container>
             <a target="_blank" href="http://www.coordonnees-gps.fr/">Pour les coordonnées GPS</a>
-            <input type="text" id="input" value="" ng-model="school.website" placeholder="Site..." class="input-FILTER-style input-FILTER-style-school"></input>
-            <button type="button" class="delete-filter-button" ng-click="addSchool()">
+            <md-input-container>
+                <label>Site</label>
+                <input type="url" value="http://" ng-model="school.website" required>
+            </md-input-container>
+            <button type="submit" class="delete-filter-button">
               <h4>Ajouter</h4>
           </button>
-        </div>
+        </form>
         <div ng-repeat="school in schools" class="filter-name">
             <p>{{school.name}}</p>
             <div class="delete-user" ng-click="removeSchool(school._id)"></div>

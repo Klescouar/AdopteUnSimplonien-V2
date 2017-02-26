@@ -1,14 +1,22 @@
-<form class="changeAdminPass" name='changeAdminPassForm'  ng-submit="changeAdminPassForm.$valid && changeAdminPass(member._id)" novalidate>
-    <h2>Changer son mot de passe Adminstrateur</h2>
-    <input type="password"  ng-click="oldPassVerif = true; validate=true" class="input-BO-style" required placeholder="Ancien mot de passe..."  ng-model="newPassword.oldpass" name="passwordOld" minlength='8'></input>
-    <span class="error-msg" ng-if="!oldPassVerif">Mot de passe actuel invalide.</span>
-    <span class="error-msg" ng-show='changeAdminPassForm.$submitted && changeAdminPassForm.passwordOld.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
-    <input type="password" class="input-BO-style" required placeholder="Nouveau mot de passe..." minlength='8'  name="passwordNew" ng-model="newPassword.newpass"></input>
-    <span class="error-msg" ng-show='changeAdminPassForm.$submitted && changeAdminPassForm.passwordNew.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
-    <input type="password" class="input-BO-style" required placeholder="Retapez nouveau mot de passe..." minlength='8' ng-model="passwordChecked"  name="passwordNewConfirm" pw-check='newPassword.newpass'></input>
-    <span class="error-msg" ng-show='newPassword.newpass!== "" && passwordChecked !=="" && changeAdminPassForm.$submitted && changeAdminPassForm.passwordNewConfirm.$error.pwCheck'>Vos nouveaux mots de Passe doivent être identiques</span>
-    <span class="error-msg" ng-show='changeAdminPassForm.$submitted && changeAdminPassForm.passwordNewConfirm.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
-    <input class="create-user-button" value="Changer mot de passe" type="submit">
+<form class="changeAdminPass" name='createUserStudent'  ng-submit="changeAdminPass(member._id)" novalidate>
+    <h2>Changer son mot de passe ADMIN</h2>
+    <md-input-container>
+        <label>Ancien mot de passe</label>
+        <input ng-click="oldPassVerif = true; validate=true" ng-model="newPassword.oldpass" required>
+    </md-input-container>
+    <span class="error-msg" ng-if="!oldPassVerif">
+      Mot de passe actuel invalide.
+    </span>
+    <md-input-container>
+        <label>Nouveau mot de passe</label>
+        <input type="password" ng-model="newPassword.newpass" minlength='8' required>
+    </md-input-container>
+    <md-input-container>
+        <label>Confirmation mot de passe</label>
+        <input type="password" ng-model="passwordChecked" minlength='8' required>
+    </md-input-container>
+    <span class="error-msg" ng-hide="newPassword.newpass.length<1" ng-if="newPassword.newpass != passwordChecked || passwordChecked.length < 8">Les mots de passe doivent être identiques et de 8 caractères minimum.</span>
+    <input class="create-user-button" value="Changer son mot de passe" type="submit">
 </form>
 
 <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':validate ===false}">

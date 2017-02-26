@@ -50,6 +50,7 @@ app.controller('contactCtrl', ['$scope', '$http', 'serviceFilter', 'serviceMaile
     const getAllSchool = () => {
       serviceFilter.getAllSchool().then((res) => {
         $scope.schools = res.data;
+        console.log(res.data);
         $scope.schools.map(getInfo);
         initialize();
       })

@@ -109,6 +109,46 @@
 			text-align: center;
 		}
 
+		.md-input{
+			border-bottom-color: rgb(119, 119, 119);
+		}
+
+		.md-select{
+			border-bottom-color: rgb(119, 119, 119);
+		}
+
+
+		md-input-container:not(.md-input-invalid).md-input-focused .md-input{
+		 border-bottom: 1px solid rgba(77, 101, 142, 0.85);
+		 outline: none;
+		}
+
+		.md-select-value{
+			span{
+				color: rgb(180, 180, 180);
+			}
+		}
+
+		md-input-container {
+				height: 30px;
+				width: 50%;
+				margin: 13px;
+
+				input {
+						color: white;
+				}
+
+				textarea {
+						color: white;
+						resize: none;
+				}
+
+				label {
+						color: rgb(180, 180, 180);
+						font-size: 0.9em;
+				}
+			}
+
 		.container-create-user {
 			display: flex;
 			justify-content: space-around;
@@ -294,6 +334,7 @@
 
 .delete-filter-button{
 	margin-left: 10px;
+	margin-bottom: 10px;
 	text-decoration: none;
 	h4{
 		margin: 5px;
@@ -363,7 +404,7 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
-		height: 300px;
+		height: 350px;
 		width: 100%;
 		a{
 			text-decoration: none;

@@ -12,39 +12,45 @@
     <!-- FORM RECRUITER -->
     <form name="recruiterForm" ng-submit="recruiterForm.$valid && registerRecruteur()" ng-show="user.role == 'Recruteur'" novalidate>
       <div class="main-cont-input">
-        <div class="cont-input">
-          <input class="input-register"  type="text" id="nom" ng-model="userRecruteur.company" placeholder="Entreprise*" required>
-        </div>
-        <div class="cont-input">
-          <input class="input-register" type="text" id="nom" ng-model="userRecruteur.lastName"  placeholder="Nom*" required>
-        </div>
-        <div class="cont-input">
-          <input class="input-register" type="text" id="prenom"  ng-model="userRecruteur.firstName"  placeholder="Prénom*" required>
-        </div>
-        <div class="cont-input">
-          <p>Maitrise principale recherchée :</p>
-          <select id="boCreatePromoSimploniens" class="input-style" ng-model="userRecruteur.technology"
-          placeholder="Technologie*" required>
-          <option class="labelOption" disabled selected value>Technologie</option>
-          <option ng-repeat="skill in skills">{{skill.name}}</option>
-        </select>
-      </div>
+        <md-input-container>
+            <label>Entreprise</label>
+            <input type="text" ng-model="userRecruteur.company" required>
+        </md-input-container>
+        <md-input-container>
+            <label>Nom</label>
+            <input type="text" ng-model="userRecruteur.lastName" required>
+        </md-input-container>
+        <md-input-container>
+            <label>Prenom</label>
+            <input type="text" ng-model="userRecruteur.firstName" required>
+        </md-input-container>
+        <md-input-container>
+            <label>Maitrise recherchée</label>
+            <md-select ng-model="userRecruteur.technology" required>
+                <md-option ng-repeat="skill in skills" ng-value="skill.name">
+                    {{skill.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
       <!-- EMAIL -->
-      <div class="cont-input">
-        <input class="input-register" type="email" id="email" ng-model="userRecruteur.email"  placeholder="E-mail*" required>
-        <span class="match" ng-show="!emailR">Email déjà existant</span>
-      </div>
+      <md-input-container>
+          <label>E-mail</label>
+          <input type="email" ng-model="userRecruteur.email" required>
+          <span class="match" ng-show="!emailR">Email déjà existant</span>
+      </md-input-container>
 
       <!-- PASSWORD -->
-      <div class="cont-input">
-        <input class="input-register" id="inputMdp" type="password" id="mdp" ng-model="userRecruteur.password" placeholder="Mot de passe*" ng-minlength="8" required>
-      </div>
+      <md-input-container>
+          <label>Mot de passe</label>
+          <input type="password" ng-model="userRecruteur.password" minlength='8' required>
+      </md-input-container>
 
       <!-- VERIF PASSWORD -->
-      <div class="cont-input">
-        <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedRecruteur"  placeholder="Confirmation du mot de passe*" required>
-        <p class="match" ng-hide="userRecruteur.password.length<1"  ng-show="passwordCheckedRecruteur != userRecruteur.password || passwordCheckedRecruteur.length<8" required>Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
-      </div>
+      <md-input-container>
+          <label>Confirmation mot de passe</label>
+          <input type="password" ng-model="passwordCheckedRecruteur" minlength='8' required>
+      </md-input-container>
+      <p class="match" ng-hide="userRecruteur.password.length<1"  ng-show="passwordCheckedRecruteur != userRecruteur.password || passwordCheckedRecruteur.length<8" required>Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
       <span class="match" ng-show=' recruiterForm.$submitted && recruiterForm.$invalid'>
         Tous les champs sont requis
       </span>
@@ -60,26 +66,31 @@
   <!-- FORM SIMPLONIEN -->
   <form class="form-simplonien" name="simplonienForm" ng-submit="simplonienForm.$valid && registerSimplonien()" ng-show="user.role == 'Simplonien'" novalidate>
     <div class="main-cont-input">
-      <div class="cont-input">
-        <input class="input-register" type="text" id="nom" ng-model="userSimplonien.lastName"  placeholder="Nom*" required>
-      </div>
-      <div class="cont-input">
-        <input class="input-register" type="text" id="prenom" ng-model="userSimplonien.firstName"  placeholder="Prénom*" required>
-      </div>
+      <md-input-container>
+          <label>Nom</label>
+          <input type="text" ng-model="userSimplonien.lastName" required>
+      </md-input-container>
+      <md-input-container>
+          <label>Prénom</label>
+          <input type="text" ng-model="userSimplonien.firstName" required>
+      </md-input-container>
       <!-- EMAIL -->
-      <div class="cont-input">
-        <input class="input-register" type="email" id="email" ng-model="userSimplonien.email"  placeholder="E-mail*" required>
-        <span class="match" ng-show="!emailS">Email déjà existant</span>
-      </div>
+      <md-input-container>
+          <label>E-mail</label>
+          <input type="email" ng-model="userSimplonien.email" required>
+          <span class="match" ng-show="!emailS">Email déjà existant</span>
+      </md-input-container>
       <!-- PASSWORD -->
-      <div class="cont-input">
-        <input class="input-register" id="inputMdp" type="password" id="mdp" ng-model="userSimplonien.password" name="password"  placeholder="Mot de passe*" ng-minlength="8" required>
-      </div>
+      <md-input-container>
+          <label>Mot de passe</label>
+          <input type="password" ng-model="userSimplonien.password" minlength='8' required>
+      </md-input-container>
       <!-- VERIF PASSWORD -->
-      <div class="cont-input">
-        <input class="input-register"  type="password" id="mdp" ng-model="passwordCheckedSimplonien"  placeholder="Confirmation du mot de passe*" required>
-        <span class="match" ng-hide="userSimplonien.password.length<1"  ng-show="passwordCheckedSimplonien != userSimplonien.password || passwordCheckedSimplonien.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</span>
-      </div>
+      <md-input-container>
+          <label>Confirmation mot de passe</label>
+          <input type="password" ng-model="passwordCheckedSimplonien" minlength='8' required>
+      </md-input-container>
+      <span class="match" ng-hide="userSimplonien.password.length<1"  ng-show="passwordCheckedSimplonien != userSimplonien.password || passwordCheckedSimplonien.length<8">Les mots de passe doivent être identiques et de 8 caractères minimum.</span>
       <span class="match" ng-show=' simplonienForm.$submitted && simplonienForm.$invalid'>Tous les champs sont requis</span>
     </div>
     <div class="cont-button">
