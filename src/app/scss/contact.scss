@@ -5,24 +5,66 @@
     position: relative;
     height: calc(100vh - 110px);
 
-    h1 {
-        margin: 10px;
-        font-size: 1.5em;
-        font-weight: bold;
-        text-align: center;
-        line-height: 1.3em;
-        color: white;
-    }
-
-    form {
+    .contact-form{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      min-width: 330px;
+      width: 40%;
+      padding: 20px 30px;
+      background-color: #40475A;
+      form{
+        height: 100%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        min-width: 330px;
-        width: 40%;
-        padding: 20px 30px;
-        background-color: #40475A;
+        .text-form{
+          height: 150px;
+          width: 100%;
+          md-input-container{
+            margin: 13px 0;
+          }
+        }
+      }
+      md-input-container{
+        height: 20px;
+        width: 100%;
+        margin: 13px;
+        input{
+          color: white;
+        }
+        textarea{
+          color: white;
+        }
+        label{
+          color: rgb(165, 167, 189);
+          font-size: 0.9em;
+        }
+      }
+
+      md-input-container label:not(.md-no-float):not(.md-container-ignore){
+        color: rgb(165, 167, 189);
+      }
+
+
+      md-input-focused{
+        height: 20px;
+        label{
+          color: rgb(165, 167, 189);
+        }
+      }
+    }
+
+    h1 {
+      margin: 5px;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.1em;
+      color: white;
     }
 
     .cont-input {
@@ -105,7 +147,7 @@
     }
 
     .contactContainer {
-        form {
+        .contact-form {
             width: 100%;
             min-height: calc(100vh - 110px);
             color: black;
