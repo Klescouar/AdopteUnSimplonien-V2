@@ -3162,8 +3162,8 @@ md-input-container .md-input-message-animation.ng-enter, md-input-container .md-
 }
 
 md-input-container.md-input-focused label:not(.md-no-float), md-input-container.md-input-has-placeholder label:not(.md-no-float), md-input-container.md-input-has-value label:not(.md-no-float) {
-    -webkit-transform: translate3d(0, 6px, 0) scale(.75);
-    transform: translate3d(0, 6px, 0) scale(.75);
+    -webkit-transform: translate3d(0, 20px, 0) scale(.75);
+    transform: translate3d(0, 20px, 0) scale(.75);
     -webkit-transition: width .4s cubic-bezier(.25, .8, .25, 1), -webkit-transform .4s cubic-bezier(.25, .8, .25, 1);
     transition: width .4s cubic-bezier(.25, .8, .25, 1), -webkit-transform .4s cubic-bezier(.25, .8, .25, 1);
     transition: transform .4s cubic-bezier(.25, .8, .25, 1), width .4s cubic-bezier(.25, .8, .25, 1);
