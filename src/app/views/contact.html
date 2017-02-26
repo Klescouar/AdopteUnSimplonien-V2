@@ -8,21 +8,21 @@
                 <input type="text" name="nom" ng-model="mail.name" class="Name" placeholder="Nom/Prenom *" required/>
             </div> -->
                 <md-input-container>
-                    <label>Nom/Prenom*</label>
+                    <label>Nom/Prenom</label>
                     <input ng-model="mail.name" required>
                 </md-input-container>
             <!-- <div class="cont-input">
                 <input type="text" name="entreprise" ng-model="mail.entreprise" class="Name" placeholder="Entreprise *" required/>
             </div> -->
                 <md-input-container>
-                    <label>Entreprise*</label>
+                    <label>Entreprise</label>
                     <input ng-model="mail.entreprise" required>
                 </md-input-container>
             <!-- <div class="cont-input">
                 <input type="text" name="ville" ng-model="mail.city" class="City" placeholder="Ville *" required/>
             </div> -->
                 <md-input-container>
-                    <label>Ville*</label>
+                    <label>Ville</label>
                     <input ng-model="mail.city" required>
                 </md-input-container>
             <!-- <div class="cont-input">
@@ -30,7 +30,7 @@
                 <span class="error-msg" ng-show='contactForm.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
             </div> -->
                 <md-input-container>
-                    <label>Email*</label>
+                    <label>Email</label>
                     <input ng-model="mail.sender" required>
                 </md-input-container>
             <!-- <div class="cont-input">
@@ -38,7 +38,7 @@
                 <span class="error-msg" ng-show='contactForm.phone.$error.number'>Ce numéro de téléphone n'est pas valide</span>
             </div> -->
                 <md-input-container>
-                    <label>Telephone*</label>
+                    <label>Telephone</label>
                     <input ng-model="mail.phone" required>
                 </md-input-container>
                 <span class="error-msg" ng-show='contactForm.phone.$error.number'>Ce numéro de téléphone n'est pas valide</span>
@@ -49,7 +49,7 @@
             <span class="match" ng-show='contactForm.$submitted && contactForm.$invalid'> Tous les champs sont requis.</span> -->
             <div class="text-form">
             <md-input-container class="md-block">
-                <label>Message*</label>
+                <label>Message</label>
                 <textarea ng-model="mail.content" md-maxlength="300" rows="4" md-select-on-focus required></textarea>
             </md-input-container>
           </div>
