@@ -1,19 +1,35 @@
 /////////// Standart Form-field  \\\\\\\\\\\\
-.cont-input{
-  width: 90%;
-  margin: 15px 0;
-  padding: 0 20px;
-  position: relative;
+form{
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+::-webkit-input-placeholder {
+  color: white;
+}
+
+:-moz-placeholder {
+  color: white;
+}
+
+::-moz-placeholder {
+  color: white;
+}
+
+:-ms-input-placeholder {
+  color: white;
+}
+
+.cont-input, md-input-container{
+  width: 90%;
+  margin: 15px 10px;
   min-height: 60px;
 
   &.full-width{
     width: 100%;
   }
   input, select, textarea{
-    position: relative;
-    bottom: 0;
     height: 35px;
     width: 100%;
     border: none;
@@ -22,12 +38,8 @@
     outline: none;
     border-radius: 0;
   }
-  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  input[type=number] {
-    -moz-appearance:textfield;
+  input,textarea{
+    color: white;
   }
   textarea{
     height: 140px;
@@ -35,13 +47,10 @@
     word-wrap: break-word;
     overflow: visible;
   }
-  textarea,select,input[type=checkbox]{
-    box-shadow: none;
-  }
   input:hover {
     outline: none;
   }
-  input:focus {
+  input:focus, textarea:focus {
     border-bottom: 1px solid white;
     outline: none;
   }
@@ -66,11 +75,37 @@
   }
 }
 
+md-input-focused{
+  height: 20px;
+  label{
+    color: rgb(165, 167, 189);
+  }
+  input, textarea {
+    border-bottom: 1px solid white;
+    outline: none;
+  }
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input{
+  border-bottom: 1px solid white;
+  outline: none;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance:textfield;
+}
+textarea,select,input[type=checkbox]{
+  box-shadow: none;
+}
+
+
 .show-input{
   display: block;
-}
-.hide-input{
-  display: none;
 }
 
 .form-instruction{
@@ -173,7 +208,7 @@
   padding: 0px;
   font-weight: 100;
   font-size: 16px;
-  z-index:1; 
+  z-index:1;
 }
 
 .content {
@@ -232,8 +267,6 @@
 
 }
 
-
-
 //////////////// Input validation when submitted \\\\\\\\\\\\\\\\\\\\\\\\
 
 .ng-submitted {
@@ -262,9 +295,6 @@
     }
   }
 }
-
-
-
 
 .error-msg{
   font-size: 0.9em;

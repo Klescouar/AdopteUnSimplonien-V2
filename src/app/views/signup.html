@@ -42,7 +42,7 @@
 
       <!-- VERIF PASSWORD -->
       <div class="cont-input">
-        <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedRecruteur"  placeholder="Confirmation du mot de passe*">
+        <input class="input-register" type="password" id="mdp" ng-model="passwordCheckedRecruteur"  placeholder="Confirmation du mot de passe*" required>
         <p class="match" ng-hide="userRecruteur.password.length<1"  ng-show="passwordCheckedRecruteur != userRecruteur.password || passwordCheckedRecruteur.length<8" required>Les mots de passe doivent être identiques et de 8 caractères minimum.</p>
       </div>
       <span class="match" ng-show=' recruiterForm.$submitted && recruiterForm.$invalid'>
