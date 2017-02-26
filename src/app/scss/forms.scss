@@ -25,20 +25,24 @@ form{
   width: 90%;
   margin: 15px 10px;
   min-height: 60px;
+  display: flex;
+  flex-wrap: wrap;
 
   &.full-width{
     width: 100%;
   }
-  input, select, textarea{
+  .md-input, input, select, textarea{
     height: 35px;
     width: 100%;
     border: none;
     background: transparent;
-    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: rgba(115, 159, 190, 0.35);
     outline: none;
     border-radius: 0;
   }
-  input,textarea{
+  .md-input, input,textarea{
     color: white;
   }
   textarea{
@@ -50,26 +54,7 @@ form{
   input:hover {
     outline: none;
   }
-  input:focus, textarea:focus {
-    border-bottom: 1px solid white;
-    outline: none;
-  }
-  .input-label{
-    position:absolute;
-    top:-13px;
-    left:20px;
-    font-size:11px;
-    color:#aaa;
-    transition: all 0.1s linear;
-    opacity:0;
-  }
-  .input-label.on {
-    color: rgba(115, 159, 190, 0.85)
-  }
-  .input-label.show {
-    top:-15px;
-    opacity:1;
-  }
+
   .error-msg{
     text-align: left;
   }
@@ -80,17 +65,21 @@ md-input-focused{
   label{
     color: rgb(165, 167, 189);
   }
-  input, textarea {
-    border-bottom: 1px solid white;
+
+  .md-input:focus, input:focus, textarea:focus {
+    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
     outline: none;
   }
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input{
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(115, 159, 190, 0.85);
   outline: none;
 }
 
+md-input-container .md-input.ng-invalid.ng-dirty{
+  border-width: 0 0 1px;
+}
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -102,7 +91,6 @@ input[type=number] {
 textarea,select,input[type=checkbox]{
   box-shadow: none;
 }
-
 
 .show-input{
   display: block;
@@ -264,7 +252,6 @@ textarea,select,input[type=checkbox]{
 
 .content:hover::after, .content:hover::before {
   transform: scale(1);
-
 }
 
 //////////////// Input validation when submitted \\\\\\\\\\\\\\\\\\\\\\\\
@@ -274,17 +261,17 @@ textarea,select,input[type=checkbox]{
     border: none;
   }
   .ng-invalid{
-    border-bottom: 1px solid #de5b49;
+    border-bottom: 1px solid rgb(221,44,0);;
     color: #de5b49;
     .md-datepicker-input-container{
-      border-bottom: 1px solid #de5b49;
+      border-bottom: 1px solid rgb(221,44,0);;
     }
     &:focus{
-      border-bottom: 1px solid #de5b49;
+      border-bottom: 1px solid rgb(221,44,0);;
     }
   }
   .ng-invalid.ng-dirty{
-    color: #de5b49;
+    color: rgb(221,44,0);;
   }
 }
 
@@ -298,7 +285,7 @@ textarea,select,input[type=checkbox]{
 
 .error-msg{
   font-size: 0.9em;
-  color: #de5b49;
+  color: rgb(221,44,0);
   margin: 5px 0;
   width: $full;
   font-weight: bold;

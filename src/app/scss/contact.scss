@@ -5,51 +5,6 @@
   position: relative;
   height: calc(100vh - 110px);
 
-  .contact-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    min-width: 330px;
-    width: 40%;
-    padding: 20px 30px;
-    background-color: #40475A;
-    height: $full;
-    form{
-      height: 100%;
-      width: 70%;
-      min-width: 300px;
-      .text-form{
-        height: 150px;
-      }
-    }
-
-    md-input-container,.text-form{
-      width: $full;
-    }
-
-    md-input-container{
-      min-height: 20px;
-      margin: 13px 0;
-
-      label{
-        color: rgb(165, 167, 189);
-        font-size: 1em;
-      }
-    }
-
-    md-input-container label:not(.md-no-float):not(.md-container-ignore){
-      color: rgb(165, 167, 189);
-    }
-
-    md-input-focused{
-      height: 20px;
-      label{
-        color: rgb(165, 167, 189);
-      }
-    }
-  }
-
   h1 {
     margin: 5px;
     font-size: 1.4em;
@@ -58,22 +13,67 @@
     line-height: 1.1em;
     color: white;
   }
+}
 
-  .submit-button {
-    font-size: 0.8em;
-    width: 100px;
-    background-color: transparent;
-    border: 1px solid #fff;
-    transition: all 0.1s ease-in-out;
-    margin-top: 20px;
-    min-height: 30px;
-    color: white;
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 330px;
+  width: 40%;
+  padding: 20px 30px;
+  background-color: #40475A;
+  height: $full;
+  form{
+    width: 70%;
+    min-width: 300px;
+    .text-form{
+      height: 150px;
+    }
   }
 
-  .submit-button:hover {
-    background-color: #4d566e;
-    color: white;
+  md-input-container,.text-form{
+    width: $full;
   }
+
+  md-input-container{
+    min-height: 20px;
+    max-height: 40px;
+    margin: 13px 0;
+
+    label{
+      color: rgb(165, 167, 189);
+      font-size: 1em;
+    }
+  }
+
+  md-input-container label:not(.md-no-float):not(.md-container-ignore){
+    color: rgb(165, 167, 189);
+  }
+
+  md-input-focused{
+    height: 20px;
+    label{
+      color: rgb(165, 167, 189);
+    }
+  }
+}
+
+.submit-button {
+  font-size: 0.8em;
+  width: 100px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  transition: all 0.1s ease-in-out;
+  margin-top: 20px;
+  min-height: 30px;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #4d566e;
+  color: white;
 }
 
 .mapContact {
@@ -103,14 +103,11 @@
     display: none;
   }
 
-  .contactContainer {
-    .contact-form {
-      width: 100%;
-      min-height: calc(100vh - 110px);
-      color: black;
-      padding: 10px;
-      border: 1px dashed #DE5B49;
-    }
+  .contact-form {
+    width: 100%;
+    min-height: calc(100vh - 110px);
+    color: black;
+    padding: 10px;
   }
 
   .simplonPicture {
