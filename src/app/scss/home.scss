@@ -22,18 +22,31 @@
         }
     }
 
+    .big-title{
+        font-size: 6em;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0px;
+        padding: 0 40px;
+        text-align: center;
+    }
     .main-title {
         margin-top: 0;
         margin-bottom: 20px;
         padding: 0 40px;
         text-align: center;
-        font-size: 4.5em;
+        font-size: 3em;
+        width: 80%;
+        color:#de5b49;
+        font-weight: bold;
     }
 
     .main-text {
-        width: 75%;
+        width: 900px;
         text-align: center;
         margin: 20px 20px;
+        margin-bottom: 40px;
+        font-size: 1.8em;
     }
     // Positionnement du boutton avec transition sur sa couleur
     .red-button {
@@ -101,6 +114,15 @@
         width: 300%;
     }
 }
+
+// @media screen and (max-width: 1800px) {
+//     .home-container {
+//         .big-title {
+//             font-size: 4em !important;
+//         }
+//     }
+// }
+
 @media screen and (max-width: 735px) {
     .home-container {
         .main-title {
