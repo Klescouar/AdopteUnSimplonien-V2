@@ -107,20 +107,37 @@ body {
       display: flex;
       align-items:center;
       justify-content:center;
-      //background-color: rgba(115,159,190,0.85);
-      border: 1px solid white;
-      height: 35px;
-      margin: 10px;
-      min-width: 100px;
       cursor: pointer;
-      padding: 5px 10px;
+      margin: 0 20px;
+      padding: 0;
+      i{
+        font-size: 1.8em;
+        transition: 0.1s all ease;
+      }
+    }
+    .user-icon:hover i {
+      color: #de5b49;
+      transition: 0.1s all ease;
     }
 
-
-
-    .user-icon:hover {
-      background-color: rgb(64, 62, 62);
-    }
+    // .user-icon {
+    //   display: flex;
+    //   align-items:center;
+    //   justify-content:center;
+    //   //background-color: rgba(115,159,190,0.85);
+    //   border: 1px solid white;
+    //   height: 35px;
+    //   margin: 10px;
+    //   min-width: 100px;
+    //   cursor: pointer;
+    //   padding: 5px 10px;
+    // }
+    //
+    //
+    //
+    // .user-icon:hover {
+    //   background-color: rgb(64, 62, 62);
+    // }
     // DESKTOP NAV ITEMS
     .page-container-left {
       display: flex;
