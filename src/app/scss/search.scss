@@ -193,6 +193,8 @@
 
 .contract-box {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     .pad-style {
         padding: 0 5px;

@@ -19,6 +19,19 @@
 		margin: 30px 0;
 		height: 300px;
 	}
+	.tagViewVille{
+		font-size: 1em;
+		margin-right: 0;
+	}
+	.cont-textarea-create{
+		height: 150px;
+	}
+	.cont-input-create{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
 	.handle-CSV{
 		display: flex;
 		justify-content: space-around;
@@ -113,8 +126,20 @@
 			border-bottom-color: rgb(119, 119, 119);
 		}
 
-		.md-select{
-			border-bottom-color: rgb(119, 119, 119);
+		md-select{
+			border-bottom: 1px solid rgb(119, 119, 119);
+		}
+
+		md-checkbox.md-checked .md-icon{
+			background-color: rgb(147, 147, 147);
+		}
+
+		md-checkbox.md-checked .md-ink-ripple{
+			color: rgb(147, 147, 147);
+		}
+
+		md-checkbox:not(.md-checked) .md-icon{
+			border-color: rgb(180, 180, 180);
 		}
 
 
@@ -131,7 +156,7 @@
 
 		md-input-container {
 				height: 30px;
-				width: 50%;
+				width: 45%;
 				margin: 13px;
 
 				input {
@@ -175,6 +200,14 @@
 					border-bottom: 1px solid rgba(166, 166, 166, 0.85);
 				}
 			}
+		}
+
+		.cont-skill-create{
+			display: flex;
+			align-items: center;
+			md-input-container {
+					width: 90%;
+				}
 		}
 
 		.container-create-user, .container-delete-user, .handle-CSV, .handle-filter{
@@ -263,12 +296,13 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			width: 60%;
+			width: 80%;
 			.container-create{
 				background-color: transparent;
 				padding:0;
 				.error-msg{
 					text-align: right;
+					margin: 20px;
 				}
 			}
 		}
@@ -499,9 +533,6 @@
 	}
 }
 .cont-CONTRAT-input{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	margin: 20px 0;
 	width: 100%;
 }
@@ -511,10 +542,6 @@
 	width: 250px;
 	.input-BO-style{
 		width: 75%
-	}
-	.tagViewVille{
-		font-size: 0.9em;
-		margin-right: 0;
 	}
 }
 

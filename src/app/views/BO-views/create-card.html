@@ -1,180 +1,204 @@
 <div class="container-create-student">
-  <div class="choose-pic">
-    <div id="upload-pic"></div>
-    <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
-      <div class="form-group">
-        <input id="photos-input" type="file" name="photos[]" multiple="multiple">
-      </div>
-      <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo" />
-    </form>
-    <p>Formats acceptés: jpg, png, jpeg entre 200Ko et 1Mo</p>
-    <p class='errorUpload'></p>
-  </div>
-  <form name="createCard" class="container-create" novalidate>
-    <div class="section-BO">
-      <h1 class="info-title">Informations</h1>
-      <div class="cont-BO-input">
-        <p for="boCreateLastNameSimploniens">Nom</p>
-        <input id="boCreateLastNameSimploniens" class="input-BO-style" ng-model="student.nom" placeholder="Nom" type="text" required name="nom">
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreateNameSimploniens">Prénom</p>
-        <input id="boCreateNameSimploniens" class="input-BO-style" ng-model="student.prenom" placeholder="Prénom" name='prenom'required>
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreateOldSimploniens">Age</p>
-        <input type="number" class="input-BO-style" ng-model="student.age" placeholder="Age" required name="age">
-        <span class="error-msg" ng-show='createCard.age.$invalid && createCard.age.$dirty'>Votre âge est incorrect</span>
-      </div>
-      <div class="cont-BO-input">
-        <p>Sexe</p>
-        <select id="boCreateSexeSimploniens" class="input-BO-style" ng-model="student.Sexe" placeholder="Sexe">
-          <option value="" disabled>Sexe</option>
-          <option value="Homme">Homme</option>
-          <option value="Femme">Femme</option>
-          <option value="Autre">Autre</option>
-        </select>
-      </div>
-      <div class="cont-BO-calendar cont-BO-input">
-        <p>Date de diponibilité</p>
-        <md-datepicker md-min-date='minDate' md-placeholder="Choisir date" ng-model="student.dispo" name='dateDispo'required></md-datepicker>
-        <span class="error-msg" ng-if='createCard.$submitted && createCard.dateDispo.$invalid'>Veuillez indiquer une date de disponibilité</span>
-      </div>
-      <div class="cont-BO-input">
-        <p>Region</p>
-        <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.region" placeholder="Ville" required name='region'>
-          <option class="labelOption" disabled selected value>Region</option>
-          <option ng-repeat="region in regions">{{region.name}}</option>
-        </select>
-      </div>
-      <div class="cont-CONTRAT-input">
-        <p>Contrat(s) recherché(s)</p>
-        <div class="input-checkbox-container">
-          <label ng-repeat="contract in contracts">
-            <input type="checkbox" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{contract.name}}
-          </label>
-        </div>
-        <span class="error-msg" ng-show='createCard.$submitted && student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
-      </div>
-      <div class="cont-BO-input">
-        <p>Promo:</p>
-        <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.promo" placeholder="Promo*" required name="promo">
-          <option class="labelOption" disabled selected value>Promo*</option>
-          <option ng-repeat="promo in promos">{{promo.name}}</option>
-        </select>
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreateMailSimploniens">E-mail</p>
-        <input id="boCreateMailSimploniens" class="input-BO-style" ng-model="student.Mail" placeholder="E-mail" required name="email">
-        <span class="error-msg" ng-show='createCard.$submitted && createCard.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreateGithubSimploniens">Github</p>
-        <input id="boCreateGithubSimploniens" class="input-BO-style" ng-model="student.Github" placeholder="Github" required name="github">
-        <span class="error-msg" ng-show='createCard.github.$invalid && createCard.github.$dirty'>Les liens doivent commencer par "http://" ou "http://"</span>
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreateLinkedinSimploniens">Linkedin</p>
-        <input id="boCreateLinkedinSimploniens" class="input-BO-style" ng-model="student.Linkedin" placeholder="Linkedin" required name="linkedin">
-        <span class="error-msg" ng-show='createCard.linkedin.$invalid && createCard.linkedin.$dirty'>Les liens doivent commencer par "http://" ou "http://"</span>
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreatePortfolioSimploniens">Portfolio</p>
-        <input id="boCreatePortfolioSimploniens" class="input-BO-style" ng-model="student.Portfolio" placeholder="Portfolio" name="portfolio">
-        <span class="error-msg" ng-show='createCard.portfolio.$invalid && createCard.portfolio.$dirty'>Les liens doivent commencer par "http://" ou "http://"</span>
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreateTwitterSimploniens">Twitter</p>
-        <input id="boCreateTwitterSimploniens" class="input-BO-style" ng-model="student.Twitter" placeholder="Twitter" name="twitter">
-        <span class="error-msg" ng-show='createCard.twitter.$invalid && createCard.twitter.$dirty'>Les liens doivent commencer par "http://" ou "http://"</span>
-      </div>
-      <div class="cont-BO-input">
-        <p for="boCreateStackOverFlowSimploniens">StackOverFlow</p>
-        <input id="boCreateStackOverFlowSimploniens" class="input-BO-style" ng-model="student.StackOverFlow" placeholder="StackOverFlow" name="stackoverflow">
-        <span class="error-msg" ng-show='createCard.stackoverflow.$invalid && createCard.stackoverflow.$dirty'>Les liens doivent commencer par "http://" ou "http://"</span>
-      </div>
+    <div class="choose-pic">
+        <div id="upload-pic"></div>
+        <form id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
+            <div class="form-group">
+                <input id="photos-input" type="file" name="photos[]" multiple="multiple">
+            </div>
+            <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo" />
+        </form>
+        <p>Formats acceptés: jpg, png, jpeg entre 200Ko et 1Mo</p>
+        <p class='errorUpload'></p>
     </div>
+    <form name="createCard" class="container-create" novalidate>
+        <div class="section-BO">
+            <h1 class="info-title">Informations</h1>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Nom</label>
+                    <input type="text" ng-model="student.nom" required>
+                </md-input-container>
+                <md-input-container>
+                    <label>Prenom</label>
+                    <input type="text" ng-model="student.prenom" required>
+                </md-input-container>
+            </div>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Age</label>
+                    <input type="text" ng-model="student.age" required>
+                </md-input-container>
+                <md-input-container>
+                    <label>Sexe</label>
+                    <md-select ng-model="student.Sexe" required>
+                        <md-option value="Homme">Homme</md-option>
+                        <md-option value="Femme">Femme</md-option>
+                        <md-option value="Autre">Autre</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="cont-input-create">
+                <div class="cont-BO-calendar">
+                    <p>Date de diponibilité</p>
+                    <md-datepicker md-min-date='minDate' md-placeholder="Choisir date" ng-model="student.dispo" name='dateDispo' required></md-datepicker>
+                    <span class="error-msg" ng-if='createCard.$submitted && createCard.dateDispo.$invalid'>Veuillez indiquer une date de disponibilité</span>
+                </div>
+                <md-input-container>
+                    <label>Region</label>
+                    <md-select ng-model="student.region" required>
+                        <md-option ng-repeat="region in regions" ng-value="region.name">
+                            {{region.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
 
-    <div class="section-BO">
-      <h1 class="info-title">Profil</h1>
-      <div class="cont-BO-input">
-        <p for="boCreateAboutSimploniens">Votre Description</p>
-        <textarea id="boCreateAboutSimploniens" class="input-BO-style" ng-model="student.description" placeholder="Votre Description* (300 charactères max)" maxlength="300" required name="description">{{student.description}}</textarea>
-      </div>
-    </div>
+            <div class="cont-CONTRAT-input">
+                <p>Contrat(s) recherché(s):</p>
+                <div class="input-checkbox-container">
+                  <div flex-gt-sm="50" ng-repeat="contract in contracts">
+                      <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" ng-click="showContracts()" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{ contract.name }}
+                      </md-checkbox>
+                  </div>
+                </div>
+            </div>
+            <span class="error-msg" ng-show='createCard.$submitted && student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
 
-    <div class="section-BO">
-      <h1 class="info-title">Compétences</h1>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Promo</label>
+                    <md-select ng-model="student.promo" required>
+                        <md-option ng-repeat="promo in promos" ng-value="promo.name">
+                            {{promo.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>E-mail</label>
+                    <input type="email" ng-model="student.Mail" required>
+                </md-input-container>
+            </div>
 
-      <div class="info-group">
-        <div class="cont-BO-input">
-          <p>Domaine</p>
-          <select id="boCreatePromoSimploniens" class="input-BO-style" ng-model="student.Domaine" placeholder="Domaine" required name='Domaine'>
-            <option class="labelOption" disabled selected value>Domaine</option>
-            <option ng-repeat="field in fields">{{field.name}}</option>
-          </select>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Github</label>
+                    <input type="url" value="http://" ng-model="student.Github" required>
+                </md-input-container>
+                <md-input-container>
+                    <label>Linkedin</label>
+                    <input type="url" value="http://" ng-model="student.Linkedin">
+                </md-input-container>
+            </div>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Portfolio</label>
+                    <input type="url" value="http://" ng-model="student.Portfolio">
+                </md-input-container>
+                <md-input-container>
+                    <label>Twitter</label>
+                    <input type="url" value="http://" ng-model="student.Twitter">
+                </md-input-container>
+            </div>
+
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>StackOverFlow</label>
+                    <input type="url" value="http://" ng-model="student.StackOverFlow">
+                </md-input-container>
+            </div>
+
         </div>
-        <div class="cont-BO-input">
-          <p for="boCreateCVSimploniens">Lien vers le CV</p>
-          <input id="boCreateCVSimploniens" type="url" class="input-BO-style" name="cv" placeholder="Lien vers votre CV" ng-model="student.CV" required>
-          <span class="error-msg" ng-show='createCard.cv.$invalid && createCard.cv.$dirty'>Les liens doivent commencer par "http://" ou "http://"</span>
+
+        <div class="section-BO">
+            <h1 class="info-title">Profil</h1>
+            <div class="cont-textarea-create">
+                <md-input-container class="md-block">
+                    <label>Description</label>
+                    <textarea ng-model="student.description" md-maxlength="300" rows="4" md-select-on-focus required></textarea>
+                </md-input-container>
+            </div>
         </div>
-        <div class="cont-BO-input">
-          <p>Première spécialité:</p>
-          <select id="boCreateSpeOneSimploniens" class="input-BO-style" ng-model="student.SpecialiteUn" placeholder="1ère Spécialité*" ng-required='checkSpe' ng-change='compareSkill("SpecialiteUn", student.SpecialiteUn)'>
-            <option class="labelOption" disabled selected value>1ère Spécialité*</option>
-            <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-          </select>
+
+        <div class="section-BO">
+            <h1 class="info-title">Compétences</h1>
+
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Domaine</label>
+                    <md-select ng-model="student.Domaine" required>
+                        <md-option ng-repeat="field in fields" ng-value="field.name">
+                            {{field.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>CV</label>
+                    <input type="url" ng-model="student.CV" required>
+                </md-input-container>
+            </div>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Première spécialité</label>
+                    <md-select ng-change='compareSkill("SpecialiteUn", student.SpecialiteUn)' ng-model="student.SpecialiteUn" ng-required='checkSpe' required>
+                        <md-option ng-repeat="skill in skills" ng-value="skill.name">
+                            {{skill.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Deuxième spécialité</label>
+                    <md-select ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' ng-model="student.SpecialiteDeux" ng-required='checkSpe' required>
+                        <md-option ng-repeat="skill in skills" ng-value="skill.name">
+                            {{skill.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Troisième spécialité</label>
+                    <md-select ng-change='compareSkill("SpecialiteTrois", student.SpecialiteTrois)' ng-model="student.SpecialiteTrois" ng-required='checkSpe' required>
+                        <md-option ng-repeat="skill in skills" ng-value="skill.name">
+                            {{skill.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <span class="error-msg" ng-if='createCard.$submitted && !checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même spécialité ou en avoir de vide</span>
+            <div class="cont-skill-create">
+                <div class="cont-input-create">
+                    <md-input-container class="md-block">
+                        <label>Compétences</label>
+                        <input type="text" ng-model="tag">
+                    </md-input-container>
+                </div>
+                <button type="button" ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
+            </div>
+            <ul class="tags-list">
+                <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}
+                    <span class="closeButton" ng-click='removeTag(tag)'></span>
+                </li>
+            </ul>
+            <h3 class="info-title-sm">Projets</h3>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Projet 1</label>
+                    <input type="url" value="http://" ng-model="student.ProjetUn">
+                </md-input-container>
+                <md-input-container>
+                    <label>Projet 2</label>
+                    <input type="url" value="http://" ng-model="student.ProjetDeux">
+                </md-input-container>
+            </div>
+            <div class="cont-input-create">
+                <md-input-container>
+                    <label>Projet 3</label>
+                    <input type="url" value="http://" ng-model="student.ProjetTrois">
+                </md-input-container>
+            </div>
         </div>
-        <div class="cont-BO-input">
-          <p>Deuxième spécialité:</p>
-          <select id="boCreateSpeTwoSimploniens" class="input-BO-style" ng-model="student.SpecialiteDeux" placeholder="Spécialité*" ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' ng-required='checkSpe'>
-            <option class="labelOption" disabled selected value>2e Spécialité*</option>
-            <option ng-repeat="skill in skills">{{skill.name}}</option>
-          </select>
-        </div>
-        <div class="cont-BO-input">
-          <p>Troisième spécialité:</p>
-          <select id="boCreateSpeThreeSimploniens" class="input-BO-style" ng-model="student.SpecialiteTrois" placeholder="Spécialité*" required ng-change='compareSkill("SpecialiteTrois",student.SpecialiteTrois)'  ng-required='checkSpe'>
-            <option class="labelOption" disabled selected value>3e Spécialité*</option>
-            <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-          </select>
-        </div>
-        <div class="cont-BO-input">
-          <p for="boCreateTagsSimploniens">Compétences</p>
-          <div class="input-competence">
-            <input id="boCreateTagsSimploniens" class="input-BO-style" name="tags" placeholder="Vos Compétences" ng-model="tag">
-            <button type="button" ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
-          </div>
-        </div>
-        <ul class="tags-list">
-          <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}
-            <span class="closeButton" ng-click='removeTag(tag)'></span>
-          </li>
-        </ul>
-      </div>
-      <span class="error-msg" ng-if='createCard.$submitted && !checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence ou en avoir de vide</span>
-      <h3 class="info-title-sm">Projets</h3>
-      <div class="info-group">
-        <div class="cont-BO-input">
-          <p for="boCreateProjetOneSimploniens">Lien vers Projet 1</p>
-          <input id="boCreateProjetOneSimploniens" type="url" class="input-BO-style" ng-model="student.ProjetUn" name="projet1" placeholder="Lien vers Projet 1">
-          <span class="error-msg" ng-show='createCard.projet1.$invalid && createCard.projet1.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-        </div>
-        <div class="cont-BO-input">
-          <p for="boCreateProjetDeuxSimploniens">Lien vers Projet 2</p>
-          <input id="boCreateProjetDeuxSimploniens" type="url" class="input-BO-style" name="projet2" ng-model="student.ProjetDeux" placeholder="Lien vers Projet 2">
-          <span class="error-msg" ng-show='createCard.projet2.$invalid && createCard.projet2.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-        </div>
-        <div class="cont-BO-input">
-          <p for="boCreateProjetDeuxSimploniens">Lien vers Projet 3</p>
-          <input id="boCreateProjetTroisSimploniens" type="url" class="input-BO-style" name="projet3" ng-model="student.ProjetTrois" placeholder="Lien vers Projet 3">
-          <span class="error-msg" ng-show='createCard.projet3.$invalid && createCard.projet3.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-        </div>
-      </div>
-    </div>
-    <button type="submit" class="create-user-button" ng-click="createCard.$valid && createSimplonien()">
+        <button type="submit" class="create-user-button" ng-click="createCard.$valid && createSimplonien()">
       <h4>Ajouter</h4>
     </button>
-  </form>
+    </form>
 </div>

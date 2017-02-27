@@ -1,13 +1,28 @@
 app.controller('modifyCardCtrl', ['$scope', '$stateParams', 'serviceStudent', 'serviceFilter', function($scope, $stateParams, serviceStudent, serviceFilter){
   $scope.student = {};
   $scope.student.tags = [];
+  $scope.checkSpe = true;
   $scope.myDate = new Date();
-
+  const objectSkill = {};
   $scope.minDate = new Date(
     $scope.myDate.getFullYear(),
     $scope.myDate.getMonth(),
     $scope.myDate.getDate()
   );
+
+  $scope.compareSkill = (key, value) => {
+    const arraySkill = [];
+    objectSkill[key] = value;
+    Object.keys(objectSkill).map(function(key, index) {
+      arraySkill.push(objectSkill[key]);
+    });
+    const unique = [...new Set(arraySkill)];
+    if (Object.keys(objectSkill).length > unique.length) {
+      $scope.checkSpe = false;
+    } else {
+      $scope.checkSpe = true;
+    }
+  };
 
   const id = $stateParams.id;
 
