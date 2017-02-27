@@ -4,13 +4,27 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
   $scope.student.Contrat = [];
   $scope.verifPic = true;
   $scope.myDate = new Date();
-
+  $scope.checkSpe = true;
+  const objectSkill = {};
   $scope.minDate = new Date(
     $scope.myDate.getFullYear(),
     $scope.myDate.getMonth(),
     $scope.myDate.getDate()
   );
 
+  $scope.compareSkill = (key, value) => {
+    const arraySkill = [];
+    objectSkill[key] = value;
+    Object.keys(objectSkill).map(function(key, index) {
+      arraySkill.push(objectSkill[key]);
+    });
+    const unique = [...new Set(arraySkill)];
+    if (Object.keys(objectSkill).length > unique.length) {
+      $scope.checkSpe = false;
+    } else {
+      $scope.checkSpe = true;
+    }
+  };
 
 
   $scope.createSimplonien = () => {
@@ -60,6 +74,10 @@ app.controller('createCardCtrl', ['$scope', 'serviceFilter', 'serviceStudent', f
     } else {
       return
     }
+  }
+
+  $scope.removeTag = function(tag){
+    $scope.student.tags.splice($scope.student.tags.indexOf(tag),1);
   }
 
   $scope.getAllPromo = () => {
