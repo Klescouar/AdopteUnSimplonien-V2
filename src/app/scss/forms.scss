@@ -36,6 +36,10 @@ form{
 }
 
 md-input-container{
+
+  textarea.md-input{
+    height: 150px;
+  }
   // focus border-bottom
   &:not(.md-input-invalid).md-input-focused{
     .md-input{
@@ -72,39 +76,42 @@ md-input-container{
     }
   }
 
-  .md-input, input, select, textarea, md-select-value{
-    width: 100%;
-    border: none;
-    background: transparent;
-    border-width: 0 0 1px;
-    border-style: solid;
-    border-color: rgba(115, 159, 190, 0.35);
-    outline: none;
-    border-radius: 0;
-    &.ng-invalid.ng-dirty{
-      border-width: 0 0 1px;
-    }
-  }
-  .md-input, input,textarea{
-    color: white;
-  }
-  textarea{
-    height: 140px;
-    resize: vertical;
-    word-wrap: break-word;
-    overflow: visible;
-  }
-  input:hover {
-    outline: none;
-  }
-
-  md-select-value{
-    span{
-      font-weight: bold;
-    }
+  input[type=number] {
+    -moz-appearance:textfield;
   }
 }
-// md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value
+.md-input, input, select, textarea, md-select-value{
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: rgba(115, 159, 190, 0.35);
+  outline: none;
+  border-radius: 0;
+  &.ng-invalid.ng-dirty{
+    border-width: 0 0 1px;
+  }
+}
+.md-input, input,textarea{
+  color: white;
+}
+textarea{
+  height: 140px;
+  resize: vertical;
+  word-wrap: break-word;
+  overflow: visible;
+}
+input:hover {
+  outline: none;
+}
+
+md-select-value{
+  span{
+    font-weight: bold;
+  }
+}
+
 
 md-select{
   &:not([disabled]):focus .md-select-value{
@@ -124,6 +131,9 @@ md-select{
   flex-wrap: wrap;
   label{
     font-weight: 400;
+  }
+  &.tags{
+   height: 32px;
   }
 }
 

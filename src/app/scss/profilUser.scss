@@ -85,7 +85,12 @@ body{
 
   .cont-input, md-input-container{
     width: 45%;
+    min-width: 275px;
     color: black;
+
+    md-input-container{
+      margin: 0;
+    }
 
     .md-input, input{
       color: black;
@@ -179,6 +184,7 @@ body{
   padding: 0;
   .tagViewVille{
     font-size: 0.8em;
+    margin:5px;
   }
 }
 

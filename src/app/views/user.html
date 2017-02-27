@@ -175,10 +175,12 @@
       <!-- User Profile Description Section -->
       <div class="section">
         <h1 class="info-title">Profil</h1>
-        <md-input-container class="full-width text-form">
-          <label class='input-label' for="boCreateAboutSimploniens">Votre Description (300 charactères max)</label>
-          <textarea id="boCreateAboutSimploniens" class="input-style" ng-model="student.description" name="description" maxlength="300" required>{{student.description}}</textarea>
-        </md-input-container>
+        <div class="text-form">
+          <md-input-container class="full-width">
+            <label class='input-label' for="boCreateAboutSimploniens">Votre Description (300 charactères max)</label>
+            <textarea id="boCreateAboutSimploniens" class="input-style" ng-model="student.description" rows="5" name="description" md-maxlength="300" required>{{student.description}}</textarea>
+          </md-input-container>
+        </div>
       </div>
 
       <!-- User Competences Section -->
@@ -214,10 +216,10 @@
                   <md-option ng-repeat="skill in skills" ng-value="skill.name">{{skill.name}}</md-option>
               </md-select>
           </md-input-container>
-          <div class="cont-input">
-              <label class='input-label' for="boCreateTagsSimploniens">Vos Compétences</label>
+          <div class="cont-input tags">
+            <!-- <label>Vos Compétences</label> -->
             <div class="input-button-container">
-              <input class="input-style" name="tags" ng-model="tag">
+              <input class="input-style" name="tags" ng-model="tag" placeholder="Ajouter des Competences">
               <button type="button" ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
             </div>
           </div>
