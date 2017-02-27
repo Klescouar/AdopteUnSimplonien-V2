@@ -34,7 +34,6 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
           AuthService.register($scope.userRecruteur).then(function(response) {
             if (response.data.msg === "Email already used") {
               $scope.emailR=false;
-              const alertPopup = $window.alert(response.data.msg);
             }else {
               $scope.emailR=true;
               $scope.validForm=false;
@@ -58,7 +57,6 @@ app.controller('registerCtrl', ['$scope', 'AuthService', 'serviceFilter','$state
           AuthService.register($scope.userSimplonien).then(function(response) {
             if (response.data.msg === "Email already used") {
               $scope.emailS=false;
-              const alertPopup = $window.alert(response.data.msg);
             }else {
               $scope.emailS=true;
               $scope.validForm=false;

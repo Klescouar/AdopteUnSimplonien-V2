@@ -1,33 +1,48 @@
 /////////// Standart Form-field  \\\\\\\\\\\\
-.cont-input{
-  width: 90%;
-  margin: 15px 0;
-  padding: 0 20px;
-  position: relative;
+form{
   display: flex;
-  flex-direction: column;
-  min-height: 60px;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+::-webkit-input-placeholder {
+  color: white;
+}
+
+:-moz-placeholder {
+  color: white;
+}
+
+::-moz-placeholder {
+  color: white;
+}
+
+:-ms-input-placeholder {
+  color: white;
+}
+
+// md-input-container A RAJOUTER À CÔTÉ DE CONT-INPUT POUR LA PAGE PROFIL
+.cont-input,md-input-container{
+  width: 90%;
+  margin: 15px 10px;
+  height: 40px;
 
   &.full-width{
     width: 100%;
   }
-  input, select, textarea{
-    position: relative;
-    bottom: 0;
-    height: 35px;
+
+  .md-input, input, select, textarea{
     width: 100%;
     border: none;
     background: transparent;
-    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: rgba(115, 159, 190, 0.35);
     outline: none;
     border-radius: 0;
   }
-  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  input[type=number] {
-    -moz-appearance:textfield;
+  .md-input, input,textarea{
+    color: white;
   }
   textarea{
     height: 140px;
@@ -35,42 +50,62 @@
     word-wrap: break-word;
     overflow: visible;
   }
-  textarea,select,input[type=checkbox]{
-    box-shadow: none;
-  }
   input:hover {
     outline: none;
   }
-  input:focus {
-    border-bottom: 1px solid white;
-    outline: none;
-  }
-  .input-label{
-    position:absolute;
-    top:-13px;
-    left:20px;
-    font-size:11px;
-    color:#aaa;
-    transition: all 0.1s linear;
-    opacity:0;
-  }
-  .input-label.on {
-    color: rgba(115, 159, 190, 0.85)
-  }
-  .input-label.show {
-    top:-15px;
-    opacity:1;
-  }
+
   .error-msg{
     text-align: left;
   }
 }
 
+.cont-input{
+  display: flex;
+  flex-wrap: wrap;
+  label{
+    font-weight: 400;
+  }
+}
+
+.text-form {
+  height: 150px;
+  width: 100%;
+}
+
+md-input-focused{
+  height: 20px;
+  label{
+    color: rgb(165, 167, 189);
+  }
+
+  .md-input:focus, input:focus, textarea:focus {
+    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+    outline: none;
+  }
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input{
+  border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+  outline: none;
+}
+
+md-input-container .md-input.ng-invalid.ng-dirty{
+  border-width: 0 0 1px;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance:textfield;
+}
+textarea,select,input[type=checkbox]{
+  box-shadow: none;
+}
+
 .show-input{
   display: block;
-}
-.hide-input{
-  display: none;
 }
 
 .form-instruction{
@@ -110,6 +145,7 @@
 ////////////// BUTTONS \\\\\\\\\\\\\\\
 .input-button-container{
   display: flex;
+  width: $full;
 }
 
 .input-checkbox-container{
@@ -166,7 +202,7 @@
   background-color: #425877;
   color:white;
   border-style:none;
-  height: 30px;
+  height: 35px;
   width:130px;
   position: absolute;
   top:0px;
@@ -174,7 +210,7 @@
   padding: 0px;
   font-weight: 100;
   font-size: 16px;
-  z-index:1; 
+  z-index:1;
 }
 
 .content {
@@ -188,7 +224,7 @@
   text-align: center;
   transition: 0.5s;
   cursor: pointer;
-  border: 2px solid white;
+  border: 2px solid #de5b49;
 transition:0.5s;
 }
 
@@ -214,15 +250,15 @@ transform: scale(0);
 }
 
 .login::before {
-  border-bottom: 2px solid #de5b49;
-  border-left: 2px solid #de5b49;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
 transform-origin: 0 100%;
 
 }
 
 .login::after {
-  border-top: 2px solid #de5b49;
-  border-right: 2px solid #de5b49;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
 transform-origin: 100% 0%;
 }
 
@@ -232,78 +268,6 @@ transform-origin: 100% 0%;
 transform: scale(1);
 
 }
-// .content input{
-//   background-color: #425877;
-//   color:white;
-//   border-style:none;
-//   height: 30px;
-//   width:130px;
-//   position: absolute;
-//   top:4px;
-//   left:3px;
-//   padding: 0px;
-//   font-weight: 100;
-//   font-size: 16px;
-//   z-index:1; 
-// }
-
-// .content {
-//   position:relative;
-//   vertical-align: middle;
-//   color: white;
-//   display: inline-block;
-//   height: 50px;
-//   width:140px;
-//   line-height: 35px;
-//   text-align: center;
-//   transition: 0.5s;
-//   cursor: pointer;
-//   border: 2px solid white;
-//   transition:0.5s;
-//   background-color: #425877;
-// }
-
-
-// .content:hover {
-//   border: 2px solid rgba(0,160,80,0);
-//   color: #de5b49;
-
-// }
-
-
-// .content::before, .content::after {
-//   width: 100%;
-//   height: 100%;
-//   content:'';
-//   position: absolute;
-//   top:0;
-//   left:0;
-//   box-sizing-top: border-box;
-//   transform: scale(0);
-//   transition: 0.5s;
-
-// }
-
-// .login::before {
-//   border-bottom: 3px solid #de5b49;
-//   border-left: 3px solid #de5b49;
-//   transform-origin: 0 100%;
-
-// }
-
-// .login::after {
-//   border-top: 3px solid #de5b49;
-//   border-right: 3px solid #de5b49;
-//   transform-origin: 100% 0%;
-// }
-
-
-
-// .content:hover::after, .content:hover::before {
-//   transform: scale(1);
-
-// }
-
 
 
 //////////////// Input validation when submitted \\\\\\\\\\\\\\\\\\\\\\\\
@@ -313,17 +277,17 @@ transform: scale(1);
     border: none;
   }
   .ng-invalid{
-    border-bottom: 1px solid #de5b49;
+    border-bottom: 1px solid rgb(221,44,0);;
     color: #de5b49;
     .md-datepicker-input-container{
-      border-bottom: 1px solid #de5b49;
+      border-bottom: 1px solid rgb(221,44,0);;
     }
     &:focus{
-      border-bottom: 1px solid #de5b49;
+      border-bottom: 1px solid rgb(221,44,0);;
     }
   }
   .ng-invalid.ng-dirty{
-    color: #de5b49;
+    color: rgb(221,44,0);;
   }
 }
 
@@ -335,12 +299,9 @@ transform: scale(1);
   }
 }
 
-
-
-
 .error-msg{
   font-size: 0.9em;
-  color: #de5b49;
+  color: rgb(221,44,0);
   margin: 5px 0;
   width: $full;
   font-weight: bold;

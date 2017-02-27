@@ -8,12 +8,14 @@
       <div class="left-co-login"></div>
     </div>
     <form novalidate name="loginForm" ng-submit="loginForm.$valid && login()" >
-      <div class="cont-input">
-        <input class="input-mail" type="email" placeholder="Email" ng-model="user.email" name="loginEmail" required>
-      </div>
-      <div class="cont-input">
-        <input class="input-password" type="password" placeholder="Mot de passe" ng-model="user.password" name="loginPassword" required>
-      </div>
+      <md-input-container>
+          <label>Email</label>
+          <input type="email" ng-model="user.email" required>
+      </md-input-container>
+      <md-input-container>
+          <label>Mot de passe</label>
+          <input type="password" ng-model="user.password" minlength='8' required>
+      </md-input-container>
       <span class="match" ng-show="!verifLogin">Email ou mot de passe non valide.</span>
       <span class="match" ng-show=' loginForm.$submitted && loginForm.$invalid'>
         Tous les champs sont requis

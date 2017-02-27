@@ -31,10 +31,12 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
     }
   }
   const addPicToAnonymous = (item) => {
-    if (item.photo === '') {
+    console.log(item);
+    if ((item.photo === '' || item.photo === undefined) && (item.Sexe === 'Homme' || item.Sexe === 'Autre')) {
       return item.photo = 'anonymous.png';
+    } else if ((item.photo === '' || item.photo === undefined) && item.Sexe === 'Femme') {
+      return item.photo = 'anonymousMeuf.png';
     }
-      // return item.nom = item.nom.charAt(0).toUpperCase() + '.';
   }
 
   //////////////////////HANDLE FILTER/////////////////////
@@ -152,7 +154,6 @@ app.controller('searchCtrl', ['$scope', '$http', 'serviceFilter', 'serviceStuden
       });
       let secondFilter = filterContrats(firstFilter, Contrat);
       $scope.data = filterLangage(secondFilter, Langage);
-      console.log($scope.data);
   };
 
   searchFilter();

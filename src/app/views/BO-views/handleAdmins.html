@@ -1,9 +1,21 @@
 <form class="create-admin"  ng-submit="addAdminUser()">
     <h2>Créer un compte ADMIN</h2>
-    <input type="email" class="input-BO-style" ng-model="adminAccount.email" required placeholder="Email"></input>
-    <input type="text" class="input-BO-style"  ng-model="adminAccount.lastName" required placeholder="Nom"></input>
-    <input type="text"class="input-BO-style" ng-model="adminAccount.firstName" required placeholder="Prenom"></input>
-    <input type="password" class="input-BO-style" ng-model="adminAccount.password" required placeholder="Mot de passe" minlength='8'></input>
+    <md-input-container>
+        <label>Email</label>
+        <input type="email" ng-model="adminAccount.email" required>
+    </md-input-container>
+    <md-input-container>
+        <label>Nom</label>
+        <input type="text" ng-model="adminAccount.lastName" required>
+    </md-input-container>
+    <md-input-container>
+        <label>Prenom</label>
+        <input type="text" ng-model="adminAccount.firstName" required>
+    </md-input-container>
+    <md-input-container>
+        <label>Mot de passe</label>
+        <input type="password" ng-model="adminAccount.password" minlength='8' required>
+    </md-input-container>
     <input class="create-user-button" value="Créer" type="submit">
 </form>
 

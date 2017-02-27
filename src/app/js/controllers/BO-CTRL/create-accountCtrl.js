@@ -20,9 +20,9 @@ app.controller('createAccountCtrl', ['$scope', 'AuthService', 'serviceFilter', f
 
   $scope.addRecruiterUser = () => {
       AuthService.register($scope.recruiterAccount).then(function(response) {
-          alert(response);
+          alert(response.data.msg);
       }).catch(function(errMsg) {
-          alert(errMsg);
+          alert(errMsg.data.msg);
       });
   };
 
@@ -31,10 +31,10 @@ app.controller('createAccountCtrl', ['$scope', 'AuthService', 'serviceFilter', f
         if (response.data.success === false) {
           alert(response.data.msg)
         } else {
-          $scope.getAllUser();
+          alert(response.data.msg)
         }
       }).catch(function(errMsg) {
-          const alertPopup = alert('Register failed!');
+          alert(errMsg.data.msg);
       });
   };
 

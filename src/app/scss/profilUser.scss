@@ -67,11 +67,29 @@ body{
   position: relative;
   overflow: hidden;
 
-  .cont-input{
-    min-width: 50%;
-    width: 310px;
+  ::-webkit-input-placeholder {
     color: black;
-    flex-wrap: wrap;
+  }
+
+  :-moz-placeholder {
+    color: black;
+  }
+
+  ::-moz-placeholder {
+    color: black;
+  }
+
+  :-ms-input-placeholder {
+    color: black;
+  }
+
+  .cont-input, md-input-container{
+    width: 45%;
+    color: black;
+
+    .md-input, input{
+      color: black;
+    }
 
     button.tagViewVille{
       padding: 5px 3px 3px 3px;
@@ -156,10 +174,6 @@ body{
   padding: 40px;
   background-color: white;
   width: $full;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
 }
 
 

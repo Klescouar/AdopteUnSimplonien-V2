@@ -12,6 +12,7 @@ app.controller('handlePromoCtrl', ['$scope', 'serviceFilter', function($scope, s
   }
 
   $scope.addSchool = () => {
+    console.log($scope.school);
       serviceFilter.addSchool($scope.school).then(function(response) {
         $scope.getAllSchool();
       }).catch(function(errMsg) {

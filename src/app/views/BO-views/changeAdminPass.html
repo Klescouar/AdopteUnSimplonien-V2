@@ -1,11 +1,20 @@
 <form class="changeAdminPass" name='createUserStudent'  ng-submit="changeAdminPass(member._id)" novalidate>
     <h2>Changer son mot de passe ADMIN</h2>
-    <input type="password"  ng-click="oldPassVerif = true; validate=true" class="input-BO-style" required placeholder="Ancien mot de passe..."  ng-model="newPassword.oldpass"></input>
+    <md-input-container>
+        <label>Ancien mot de passe</label>
+        <input ng-click="oldPassVerif = true; validate=true" ng-model="newPassword.oldpass" required>
+    </md-input-container>
     <span class="error-msg" ng-if="!oldPassVerif">
       Mot de passe actuel invalide.
     </span>
-    <input type="password" class="input-BO-style" required placeholder="Nouveau mot de passe..." minlength='8' ng-model="passwordChecked"></input>
-    <input type="password" class="input-BO-style" required placeholder="Retapez nouveau mot de passe..." minlength='8' ng-model="newPassword.newpass"></input>
+    <md-input-container>
+        <label>Nouveau mot de passe</label>
+        <input type="password" ng-model="newPassword.newpass" minlength='8' required>
+    </md-input-container>
+    <md-input-container>
+        <label>Confirmation mot de passe</label>
+        <input type="password" ng-model="passwordChecked" minlength='8' required>
+    </md-input-container>
     <span class="error-msg" ng-hide="newPassword.newpass.length<1" ng-if="newPassword.newpass != passwordChecked || passwordChecked.length < 8">Les mots de passe doivent être identiques et de 8 caractères minimum.</span>
     <input class="create-user-button" value="Changer son mot de passe" type="submit">
 </form>
