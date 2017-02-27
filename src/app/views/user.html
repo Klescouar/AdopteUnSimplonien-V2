@@ -1,271 +1,269 @@
- <div class="view-container ProfilUser">
-   <!-- ////////////////////////////////// GLobal Form container ////////////////////////////////// -->
+<div class="view-container ProfilUser">
+<!-- ////////////////////////////////// GLobal Form container ////////////////////////////////// -->
 
-  <div class="global-profile-container">
-    <!-- ////////////////////////////////// Photo Upload ////////////////////////////////// -->
+<div class="global-profile-container">
+  <!-- ////////////////////////////////// Photo Upload ////////////////////////////////// -->
 
-    <div class="choose-pic">
-      <div id="upload-pic"></div>
-      <form class="form-photo" id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
-        <div class="form-group">
-          <h3 class="tab-name">Modifier votre photo</h3>
-          <p class="form-instruction"> formats JPG, PNG  <br>min 200ko max 1mo</p>
-          <input id="photos-input" type="file" name="photos[]" multiple="multiple">
-        </div>
-        <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
-      </form>
-      <p class='errorUploadStudent'></p>
+  <div class="choose-pic">
+    <div id="upload-pic"></div>
+    <form class="form-photo" id="upload-photos" method="post" action="/api/upload_photos" enctype="multipart/form-data">
+      <div class="form-group">
+        <h3 class="tab-name">Modifier votre photo</h3>
+        <p class="form-instruction"> formats JPG, PNG  <br>min 200ko max 1mo</p>
+        <input id="photos-input" type="file" name="photos[]" multiple="multiple">
+      </div>
+      <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
+    </form>
+    <p class='errorUploadStudent'></p>
+  </div>
+  <!-- ////////////////////////////////// TABS ////////////////////////////////// -->
+
+  <div class="tab-container">
+    <div class="tab" ng-click="tab = 'fiche'" ng-class="{'border-focus':tab ==='fiche'}">
+      <h3 class="tab-name">Ma Fiche</h3>
     </div>
-<!-- ////////////////////////////////// TABS ////////////////////////////////// -->
-
-    <div class="tab-container">
-      <div class="tab" ng-click="tab = 'fiche'" ng-class="{'border-focus':tab ==='fiche'}">
-        <h3 class="tab-name">Ma Fiche</h3>
-      </div>
-      <div class="tab" ng-click="tab = 'infos'" ng-class="{'border-focus':tab ==='infos'}">
-        <h3 class="tab-name">Mes Infos Personnelles</h3>
-      </div>
-    </div>
-
-    <!-- ////////////////////////////////// INFOS PERSO Form ////////////////////////////////// -->
-
-    <div class="container-info_perso" ng-if="tab === 'infos'">
-      <div class="container-create">
-        <form class="section form-info_perso" name="infoPersoForm" ng-submit="infoPersoForm.$valid && updateUser(member._id)" novalidate>
-          <h1 class="info-title">Modifiez votre compte</h1>
-          <div class="info-group">
-            <md-input-container>
-              <label class='input-label' for="boCreateLastNameSimploniens">Nom</label>
-              <input name='memberNom' class="input-style" ng-model="member.lastName" title="Votre nom est requis" type="text" required>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateNameSimploniens">Prénom</label>
-              <input id="boCreateNameSimploniens" name="memberPrenom" class="input-style" type="text" ng-model="member.firstName" title="Votre prénom est requis" required>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateMailSimploniens">E-mail</label>
-              <input id="boCreateMailSimploniens" name="memberEmail" class="input-style" type="email" ng-model="member.email" title="Votre addresse e-mail est requise" required>
-              <span class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.memberEmail.$error.email'>Cette adresse E-mail n'est pas valide</span>
-            </md-input-container>
-          </div>
-          <div class="button-container">
-            <p class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.$invalid'>Veuillez remplir les champs obligatoires</p>
-            <input class="input-style edit-button" value="Modifier mes infos" type="submit">
-          </div>
-        </form>
-
-        <!-- ////////////////////////////////// MODIFS PASSWORD Form ////////////////////////////////// -->
-
-        <form class="section form_password" name='passwordForm'>
-          <h1 class="info-title">Modifier votre mot de passe</h1>
-          <div class="info-group">
-            <md-input-container>
-              <label class='input-label' for="boCreateMailSimploniens">Ancien Mot de Passe</label>
-              <input id="boCreateMailSimploniens" name="passwordOld" class="input-style" type="password" minlength='8' required ng-model="newPassword.oldpass">
-              <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordOld.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateMailSimploniens">Nouveau mot de passe</label>
-              <input id="boCreateMailSimploniens" name='passwordNew' class="input-style" ng-model="newPassword.newpass" type="password" minlength='8' required>
-              <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNew.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateMailSimploniens">Confirmer Nouveau mot de passe</label>
-              <input id="boCreateMailSimploniens" name='passwordNewConfirm' class="input-style" ng-model="newPassword.confirmNewpass" type="password" pw-check="newPassword.newpass" minlength='8' required>
-             <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNewConfirm.$error.pwCheck'>Vos nouveaux mots de Passe doivent être identiques</span>
-             <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNewConfirm.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
-            </md-input-container>
-          </div>
-          <div class="button-container">
-            <p class="error-msg" ng-show='passwordForm.$submitted && passwordForm.$error.required'>Veuillez remplir les champs obligatoires</p>
-            <input class="input-style edit-button" value="Modifier mon mot de passe" ng-click="passwordForm.$valid && updateUserPass(member._id)" type="submit">
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- ////////////////////////////////// FICHE Form ////////////////////////////////// -->
-
-    <div class="container-fiche" ng-if="tab === 'fiche'">
-      <form class="container-create form-fiche" name="ficheForm" novalidate>
-
-        <!-- User Info Section -->
-        <div class="section">
-          <h1 class="info-title">Informations</h1>
-          <div class="info-group">
-            <md-input-container>
-              <label class='input-label' for="boCreateLastNameSimploniens">Nom</label>
-              <input id="boCreateLastNameSimploniens" class="input-style" ng-model="member.lastName" type="text" required name="nom">
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateNameSimploniens">Prénom</label>
-              <input id="boCreateNameSimploniens" class="input-style" ng-model="member.firstName" required name='prenom'>
-            </md-input-container>
-            <md-input-container class="age">
-              <label class='input-label' for="boCreateOldSimploniens">Age</label>
-              <input id="boCreateOldSimploniens" type="number" name="age" class="input-style" ng-model="student.age" maxlength='2' required>
-              <span class="error-msg" ng-show='ficheForm.age.$invalid && ficheForm.age.$dirty'>Votre âge est incorrect</span>
-            </md-input-container>
-            <md-input-container>
-              <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe">
-                <option value="" disabled>Sexe</option>
-                <option value="Homme">Homme</option>
-                <option value="Femme">Femme</option>
-                <option value="Autre">Autre</option>
-              </select>
-            </md-input-container>
-            <md-input-container>
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.region" required>
-                <option class="labelOption" disabled selected value>Region</option>
-                <option ng-repeat="region in regions">{{region.name}}</option>
-              </select>
-            </md-input-container>
-            <md-input-container>
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.promo" required name="promo">
-                <option class="labelOption" disabled selected value>Promo</option>
-                <option ng-repeat="promo in promos">{{promo.name}}</option>
-              </select>
-            </md-input-container>
-            <div class="cont-input full-width contrats">
-                <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)</p>
-              <div class="input-checkbox-container">
-                <label ng-repeat="contract in contracts">
-                  <input type="checkbox" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{contract.name}}
-                </label>
-              </div>
-              <span class="error-msg" ng-show='ficheForm.$submitted && student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
-            </div>
-            <md-input-container class="calendar">
-              <label class='form-instruction' for="boCreateNameSimploniens">Date de diponibilité</label>
-              <md-datepicker md-min-date='minDate' name='dateDispo' ng-model="student.dispo" required></md-datepicker>
-              <span class="error-msg" ng-if='ficheForm.$submitted && ficheForm.dateDispo.$invalid'>Veuillez indiquer votre date de disponibilité</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateMailSimploniens">E-mail</label>
-              <input id="boCreateMailSimploniens" type="email" class="input-style" ng-model="member.email" required name='email'>
-              <span class="error-msg" ng-show='ficheForm.$submitted && ficheForm.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateGithubSimploniens">Github</label>
-              <input id="boCreateGithubSimploniens" class="input-style" type="url" ng-model="student.Github" name="github" required>
-              <span class="error-msg" ng-show='ficheForm.github.$invalid && ficheForm.github.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateLinkedinSimploniens">Linkedin</label>
-              <input id="boCreateLinkedinSimploniens" class="input-style" type="url" ng-model="student.Linkedin" name="linkedin" required>
-              <span class="error-msg" ng-show='ficheForm.linkedin.$invalid && ficheForm.linkedin.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreatePortfolioSimploniens">Portfolio</label>
-              <input id="boCreatePortfolioSimploniens" class="input-style" type="url" ng-model="student.Portfolio" name="portfolio">
-              <span class="error-msg" ng-show='ficheForm.portfolio.$invalid && ficheForm.portfolio.$dirty'>Vos liens doivent commencer par "http://" ou "https://"</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateTwitterSimploniens">Twitter</label>
-              <input id="boCreateTwitterSimploniens" class="input-style" type="url" ng-model="student.Twitter" name="twitter">
-              <span class="error-msg" ng-show='ficheForm.twitter.$invalid && ficheForm.twitter.$dirty'>Vos liens doivent commencer par "http://" ou "https://"</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateStackOverFlowSimploniens">StackOverFlow</label>
-              <input id="boCreateStackOverFlowSimploniens" class="input-style" type="url" ng-model="student.StackOverFlow" name="stackoverflow">
-              <span class="error-msg" ng-show='ficheForm.stackoverflow.$invalid && ficheForm.stackoverflow.$dirty'>Vos liens doivent commencer par "http://" ou "https://"</span>
-            </md-input-container>
-          </div>
-        </div>
-
-        <!-- User Profile Description Section -->
-        <div class="section">
-          <h1 class="info-title">Profil</h1>
-          <md-input-container class="full-width">
-            <label class='input-label' for="boCreateAboutSimploniens">Votre Description (300 charactères max)</label>
-            <textarea id="boCreateAboutSimploniens" class="input-style" ng-model="student.description" name="description" maxlength="300" required>{{student.description}}</textarea>
-          </md-input-container>
-        </div>
-
-        <!-- User Competences Section -->
-        <div class="section">
-          <h1 class="info-title">Compétences</h1>
-          <div class="info-group">
-            <md-input-container>
-              <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.Domaine" required>
-                <option class="labelOption" disabled selected value>Domaine</option>
-                <option ng-repeat="field in fields">{{field.name}}</option>
-              </select>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateCVSimploniens">Lien vers votre CV</label>
-              <input id="boCreateCVSimploniens" type="url" class="input-style" name="cv" ng-model="student.CV" required>
-              <span class="error-msg" ng-show='ficheForm.cv.$invalid && ficheForm.cv.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-            </md-input-container>
-            <md-input-container>
-              <select id="boCreateSpeOneSimploniens" class="input-style" ng-model="student.SpecialiteUn" ng-change='compareSkill("SpecialiteUn", student.SpecialiteUn)' ng-required='checkSpe'>
-                <option class="labelOption" disabled selected value>1ère Spécialité</option>
-                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-                <!-- | filter:student.SpecialiteDeux:student.SpecialiteTrois -->
-              </select>
-            </md-input-container>
-            <md-input-container>
-              <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' ng-required='checkSpe'>
-                <option class="labelOption" disabled selected value>2e Spécialité</option>
-                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-                <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
-              </select>
-            </md-input-container>
-            <md-input-container>
-              <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" ng-change='compareSkill("SpecialiteTrois",student.SpecialiteTrois)'  ng-required='checkSpe'>
-                <option class="labelOption" disabled selected value>3e Spécialité</option>
-                <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-                <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
-              </select>
-            </div>
-            <div class="cont-input">
-              <div class="input-button-container">
-                <label class='input-label' for="boCreateTagsSimploniens">Vos Compétences</label>
-                <input id="boCreateTagsSimploniens" class="input-style" name="tags" ng-model="tag">
-                <button type="button" ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
-              </div>
-            </div>
-            <ul class="tags-list">
-              <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span>
-              </li>
-            </ul>
-          </div>
-          <span class="error-msg" ng-if='ficheForm.$submitted && !checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence ou en avoir de vide</span>
-          <h3 class="info-title-sm">Projets</h3>
-          <div class="info-group">
-            <md-input-container>
-              <label class='input-label' for="boCreateProjetOneSimploniens">Lien vers Projet 1</label>
-              <input id="boCreateProjetOneSimploniens" type="url" class="input-style" ng-model="student.ProjetUn" name="projet1">
-             </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateProjetDeuxSimploniens">Lien vers Projet 2</label>
-              <input id="boCreateProjetDeuxSimploniens" type="url" class="input-style" name="projet2" ng-model="student.ProjetDeux">
-              <span class="error-msg" ng-show='ficheForm.projet2.$invalid && ficheForm.projet2.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-            </md-input-container>
-            <md-input-container>
-              <label class='input-label' for="boCreateProjetDeuxSimploniens">Lien vers Projet 3</label>
-              <input id="boCreateProjetTroisSimploniens" type="url" class="input-style" name="projet3" ng-model="student.ProjetTrois">
-              <span class="error-msg" ng-show='ficheForm.projet3.$invalid && ficheForm.projet3.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
-            </md-input-container>
-          </div>
-        </div>
-          <div>this form is valid : {{ficheForm.$valid}}</div>
-          <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':createCard}">
-            <div class="img-required-validate"></div>
-            <p class="required">Votre profil a été créé</p>
-          </div>
-          <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':updateCard}">
-            <div class="img-required-validate"></div>
-            <p class="required">Votre profil a été modifié</p>
-          </div>
-          <!-- Submit Buttons -->
-          <div class="button-container">
-            <span class="error-msg" ng-if='ficheForm.$invalid && ficheForm.$submitted'>Veuillez verifier les champs obligatoires marqués en rouge</span>
-            <input class="input-style edit-button" ng-class='{"show-input":cardExist === "enregistrer"}' value="Enregistrer" type="submit" ng-click='checkSpe && ficheForm.$valid && createSimplonien()'>
-            <input class="input-style edit-button" value="Modifier sa fiche" ng-class='{"show-input":cardExist === "modifier"}' type="submit" ng-click='checkSpe && ficheForm.$valid && updateStudent(student._id)'>
-            <input class="input-style delete-button" value="Supprimer sa fiche" ng-class='{"show-input":cardExist === "modifier"}' type="button" ng-click="deleteCard(student._id)">
-          </div>
-        </form>
-      </div>
+    <div class="tab" ng-click="tab = 'infos'" ng-class="{'border-focus':tab ==='infos'}">
+      <h3 class="tab-name">Mes Infos Personnelles</h3>
     </div>
   </div>
+
+  <!-- ////////////////////////////////// INFOS PERSO Form ////////////////////////////////// -->
+
+  <div class="container-info_perso" ng-if="tab === 'infos'">
+    <div class="container-create">
+      <form class="section form-info_perso" name="infoPersoForm" ng-submit="infoPersoForm.$valid && updateUser(member._id)" novalidate>
+        <h1 class="info-title">Modifiez votre compte</h1>
+        <div class="info-group">
+          <md-input-container>
+            <label class='input-label' for="boCreateLastNameSimploniens">Nom</label>
+            <input name='memberNom' class="input-style" ng-model="member.lastName" title="Votre nom est requis" type="text" required>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateNameSimploniens">Prénom</label>
+            <input id="boCreateNameSimploniens" name="memberPrenom" class="input-style" type="text" ng-model="member.firstName" title="Votre prénom est requis" required>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateMailSimploniens">E-mail</label>
+            <input id="boCreateMailSimploniens" name="memberEmail" class="input-style" type="email" ng-model="member.email" title="Votre addresse e-mail est requise" required>
+            <span class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.memberEmail.$error.email'>Cette adresse E-mail n'est pas valide</span>
+          </md-input-container>
+        </div>
+        <div class="button-container">
+          <p class="error-msg" ng-show='infoPersoForm.$submitted && infoPersoForm.$invalid'>Veuillez remplir les champs obligatoires</p>
+          <input class="input-style edit-button" value="Modifier mes infos" type="submit">
+        </div>
+      </form>
+
+      <!-- ////////////////////////////////// MODIFS PASSWORD Form ////////////////////////////////// -->
+
+      <form class="section form_password" name='passwordForm'>
+        <h1 class="info-title">Modifier votre mot de passe</h1>
+        <div class="info-group">
+          <md-input-container>
+            <label class='input-label' for="boCreateMailSimploniens">Ancien Mot de Passe</label>
+            <input id="boCreateMailSimploniens" name="passwordOld" class="input-style" type="password" minlength='8' required ng-model="newPassword.oldpass">
+            <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordOld.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateMailSimploniens">Nouveau mot de passe</label>
+            <input id="boCreateMailSimploniens" name='passwordNew' class="input-style" ng-model="newPassword.newpass" type="password" minlength='8' required>
+            <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNew.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateMailSimploniens">Confirmer Nouveau mot de passe</label>
+            <input id="boCreateMailSimploniens" name='passwordNewConfirm' class="input-style" ng-model="newPassword.confirmNewpass" type="password" pw-check="newPassword.newpass" minlength='8' required>
+            <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNewConfirm.$error.pwCheck'>Vos nouveaux mots de Passe doivent être identiques</span>
+            <span class="error-msg" ng-show='passwordForm.$submitted && passwordForm.passwordNewConfirm.$error.minlength'>Vos mots de passes doivent contenir au moins 8 charactères</span>
+          </md-input-container>
+        </div>
+        <div class="button-container">
+          <p class="error-msg" ng-show='passwordForm.$submitted && passwordForm.$error.required'>Veuillez remplir les champs obligatoires</p>
+          <input class="input-style edit-button" value="Modifier mon mot de passe" ng-click="passwordForm.$valid && updateUserPass(member._id)" type="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ////////////////////////////////// FICHE Form ////////////////////////////////// -->
+
+  <div class="container-fiche" ng-if="tab === 'fiche'">
+    <form class="container-create form-fiche" name="ficheForm" novalidate>
+      <!-- User Info Section -->
+      <div class="section">
+        <h1 class="info-title">Informations</h1>
+        <div class="info-group">
+          <md-input-container>
+            <label class='input-label' for="boCreateLastNameSimploniens">Nom</label>
+            <input id="boCreateLastNameSimploniens" class="input-style" ng-model="member.lastName" type="text" required name="nom">
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateNameSimploniens">Prénom</label>
+            <input id="boCreateNameSimploniens" class="input-style" ng-model="member.firstName" required name='prenom'>
+          </md-input-container>
+          <md-input-container class="age">
+            <label class='input-label' for="boCreateOldSimploniens">Age</label>
+            <input id="boCreateOldSimploniens" type="number" name="age" class="input-style" ng-model="student.age" maxlength='2' required>
+            <span class="error-msg" ng-show='ficheForm.age.$invalid && ficheForm.age.$dirty'>Votre âge est incorrect</span>
+          </md-input-container>
+          <md-input-container>
+            <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe">
+              <option value="" disabled>Sexe</option>
+              <option value="Homme">Homme</option>
+              <option value="Femme">Femme</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </md-input-container>
+          <md-input-container>
+            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.region" required>
+              <option class="labelOption" disabled selected value>Region</option>
+              <option ng-repeat="region in regions">{{region.name}}</option>
+            </select>
+          </md-input-container>
+          <md-input-container>
+            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.promo" required name="promo">
+              <option class="labelOption" disabled selected value>Promo</option>
+              <option ng-repeat="promo in promos">{{promo.name}}</option>
+            </select>
+          </md-input-container>
+          <div class="cont-input full-width contrats">
+            <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)</p>
+            <div class="input-checkbox-container">
+              <label ng-repeat="contract in contracts">
+                <input type="checkbox" checklist-model="student.Contrat" checklist-value="contract.name" ng-model="checked" ng-required='student.Contrat.length < 1'> {{contract.name}}
+              </label>
+            </div>
+            <span class="error-msg" ng-show='ficheForm.$submitted && student.Contrat.length < 1'>Vous devez choisir au moins un type de contrat</span>
+          </div>
+          <md-input-container class="calendar">
+            <label class='form-instruction' for="boCreateNameSimploniens">Date de diponibilité</label>
+            <md-datepicker md-min-date='minDate' name='dateDispo' ng-model="student.dispo" required></md-datepicker>
+            <span class="error-msg" ng-if='ficheForm.$submitted && ficheForm.dateDispo.$invalid'>Veuillez indiquer votre date de disponibilité</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateMailSimploniens">E-mail</label>
+            <input id="boCreateMailSimploniens" type="email" class="input-style" ng-model="member.email" required name='email'>
+            <span class="error-msg" ng-show='ficheForm.$submitted && ficheForm.email.$error.email'>Cette adresse E-mail n'est pas valide</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateGithubSimploniens">Github</label>
+            <input id="boCreateGithubSimploniens" class="input-style" type="url" ng-model="student.Github" name="github" required>
+            <span class="error-msg" ng-show='ficheForm.github.$invalid && ficheForm.github.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateLinkedinSimploniens">Linkedin</label>
+            <input id="boCreateLinkedinSimploniens" class="input-style" type="url" ng-model="student.Linkedin" name="linkedin" required>
+            <span class="error-msg" ng-show='ficheForm.linkedin.$invalid && ficheForm.linkedin.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreatePortfolioSimploniens">Portfolio</label>
+            <input id="boCreatePortfolioSimploniens" class="input-style" type="url" ng-model="student.Portfolio" name="portfolio">
+            <span class="error-msg" ng-show='ficheForm.portfolio.$invalid && ficheForm.portfolio.$dirty'>Vos liens doivent commencer par "http://" ou "https://"</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateTwitterSimploniens">Twitter</label>
+            <input id="boCreateTwitterSimploniens" class="input-style" type="url" ng-model="student.Twitter" name="twitter">
+            <span class="error-msg" ng-show='ficheForm.twitter.$invalid && ficheForm.twitter.$dirty'>Vos liens doivent commencer par "http://" ou "https://"</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateStackOverFlowSimploniens">StackOverFlow</label>
+            <input id="boCreateStackOverFlowSimploniens" class="input-style" type="url" ng-model="student.StackOverFlow" name="stackoverflow">
+            <span class="error-msg" ng-show='ficheForm.stackoverflow.$invalid && ficheForm.stackoverflow.$dirty'>Vos liens doivent commencer par "http://" ou "https://"</span>
+          </md-input-container>
+        </div>
+      </div>
+
+      <!-- User Profile Description Section -->
+      <div class="section">
+        <h1 class="info-title">Profil</h1>
+        <md-input-container class="full-width text-form">
+          <label class='input-label' for="boCreateAboutSimploniens">Votre Description (300 charactères max)</label>
+          <textarea id="boCreateAboutSimploniens" class="input-style" ng-model="student.description" name="description" maxlength="300" required>{{student.description}}</textarea>
+        </md-input-container>
+      </div>
+
+      <!-- User Competences Section -->
+      <div class="section">
+        <h1 class="info-title">Compétences</h1>
+        <div class="info-group">
+          <md-input-container>
+            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.Domaine" required>
+              <option class="labelOption" disabled selected value>Domaine</option>
+              <option ng-repeat="field in fields">{{field.name}}</option>
+            </select>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateCVSimploniens">Lien vers votre CV</label>
+            <input id="boCreateCVSimploniens" type="url" class="input-style" name="cv" ng-model="student.CV" required>
+            <span class="error-msg" ng-show='ficheForm.cv.$invalid && ficheForm.cv.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
+          </md-input-container>
+          <md-input-container>
+            <select id="boCreateSpeOneSimploniens" class="input-style" ng-model="student.SpecialiteUn" ng-change='compareSkill("SpecialiteUn", student.SpecialiteUn)' ng-required='checkSpe'>
+              <option class="labelOption" disabled selected value>1ère Spécialité</option>
+              <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+              <!-- | filter:student.SpecialiteDeux:student.SpecialiteTrois -->
+            </select>
+          </md-input-container>
+          <md-input-container>
+            <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' ng-required='checkSpe'>
+              <option class="labelOption" disabled selected value>2e Spécialité</option>
+              <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+              <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
+            </select>
+          </md-input-container>
+          <md-input-container>
+            <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" ng-change='compareSkill("SpecialiteTrois",student.SpecialiteTrois)'  ng-required='checkSpe'>
+              <option class="labelOption" disabled selected value>3e Spécialité</option>
+              <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
+              <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
+            </select>
+          </md-input-container>
+          <div class="cont-input">
+              <label class='input-label' for="boCreateTagsSimploniens">Vos Compétences</label>
+            <div class="input-button-container">
+              <input id="boCreateTagsSimploniens" class="input-style" name="tags" ng-model="tag">
+              <button type="button" ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
+            </div>
+          </div>
+          <ul class="tags-list">
+            <li class="tagViewVille" ng-repeat='tag in student.tags track by $index'>{{tag}}<span class="closeButton" ng-click='removeTag(tag)'></span>
+            </li>
+          </ul>
+        </div>
+        <span class="error-msg" ng-if='ficheForm.$submitted && !checkSpe'>Vous ne pouvez pas choisir plusieurs fois la même compétence ou en avoir de vide</span>
+        <h3 class="info-title-sm">Projets</h3>
+        <div class="info-group">
+          <md-input-container>
+            <label class='input-label' for="boCreateProjetOneSimploniens">Lien vers Projet 1</label>
+            <input id="boCreateProjetOneSimploniens" type="url" class="input-style" ng-model="student.ProjetUn" name="projet1">
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateProjetDeuxSimploniens">Lien vers Projet 2</label>
+            <input id="boCreateProjetDeuxSimploniens" type="url" class="input-style" name="projet2" ng-model="student.ProjetDeux">
+            <span class="error-msg" ng-show='ficheForm.projet2.$invalid && ficheForm.projet2.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
+          </md-input-container>
+          <md-input-container>
+            <label class='input-label' for="boCreateProjetDeuxSimploniens">Lien vers Projet 3</label>
+            <input id="boCreateProjetTroisSimploniens" type="url" class="input-style" name="projet3" ng-model="student.ProjetTrois">
+            <span class="error-msg" ng-show='ficheForm.projet3.$invalid && ficheForm.projet3.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
+          </md-input-container>
+        </div>
+      </div>
+      <div>this form is valid : {{ficheForm.$valid}}</div>
+      <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':createCard}">
+        <div class="img-required-validate"></div>
+        <p class="required">Votre profil a été créé</p>
+      </div>
+      <div class="required-cont-gen required-cont-hide" ng-class="{'required-cont':updateCard}">
+        <div class="img-required-validate"></div>
+        <p class="required">Votre profil a été modifié</p>
+      </div>
+      <!-- Submit Buttons -->
+      <div class="button-container">
+        <span class="error-msg" ng-if='ficheForm.$invalid && ficheForm.$submitted'>Veuillez verifier les champs obligatoires marqués en rouge</span>
+        <input class="input-style edit-button" ng-class='{"show-input":cardExist === "enregistrer"}' value="Enregistrer" type="submit" ng-click='checkSpe && ficheForm.$valid && createSimplonien()'>
+        <input class="input-style edit-button" value="Modifier sa fiche" ng-class='{"show-input":cardExist === "modifier"}' type="submit" ng-click='checkSpe && ficheForm.$valid && updateStudent(student._id)'>
+        <input class="input-style delete-button" value="Supprimer sa fiche" ng-class='{"show-input":cardExist === "modifier"}' type="button" ng-click="deleteCard(student._id)">
+      </div>
+    </form>
+  </div>
+</div>

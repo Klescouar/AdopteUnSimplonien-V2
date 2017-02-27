@@ -22,18 +22,16 @@ form{
 }
 
 // md-input-container A RAJOUTER À CÔTÉ DE CONT-INPUT POUR LA PAGE PROFIL
-.cont-input{
+.cont-input,md-input-container{
   width: 90%;
   margin: 15px 10px;
-  min-height: 60px;
-  display: flex;
-  flex-wrap: wrap;
+  height: 40px;
 
   &.full-width{
     width: 100%;
   }
+
   .md-input, input, select, textarea{
-    height: 35px;
     width: 100%;
     border: none;
     background: transparent;
@@ -59,6 +57,19 @@ form{
   .error-msg{
     text-align: left;
   }
+}
+
+.cont-input{
+  display: flex;
+  flex-wrap: wrap;
+  label{
+    font-weight: 400;
+  }
+}
+
+.text-form {
+  height: 150px;
+  width: 100%;
 }
 
 md-input-focused{
@@ -134,6 +145,7 @@ textarea,select,input[type=checkbox]{
 ////////////// BUTTONS \\\\\\\\\\\\\\\
 .input-button-container{
   display: flex;
+  width: $full;
 }
 
 .input-checkbox-container{
