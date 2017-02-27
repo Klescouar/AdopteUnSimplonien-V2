@@ -30,8 +30,49 @@ form{
   &.full-width{
     width: 100%;
   }
+  .error-msg{
+    text-align: left;
+  }
+}
 
-  .md-input, input, select, textarea{
+md-input-container{
+  // focus border-bottom
+  &:not(.md-input-invalid).md-input-focused{
+    .md-input{
+      border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+      outline: none;
+    }
+  }
+
+  label:not(.md-no-float):not(.md-container-ignore){
+    color: rgba(0, 0, 0, 0.380392);
+  }
+
+  &.md-input-focused{
+    height: 20px;
+    label{
+      color: rgb(165, 167, 189);
+    }
+   select:focus, md-select-value:focus {
+      border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+      outline: none;
+    }
+    .md-input{
+      border-width: 0 0 1px;
+    }
+  }
+  &.md-input-focused:not(.md-input-has-value){
+    md-select{
+      .md-select-value{
+        color: rgba(0, 0, 0, 0.380392);
+      }
+      .md-select-value.md-select-placeholder{
+        color: rgba(0, 0, 0, 0.380392);
+      }
+    }
+  }
+
+  .md-input, input, select, textarea, md-select-value{
     width: 100%;
     border: none;
     background: transparent;
@@ -40,6 +81,9 @@ form{
     border-color: rgba(115, 159, 190, 0.35);
     outline: none;
     border-radius: 0;
+    &.ng-invalid.ng-dirty{
+      border-width: 0 0 1px;
+    }
   }
   .md-input, input,textarea{
     color: white;
@@ -54,10 +98,26 @@ form{
     outline: none;
   }
 
-  .error-msg{
-    text-align: left;
+  md-select-value{
+    span{
+      font-weight: bold;
+    }
   }
 }
+// md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value
+
+md-select{
+  &:not([disabled]):focus .md-select-value{
+    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
+  }
+  .md-select-value{
+    color: rgba(0, 0, 0, 0.380392);
+    .md-select-placeholder{
+      color: rgba(0, 0, 0, 0.380392);
+    }
+  }
+}
+
 
 .cont-input{
   display: flex;
@@ -70,27 +130,6 @@ form{
 .text-form {
   height: 150px;
   width: 100%;
-}
-
-md-input-focused{
-  height: 20px;
-  label{
-    color: rgb(165, 167, 189);
-  }
-
-  .md-input:focus, input:focus, textarea:focus {
-    border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-    outline: none;
-  }
-}
-
-md-input-container:not(.md-input-invalid).md-input-focused .md-input{
-  border-bottom: 1px solid rgba(115, 159, 190, 0.85);
-  outline: none;
-}
-
-md-input-container .md-input.ng-invalid.ng-dirty{
-  border-width: 0 0 1px;
 }
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
@@ -196,8 +235,6 @@ textarea,select,input[type=checkbox]{
 }
 
 //////////////// Input animation Login/register \\\\\\\\\\\\\\\\\\\\\\\\
-
-
 .content input{
   background-color: #425877;
   color:white;
@@ -266,7 +303,6 @@ transform-origin: 100% 0%;
 
 .content:hover::after, .content:hover::before {
 transform: scale(1);
-
 }
 
 
@@ -275,6 +311,7 @@ transform: scale(1);
 .ng-submitted {
   md-datepicker.ng-invalid{
     border: none;
+    border-width: 0 0 1px;
   }
   .ng-invalid{
     border-bottom: 1px solid rgb(221,44,0);;
@@ -295,6 +332,14 @@ transform: scale(1);
   .calendar{
     .md-datepicker-input-container{
       border: none;
+    }
+  }
+}
+
+md-input-container{
+  .md-input{
+    &.ng-invalid.ng-dirty{
+      border-width: 0 0 1px;
     }
   }
 }

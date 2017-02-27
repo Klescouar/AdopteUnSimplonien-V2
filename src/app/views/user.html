@@ -106,24 +106,24 @@
             <span class="error-msg" ng-show='ficheForm.age.$invalid && ficheForm.age.$dirty'>Votre âge est incorrect</span>
           </md-input-container>
           <md-input-container>
-            <select id="boCreateSexeSimploniens" class="input-style" ng-model="student.Sexe">
-              <option value="" disabled>Sexe</option>
-              <option value="Homme">Homme</option>
-              <option value="Femme">Femme</option>
-              <option value="Autre">Autre</option>
-            </select>
+              <label>Sexe</label>
+              <md-select ng-model="student.Sexe">
+                <md-option value="Homme">Homme</md-option>
+                <md-option value="Femme">Femme</md-option>
+                <md-option value="Autre">Autre</md-option>
+              </md-select>
           </md-input-container>
           <md-input-container>
-            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.region" required>
-              <option class="labelOption" disabled selected value>Region</option>
-              <option ng-repeat="region in regions">{{region.name}}</option>
-            </select>
+              <label>Region</label>
+              <md-select ng-model="student.region">
+                <md-option ng-repeat="region in regions" ng-value='region.name'>{{region.name}}</md-option>
+              </md-select>
           </md-input-container>
           <md-input-container>
-            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.promo" required name="promo">
-              <option class="labelOption" disabled selected value>Promo</option>
-              <option ng-repeat="promo in promos">{{promo.name}}</option>
-            </select>
+              <label>Promo</label>
+              <md-select ng-model="student.promo">
+                <md-option ng-repeat="promo in promos" ng-value='promo.name'>{{promo.name}}</md-option>
+              </md-select>
           </md-input-container>
           <div class="cont-input full-width contrats">
             <p class="form-instruction">Veuillez Sectionner le(s) type(s) de contrat que vous recherchez (au moins 1)</p>
@@ -186,10 +186,10 @@
         <h1 class="info-title">Compétences</h1>
         <div class="info-group">
           <md-input-container>
-            <select id="boCreatePromoSimploniens" class="input-style" ng-model="student.Domaine" required>
-              <option class="labelOption" disabled selected value>Domaine</option>
-              <option ng-repeat="field in fields">{{field.name}}</option>
-            </select>
+              <label>Domaine</label>
+              <md-select ng-model="student.Domaine" required>
+                  <md-option ng-repeat="field in fields" ng-value="field.name">{{field.name}}</md-option>
+              </md-select>
           </md-input-container>
           <md-input-container>
             <label class='input-label' for="boCreateCVSimploniens">Lien vers votre CV</label>
@@ -197,30 +197,27 @@
             <span class="error-msg" ng-show='ficheForm.cv.$invalid && ficheForm.cv.$dirty'>Vos liens doivent commencer par "http://" ou "http://"</span>
           </md-input-container>
           <md-input-container>
-            <select id="boCreateSpeOneSimploniens" class="input-style" ng-model="student.SpecialiteUn" ng-change='compareSkill("SpecialiteUn", student.SpecialiteUn)' ng-required='checkSpe'>
-              <option class="labelOption" disabled selected value>1ère Spécialité</option>
-              <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-              <!-- | filter:student.SpecialiteDeux:student.SpecialiteTrois -->
-            </select>
+              <label>1ère Spécialité</label>
+              <md-select ng-model="student.SpecialiteUn" ng-change='compareSkill("SpecialiteUn", student.SpecialiteUn)' ng-required='checkSpe'>
+                  <md-option ng-repeat="skill in skills" ng-value="skill.name">{{skill.name}}</md-option>
+              </md-select>
           </md-input-container>
           <md-input-container>
-            <select id="boCreateSpeTwoSimploniens" class="input-style" ng-model="student.SpecialiteDeux" ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' ng-required='checkSpe'>
-              <option class="labelOption" disabled selected value>2e Spécialité</option>
-              <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-              <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
-            </select>
+              <label>2e Spécialité</label>
+              <md-select ng-model="student.SpecialiteDeux" ng-change='compareSkill("SpecialiteDeux", student.SpecialiteDeux)' ng-required='checkSpe'>
+                  <md-option ng-repeat="skill in skills" ng-value="skill.name">{{skill.name}}</md-option>
+              </md-select>
           </md-input-container>
           <md-input-container>
-            <select id="boCreateSpeThreeSimploniens" class="input-style" ng-model="student.SpecialiteTrois" ng-change='compareSkill("SpecialiteTrois",student.SpecialiteTrois)'  ng-required='checkSpe'>
-              <option class="labelOption" disabled selected value>3e Spécialité</option>
-              <option ng-repeat="skill in skills" value="{{skill.name}}">{{skill.name}}</option>
-              <!-- | filter:student.SpecialiteUn:student.SpecialiteTrois -->
-            </select>
+              <label>3e Spécialité</label>
+              <md-select ng-model="student.SpecialiteTrois" ng-change='compareSkill("SpecialiteTrois",student.SpecialiteTrois)' ng-required='checkSpe'>
+                  <md-option ng-repeat="skill in skills" ng-value="skill.name">{{skill.name}}</md-option>
+              </md-select>
           </md-input-container>
           <div class="cont-input">
               <label class='input-label' for="boCreateTagsSimploniens">Vos Compétences</label>
             <div class="input-button-container">
-              <input id="boCreateTagsSimploniens" class="input-style" name="tags" ng-model="tag">
+              <input class="input-style" name="tags" ng-model="tag">
               <button type="button" ng-click='addTag(tag); tag = ""' name="button" class="tagViewVille">Ajouter</button>
             </div>
           </div>
